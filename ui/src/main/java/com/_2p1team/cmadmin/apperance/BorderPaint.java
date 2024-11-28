@@ -18,8 +18,16 @@ public final class BorderPaint {
     this.paint = new BackgroundPaint(colors);
   }
 
+  public BorderPaint(int thickness, int arcWidth, int arcHeight) {
+    this(thickness, arcWidth, arcHeight, new Color[0]);
+  }
+
   public BorderPaint(int thickness, int arc, Color... colors) {
     this(thickness, arc, arc, colors);
+  }
+
+  public BorderPaint(int thickness, int arc) {
+    this(thickness, arc, arc);
   }
 
   public BorderPaint(int thickness, Color... colors) {
@@ -27,6 +35,6 @@ public final class BorderPaint {
   }
 
   public BorderPaint() {
-    this(0, 0, 0, Color.black, Color.black);
+    this(0, 0, 0);
   }
 }

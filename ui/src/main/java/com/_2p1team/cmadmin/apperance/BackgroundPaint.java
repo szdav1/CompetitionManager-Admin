@@ -3,6 +3,7 @@ package com._2p1team.cmadmin.apperance;
 
 import java.awt.Color;
 import java.awt.LinearGradientPaint;
+import java.util.Arrays;
 
 import lombok.Data;
 
@@ -35,7 +36,8 @@ public final class BackgroundPaint {
     for (int i = 0; i < colors.length; i++) {
       fractions[i] = unit*i;
     }
-    fractions[fractions.length-1] = (float) Math.ceil(fractions[fractions.length-1]);
+    if (colors.length >= 2)
+      fractions[fractions.length-1] = (float) Math.ceil(fractions[fractions.length-1]);
   }
 
   /**
@@ -48,7 +50,8 @@ public final class BackgroundPaint {
   }
 
   public LinearGradientPaint createPaint(int startX, int startY, int endX, int endY) {
-    this.paint = new LinearGradientPaint(startX, startY, endX, endY, this.fractions, this.colors);
+    if (colors.length >= 2)
+      this.paint = new LinearGradientPaint(startX, startY, endX, endY, this.fractions, this.colors);
 
     return this.paint;
   }

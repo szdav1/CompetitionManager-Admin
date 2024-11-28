@@ -14,8 +14,8 @@ class UIVisibilityTester {
 
     Panel panel = new Panel(new Rectangle(100, 100, 100, 100),
       new Appearance(
-        new BackgroundPaint(Color.darkGray, Color.darkGray),
-        new BorderPaint(3, 40, Color.pink, Color.red)
+        new BackgroundPaint(Color.red, Color.darkGray, Color.black, Color.cyan),
+        new BorderPaint(3, 40)
       )
     );
 

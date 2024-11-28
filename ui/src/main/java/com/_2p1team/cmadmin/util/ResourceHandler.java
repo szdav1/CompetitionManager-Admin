@@ -13,7 +13,7 @@ public final class ResourceHandler {
     try (FileReader fr = new FileReader(fileURL.getFile())) {
       return fileURL.getFile();
     }
-    catch (Exception exc) {
+    catch (Exception ignored) {
       return "resources"+path;
     }
   }
