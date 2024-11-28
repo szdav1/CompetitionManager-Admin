@@ -10,7 +10,7 @@ import java.awt.Color;
  * @param secondaryColor Type: <b>Color</b> - The secondary color for the foreground
  */
 public record ForegroundPaint(Color mainColor, Color secondaryColor) {
-  public ForegroundPaint(Color color) {
+  public ForegroundPaint(final Color color) {
     this(color, color);
   }
 

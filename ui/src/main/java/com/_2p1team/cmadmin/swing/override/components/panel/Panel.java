@@ -56,12 +56,18 @@ public class Panel extends AbstractPanel {
   public void paintBackground(final Graphics2D g2, int x, int y, int width, int height) {
     g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
     g2.setPaint(this.appearance.backgroundPaint().createPaint(x, y, width, height));
-    g2.fillRoundRect(x, y, width, height, this.appearance.borderPaint().arcWidth(), this.appearance.borderPaint().arcHeight());
+    g2.fillRoundRect(x, y, width, height, this.appearance.borderPaint().getArcWidth(), this.appearance.borderPaint().getArcHeight());
   }
 
   @Override
   public void paintBorder(Graphics2D g2, int x, int y, int width, int height) {
-    // TODO: Implement border painting
+    if (this.appearance.borderPaint().getThickness() <= 0)
+      return;
+
+    g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+    g2.setPaint(this.appearance.borderPaint().getPaint().createPaint(x, y, width, height));
+    g2.setStroke(new BasicStroke(this.appearance.borderPaint().getThickness()));
+    g2.drawRoundRect(x, y, width, height, this.appearance.borderPaint().getArcWidth(), this.appearance.borderPaint().getArcHeight());
   }
 
   @Override

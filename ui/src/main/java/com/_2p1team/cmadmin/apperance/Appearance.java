@@ -19,7 +19,7 @@ public record Appearance(BackgroundPaint backgroundPaint, ForegroundPaint foregr
    * @param backgroundPaint Type: <b>BackgroundPaint</b> - Defines the color(s) of the background
    * @param borderPaint     Type: <b>BorderPaint</b> - Defines the color(s), thickness and edge roundness of the border
    */
-  public Appearance(BackgroundPaint backgroundPaint, BorderPaint borderPaint) {
+  public Appearance(final BackgroundPaint backgroundPaint, final BorderPaint borderPaint) {
     this(backgroundPaint, new ForegroundPaint(), new IconSet(), borderPaint);
   }
 
