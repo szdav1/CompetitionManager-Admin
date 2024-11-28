@@ -9,14 +9,15 @@ import javax.swing.JLayeredPane;
 
 import com._2p1team.cmadmin.apperance.Appearance;
 import com._2p1team.cmadmin.swing.override.components.ComponentContainer;
-import com._2p1team.cmadmin.swing.override.components.CustomComponent;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.ToString;
 
 @ToString
+@Getter
 @EqualsAndHashCode(callSuper = false)
-public abstract class AbstractPanel extends JLayeredPane implements CustomComponent, ComponentContainer {
-  protected final Appearance appearance;
+public abstract class AbstractPanel extends JLayeredPane implements ComponentContainer {
+  private final Appearance appearance;
 
   public AbstractPanel(Dimension preferredSize, LayoutManager layout, Appearance appearance) {
     this.appearance = appearance;

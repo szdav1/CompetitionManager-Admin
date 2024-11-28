@@ -37,4 +37,8 @@ public final class BorderPaint {
   public BorderPaint() {
     this(0, 0, 0);
   }
+
+  public int arcs() {
+    return this.arcWidth+this.arcHeight;
+  }
 }

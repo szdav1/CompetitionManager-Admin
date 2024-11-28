@@ -3,7 +3,6 @@ package com._2p1team.cmadmin.apperance;
 
 import java.awt.Color;
 import java.awt.LinearGradientPaint;
-import java.util.Arrays;
 
 import lombok.Data;
 
@@ -19,8 +18,8 @@ import lombok.Data;
  */
 @Data
 public final class BackgroundPaint {
-  private final float[] fractions;
-  private final Color[] colors;
+  private float[] fractions;
+  private Color[] colors;
   private LinearGradientPaint paint;
 
   /**
@@ -33,11 +32,21 @@ public final class BackgroundPaint {
     this.colors = colors;
     float unit = 1.0f/colors.length;
 
-    for (int i = 0; i < colors.length; i++) {
+    if (colors.length == 1) {
+      this.colors = new Color[]{colors[0], colors[0]};
+      this.fractions = new float[this.colors.length];
+      unit = 1.0f/this.colors.length;
+    }
+    else if (colors.length < 1) {
+      this.colors = new Color[]{Color.black, Color.black};
+      this.fractions = new float[this.colors.length];
+      unit = 1.0f/this.colors.length;
+    }
+
+    for (int i = 0; i < this.colors.length; i++) {
       fractions[i] = unit*i;
     }
-    if (colors.length >= 2)
-      fractions[fractions.length-1] = (float) Math.ceil(fractions[fractions.length-1]);
+    this.fractions[this.fractions.length-1] = (float) Math.ceil(this.fractions[this.fractions.length-1]);
   }
 
   /**
@@ -50,8 +59,7 @@ public final class BackgroundPaint {
   }
 
   public LinearGradientPaint createPaint(int startX, int startY, int endX, int endY) {
-    if (colors.length >= 2)
-      this.paint = new LinearGradientPaint(startX, startY, endX, endY, this.fractions, this.colors);
+    this.paint = new LinearGradientPaint(startX, startY, endX, endY, this.fractions, this.colors);
 
     return this.paint;
   }

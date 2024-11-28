@@ -1,5 +1,7 @@
 package com._2p1team.cmadmin.apperance;
 
+import java.awt.Font;
+
 /**
  * The <b>Appearance</b> <i>record</i> stores behavioural and display
  * data for components. These data are processed inside the <b>swing.override</b>
@@ -11,7 +13,7 @@ package com._2p1team.cmadmin.apperance;
  * @param iconSet         Type: <b>IconSet</b> - Defines the icon(s) displayed by certain components
  * @param borderPaint     Type: <b>BorderPaint</b> - Defines the color(s), thickness and edge roundness of the border
  */
-public record Appearance(BackgroundPaint backgroundPaint, ForegroundPaint foregroundPaint, IconSet iconSet, BorderPaint borderPaint) {
+public record Appearance(BackgroundPaint backgroundPaint, ForegroundPaint foregroundPaint, IconSet iconSet, FontSet fontSet, Font font, BorderPaint borderPaint) {
   /**
    * Constructs an <b>Appearance</b> with the given <b>BackgroundPaint</b> and <b>BorderPaint</b> while
    * initializing the <b>ForegroundPaint</b> and the <b>IconSet</b> with empty constructor calls.
@@ -21,6 +23,10 @@ public record Appearance(BackgroundPaint backgroundPaint, ForegroundPaint foregr
    */
   public Appearance(final BackgroundPaint backgroundPaint, final BorderPaint borderPaint) {
     this(backgroundPaint, new ForegroundPaint(), new IconSet(), borderPaint);
+  }
+
+  public Appearance(final BackgroundPaint backgroundPaint, final ForegroundPaint foregroundPaint, final BorderPaint borderPaint) {
+    this(backgroundPaint, foregroundPaint, new IconSet(), borderPaint);
   }
 
   /**

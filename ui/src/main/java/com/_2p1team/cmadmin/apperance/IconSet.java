@@ -1,6 +1,7 @@
 package com._2p1team.cmadmin.apperance;
 
 import com._2p1team.cmadmin.util.ResourceHandler;
+import lombok.Data;
 
 import javax.swing.ImageIcon;
 import java.awt.Image;
@@ -9,6 +10,7 @@ import java.awt.Image;
  * The <b>IconSet</b> <i>class</i> stores icons for certain components.
  * It stores a main and a secondary icon.
  */
+@Data
 public final class IconSet {
   private final ImageIcon mainIcon;
   private final ImageIcon secondaryIcon;
@@ -20,6 +22,11 @@ public final class IconSet {
   public IconSet(final IconHints mainHints, final IconHints secondaryHints) {
     this.mainIcon = loadIcon(mainHints);
     this.secondaryIcon = loadIcon(secondaryHints);
+  }
+
+  public IconSet(final IconHints hints) {
+    this.mainIcon = loadIcon(hints);
+    this.secondaryIcon = loadIcon(hints);
   }
 
   /**

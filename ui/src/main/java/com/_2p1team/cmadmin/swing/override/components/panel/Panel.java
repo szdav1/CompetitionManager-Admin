@@ -6,6 +6,7 @@ import javax.swing.JComponent;
 
 import com._2p1team.cmadmin.apperance.Appearance;
 import com._2p1team.cmadmin.constants.Position;
+import com._2p1team.cmadmin.swing.override.ComponentGraphicsHandler;
 
 public class Panel extends AbstractPanel {
   public Panel(Dimension preferredSize, LayoutManager layout, Appearance appearance) {
@@ -48,29 +49,6 @@ public class Panel extends AbstractPanel {
   }
 
   @Override
-  public Appearance getAppearance() {
-    return this.appearance;
-  }
-
-  @Override
-  public void paintBackground(final Graphics2D g2, int x, int y, int width, int height) {
-    g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-    g2.setPaint(this.appearance.backgroundPaint().createPaint(x, y, width, height));
-    g2.fillRoundRect(x, y, width, height, this.appearance.borderPaint().getArcWidth(), this.appearance.borderPaint().getArcHeight());
-  }
-
-  @Override
-  public void paintBorder(Graphics2D g2, int x, int y, int width, int height) {
-    if (this.appearance.borderPaint().getThickness() <= 0)
-      return;
-
-    g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-    g2.setPaint(this.appearance.borderPaint().getPaint().createPaint(x, y, width, height));
-    g2.setStroke(new BasicStroke(this.appearance.borderPaint().getThickness()));
-    g2.drawRoundRect(x, y, width, height, this.appearance.borderPaint().getArcWidth(), this.appearance.borderPaint().getArcHeight());
-  }
-
-  @Override
   public void paint(Graphics g) {
     Graphics2D g2 = (Graphics2D) g;
     Rectangle paintSurface = g2.getClipBounds();
@@ -79,8 +57,8 @@ public class Panel extends AbstractPanel {
     int width = paintSurface.width;
     int height = paintSurface.height;
 
-    this.paintBackground(g2, x, y, width, height);
-    this.paintBorder(g2, x, y, width, height);
+    ComponentGraphicsHandler.paintBackground(g2, x, y, width, height, this.getAppearance());
+    ComponentGraphicsHandler.paintBorder(g2, x, y, width, height, this.getAppearance());
     g2.dispose();
   }
 }
