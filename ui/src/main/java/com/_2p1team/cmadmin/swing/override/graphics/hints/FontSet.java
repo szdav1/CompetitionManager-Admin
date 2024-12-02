@@ -2,6 +2,11 @@ package com._2p1team.cmadmin.swing.override.graphics.hints;
 
 import java.awt.Font;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 public final class FontSet {
     public static final Font SYSTEM_FONT = new Font(Font.MONOSPACED, Font.PLAIN, 10);
 
