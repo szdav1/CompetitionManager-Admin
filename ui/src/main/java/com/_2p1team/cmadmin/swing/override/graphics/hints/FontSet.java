@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public final class FontSet {
-    public static final Font SYSTEM_FONT = new Font(Font.MONOSPACED, Font.PLAIN, 10);
+    public static final Font SYSTEM_FONT = new Font(Font.MONOSPACED, Font.PLAIN, 10); // TODO: Replace 10 with proportional value
 
     private final Font defaultFont;
     private final Font hoveredFont;
@@ -16,7 +16,7 @@ public final class FontSet {
     private final Font releasedFont;
 
     public FontSet() {
-        this(SYSTEM_FONT, SYSTEM_FONT);
+        this(SYSTEM_FONT);
     }
 
     public FontSet(final Font defaultFont, final Font hoveredFont) {
@@ -24,5 +24,9 @@ public final class FontSet {
         this.hoveredFont = hoveredFont;
         this.pressedFont = defaultFont;
         this.releasedFont = hoveredFont;
+    }
+
+    public FontSet(final Font font) {
+        this(font, font);
     }
 }

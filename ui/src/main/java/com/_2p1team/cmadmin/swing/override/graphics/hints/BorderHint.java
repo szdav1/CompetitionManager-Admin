@@ -1,7 +1,5 @@
 package com._2p1team.cmadmin.swing.override.graphics.hints;
 
-import java.awt.Color;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -16,7 +14,7 @@ public final class BorderHint {
     private final LinearGradientPaintHint releasedHint;
 
     public BorderHint() {
-        this(0, 0, new LinearGradientPaintHint(Color.black), new LinearGradientPaintHint(Color.darkGray));
+        this(0, 0, new LinearGradientPaintHint(), new LinearGradientPaintHint());
     }
 
     public BorderHint(int thickness, final LinearGradientPaintHint defaultHint, final LinearGradientPaintHint hoveredHint, final LinearGradientPaintHint pressedHint, final LinearGradientPaintHint releasedHint) {

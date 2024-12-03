@@ -23,4 +23,8 @@ public final class IconSet {
         this.pressedIcon = defaultIcon;
         this.releasedIcon = hoveredIcon;
     }
+
+    public IconSet(final ImageIcon icon) {
+        this(icon, icon);
+    }
 }

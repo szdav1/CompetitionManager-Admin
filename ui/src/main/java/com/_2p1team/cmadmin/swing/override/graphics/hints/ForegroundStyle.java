@@ -14,7 +14,7 @@ public final class ForegroundStyle {
     private final Color releasedColor;
 
     public ForegroundStyle() {
-        this(Color.black, Color.darkGray);
+        this(Color.white, Color.darkGray);
     }
 
     public ForegroundStyle(final Color defaultColor, final Color hoveredColor) {
