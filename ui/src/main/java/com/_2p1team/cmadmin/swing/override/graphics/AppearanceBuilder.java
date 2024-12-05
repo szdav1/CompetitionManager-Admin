@@ -1,0 +1,46 @@
+package com._2p1team.cmadmin.swing.override.graphics;
+
+import com._2p1team.cmadmin.swing.override.consts.InteractivityMode;
+import com._2p1team.cmadmin.swing.override.graphics.configs.*;
+
+public final class AppearanceBuilder {
+    private final Appearance appearance;
+
+    public AppearanceBuilder() {
+        this.appearance = new Appearance();
+    }
+
+    public AppearanceBuilder setBackgroundConfiguration(final BackgroundConfiguration config) {
+        this.appearance.setBackgroundConfiguration(config);
+        return this;
+    }
+
+    public AppearanceBuilder setForegroundConfiguration(final ForegroundConfiguration config) {
+        this.appearance.setForegroundConfiguration(config);
+        return this;
+    }
+
+    public AppearanceBuilder setIconSet(final IconSet iconSet) {
+        this.appearance.setIconSet(iconSet);
+        return this;
+    }
+
+    public AppearanceBuilder setFontSet(final FontSet fontSet) {
+        this.appearance.setFontSet(fontSet);
+        return this;
+    }
+
+    public AppearanceBuilder setBorderConfiguration(final BorderConfiguration config) {
+        this.appearance.setBorderConfiguration(config);
+        return this;
+    }
+
+    public AppearanceBuilder setInteractivityMode(final InteractivityMode mode) {
+        this.appearance.setInteractivityMode(mode);
+        return this;
+    }
+
+    public Appearance build() {
+        return this.appearance;
+    }
+}

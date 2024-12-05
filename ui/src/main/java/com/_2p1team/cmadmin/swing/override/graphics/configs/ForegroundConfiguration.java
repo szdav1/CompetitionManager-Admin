@@ -7,17 +7,17 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public final class ForegroundStyle {
+public final class ForegroundConfiguration {
     private final Color defaultColor;
     private final Color hoveredColor;
     private final Color pressedColor;
     private final Color releasedColor;
 
-    public ForegroundStyle() {
+    public ForegroundConfiguration() {
         this(Color.white, Color.darkGray);
     }
 
-    public ForegroundStyle(final Color defaultColor, final Color hoveredColor) {
+    public ForegroundConfiguration(final Color defaultColor, final Color hoveredColor) {
         this.defaultColor= defaultColor;
         this.hoveredColor= hoveredColor;
         this.pressedColor= defaultColor;

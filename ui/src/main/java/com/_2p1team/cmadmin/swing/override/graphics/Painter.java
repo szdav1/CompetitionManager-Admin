@@ -44,6 +44,9 @@ public final class Painter {
     }
 
     public static void paintBorder(final Graphics2D g2, Point2D start, Point2D end, final Appearance appearance) {
+        if (appearance.getBorderConfiguration().getThickness() <= 0)
+            return;
+
         Rectangle paintSurface = g2.getClipBounds();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
@@ -52,36 +55,36 @@ public final class Painter {
             end,
             switch (appearance.getState()) {
                 case HOVERED -> appearance.getBorderConfiguration()
-                    .getHoveredHint()
+                    .getHoveredConfiguration()
                     .getFractions();
 
                 case PRESSED -> appearance.getBorderConfiguration()
-                    .getPressedHint()
+                    .getPressedConfiguration()
                     .getFractions();
 
                 case RELEASED -> appearance.getBorderConfiguration()
-                    .getReleasedHint()
+                    .getReleasedConfiguration()
                     .getFractions();
 
                 default -> appearance.getBorderConfiguration()
-                    .getDefaultHint()
+                    .getDefaultConfiguration()
                     .getFractions();
             },
             switch (appearance.getState()) {
                 case HOVERED -> appearance.getBorderConfiguration()
-                    .getHoveredHint()
+                    .getHoveredConfiguration()
                     .getColors();
 
                 case PRESSED -> appearance.getBorderConfiguration()
-                    .getPressedHint()
+                    .getPressedConfiguration()
                     .getColors();
 
                 case RELEASED -> appearance.getBorderConfiguration()
-                    .getReleasedHint()
+                    .getReleasedConfiguration()
                     .getColors();
 
                 default -> appearance.getBorderConfiguration()
-                    .getDefaultHint()
+                    .getDefaultConfiguration()
                     .getColors();
             }
         );
@@ -90,8 +93,8 @@ public final class Painter {
         g2.drawRoundRect(
             (int) start.getX()+(appearance.getBorderConfiguration().getThickness()/2),
             (int) start.getY()+(appearance.getBorderConfiguration().getThickness()/2),
-            (int) end.getX(),
-            (int) end.getY(),
+            (int) end.getX()-(appearance.getBorderConfiguration().getThickness()),
+            (int) end.getY()-(appearance.getBorderConfiguration().getThickness()),
             appearance.getBorderConfiguration().getRadius(),
             appearance.getBorderConfiguration().getRadius()
         );

@@ -7,19 +7,19 @@ import lombok.Data;
 
 @Data
 public class Appearance {
-    private final InteractivityMode interactivityMode;
-    private final UIState state;
-    private final BackgroundConfiguration backgroundConfiguration;
-    private final ForegroundStyle foregroundStyle;
-    private final IconSet iconSet;
-    private final FontSet fontSet;
-    private final BorderConfiguration borderConfiguration;
+    private InteractivityMode interactivityMode;
+    private UIState state;
+    private BackgroundConfiguration backgroundConfiguration;
+    private ForegroundConfiguration foregroundConfiguration;
+    private IconSet iconSet;
+    private FontSet fontSet;
+    private BorderConfiguration borderConfiguration;
 
     public Appearance() {
         this(
             InteractivityMode.BACKGROUND_AND_FOREGROUND,
             new BackgroundConfiguration(),
-            new ForegroundStyle(),
+            new ForegroundConfiguration(),
             new IconSet(),
             new FontSet(),
             new BorderConfiguration()
@@ -29,7 +29,7 @@ public class Appearance {
     public Appearance(
         final InteractivityMode interactivityMode,
         final BackgroundConfiguration backgroundConfiguration,
-        final ForegroundStyle foregroundStyle,
+        final ForegroundConfiguration foregroundConfiguration,
         final IconSet iconSet,
         final FontSet fontSet,
         final BorderConfiguration borderConfiguration
@@ -37,7 +37,7 @@ public class Appearance {
         this.interactivityMode = interactivityMode;
         this.state = UIState.DEFAULT;
         this.backgroundConfiguration = backgroundConfiguration;
-        this.foregroundStyle = foregroundStyle;
+        this.foregroundConfiguration = foregroundConfiguration;
         this.iconSet = iconSet;
         this.fontSet = fontSet;
         this.borderConfiguration = borderConfiguration;
