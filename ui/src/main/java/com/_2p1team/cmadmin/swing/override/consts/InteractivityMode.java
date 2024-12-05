@@ -1,4 +1,4 @@
-package com._2p1team.cmadmin.swing.override.graphics.consts;
+package com._2p1team.cmadmin.swing.override.consts;
 
 import lombok.AllArgsConstructor;
 import lombok.ToString;

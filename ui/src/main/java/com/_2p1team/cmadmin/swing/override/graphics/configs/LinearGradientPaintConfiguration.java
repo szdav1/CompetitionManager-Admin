@@ -1,19 +1,19 @@
-package com._2p1team.cmadmin.swing.override.graphics.hints;
+package com._2p1team.cmadmin.swing.override.graphics.configs;
 
 import java.awt.Color;
 
 import lombok.Data;
 
 @Data
-public final class LinearGradientPaintHint {
+public final class LinearGradientPaintConfiguration {
     private Color[] colors;
     private float[] fractions;
 
-    public LinearGradientPaintHint() {
+    public LinearGradientPaintConfiguration() {
         this(Color.black);
     }
 
-    public LinearGradientPaintHint(final Color... colors) {
+    public LinearGradientPaintConfiguration(final Color... colors) {
         if (colors.length == 1)
             this.colors = new Color[]{colors[0], colors[0]};
         else if (colors.length < 1)

@@ -1,4 +1,4 @@
-package com._2p1team.cmadmin.swing.override.graphics.hints;
+package com._2p1team.cmadmin.swing.override.graphics.configs;
 
 import java.awt.Color;
 

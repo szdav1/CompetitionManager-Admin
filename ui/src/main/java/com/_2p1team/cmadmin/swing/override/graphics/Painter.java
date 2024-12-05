@@ -1,13 +1,13 @@
 package com._2p1team.cmadmin.swing.override.graphics;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+
 import java.awt.Graphics2D;
 import java.awt.LinearGradientPaint;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.geom.Point2D;
-
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Painter {
@@ -19,16 +19,16 @@ public final class Painter {
             start,
             end,
             switch (appearance.getState()) {
-                case HOVERED -> appearance.getBackgroundHint().getHoveredHint().getFractions();
-                case PRESSED -> appearance.getBackgroundHint().getPressedHint().getFractions();
-                case RELEASED -> appearance.getBackgroundHint().getReleasedHint().getFractions();
-                default -> appearance.getBackgroundHint().getDefaultHint().getFractions();
+                case HOVERED -> appearance.getBackgroundConfiguration().getHoveredHint().getFractions();
+                case PRESSED -> appearance.getBackgroundConfiguration().getPressedHint().getFractions();
+                case RELEASED -> appearance.getBackgroundConfiguration().getReleasedHint().getFractions();
+                default -> appearance.getBackgroundConfiguration().getDefaultHint().getFractions();
             },
             switch (appearance.getState()) {
-                case HOVERED -> appearance.getBackgroundHint().getHoveredHint().getColors();
-                case PRESSED -> appearance.getBackgroundHint().getPressedHint().getColors();
-                case RELEASED -> appearance.getBackgroundHint().getReleasedHint().getColors();
-                default -> appearance.getBackgroundHint().getDefaultHint().getColors();
+                case HOVERED -> appearance.getBackgroundConfiguration().getHoveredHint().getColors();
+                case PRESSED -> appearance.getBackgroundConfiguration().getPressedHint().getColors();
+                case RELEASED -> appearance.getBackgroundConfiguration().getReleasedHint().getColors();
+                default -> appearance.getBackgroundConfiguration().getDefaultHint().getColors();
             }
         );
 
@@ -38,8 +38,8 @@ public final class Painter {
             (int) start.getY(),
             (int) end.getX(),
             (int) end.getY(),
-            appearance.getBorderHint().getRadius(),
-            appearance.getBorderHint().getRadius()
+            appearance.getBorderConfiguration().getRadius(),
+            appearance.getBorderConfiguration().getRadius()
         );
     }
 
@@ -51,27 +51,49 @@ public final class Painter {
             start,
             end,
             switch (appearance.getState()) {
-                case HOVERED -> appearance.getBorderHint().getHoveredHint().getFractions();
-                case PRESSED -> appearance.getBorderHint().getPressedHint().getFractions();
-                case RELEASED -> appearance.getBorderHint().getReleasedHint().getFractions();
-                default -> appearance.getBorderHint().getDefaultHint().getFractions();
+                case HOVERED -> appearance.getBorderConfiguration()
+                    .getHoveredHint()
+                    .getFractions();
+
+                case PRESSED -> appearance.getBorderConfiguration()
+                    .getPressedHint()
+                    .getFractions();
+
+                case RELEASED -> appearance.getBorderConfiguration()
+                    .getReleasedHint()
+                    .getFractions();
+
+                default -> appearance.getBorderConfiguration()
+                    .getDefaultHint()
+                    .getFractions();
             },
             switch (appearance.getState()) {
-                case HOVERED -> appearance.getBorderHint().getHoveredHint().getColors();
-                case PRESSED -> appearance.getBorderHint().getPressedHint().getColors();
-                case RELEASED -> appearance.getBorderHint().getReleasedHint().getColors();
-                default -> appearance.getBorderHint().getDefaultHint().getColors();
+                case HOVERED -> appearance.getBorderConfiguration()
+                    .getHoveredHint()
+                    .getColors();
+
+                case PRESSED -> appearance.getBorderConfiguration()
+                    .getPressedHint()
+                    .getColors();
+
+                case RELEASED -> appearance.getBorderConfiguration()
+                    .getReleasedHint()
+                    .getColors();
+
+                default -> appearance.getBorderConfiguration()
+                    .getDefaultHint()
+                    .getColors();
             }
         );
 
         g2.setPaint(lgp);
         g2.drawRoundRect(
-            (int) start.getX()+(appearance.getBorderHint().getThickness()/2),
-            (int) start.getY()+(appearance.getBorderHint().getThickness()/2),
+            (int) start.getX()+(appearance.getBorderConfiguration().getThickness()/2),
+            (int) start.getY()+(appearance.getBorderConfiguration().getThickness()/2),
             (int) end.getX(),
             (int) end.getY(),
-            appearance.getBorderHint().getRadius(),
-            appearance.getBorderHint().getRadius()
+            appearance.getBorderConfiguration().getRadius(),
+            appearance.getBorderConfiguration().getRadius()
         );
     }
 }
