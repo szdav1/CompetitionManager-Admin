@@ -5,12 +5,10 @@ import java.awt.Rectangle;
 
 import javax.swing.JFrame;
 
+import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import com._2p1team.cmadmin.swing.override.graphics.AppearanceBuilder;
-import com._2p1team.cmadmin.swing.override.graphics.configs.BackgroundConfiguration;
-import com._2p1team.cmadmin.swing.override.graphics.configs.BorderConfiguration;
-import com._2p1team.cmadmin.swing.override.graphics.configs.LinearGradientPaintConfiguration;
-import com._2p1team.cmadmin.swing.override.graphics.configs.SimplePaintConfiguration;
+import com._2p1team.cmadmin.swing.override.graphics.configs.*;
 
 class UIVisibilityTester {
     public static void main(String[] args) {
@@ -45,6 +43,30 @@ class UIVisibilityTester {
                 .build()
         );
 
+        Label l = new Label(
+            new Rectangle(450, 100, 300, 300),
+            "Hello Label!",
+            new AppearanceBuilder()
+                .setBackgroundConfiguration(
+                    new BackgroundConfiguration(
+                        new SimplePaintConfiguration(Color.white),
+                        new LinearGradientPaintConfiguration(Color.white, Color.red)
+                    )
+                )
+                .setForegroundConfiguration(new ForegroundConfiguration(Color.white, Color.pink))
+                .setBorderConfiguration(
+                    new BorderConfiguration(
+                        3,
+                        40,
+                        new SimplePaintConfiguration(Color.black)
+                    )
+                )
+                .build()
+        );
+
+        System.out.println(l.getAppearance().getFontSet());
+
+        frame.add(l);
         frame.add(p);
         frame.repaint();
         frame.setVisible(true);
