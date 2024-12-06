@@ -17,14 +17,14 @@ public final class IconSet {
         this(new ImageIcon(), new ImageIcon());
     }
 
+    public IconSet(final ImageIcon icon) {
+        this(icon, icon);
+    }
+
     public IconSet(final ImageIcon defaultIcon, final ImageIcon hoveredIcon) {
         this.defaultIcon = defaultIcon;
         this.hoveredIcon = hoveredIcon;
         this.pressedIcon = defaultIcon;
         this.releasedIcon = hoveredIcon;
-    }
-
-    public IconSet(final ImageIcon icon) {
-        this(icon, icon);
     }
 }

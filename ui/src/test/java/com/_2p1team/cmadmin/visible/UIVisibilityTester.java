@@ -10,6 +10,7 @@ import com._2p1team.cmadmin.swing.override.graphics.AppearanceBuilder;
 import com._2p1team.cmadmin.swing.override.graphics.configs.BackgroundConfiguration;
 import com._2p1team.cmadmin.swing.override.graphics.configs.BorderConfiguration;
 import com._2p1team.cmadmin.swing.override.graphics.configs.LinearGradientPaintConfiguration;
+import com._2p1team.cmadmin.swing.override.graphics.configs.SimplePaintConfiguration;
 
 class UIVisibilityTester {
     public static void main(String[] args) {
@@ -24,16 +25,21 @@ class UIVisibilityTester {
             new AppearanceBuilder()
                 .setBackgroundConfiguration(
                     new BackgroundConfiguration(
-                        new LinearGradientPaintConfiguration(Color.red, Color.black, Color.white, Color.pink),
-                        new LinearGradientPaintConfiguration(Color.gray, Color.white)
+                        new LinearGradientPaintConfiguration(Color.black, Color.cyan),
+                        new SimplePaintConfiguration(Color.white)
+//                        new LinearGradientPaintConfiguration(Color.white),
+//                        new LinearGradientPaintConfiguration(Color.red),
+//                        new LinearGradientPaintConfiguration(Color.cyan)
                     )
                 )
                 .setBorderConfiguration(
                     new BorderConfiguration(
                         2,
                         140,
-                        new LinearGradientPaintConfiguration(Color.blue),
-                        new LinearGradientPaintConfiguration(Color.gray)
+                        new SimplePaintConfiguration(Color.white)
+//                        new LinearGradientPaintConfiguration(Color.black),
+//                        new LinearGradientPaintConfiguration(Color.darkGray),
+//                        new LinearGradientPaintConfiguration(Color.black)
                     )
                 )
                 .build()

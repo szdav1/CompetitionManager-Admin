@@ -19,16 +19,16 @@ public final class Painter {
             start,
             end,
             switch (appearance.getState()) {
-                case HOVERED -> appearance.getBackgroundConfiguration().getHoveredHint().getFractions();
-                case PRESSED -> appearance.getBackgroundConfiguration().getPressedHint().getFractions();
-                case RELEASED -> appearance.getBackgroundConfiguration().getReleasedHint().getFractions();
-                default -> appearance.getBackgroundConfiguration().getDefaultHint().getFractions();
+                case HOVERED -> appearance.getBackgroundConfiguration().getHoveredConfiguration().getFractions();
+                case PRESSED -> appearance.getBackgroundConfiguration().getPressedConfiguration().getFractions();
+                case RELEASED -> appearance.getBackgroundConfiguration().getReleasedConfiguration().getFractions();
+                default -> appearance.getBackgroundConfiguration().getDefaultConfiguration().getFractions();
             },
             switch (appearance.getState()) {
-                case HOVERED -> appearance.getBackgroundConfiguration().getHoveredHint().getColors();
-                case PRESSED -> appearance.getBackgroundConfiguration().getPressedHint().getColors();
-                case RELEASED -> appearance.getBackgroundConfiguration().getReleasedHint().getColors();
-                default -> appearance.getBackgroundConfiguration().getDefaultHint().getColors();
+                case HOVERED -> appearance.getBackgroundConfiguration().getHoveredConfiguration().getColors();
+                case PRESSED -> appearance.getBackgroundConfiguration().getPressedConfiguration().getColors();
+                case RELEASED -> appearance.getBackgroundConfiguration().getReleasedConfiguration().getColors();
+                default -> appearance.getBackgroundConfiguration().getDefaultConfiguration().getColors();
             }
         );
 

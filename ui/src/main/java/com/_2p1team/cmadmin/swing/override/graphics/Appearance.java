@@ -1,13 +1,11 @@
 package com._2p1team.cmadmin.swing.override.graphics;
 
-import com._2p1team.cmadmin.swing.override.graphics.configs.*;
-import com._2p1team.cmadmin.swing.override.consts.InteractivityMode;
 import com._2p1team.cmadmin.swing.override.consts.UIState;
+import com._2p1team.cmadmin.swing.override.graphics.configs.*;
 import lombok.Data;
 
 @Data
 public class Appearance {
-    private InteractivityMode interactivityMode;
     private UIState state;
     private BackgroundConfiguration backgroundConfiguration;
     private ForegroundConfiguration foregroundConfiguration;
@@ -17,7 +15,6 @@ public class Appearance {
 
     public Appearance() {
         this(
-            InteractivityMode.BACKGROUND_AND_FOREGROUND,
             new BackgroundConfiguration(),
             new ForegroundConfiguration(),
             new IconSet(),
@@ -27,14 +24,12 @@ public class Appearance {
     }
 
     public Appearance(
-        final InteractivityMode interactivityMode,
         final BackgroundConfiguration backgroundConfiguration,
         final ForegroundConfiguration foregroundConfiguration,
         final IconSet iconSet,
         final FontSet fontSet,
         final BorderConfiguration borderConfiguration
     ) {
-        this.interactivityMode = interactivityMode;
         this.state = UIState.DEFAULT;
         this.backgroundConfiguration = backgroundConfiguration;
         this.foregroundConfiguration = foregroundConfiguration;

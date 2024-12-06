@@ -17,10 +17,14 @@ public final class ForegroundConfiguration {
         this(Color.white, Color.darkGray);
     }
 
+    public ForegroundConfiguration(final Color color) {
+        this(color, color);
+    }
+
     public ForegroundConfiguration(final Color defaultColor, final Color hoveredColor) {
-        this.defaultColor= defaultColor;
-        this.hoveredColor= hoveredColor;
-        this.pressedColor= defaultColor;
+        this.defaultColor = defaultColor;
+        this.hoveredColor = hoveredColor;
+        this.pressedColor = defaultColor;
         this.releasedColor = hoveredColor;
     }
 }

@@ -19,14 +19,14 @@ public final class FontSet {
         this(SYSTEM_FONT);
     }
 
+    public FontSet(final Font font) {
+        this(font, font);
+    }
+
     public FontSet(final Font defaultFont, final Font hoveredFont) {
         this.defaultFont = defaultFont;
         this.hoveredFont = hoveredFont;
         this.pressedFont = defaultFont;
         this.releasedFont = hoveredFont;
-    }
-
-    public FontSet(final Font font) {
-        this(font, font);
     }
 }

@@ -8,21 +8,29 @@ import lombok.Data;
 public final class BorderConfiguration {
     private final int thickness;
     private final int radius;
-    private final LinearGradientPaintConfiguration defaultConfiguration;
-    private final LinearGradientPaintConfiguration hoveredConfiguration;
-    private final LinearGradientPaintConfiguration pressedConfiguration;
-    private final LinearGradientPaintConfiguration releasedConfiguration;
+    private final PaintConfiguration defaultConfiguration;
+    private final PaintConfiguration hoveredConfiguration;
+    private final PaintConfiguration pressedConfiguration;
+    private final PaintConfiguration releasedConfiguration;
 
     public BorderConfiguration() {
-        this(0, 0, new LinearGradientPaintConfiguration(), new LinearGradientPaintConfiguration());
+        this(0, 0, new SimplePaintConfiguration(), new SimplePaintConfiguration());
+    }
+
+    public BorderConfiguration(int thickness, int radius, final PaintConfiguration configuration) {
+        this(thickness, radius, configuration, configuration);
+    }
+
+    public BorderConfiguration(int thickness, final PaintConfiguration configuration) {
+        this(thickness, configuration, configuration);
     }
 
     public BorderConfiguration(
         int thickness,
-        final LinearGradientPaintConfiguration defaultConfiguration,
-        final LinearGradientPaintConfiguration hoveredConfiguration,
-        final LinearGradientPaintConfiguration pressedConfiguration,
-        final LinearGradientPaintConfiguration releasedConfiguration
+        final PaintConfiguration defaultConfiguration,
+        final PaintConfiguration hoveredConfiguration,
+        final PaintConfiguration pressedConfiguration,
+        final PaintConfiguration releasedConfiguration
     ) {
         this.thickness = thickness;
         this.radius = 0;
@@ -32,7 +40,7 @@ public final class BorderConfiguration {
         this.releasedConfiguration = releasedConfiguration;
     }
 
-    public BorderConfiguration(int thickness, int radius, final LinearGradientPaintConfiguration defaultConfiguration, final LinearGradientPaintConfiguration hoveredConfiguration) {
+    public BorderConfiguration(int thickness, int radius, final PaintConfiguration defaultConfiguration, final PaintConfiguration hoveredConfiguration) {
         this.thickness = thickness;
         this.radius = radius;
         this.defaultConfiguration = defaultConfiguration;
@@ -41,7 +49,7 @@ public final class BorderConfiguration {
         this.releasedConfiguration = hoveredConfiguration;
     }
 
-    public BorderConfiguration(int thickness, final LinearGradientPaintConfiguration defaultConfiguration, final LinearGradientPaintConfiguration hoveredConfiguration) {
+    public BorderConfiguration(int thickness, final PaintConfiguration defaultConfiguration, final PaintConfiguration hoveredConfiguration) {
         this.thickness = thickness;
         this.radius = 0;
         this.defaultConfiguration = defaultConfiguration;

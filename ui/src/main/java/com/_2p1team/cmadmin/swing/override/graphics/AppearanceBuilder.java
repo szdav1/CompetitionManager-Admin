@@ -1,6 +1,5 @@
 package com._2p1team.cmadmin.swing.override.graphics;
 
-import com._2p1team.cmadmin.swing.override.consts.InteractivityMode;
 import com._2p1team.cmadmin.swing.override.graphics.configs.*;
 
 public final class AppearanceBuilder {
@@ -32,11 +31,6 @@ public final class AppearanceBuilder {
 
     public AppearanceBuilder setBorderConfiguration(final BorderConfiguration config) {
         this.appearance.setBorderConfiguration(config);
-        return this;
-    }
-
-    public AppearanceBuilder setInteractivityMode(final InteractivityMode mode) {
-        this.appearance.setInteractivityMode(mode);
         return this;
     }
 

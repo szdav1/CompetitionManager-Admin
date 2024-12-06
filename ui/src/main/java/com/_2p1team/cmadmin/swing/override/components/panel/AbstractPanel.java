@@ -10,12 +10,13 @@ import lombok.Getter;
 import javax.swing.JLayeredPane;
 
 import java.awt.*;
+import java.awt.event.MouseListener;
 import java.awt.geom.Point2D;
 
 @Getter
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public abstract class AbstractPanel extends JLayeredPane implements Container {
+public abstract class AbstractPanel extends JLayeredPane implements MouseListener, Container {
     private final Appearance appearance;
 
     public AbstractPanel() {
@@ -28,6 +29,7 @@ public abstract class AbstractPanel extends JLayeredPane implements Container {
         this.setLayout(layout);
         this.setPreferredSize(preferredSize);
         this.setBounds(new Rectangle(0, 0, preferredSize.width, preferredSize.height));
+        this.addMouseListener(this);
     }
 
     public AbstractPanel(Dimension preferredSize, final Appearance appearance) {
@@ -40,6 +42,7 @@ public abstract class AbstractPanel extends JLayeredPane implements Container {
         this.setLayout(layout);
         this.setBounds(bounds);
         this.setPreferredSize(new Dimension(bounds.width, bounds.height));
+        this.addMouseListener(this);
     }
 
     public AbstractPanel(Rectangle bounds, final Appearance appearance) {
