@@ -5,7 +5,7 @@ import com._2p1team.cmadmin.swing.override.graphics.configs.*;
 import lombok.Data;
 
 @Data
-public class Appearance {
+public final class Appearance {
     private UIState state;
     private BackgroundConfiguration backgroundConfiguration;
     private ForegroundConfiguration foregroundConfiguration;

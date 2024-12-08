@@ -6,10 +6,10 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public final class BackgroundConfiguration {
-    private final PaintConfiguration defaultConfiguration;
-    private final PaintConfiguration hoveredConfiguration;
-    private final PaintConfiguration pressedConfiguration;
-    private final PaintConfiguration releasedConfiguration;
+    private PaintConfiguration defaultConfiguration;
+    private PaintConfiguration hoveredConfiguration;
+    private PaintConfiguration pressedConfiguration;
+    private PaintConfiguration releasedConfiguration;
 
     public BackgroundConfiguration() {
         this(new LinearGradientPaintConfiguration(), new LinearGradientPaintConfiguration());
