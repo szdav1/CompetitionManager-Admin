@@ -1,15 +1,16 @@
 package com._2p1team.cmadmin.visible;
 
-import java.awt.Color;
-import java.awt.Rectangle;
-
-import javax.swing.JFrame;
-
 import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import com._2p1team.cmadmin.swing.override.graphics.AppearanceBuilder;
 import com._2p1team.cmadmin.swing.override.graphics.configs.*;
 
+import javax.swing.JFrame;
+import java.awt.Color;
+import java.awt.Rectangle;
+
+
+// TODO: Create interactivity mode for Appearance class to set whether the action should toggle different colors
 class UIVisibilityTester {
     public static void main(String[] args) {
         JFrame frame = new JFrame();
@@ -22,22 +23,18 @@ class UIVisibilityTester {
             new Rectangle(100, 100, 300, 300),
             new AppearanceBuilder()
                 .setBackgroundConfiguration(
-                    new BackgroundConfiguration(
-                        new LinearGradientPaintConfiguration(Color.black, Color.cyan),
-                        new SimplePaintConfiguration(Color.white)
-//                        new LinearGradientPaintConfiguration(Color.white),
-//                        new LinearGradientPaintConfiguration(Color.red),
-//                        new LinearGradientPaintConfiguration(Color.cyan)
-                    )
+                    new BackgroundConfigurationBuilder()
+                        .setDefaultConfiguration(new LinearGradientPaintConfiguration(Color.cyan))
+                        .build()
                 )
                 .setBorderConfiguration(
                     new BorderConfiguration(
                         2,
                         140,
-                        new SimplePaintConfiguration(Color.white)
-//                        new LinearGradientPaintConfiguration(Color.black),
-//                        new LinearGradientPaintConfiguration(Color.darkGray),
-//                        new LinearGradientPaintConfiguration(Color.black)
+                        new SimplePaintConfiguration(Color.white),
+                        new LinearGradientPaintConfiguration(Color.black),
+                        new LinearGradientPaintConfiguration(Color.darkGray),
+                        new LinearGradientPaintConfiguration(Color.black)
                     )
                 )
                 .build()
@@ -63,8 +60,6 @@ class UIVisibilityTester {
                 )
                 .build()
         );
-
-        System.out.println(l.getAppearance().getFontSet());
 
         frame.add(l);
         frame.add(p);
