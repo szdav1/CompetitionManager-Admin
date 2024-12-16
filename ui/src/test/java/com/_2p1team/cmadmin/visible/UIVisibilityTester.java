@@ -44,6 +44,7 @@ class UIVisibilityTester {
             new Rectangle(450, 100, 300, 300),
             "Hello Label!",
             new AppearanceBuilder()
+                .enableInteractivity()
                 .setBackgroundConfiguration(
                     new BackgroundConfiguration(
                         new SimplePaintConfiguration(Color.white),

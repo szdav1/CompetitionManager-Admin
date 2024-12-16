@@ -14,23 +14,61 @@ public final class Painter {
     public static void paintBackground(final Graphics2D g2, Point2D start, Point2D end, final Appearance appearance) {
         Rectangle paintSurface = g2.getClipBounds();
         g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        LinearGradientPaint lgp;
 
-        LinearGradientPaint lgp = new LinearGradientPaint(
-            start,
-            end,
-            switch (appearance.getState()) {
-                case HOVERED -> appearance.getBackgroundConfiguration().getHoveredConfiguration().getFractions();
-                case PRESSED -> appearance.getBackgroundConfiguration().getPressedConfiguration().getFractions();
-                case RELEASED -> appearance.getBackgroundConfiguration().getReleasedConfiguration().getFractions();
-                default -> appearance.getBackgroundConfiguration().getDefaultConfiguration().getFractions();
-            },
-            switch (appearance.getState()) {
-                case HOVERED -> appearance.getBackgroundConfiguration().getHoveredConfiguration().getColors();
-                case PRESSED -> appearance.getBackgroundConfiguration().getPressedConfiguration().getColors();
-                case RELEASED -> appearance.getBackgroundConfiguration().getReleasedConfiguration().getColors();
-                default -> appearance.getBackgroundConfiguration().getDefaultConfiguration().getColors();
-            }
-        );
+        if (appearance.isInteractivityEnabled()) {
+            lgp = new LinearGradientPaint(
+                start,
+                end,
+                switch (appearance.getState()) {
+                    case HOVERED -> appearance.getBackgroundConfiguration()
+                        .getHoveredConfiguration()
+                        .getFractions();
+
+                    case PRESSED -> appearance.getBackgroundConfiguration()
+                        .getPressedConfiguration()
+                        .getFractions();
+
+                    case RELEASED -> appearance.getBackgroundConfiguration()
+                        .getReleasedConfiguration()
+                        .getFractions();
+
+                    default -> appearance.getBackgroundConfiguration()
+                        .getDefaultConfiguration()
+                        .getFractions();
+
+                },
+                switch (appearance.getState()) {
+                    case HOVERED -> appearance.getBackgroundConfiguration()
+                        .getHoveredConfiguration()
+                        .getColors();
+
+                    case PRESSED -> appearance.getBackgroundConfiguration()
+                        .getPressedConfiguration()
+                        .getColors();
+
+                    case RELEASED -> appearance.getBackgroundConfiguration()
+                        .getReleasedConfiguration()
+                        .getColors();
+
+                    default -> appearance.getBackgroundConfiguration()
+                        .getDefaultConfiguration()
+                        .getColors();
+
+                }
+            );
+        }
+        else
+            lgp = new LinearGradientPaint(
+                start,
+                end,
+                appearance.getBackgroundConfiguration()
+                    .getDefaultConfiguration()
+                    .getFractions(),
+                appearance.getBackgroundConfiguration()
+                    .getDefaultConfiguration()
+                    .getColors()
+            );
 
         g2.setPaint(lgp);
         g2.fillRoundRect(
@@ -49,45 +87,59 @@ public final class Painter {
 
         Rectangle paintSurface = g2.getClipBounds();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        LinearGradientPaint lgp;
 
-        LinearGradientPaint lgp = new LinearGradientPaint(
-            start,
-            end,
-            switch (appearance.getState()) {
-                case HOVERED -> appearance.getBorderConfiguration()
-                    .getHoveredConfiguration()
-                    .getFractions();
+        if (appearance.isInteractivityEnabled()) {
+            lgp = new LinearGradientPaint(
+                start,
+                end,
+                switch (appearance.getState()) {
+                    case HOVERED -> appearance.getBorderConfiguration()
+                        .getHoveredConfiguration()
+                        .getFractions();
 
-                case PRESSED -> appearance.getBorderConfiguration()
-                    .getPressedConfiguration()
-                    .getFractions();
+                    case PRESSED -> appearance.getBorderConfiguration()
+                        .getPressedConfiguration()
+                        .getFractions();
 
-                case RELEASED -> appearance.getBorderConfiguration()
-                    .getReleasedConfiguration()
-                    .getFractions();
+                    case RELEASED -> appearance.getBorderConfiguration()
+                        .getReleasedConfiguration()
+                        .getFractions();
 
-                default -> appearance.getBorderConfiguration()
+                    default -> appearance.getBorderConfiguration()
+                        .getDefaultConfiguration()
+                        .getFractions();
+                },
+                switch (appearance.getState()) {
+                    case HOVERED -> appearance.getBorderConfiguration()
+                        .getHoveredConfiguration()
+                        .getColors();
+
+                    case PRESSED -> appearance.getBorderConfiguration()
+                        .getPressedConfiguration()
+                        .getColors();
+
+                    case RELEASED -> appearance.getBorderConfiguration()
+                        .getReleasedConfiguration()
+                        .getColors();
+
+                    default -> appearance.getBorderConfiguration()
+                        .getDefaultConfiguration()
+                        .getColors();
+                }
+            );
+        }
+        else
+            lgp = new LinearGradientPaint(
+                start,
+                end,
+                appearance.getBorderConfiguration()
                     .getDefaultConfiguration()
-                    .getFractions();
-            },
-            switch (appearance.getState()) {
-                case HOVERED -> appearance.getBorderConfiguration()
-                    .getHoveredConfiguration()
-                    .getColors();
-
-                case PRESSED -> appearance.getBorderConfiguration()
-                    .getPressedConfiguration()
-                    .getColors();
-
-                case RELEASED -> appearance.getBorderConfiguration()
-                    .getReleasedConfiguration()
-                    .getColors();
-
-                default -> appearance.getBorderConfiguration()
+                    .getFractions(),
+                appearance.getBorderConfiguration()
                     .getDefaultConfiguration()
-                    .getColors();
-            }
-        );
+                    .getColors()
+            );
 
         g2.setPaint(lgp);
         g2.drawRoundRect(

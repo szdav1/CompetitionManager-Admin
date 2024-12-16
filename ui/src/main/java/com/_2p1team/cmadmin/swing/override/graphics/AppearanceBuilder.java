@@ -9,6 +9,11 @@ public final class AppearanceBuilder {
         this.appearance = new Appearance();
     }
 
+    public AppearanceBuilder enableInteractivity() {
+        this.appearance.setInteractivityEnabled(true);
+        return this;
+    }
+
     public AppearanceBuilder setBackgroundConfiguration(final BackgroundConfiguration config) {
         this.appearance.setBackgroundConfiguration(config);
         return this;

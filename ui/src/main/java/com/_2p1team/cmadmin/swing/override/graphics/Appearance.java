@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public final class Appearance {
+    private boolean interactivityEnabled;
     private UIState state;
     private BackgroundConfiguration backgroundConfiguration;
     private ForegroundConfiguration foregroundConfiguration;
@@ -15,6 +16,7 @@ public final class Appearance {
 
     public Appearance() {
         this(
+            false,
             new BackgroundConfiguration(),
             new ForegroundConfiguration(),
             new IconSet(),
@@ -24,12 +26,14 @@ public final class Appearance {
     }
 
     public Appearance(
+        final boolean interactivityEnabled,
         final BackgroundConfiguration backgroundConfiguration,
         final ForegroundConfiguration foregroundConfiguration,
         final IconSet iconSet,
         final FontSet fontSet,
         final BorderConfiguration borderConfiguration
     ) {
+        this.interactivityEnabled = interactivityEnabled;
         this.state = UIState.DEFAULT;
         this.backgroundConfiguration = backgroundConfiguration;
         this.foregroundConfiguration = foregroundConfiguration;
