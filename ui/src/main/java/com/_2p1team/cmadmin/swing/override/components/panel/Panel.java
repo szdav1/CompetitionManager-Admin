@@ -8,8 +8,8 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JComponent;
 
-import com._2p1team.cmadmin.swing.override.consts.Position;
-import com._2p1team.cmadmin.swing.override.consts.UIState;
+import com._2p1team.cmadmin.swing.override.constants.Position;
+import com._2p1team.cmadmin.swing.override.constants.UIState;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 
 public class Panel extends AbstractPanel {

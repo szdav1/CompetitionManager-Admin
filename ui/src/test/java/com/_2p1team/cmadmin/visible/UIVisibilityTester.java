@@ -10,7 +10,6 @@ import java.awt.Color;
 import java.awt.Rectangle;
 
 
-// TODO: Create interactivity mode for Appearance class to set whether the action should toggle different colors
 class UIVisibilityTester {
     public static void main(String[] args) {
         JFrame frame = new JFrame();
@@ -22,6 +21,7 @@ class UIVisibilityTester {
         Panel p = new Panel(
             new Rectangle(100, 100, 300, 300),
             new AppearanceBuilder()
+                .enableInteractivity()
                 .setBackgroundConfiguration(
                     new BackgroundConfigurationBuilder()
                         .setDefaultConfiguration(new LinearGradientPaintConfiguration(Color.cyan))

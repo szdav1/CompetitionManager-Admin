@@ -4,7 +4,7 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
-import com._2p1team.cmadmin.swing.override.consts.UIState;
+import com._2p1team.cmadmin.swing.override.constants.UIState;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 
 public class Label extends AbstractLabel {

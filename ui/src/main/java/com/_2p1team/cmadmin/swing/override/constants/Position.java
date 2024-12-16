@@ -1,4 +1,4 @@
-package com._2p1team.cmadmin.swing.override.consts;
+package com._2p1team.cmadmin.swing.override.constants;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,6 +1,6 @@
 package com._2p1team.cmadmin.swing.override.graphics;
 
-import com._2p1team.cmadmin.swing.override.consts.UIState;
+import com._2p1team.cmadmin.swing.override.constants.UIState;
 import com._2p1team.cmadmin.swing.override.graphics.configs.*;
 import lombok.Data;
 
