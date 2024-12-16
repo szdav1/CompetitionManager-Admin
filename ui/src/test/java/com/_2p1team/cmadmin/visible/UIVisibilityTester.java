@@ -3,8 +3,10 @@ package com._2p1team.cmadmin.visible;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
-import com._2p1team.cmadmin.swing.override.graphics.AppearanceBuilder;
+import com._2p1team.cmadmin.swing.override.graphics.build.AppearanceBuilder;
 import com._2p1team.cmadmin.swing.override.graphics.configs.*;
+import com._2p1team.cmadmin.swing.override.graphics.build.BackgroundConfigurationBuilder;
+import com._2p1team.cmadmin.swing.override.graphics.build.BorderConfigurationBuilder;
 
 import javax.swing.JFrame;
 import java.awt.Color;

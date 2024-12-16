@@ -1,4 +1,7 @@
-package com._2p1team.cmadmin.swing.override.graphics.configs;
+package com._2p1team.cmadmin.swing.override.graphics.build;
+
+import com._2p1team.cmadmin.swing.override.graphics.configs.BackgroundConfiguration;
+import com._2p1team.cmadmin.swing.override.graphics.configs.LinearGradientPaintConfiguration;
 
 public final class BackgroundConfigurationBuilder {
     private final BackgroundConfiguration configuration;

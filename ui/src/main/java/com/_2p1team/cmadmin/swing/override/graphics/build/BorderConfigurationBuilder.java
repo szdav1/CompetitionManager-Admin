@@ -1,4 +1,7 @@
-package com._2p1team.cmadmin.swing.override.graphics.configs;
+package com._2p1team.cmadmin.swing.override.graphics.build;
+
+import com._2p1team.cmadmin.swing.override.graphics.configs.BorderConfiguration;
+import com._2p1team.cmadmin.swing.override.graphics.configs.LinearGradientPaintConfiguration;
 
 public final class BorderConfigurationBuilder {
     private final BorderConfiguration configuration;

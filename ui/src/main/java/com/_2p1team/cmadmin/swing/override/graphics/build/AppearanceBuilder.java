@@ -1,5 +1,6 @@
-package com._2p1team.cmadmin.swing.override.graphics;
+package com._2p1team.cmadmin.swing.override.graphics.build;
 
+import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import com._2p1team.cmadmin.swing.override.graphics.configs.*;
 
 public final class AppearanceBuilder {
