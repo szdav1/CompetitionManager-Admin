@@ -1,23 +1,18 @@
 package com._2p1team.cmadmin.swing.override.graphics;
 
+import com._2p1team.cmadmin.swing.override.components.AppearanceComponent;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
-import java.awt.Graphics2D;
-import java.awt.LinearGradientPaint;
-import java.awt.Rectangle;
-import java.awt.RenderingHints;
+import javax.swing.JComponent;
+import java.awt.*;
 import java.awt.geom.Point2D;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Painter {
-    public static void paintBackground(final Graphics2D g2, Point2D start, Point2D end, final Appearance appearance) {
-        Rectangle paintSurface = g2.getClipBounds();
-        g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        LinearGradientPaint lgp;
-
-        if (appearance.isInteractivityEnabled()) {
-            lgp = new LinearGradientPaint(
+    private static LinearGradientPaint determineBackgroundPaint(final Point2D start, final Point2D end, final Appearance appearance) {
+        return appearance.isInteractivityEnabled() ?
+            new LinearGradientPaint(
                 start,
                 end,
                 switch (appearance.getState()) {
@@ -56,10 +51,8 @@ public final class Painter {
                         .getColors();
 
                 }
-            );
-        }
-        else
-            lgp = new LinearGradientPaint(
+            ) :
+            new LinearGradientPaint(
                 start,
                 end,
                 appearance.getBackgroundConfiguration()
@@ -69,6 +62,12 @@ public final class Painter {
                     .getDefaultConfiguration()
                     .getColors()
             );
+    }
+
+    public static void paintBackground(final Graphics2D g2, Point2D start, Point2D end, final Appearance appearance) {
+        Rectangle paintSurface = g2.getClipBounds();
+        g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        LinearGradientPaint lgp = determineBackgroundPaint(start, end, appearance);
 
         g2.setPaint(lgp);
         g2.fillRoundRect(
@@ -81,16 +80,9 @@ public final class Painter {
         );
     }
 
-    public static void paintBorder(final Graphics2D g2, Point2D start, Point2D end, final Appearance appearance) {
-        if (appearance.getBorderConfiguration().getThickness() <= 0)
-            return;
-
-        Rectangle paintSurface = g2.getClipBounds();
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        LinearGradientPaint lgp;
-
-        if (appearance.isInteractivityEnabled()) {
-            lgp = new LinearGradientPaint(
+    private static LinearGradientPaint determineBorderPaint(final Point2D start, final Point2D end, final Appearance appearance) {
+        return appearance.isInteractivityEnabled() ?
+            new LinearGradientPaint(
                 start,
                 end,
                 switch (appearance.getState()) {
@@ -127,10 +119,8 @@ public final class Painter {
                         .getDefaultConfiguration()
                         .getColors();
                 }
-            );
-        }
-        else
-            lgp = new LinearGradientPaint(
+            ) :
+            new LinearGradientPaint(
                 start,
                 end,
                 appearance.getBorderConfiguration()
@@ -140,6 +130,16 @@ public final class Painter {
                     .getDefaultConfiguration()
                     .getColors()
             );
+    }
+
+    public static void paintBorder(final Graphics2D g2, Point2D start, Point2D end, final Appearance appearance) {
+        if (appearance.getBorderConfiguration().getThickness() <= 0 && appearance.getBorderConfiguration().getRadius() <= 0)
+            return;
+
+        Rectangle paintSurface = g2.getClipBounds();
+        g2.setStroke(new BasicStroke(appearance.getBorderConfiguration().getThickness()));
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        LinearGradientPaint lgp = determineBorderPaint(start, end, appearance);
 
         g2.setPaint(lgp);
         g2.drawRoundRect(
@@ -150,5 +150,14 @@ public final class Painter {
             appearance.getBorderConfiguration().getRadius(),
             appearance.getBorderConfiguration().getRadius()
         );
+    }
+
+    public static <C extends JComponent & AppearanceComponent>void paint(final Graphics2D g2, final C component) {
+        Rectangle paintBounds = g2.getClipBounds();
+        Point2D start = new Point2D.Double(0, 0);
+        Point2D end = new Point2D.Double(component.getWidth(), component.getHeight());
+
+        paintBackground(g2, start, end, component.getComponentAppearance());
+        paintBorder(g2, start, end, component.getComponentAppearance());
     }
 }

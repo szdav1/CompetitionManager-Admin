@@ -5,11 +5,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.MouseListener;
-import java.awt.geom.Point2D;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import com._2p1team.cmadmin.swing.override.components.AppearanceComponent;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import com._2p1team.cmadmin.swing.override.graphics.Painter;
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public abstract class AbstractLabel extends JLabel implements MouseListener {
+public abstract class AbstractLabel extends JLabel implements AppearanceComponent, MouseListener {
     private final Appearance appearance;
 
     public AbstractLabel() {
@@ -30,6 +30,7 @@ public abstract class AbstractLabel extends JLabel implements MouseListener {
         this.appearance = appearance;
 
         this.setIcon(this.appearance.getIconSet().getDefaultIcon());
+        this.setForeground(appearance.getForegroundConfiguration().getDefaultColor());
         this.setText(text);
         this.setHorizontalAlignment(SwingConstants.CENTER);
         this.setVerticalAlignment(SwingConstants.CENTER);
@@ -47,6 +48,7 @@ public abstract class AbstractLabel extends JLabel implements MouseListener {
         this.appearance = appearance;
 
         this.setIcon(this.appearance.getIconSet().getDefaultIcon());
+        this.setForeground(appearance.getForegroundConfiguration().getDefaultColor());
         this.setText(text);
         this.setHorizontalAlignment(SwingConstants.CENTER);
         this.setVerticalAlignment(SwingConstants.CENTER);
@@ -63,13 +65,7 @@ public abstract class AbstractLabel extends JLabel implements MouseListener {
     @Override
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-        Rectangle paintBounds = g2.getClipBounds();
-        Point2D start = new Point2D.Double(0, 0);
-        Point2D end = new Point2D.Double(this.getWidth(), this.getHeight());
-
-        Painter.paintBackground(g2, start, end, this.appearance);
-        Painter.paintBorder(g2, start, end, this.appearance);
-
+        Painter.paint(g2, this);
         super.paint(g);
         g2.dispose();
     }

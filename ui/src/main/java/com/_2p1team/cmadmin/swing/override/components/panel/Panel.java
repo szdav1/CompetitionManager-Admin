@@ -37,6 +37,11 @@ public class Panel extends AbstractPanel {
     }
 
     @Override
+    public Appearance getComponentAppearance() {
+        return this.getAppearance();
+    }
+
+    @Override
     public void mouseClicked(MouseEvent e) {
     }
 

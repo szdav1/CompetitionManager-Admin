@@ -1,5 +1,6 @@
 package com._2p1team.cmadmin.visible;
 
+import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import com._2p1team.cmadmin.swing.override.graphics.AppearanceBuilder;
@@ -51,10 +52,17 @@ class UIVisibilityTester {
                         new LinearGradientPaintConfiguration(Color.white, Color.red)
                     )
                 )
-                .setForegroundConfiguration(new ForegroundConfiguration(Color.white, Color.pink))
+                .setForegroundConfiguration(
+                    new ForegroundConfiguration(
+                        Color.black,
+                        Color.red,
+                        Color.gray,
+                        Color.darkGray
+                    )
+                )
                 .setBorderConfiguration(
                     new BorderConfiguration(
-                        3,
+                        0,
                         40,
                         new SimplePaintConfiguration(Color.black)
                     )
@@ -62,8 +70,30 @@ class UIVisibilityTester {
                 .build()
         );
 
+        Button btn = new Button(
+            new Rectangle(0, 0, 200, 150),
+            "Button",
+            new AppearanceBuilder()
+                .enableInteractivity()
+                .setBackgroundConfiguration(
+                    new BackgroundConfigurationBuilder()
+                        .setDefaultConfiguration(new LinearGradientPaintConfiguration(Color.white, Color.black, Color.red))
+                        .setPressedConfiguration(new LinearGradientPaintConfiguration(Color.red, Color.black, Color.white))
+                        .build()
+                )
+                .setBorderConfiguration(
+                    new BorderConfigurationBuilder()
+                        .setThickness(2)
+                        .setRadius(10)
+                        .setDefaultConfiguration(new LinearGradientPaintConfiguration(Color.blue, Color.pink))
+                        .build()
+                )
+                .build()
+        );
+
         frame.add(l);
         frame.add(p);
+        frame.add(btn);
         frame.repaint();
         frame.setVisible(true);
     }

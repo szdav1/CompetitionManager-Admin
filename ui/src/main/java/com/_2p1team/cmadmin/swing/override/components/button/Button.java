@@ -1,29 +1,33 @@
-package com._2p1team.cmadmin.swing.override.components.label;
+package com._2p1team.cmadmin.swing.override.components.button;
+
+import com._2p1team.cmadmin.swing.override.constants.UIState;
+import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
-import com._2p1team.cmadmin.swing.override.constants.UIState;
-import com._2p1team.cmadmin.swing.override.graphics.Appearance;
-
-public class Label extends AbstractLabel {
-    public Label() {
+public class Button extends AbstractButton {
+    public Button(Appearance appearance) {
+        super(appearance);
     }
 
-    public Label(Dimension preferredSize, String text, Appearance appearance) {
+    public Button() {
+    }
+
+    public Button(Dimension preferredSize, String text, final Appearance appearance) {
         super(preferredSize, text, appearance);
     }
 
-    public Label(Dimension preferredSize, Appearance appearance) {
+    public Button(Dimension preferredSize, final Appearance appearance) {
         super(preferredSize, appearance);
     }
 
-    public Label(Rectangle bounds, String text, Appearance appearance) {
+    public Button(Rectangle bounds, String text, final Appearance appearance) {
         super(bounds, text, appearance);
     }
 
-    public Label(Rectangle bounds, Appearance appearance) {
+    public Button(Rectangle bounds, final Appearance appearance) {
         super(bounds, appearance);
     }
 
