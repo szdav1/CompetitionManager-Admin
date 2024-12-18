@@ -42,6 +42,9 @@ public class Button extends AbstractButton {
 
     @Override
     public void mousePressed(MouseEvent e) {
+        if (!this.getAppearance().isInteractivityEnabled())
+            return;
+
         this.setFont(this.getAppearance().getFontSet().getPressedFont());
         this.setIcon(this.getAppearance().getIconSet().getPressedIcon());
         this.setForeground(this.getAppearance().getForegroundConfiguration().getPressedColor());
@@ -51,6 +54,9 @@ public class Button extends AbstractButton {
 
     @Override
     public void mouseReleased(MouseEvent e) {
+        if (!this.getAppearance().isInteractivityEnabled())
+            return;
+
         this.setFont(this.getAppearance().getFontSet().getReleasedFont());
         this.setIcon(this.getAppearance().getIconSet().getReleasedIcon());
         this.setForeground(this.getAppearance().getForegroundConfiguration().getReleasedColor());
@@ -60,6 +66,9 @@ public class Button extends AbstractButton {
 
     @Override
     public void mouseEntered(MouseEvent e) {
+        if (!this.getAppearance().isInteractivityEnabled())
+            return;
+
         this.setFont(this.getAppearance().getFontSet().getHoveredFont());
         this.setIcon(this.getAppearance().getIconSet().getHoveredIcon());
         this.setForeground(this.getAppearance().getForegroundConfiguration().getHoveredColor());
@@ -69,6 +78,9 @@ public class Button extends AbstractButton {
 
     @Override
     public void mouseExited(MouseEvent e) {
+        if (!this.getAppearance().isInteractivityEnabled())
+            return;
+
         this.setFont(this.getAppearance().getFontSet().getDefaultFont());
         this.setIcon(this.getAppearance().getIconSet().getDefaultIcon());
         this.setForeground(this.getAppearance().getForegroundConfiguration().getDefaultColor());

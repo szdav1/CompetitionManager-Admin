@@ -1,20 +1,18 @@
 package com._2p1team.cmadmin.swing.override.components.label;
 
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.event.MouseListener;
-
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-
 import com._2p1team.cmadmin.swing.override.components.AppearanceComponent;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import com._2p1team.cmadmin.swing.override.graphics.Painter;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
 
 @Getter
 @AllArgsConstructor

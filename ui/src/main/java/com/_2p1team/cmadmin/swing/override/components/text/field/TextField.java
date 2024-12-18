@@ -42,6 +42,9 @@ public class TextField extends AbstractTextField {
 
     @Override
     public void mousePressed(MouseEvent e) {
+        if (!this.getAppearance().isInteractivityEnabled())
+            return;
+
         this.setFont(this.getAppearance().getFontSet().getPressedFont());
         this.setForeground(this.getAppearance().getForegroundConfiguration().getPressedColor());
         this.setCaretColor(this.getForeground());
@@ -51,6 +54,9 @@ public class TextField extends AbstractTextField {
 
     @Override
     public void mouseReleased(MouseEvent e) {
+        if (!this.getAppearance().isInteractivityEnabled())
+            return;
+
         this.setFont(this.getAppearance().getFontSet().getReleasedFont());
         this.setForeground(this.getAppearance().getForegroundConfiguration().getReleasedColor());
         this.setCaretColor(this.getForeground());
@@ -60,6 +66,9 @@ public class TextField extends AbstractTextField {
 
     @Override
     public void mouseEntered(MouseEvent e) {
+        if (!this.getAppearance().isInteractivityEnabled())
+            return;
+
         this.setFont(this.getAppearance().getFontSet().getHoveredFont());
         this.setForeground(this.getAppearance().getForegroundConfiguration().getHoveredColor());
         this.setCaretColor(this.getForeground());
@@ -69,6 +78,9 @@ public class TextField extends AbstractTextField {
 
     @Override
     public void mouseExited(MouseEvent e) {
+        if (!this.getAppearance().isInteractivityEnabled())
+            return;
+
         this.setFont(this.getAppearance().getFontSet().getDefaultFont());
         this.setForeground(this.getAppearance().getForegroundConfiguration().getDefaultColor());
         this.setCaretColor(this.getForeground());

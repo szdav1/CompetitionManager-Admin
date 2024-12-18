@@ -1,9 +1,11 @@
 package com._2p1team.cmadmin.swing.override.graphics;
 
 import com._2p1team.cmadmin.swing.override.components.AppearanceComponent;
+import com._2p1team.cmadmin.swing.override.components.label.AbstractLabel;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
+import javax.swing.AbstractButton;
 import javax.swing.JComponent;
 import java.awt.*;
 import java.awt.geom.Point2D;
@@ -159,5 +161,105 @@ public final class Painter {
 
         paintBackground(g2, start, end, component.getComponentAppearance());
         paintBorder(g2, start, end, component.getComponentAppearance());
+    }
+
+    private static <C extends JComponent & AppearanceComponent> void setFontOfComponent(final C component) {
+        component.setFont(
+            switch (component.getComponentAppearance().getState()) {
+                case HOVERED -> component.getComponentAppearance()
+                    .getFontSet()
+                    .getHoveredFont();
+
+                case PRESSED -> component.getComponentAppearance()
+                    .getFontSet()
+                    .getPressedFont();
+
+                case RELEASED -> component.getComponentAppearance()
+                    .getFontSet()
+                    .getReleasedFont();
+
+                default -> component.getComponentAppearance()
+                    .getFontSet()
+                    .getDefaultFont();
+            }
+        );
+    }
+
+    private static <C extends JComponent & AppearanceComponent> void setForegroundOfComponent(final C component) {
+        component.setForeground(
+            switch (component.getComponentAppearance().getState()) {
+                case HOVERED -> component.getComponentAppearance()
+                    .getForegroundConfiguration()
+                    .getHoveredColor();
+
+                case PRESSED -> component.getComponentAppearance()
+                    .getForegroundConfiguration()
+                    .getPressedColor();
+
+                case RELEASED -> component.getComponentAppearance()
+                    .getForegroundConfiguration()
+                    .getReleasedColor();
+
+                default -> component.getComponentAppearance()
+                    .getForegroundConfiguration()
+                    .getDefaultColor();
+            }
+        );
+    }
+
+    private static <C extends JComponent & AppearanceComponent> void setIconOfComponent(final C component) {
+        if (component instanceof AbstractLabel label) {
+            label.setIcon(
+                switch (component.getComponentAppearance().getState()) {
+                    case HOVERED -> component.getComponentAppearance()
+                        .getIconSet()
+                        .getHoveredIcon();
+
+                    case PRESSED -> component.getComponentAppearance()
+                        .getIconSet()
+                        .getPressedIcon();
+
+                    case RELEASED -> component.getComponentAppearance()
+                        .getIconSet()
+                        .getReleasedIcon();
+
+                    default -> component.getComponentAppearance()
+                        .getIconSet()
+                        .getDefaultIcon();
+                }
+            );
+        }
+        else if (component instanceof AbstractButton button) {
+            button.setIcon(
+                switch (component.getComponentAppearance().getState()) {
+                    case HOVERED -> component.getComponentAppearance()
+                        .getIconSet()
+                        .getHoveredIcon();
+
+                    case PRESSED -> component.getComponentAppearance()
+                        .getIconSet()
+                        .getPressedIcon();
+
+                    case RELEASED -> component.getComponentAppearance()
+                        .getIconSet()
+                        .getReleasedIcon();
+
+                    default -> component.getComponentAppearance()
+                        .getIconSet()
+                        .getDefaultIcon();
+                }
+            );
+        }
+    }
+
+    // TODO: Use this method in mouse... inherited methods instead of individual drawing
+    public static <C extends JComponent & AppearanceComponent> void drawComponentUIElements(final C component) {
+        if (!component.getComponentAppearance().isInteractivityEnabled())
+            return;
+
+        setFontOfComponent(component);
+        setForegroundOfComponent(component);
+        setIconOfComponent(component);
+        component.repaint();
     }
 }
