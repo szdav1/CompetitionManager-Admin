@@ -17,7 +17,7 @@ import java.awt.event.MouseListener;
 @Getter
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public abstract class AbstractButton extends JButton implements AppearanceComponent, MouseListener {
+public abstract class AbstractButton extends JButton implements AppearanceComponent {
     private final Appearance appearance;
 
     public AbstractButton() {

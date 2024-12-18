@@ -152,7 +152,7 @@ public final class Painter {
         );
     }
 
-    public static <C extends JComponent & AppearanceComponent>void paint(final Graphics2D g2, final C component) {
+    public static <C extends JComponent & AppearanceComponent> void paint(final Graphics2D g2, final C component) {
         Rectangle paintBounds = g2.getClipBounds();
         Point2D start = new Point2D.Double(0, 0);
         Point2D end = new Point2D.Double(component.getWidth(), component.getHeight());

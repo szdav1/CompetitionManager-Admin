@@ -3,6 +3,7 @@ package com._2p1team.cmadmin.visible;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
+import com._2p1team.cmadmin.swing.override.components.text.field.TextField;
 import com._2p1team.cmadmin.swing.override.graphics.build.AppearanceBuilder;
 import com._2p1team.cmadmin.swing.override.graphics.configs.*;
 import com._2p1team.cmadmin.swing.override.graphics.build.BackgroundConfigurationBuilder;
@@ -93,9 +94,16 @@ class UIVisibilityTester {
                 .build()
         );
 
+        TextField tf = new TextField(
+            new Rectangle(600, 600, 200, 100),
+            "This is a text field",
+            l.getAppearance()
+        );
+
         frame.add(l);
         frame.add(p);
         frame.add(btn);
+        frame.add(tf);
         frame.repaint();
         frame.setVisible(true);
     }

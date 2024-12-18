@@ -2,9 +2,11 @@ package com._2p1team.cmadmin.swing.override.graphics;
 
 import com._2p1team.cmadmin.swing.override.constants.UIState;
 import com._2p1team.cmadmin.swing.override.graphics.configs.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public final class Appearance {
     private boolean interactivityEnabled;
     private UIState state;

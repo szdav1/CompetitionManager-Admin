@@ -15,7 +15,7 @@ import java.awt.event.MouseListener;
 @Getter
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public abstract class AbstractPanel extends JLayeredPane implements AppearanceComponent, Container, MouseListener {
+public abstract class AbstractPanel extends JLayeredPane implements AppearanceComponent, Container {
     private final Appearance appearance;
 
     public AbstractPanel() {
