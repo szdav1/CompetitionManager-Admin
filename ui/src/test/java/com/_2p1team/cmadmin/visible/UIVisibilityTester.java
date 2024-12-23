@@ -99,7 +99,6 @@ class UIVisibilityTester {
             "This is a text field",
             l.getAppearance()
         );
-        tf.getAppearance().setInteractivityEnabled(false);
 
         frame.add(l);
         frame.add(p);

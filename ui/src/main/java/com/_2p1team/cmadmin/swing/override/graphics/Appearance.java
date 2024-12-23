@@ -2,12 +2,15 @@ package com._2p1team.cmadmin.swing.override.graphics;
 
 import com._2p1team.cmadmin.swing.override.constants.UIState;
 import com._2p1team.cmadmin.swing.override.graphics.configs.*;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Setter;
 
 @Data
 @AllArgsConstructor
 public final class Appearance {
+    @Setter(AccessLevel.NONE)
     private boolean interactivityEnabled;
     private UIState state;
     private BackgroundConfiguration backgroundConfiguration;
@@ -42,5 +45,13 @@ public final class Appearance {
         this.iconSet = iconSet;
         this.fontSet = fontSet;
         this.borderConfiguration = borderConfiguration;
+    }
+
+    public void enableInteractivity() {
+        this.interactivityEnabled = true;
+    }
+
+    public void disableInteractivity() {
+        this.interactivityEnabled = false;
     }
 }

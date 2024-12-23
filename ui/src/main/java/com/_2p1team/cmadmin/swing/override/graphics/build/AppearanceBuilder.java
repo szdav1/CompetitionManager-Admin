@@ -11,7 +11,12 @@ public final class AppearanceBuilder {
     }
 
     public AppearanceBuilder enableInteractivity() {
-        this.appearance.setInteractivityEnabled(true);
+        this.appearance.enableInteractivity();
+        return this;
+    }
+
+    public AppearanceBuilder disableInteractivity() {
+        this.appearance.disableInteractivity();
         return this;
     }
 

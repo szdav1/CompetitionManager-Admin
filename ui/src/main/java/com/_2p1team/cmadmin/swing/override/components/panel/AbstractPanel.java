@@ -1,7 +1,7 @@
 package com._2p1team.cmadmin.swing.override.components.panel;
 
-import com._2p1team.cmadmin.swing.override.components.Container;
 import com._2p1team.cmadmin.swing.override.components.AppearanceComponent;
+import com._2p1team.cmadmin.swing.override.components.Container;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import com._2p1team.cmadmin.swing.override.graphics.Painter;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,6 @@ import lombok.Getter;
 
 import javax.swing.JLayeredPane;
 import java.awt.*;
-import java.awt.event.MouseListener;
 
 @Getter
 @AllArgsConstructor

@@ -2,6 +2,7 @@ package com._2p1team.cmadmin.swing.override.components.text.field;
 
 import com._2p1team.cmadmin.swing.override.constants.UIState;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
+import com._2p1team.cmadmin.swing.override.graphics.Painter;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
@@ -42,49 +43,25 @@ public class TextField extends AbstractTextField {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        if (!this.getAppearance().isInteractivityEnabled())
-            return;
-
-        this.setFont(this.getAppearance().getFontSet().getPressedFont());
-        this.setForeground(this.getAppearance().getForegroundConfiguration().getPressedColor());
-        this.setCaretColor(this.getForeground());
         this.getAppearance().setState(UIState.PRESSED);
-        this.repaint();
+        Painter.drawComponentUIElements(this);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if (!this.getAppearance().isInteractivityEnabled())
-            return;
-
-        this.setFont(this.getAppearance().getFontSet().getReleasedFont());
-        this.setForeground(this.getAppearance().getForegroundConfiguration().getReleasedColor());
-        this.setCaretColor(this.getForeground());
         this.getAppearance().setState(UIState.RELEASED);
-        this.repaint();
+        Painter.drawComponentUIElements(this);
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        if (!this.getAppearance().isInteractivityEnabled())
-            return;
-
-        this.setFont(this.getAppearance().getFontSet().getHoveredFont());
-        this.setForeground(this.getAppearance().getForegroundConfiguration().getHoveredColor());
-        this.setCaretColor(this.getForeground());
         this.getAppearance().setState(UIState.HOVERED);
-        this.repaint();
+        Painter.drawComponentUIElements(this);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        if (!this.getAppearance().isInteractivityEnabled())
-            return;
-
-        this.setFont(this.getAppearance().getFontSet().getDefaultFont());
-        this.setForeground(this.getAppearance().getForegroundConfiguration().getDefaultColor());
-        this.setCaretColor(this.getForeground());
         this.getAppearance().setState(UIState.DEFAULT);
-        this.repaint();
+        Painter.drawComponentUIElements(this);
     }
 }

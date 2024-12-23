@@ -252,7 +252,6 @@ public final class Painter {
         }
     }
 
-    // TODO: Use this method in mouse... inherited methods instead of individual drawing
     public static <C extends JComponent & AppearanceComponent> void drawComponentUIElements(final C component) {
         if (!component.getComponentAppearance().isInteractivityEnabled())
             return;
