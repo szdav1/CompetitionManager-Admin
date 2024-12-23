@@ -2,7 +2,7 @@ package com._2p1team.cmadmin.swing.override.graphics.configs;
 
 import java.awt.Color;
 
-public final class LinearGradientPaintConfiguration extends PaintConfiguration {
+public final class LinearGradientPaintConfiguration extends AbstractPaintConfiguration {
     public LinearGradientPaintConfiguration() {
     }
 

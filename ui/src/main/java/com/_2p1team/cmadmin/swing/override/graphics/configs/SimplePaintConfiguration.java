@@ -6,7 +6,7 @@ import lombok.AccessLevel;
 import lombok.Setter;
 
 @Setter(AccessLevel.PRIVATE)
-public final class SimplePaintConfiguration extends PaintConfiguration {
+public final class SimplePaintConfiguration extends AbstractPaintConfiguration {
     public SimplePaintConfiguration() {
     }
 

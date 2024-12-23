@@ -6,20 +6,20 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public final class BackgroundConfiguration {
-    private PaintConfiguration defaultConfiguration;
-    private PaintConfiguration hoveredConfiguration;
-    private PaintConfiguration pressedConfiguration;
-    private PaintConfiguration releasedConfiguration;
+    private AbstractPaintConfiguration defaultConfiguration;
+    private AbstractPaintConfiguration hoveredConfiguration;
+    private AbstractPaintConfiguration pressedConfiguration;
+    private AbstractPaintConfiguration releasedConfiguration;
 
     public BackgroundConfiguration() {
         this(new LinearGradientPaintConfiguration(), new LinearGradientPaintConfiguration());
     }
 
-    public BackgroundConfiguration(final PaintConfiguration configuration) {
+    public BackgroundConfiguration(final AbstractPaintConfiguration configuration) {
         this(configuration, configuration);
     }
 
-    public BackgroundConfiguration(final PaintConfiguration defaultConfiguration, final PaintConfiguration hoveredConfiguration) {
+    public BackgroundConfiguration(final AbstractPaintConfiguration defaultConfiguration, final AbstractPaintConfiguration hoveredConfiguration) {
         this.defaultConfiguration = defaultConfiguration;
         this.hoveredConfiguration = hoveredConfiguration;
         this.pressedConfiguration = defaultConfiguration;
