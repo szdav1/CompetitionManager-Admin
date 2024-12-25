@@ -2,7 +2,7 @@ package com._2p1team.cmadmin.swing.override.components.button;
 
 import com._2p1team.cmadmin.swing.override.constants.UIState;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
-import com._2p1team.cmadmin.swing.override.graphics.Painter;
+import com._2p1team.cmadmin.swing.override.graphics.ComponentPainter;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
@@ -44,24 +44,24 @@ public class Button extends AbstractButton {
     @Override
     public void mousePressed(MouseEvent e) {
         this.getAppearance().setState(UIState.PRESSED);
-        Painter.drawComponentUIElements(this);
+        ComponentPainter.drawComponentUIElements(this);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
         this.getAppearance().setState(UIState.RELEASED);
-        Painter.drawComponentUIElements(this);
+        ComponentPainter.drawComponentUIElements(this);
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
         this.getAppearance().setState(UIState.HOVERED);
-        Painter.drawComponentUIElements(this);
+        ComponentPainter.drawComponentUIElements(this);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         this.getAppearance().setState(UIState.DEFAULT);
-        Painter.drawComponentUIElements(this);
+        ComponentPainter.drawComponentUIElements(this);
     }
 }

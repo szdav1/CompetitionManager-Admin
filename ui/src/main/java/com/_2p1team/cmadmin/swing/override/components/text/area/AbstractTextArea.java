@@ -1,4 +1,4 @@
-package com._2p1team.cmadmin.swing.override.components.text.field;
+package com._2p1team.cmadmin.swing.override.components.text.area;
 
 import com._2p1team.cmadmin.swing.override.components.AppearanceComponent;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-import javax.swing.JTextField;
+import javax.swing.JTextArea;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -16,20 +16,19 @@ import java.awt.Rectangle;
 @Getter
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public abstract class AbstractTextField extends JTextField implements AppearanceComponent {
+public abstract class AbstractTextArea extends JTextArea implements AppearanceComponent {
     private final Appearance appearance;
 
-    public AbstractTextField() {
+    public AbstractTextArea() {
         this.appearance = new Appearance();
     }
 
-    public AbstractTextField(Dimension preferredSize, String text, final Appearance appearance) {
+    public AbstractTextArea(Dimension preferredSize, String text, final Appearance appearance) {
         this.appearance = appearance;
 
         this.setForeground(appearance.getForegroundConfiguration().getDefaultColor());
         this.setCaretColor(this.getForeground());
         this.setText(text);
-        this.setHorizontalAlignment(JTextField.CENTER);
         this.setBorder(null);
         this.setOpaque(false);
         this.setFont(appearance.getFontSet().getDefaultFont());
@@ -38,17 +37,16 @@ public abstract class AbstractTextField extends JTextField implements Appearance
         this.addMouseListener(this);
     }
 
-    public AbstractTextField(Dimension preferredSize, final Appearance appearance) {
+    public AbstractTextArea(Dimension preferredSize, final Appearance appearance) {
         this(preferredSize, "", appearance);
     }
 
-    public AbstractTextField(Rectangle bounds, String text, final Appearance appearance) {
+    public AbstractTextArea(Rectangle bounds, String text, final Appearance appearance) {
         this.appearance = appearance;
 
         this.setForeground(appearance.getForegroundConfiguration().getDefaultColor());
         this.setCaretColor(this.getForeground());
         this.setText(text);
-        this.setHorizontalAlignment(JTextField.CENTER);
         this.setBorder(null);
         this.setOpaque(false);
         this.setFont(appearance.getFontSet().getDefaultFont());
@@ -57,7 +55,7 @@ public abstract class AbstractTextField extends JTextField implements Appearance
         this.addMouseListener(this);
     }
 
-    public AbstractTextField(Rectangle bounds, final Appearance appearance) {
+    public AbstractTextArea(Rectangle bounds, final Appearance appearance) {
         this(bounds, "", appearance);
     }
 

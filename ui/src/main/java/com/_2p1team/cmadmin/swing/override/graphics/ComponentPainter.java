@@ -11,7 +11,7 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public final class Painter {
+public final class ComponentPainter {
     private static LinearGradientPaint determineBackgroundPaint(final Point2D start, final Point2D end, final Appearance appearance) {
         return appearance.isInteractivityEnabled() ?
             new LinearGradientPaint(
@@ -66,7 +66,7 @@ public final class Painter {
             );
     }
 
-    public static void paintBackground(final Graphics2D g2, Point2D start, Point2D end, final Appearance appearance) {
+    private static void paintBackground(final Graphics2D g2, Point2D start, Point2D end, final Appearance appearance) {
         Rectangle paintSurface = g2.getClipBounds();
         g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         LinearGradientPaint lgp = determineBackgroundPaint(start, end, appearance);
@@ -134,7 +134,7 @@ public final class Painter {
             );
     }
 
-    public static void paintBorder(final Graphics2D g2, Point2D start, Point2D end, final Appearance appearance) {
+    private static void paintBorder(final Graphics2D g2, Point2D start, Point2D end, final Appearance appearance) {
         if (appearance.getBorderConfiguration().getThickness() <= 0 && appearance.getBorderConfiguration().getRadius() <= 0)
             return;
 

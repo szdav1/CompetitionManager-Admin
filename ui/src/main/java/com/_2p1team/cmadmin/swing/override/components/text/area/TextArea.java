@@ -1,4 +1,4 @@
-package com._2p1team.cmadmin.swing.override.components.text.field;
+package com._2p1team.cmadmin.swing.override.components.text.area;
 
 import com._2p1team.cmadmin.swing.override.constants.UIState;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
@@ -8,27 +8,27 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
-public class TextField extends AbstractTextField {
-    public TextField(Appearance appearance) {
+public class TextArea extends AbstractTextArea {
+    public TextArea(Appearance appearance) {
         super(appearance);
     }
 
-    public TextField() {
+    public TextArea() {
     }
 
-    public TextField(Dimension preferredSize, String text, Appearance appearance) {
+    public TextArea(Dimension preferredSize, String text, Appearance appearance) {
         super(preferredSize, text, appearance);
     }
 
-    public TextField(Dimension preferredSize, Appearance appearance) {
+    public TextArea(Dimension preferredSize, Appearance appearance) {
         super(preferredSize, appearance);
     }
 
-    public TextField(Rectangle bounds, String text, Appearance appearance) {
+    public TextArea(Rectangle bounds, String text, Appearance appearance) {
         super(bounds, text, appearance);
     }
 
-    public TextField(Rectangle bounds, Appearance appearance) {
+    public TextArea(Rectangle bounds, Appearance appearance) {
         super(bounds, appearance);
     }
 

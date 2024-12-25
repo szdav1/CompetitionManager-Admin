@@ -2,7 +2,7 @@ package com._2p1team.cmadmin.swing.override.components.button;
 
 import com._2p1team.cmadmin.swing.override.components.AppearanceComponent;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
-import com._2p1team.cmadmin.swing.override.graphics.Painter;
+import com._2p1team.cmadmin.swing.override.graphics.ComponentPainter;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -70,7 +70,7 @@ public abstract class AbstractButton extends JButton implements AppearanceCompon
     @Override
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-        Painter.paint(g2, this);
+        ComponentPainter.paint(g2, this);
         super.paint(g);
         g2.dispose();
     }

@@ -3,6 +3,7 @@ package com._2p1team.cmadmin.visibility;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
+import com._2p1team.cmadmin.swing.override.components.text.area.TextArea;
 import com._2p1team.cmadmin.swing.override.components.text.field.TextField;
 import com._2p1team.cmadmin.swing.override.graphics.build.AppearanceBuilder;
 import com._2p1team.cmadmin.swing.override.graphics.build.BackgroundConfigurationBuilder;
@@ -100,10 +101,17 @@ class UIVisibilityTester {
             l.getAppearance()
         );
 
-        frame.add(l);
-        frame.add(p);
-        frame.add(btn);
-        frame.add(tf);
+        TextArea ta = new TextArea(
+            new Rectangle(10, 10, 200, 200),
+            "This is a text area!",
+            tf.getAppearance()
+        );
+
+//        frame.add(l);
+//        frame.add(p);
+//        frame.add(btn);
+//        frame.add(tf);
+//        frame.add(ta);
         frame.repaint();
         frame.setVisible(true);
     }
