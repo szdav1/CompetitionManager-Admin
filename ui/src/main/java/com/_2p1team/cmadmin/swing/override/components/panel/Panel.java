@@ -11,7 +11,7 @@ import javax.swing.JComponent;
 import com._2p1team.cmadmin.swing.override.constants.Position;
 import com._2p1team.cmadmin.swing.override.constants.UIState;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
-import com._2p1team.cmadmin.swing.override.graphics.ComponentPainter;
+import com._2p1team.cmadmin.swing.override.graphics.Painter;
 
 public class Panel extends AbstractPanel {
     public Panel(Appearance appearance) {
@@ -49,25 +49,25 @@ public class Panel extends AbstractPanel {
     @Override
     public void mousePressed(MouseEvent e) {
         this.getAppearance().setState(UIState.PRESSED);
-        ComponentPainter.drawComponentUIElements(this);
+        Painter.drawComponentUIElements(this);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
         this.getAppearance().setState(UIState.RELEASED);
-        ComponentPainter.drawComponentUIElements(this);
+        Painter.drawComponentUIElements(this);
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
         this.getAppearance().setState(UIState.HOVERED);
-        ComponentPainter.drawComponentUIElements(this);
+        Painter.drawComponentUIElements(this);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         this.getAppearance().setState(UIState.DEFAULT);
-        ComponentPainter.drawComponentUIElements(this);
+        Painter.drawComponentUIElements(this);
     }
 
     @Override

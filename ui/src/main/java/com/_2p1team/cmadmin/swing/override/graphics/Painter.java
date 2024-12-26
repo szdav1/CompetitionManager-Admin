@@ -11,7 +11,7 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public final class ComponentPainter {
+public final class Painter {
     private static LinearGradientPaint determineBackgroundPaint(final Point2D start, final Point2D end, final Appearance appearance) {
         return appearance.isInteractivityEnabled() ?
             new LinearGradientPaint(
@@ -260,5 +260,32 @@ public final class ComponentPainter {
         setForegroundOfComponent(component);
         setIconOfComponent(component);
         component.repaint();
+    }
+
+    public static void paintScrollBarTrack(final Graphics2D g2, final Rectangle paintBounds, final Appearance appearance) {
+        g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        g2.setColor(appearance.getForegroundConfiguration().getDefaultColor());
+        g2.fillRect(paintBounds.x, paintBounds.y, paintBounds.width, paintBounds.height);
+    }
+
+    private static LinearGradientPaint createScrollBarThumbPaint(final Rectangle paintBounds, final Appearance appearance) {
+        return new LinearGradientPaint(
+            paintBounds.x,
+            paintBounds.y,
+            paintBounds.width,
+            paintBounds.height,
+            appearance.getBackgroundConfiguration()
+                .getHoveredConfiguration()
+                .getFractions(),
+            appearance.getBackgroundConfiguration()
+                .getHoveredConfiguration()
+                .getColors()
+        );
+    }
+
+    public static void paintScrollBarThumb(final Graphics2D g2, final Rectangle paintBounds, final Appearance appearance) {
+        g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        g2.setPaint(createScrollBarThumbPaint(paintBounds, appearance));
+        g2.fillRoundRect(paintBounds.x, paintBounds.y, paintBounds.width, paintBounds.height, appearance.getBorderConfiguration().getRadius(), appearance.getBorderConfiguration().getRadius());
     }
 }

@@ -2,7 +2,7 @@ package com._2p1team.cmadmin.swing.override.components.text.area;
 
 import com._2p1team.cmadmin.swing.override.components.AppearanceComponent;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
-import com._2p1team.cmadmin.swing.override.graphics.ComponentPainter;
+import com._2p1team.cmadmin.swing.override.graphics.Painter;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -62,7 +62,7 @@ public abstract class AbstractTextArea extends JTextArea implements AppearanceCo
     @Override
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-        ComponentPainter.paint(g2, this);
+        Painter.paint(g2, this);
         super.paint(g);
         g2.dispose();
     }

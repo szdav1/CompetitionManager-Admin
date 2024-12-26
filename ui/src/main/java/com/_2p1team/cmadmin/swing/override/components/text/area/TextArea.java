@@ -2,7 +2,7 @@ package com._2p1team.cmadmin.swing.override.components.text.area;
 
 import com._2p1team.cmadmin.swing.override.constants.UIState;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
-import com._2p1team.cmadmin.swing.override.graphics.ComponentPainter;
+import com._2p1team.cmadmin.swing.override.graphics.Painter;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
@@ -44,24 +44,24 @@ public class TextArea extends AbstractTextArea {
     @Override
     public void mousePressed(MouseEvent e) {
         this.getAppearance().setState(UIState.PRESSED);
-        ComponentPainter.drawComponentUIElements(this);
+        Painter.drawComponentUIElements(this);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
         this.getAppearance().setState(UIState.RELEASED);
-        ComponentPainter.drawComponentUIElements(this);
+        Painter.drawComponentUIElements(this);
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
         this.getAppearance().setState(UIState.HOVERED);
-        ComponentPainter.drawComponentUIElements(this);
+        Painter.drawComponentUIElements(this);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         this.getAppearance().setState(UIState.DEFAULT);
-        ComponentPainter.drawComponentUIElements(this);
+        Painter.drawComponentUIElements(this);
     }
 }

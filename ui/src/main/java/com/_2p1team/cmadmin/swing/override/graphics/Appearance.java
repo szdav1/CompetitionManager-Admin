@@ -9,7 +9,7 @@ import lombok.Setter;
 
 @Data
 @AllArgsConstructor
-public final class Appearance {
+public class Appearance {
     @Setter(AccessLevel.NONE)
     private boolean interactivityEnabled;
     private UIState state;

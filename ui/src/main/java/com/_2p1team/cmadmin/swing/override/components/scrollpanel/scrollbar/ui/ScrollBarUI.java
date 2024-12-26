@@ -1,7 +1,7 @@
-package com._2p1team.cmadmin.swing.override.components.panel.scroll.bar.ui;
+package com._2p1team.cmadmin.swing.override.components.scrollpanel.scrollbar.ui;
 
-import com._2p1team.cmadmin.swing.override.graphics.ScrollBarAppearance;
-import com._2p1team.cmadmin.swing.override.graphics.ScrollBarPainter;
+import com._2p1team.cmadmin.swing.override.graphics.Appearance;
+import com._2p1team.cmadmin.swing.override.graphics.Painter;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -18,26 +18,37 @@ import java.awt.Rectangle;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public final class ScrollBarUI extends BasicScrollBarUI {
-    private final ScrollBarAppearance appearance;
+    private final Appearance appearance;
 
     private JButton removeButtons() {
         JButton btn = new JButton();
-        btn.setPreferredSize(new Dimension(0, 0));
-        btn.setMinimumSize(btn.getPreferredSize());
-        btn.setMaximumSize(btn.getPreferredSize());
+        Dimension size = new Dimension(0, 0);
+        btn.setMinimumSize(size);
+        btn.setMaximumSize(size);
+        btn.setPreferredSize(size);
 
         return btn;
     }
 
     @Override
+    protected JButton createDecreaseButton(int orientation) {
+        return this.removeButtons();
+    }
+
+    @Override
+    protected JButton createIncreaseButton(int orientation) {
+        return this.removeButtons();
+    }
+
+    @Override
     protected void paintTrack(Graphics g, JComponent c, Rectangle trackBounds) {
         Graphics2D g2 = (Graphics2D) g;
-        ScrollBarPainter.paintTrack(g2, trackBounds, this.appearance);
+        Painter.paintScrollBarTrack(g2, trackBounds, this.appearance);
     }
 
     @Override
     protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds) {
         Graphics2D g2 = (Graphics2D) g;
-        ScrollBarPainter.paintTrack(g2, thumbBounds, this.appearance);
+        Painter.paintScrollBarThumb(g2, thumbBounds, this.appearance);
     }
 }
