@@ -36,17 +36,17 @@ public class ScrollPanel extends AbstractScrollPanel {
 
     @Override
     public void addComponent(JComponent component, Position position) {
-
+        this.getViewPanel().addComponent(component, position);
     }
 
     @Override
     public void addComponent(JComponent component) {
-
+        this.getViewPanel().addComponent(component);
     }
 
     @Override
     public JComponent removeComponent(JComponent component) {
-        return component;
+        return this.getViewPanel().removeComponent(component);
     }
 
     @Override
