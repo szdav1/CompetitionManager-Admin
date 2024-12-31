@@ -1,6 +1,5 @@
 package com._2p1team.cmadmin.swing.override.components.scrollpanel.scrollbar;
 
-import com._2p1team.cmadmin.swing.override.components.scrollpanel.scrollbar.ui.ScrollBarUI;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

@@ -1,7 +1,7 @@
-package com._2p1team.cmadmin.swing.override.components.scrollpanel.scrollbar.ui;
+package com._2p1team.cmadmin.swing.override.components.scrollpanel.scrollbar;
 
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
-import com._2p1team.cmadmin.swing.override.graphics.Painter;
+import com._2p1team.cmadmin.swing.override.graphics.G2DPainter;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -43,12 +43,12 @@ public final class ScrollBarUI extends BasicScrollBarUI {
     @Override
     protected void paintTrack(Graphics g, JComponent c, Rectangle trackBounds) {
         Graphics2D g2 = (Graphics2D) g;
-        Painter.paintScrollBarTrack(g2, trackBounds, this.appearance);
+        G2DPainter.paintScrollBarTrack(g2, trackBounds, this.appearance);
     }
 
     @Override
     protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds) {
         Graphics2D g2 = (Graphics2D) g;
-        Painter.paintScrollBarThumb(g2, thumbBounds, this.appearance);
+        G2DPainter.paintScrollBarThumb(g2, thumbBounds, this.appearance);
     }
 }

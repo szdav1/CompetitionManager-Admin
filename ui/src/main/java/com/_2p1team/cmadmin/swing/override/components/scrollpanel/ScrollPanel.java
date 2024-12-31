@@ -13,19 +13,19 @@ public class ScrollPanel extends AbstractScrollPanel {
     public ScrollPanel() {
     }
 
-    public ScrollPanel(Dimension preferredSize, LayoutManager layout, Appearance appearance) {
+    public ScrollPanel(Dimension preferredSize, LayoutManager layout, final Appearance appearance) {
         super(preferredSize, layout, appearance);
     }
 
-    public ScrollPanel(Dimension preferredSize, Appearance appearance) {
+    public ScrollPanel(Dimension preferredSize, final Appearance appearance) {
         super(preferredSize, appearance);
     }
 
-    public ScrollPanel(Rectangle bounds, LayoutManager layout, Appearance appearance) {
+    public ScrollPanel(Rectangle bounds, LayoutManager layout, final Appearance appearance) {
         super(bounds, layout, appearance);
     }
 
-    public ScrollPanel(Rectangle bounds, Appearance appearance) {
+    public ScrollPanel(Rectangle bounds, final Appearance appearance) {
         super(bounds, appearance);
     }
 

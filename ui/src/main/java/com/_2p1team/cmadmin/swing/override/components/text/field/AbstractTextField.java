@@ -2,7 +2,7 @@ package com._2p1team.cmadmin.swing.override.components.text.field;
 
 import com._2p1team.cmadmin.swing.override.components.AppearanceComponent;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
-import com._2p1team.cmadmin.swing.override.graphics.Painter;
+import com._2p1team.cmadmin.swing.override.graphics.G2DPainter;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -64,7 +64,7 @@ public abstract class AbstractTextField extends JTextField implements Appearance
     @Override
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-        Painter.paint(g2, this);
+        G2DPainter.paint(g2, this);
         super.paint(g);
         g2.dispose();
     }

@@ -11,7 +11,7 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public final class Painter {
+public final class G2DPainter {
     private static LinearGradientPaint determineBackgroundPaint(final Point2D start, final Point2D end, final Appearance appearance) {
         return appearance.isInteractivityEnabled() ?
             new LinearGradientPaint(

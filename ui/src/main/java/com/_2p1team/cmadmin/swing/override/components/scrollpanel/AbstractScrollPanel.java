@@ -3,7 +3,7 @@ package com._2p1team.cmadmin.swing.override.components.scrollpanel;
 import com._2p1team.cmadmin.swing.override.components.AppearanceComponent;
 import com._2p1team.cmadmin.swing.override.components.Container;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
-import com._2p1team.cmadmin.swing.override.components.scrollpanel.scrollbar.OwnScrollBar;
+import com._2p1team.cmadmin.swing.override.components.scrollpanel.scrollbar.CustomScrollBar;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -27,8 +27,8 @@ public abstract class AbstractScrollPanel extends JScrollPane implements Contain
         this.setFocusable(false);
         this.setBorder(null);
         this.setViewportView(this.viewPanel);
-        this.setHorizontalScrollBar(new OwnScrollBar(JScrollBar.HORIZONTAL, appearance));
-        this.setVerticalScrollBar(new OwnScrollBar(JScrollBar.VERTICAL, appearance));
+        this.setHorizontalScrollBar(new CustomScrollBar(JScrollBar.HORIZONTAL, appearance));
+        this.setVerticalScrollBar(new CustomScrollBar(JScrollBar.VERTICAL, appearance));
         this.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     }
@@ -40,8 +40,8 @@ public abstract class AbstractScrollPanel extends JScrollPane implements Contain
         this.setFocusable(false);
         this.setBorder(null);
         this.setViewportView(this.viewPanel);
-        this.setHorizontalScrollBar(new OwnScrollBar(JScrollBar.HORIZONTAL, appearance));
-        this.setVerticalScrollBar(new OwnScrollBar(JScrollBar.VERTICAL, appearance));
+        this.setHorizontalScrollBar(new CustomScrollBar(JScrollBar.HORIZONTAL, appearance));
+        this.setVerticalScrollBar(new CustomScrollBar(JScrollBar.VERTICAL, appearance));
         this.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         this.setPreferredSize(preferredSize);
@@ -59,8 +59,8 @@ public abstract class AbstractScrollPanel extends JScrollPane implements Contain
         this.setFocusable(false);
         this.setBorder(null);
         this.setViewportView(this.viewPanel);
-        this.setHorizontalScrollBar(new OwnScrollBar(JScrollBar.HORIZONTAL, appearance));
-        this.setVerticalScrollBar(new OwnScrollBar(JScrollBar.VERTICAL, appearance));
+        this.setHorizontalScrollBar(new CustomScrollBar(JScrollBar.HORIZONTAL, appearance));
+        this.setVerticalScrollBar(new CustomScrollBar(JScrollBar.VERTICAL, appearance));
         this.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         this.setBounds(bounds);
