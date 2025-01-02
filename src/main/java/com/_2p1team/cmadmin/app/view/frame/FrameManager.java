@@ -13,6 +13,11 @@ public final class FrameManager {
         hasInstance = true;
         FrameManager.frame = frame;
     }
+    
+    public static void repaintFrame() {
+        frame.repaint();
+        frame.revalidate();
+    }
 
     public static void exitFrame() {
         frame.dispose();

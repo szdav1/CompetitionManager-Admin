@@ -13,7 +13,7 @@ public final class SizeData {
     public static final int SCREEN_HEIGHT = SCREEN_SIZE.height;
 
     public static final int TITLE_WIDTH = SCREEN_WIDTH;
-    public static final int TITLE_HEIGHT = SCREEN_HEIGHT*5/100;
+    public static final int TITLE_HEIGHT = SCREEN_HEIGHT*4/100;
     public static final Dimension TITLE_SIZE = new Dimension(TITLE_WIDTH, TITLE_HEIGHT);
 
     public static final int N_BUTTON_WIDTH = SCREEN_WIDTH*2/100;
