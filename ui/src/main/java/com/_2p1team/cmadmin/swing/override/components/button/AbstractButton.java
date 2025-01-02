@@ -33,6 +33,7 @@ public abstract class AbstractButton extends JButton implements AppearanceCompon
         this.setFocusable(false);
         this.setIcon(appearance.getIconSet().getDefaultIcon());
         this.setText(text);
+        this.setForeground(appearance.getForegroundConfiguration().getDefaultColor());
         this.setHorizontalAlignment(JButton.CENTER);
         this.setVerticalAlignment(JButton.CENTER);
         this.setFont(appearance.getFontSet().getDefaultFont());
@@ -55,6 +56,7 @@ public abstract class AbstractButton extends JButton implements AppearanceCompon
         this.setFocusable(false);
         this.setIcon(appearance.getIconSet().getDefaultIcon());
         this.setText(text);
+        this.setForeground(appearance.getForegroundConfiguration().getDefaultColor());
         this.setHorizontalAlignment(JButton.CENTER);
         this.setVerticalAlignment(JButton.CENTER);
         this.setFont(appearance.getFontSet().getDefaultFont());

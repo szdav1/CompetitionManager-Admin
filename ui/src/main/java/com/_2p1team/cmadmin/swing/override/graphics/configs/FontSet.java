@@ -1,6 +1,7 @@
 package com._2p1team.cmadmin.swing.override.graphics.configs;
 
 import java.awt.Font;
+import java.awt.Toolkit;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +9,8 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public final class FontSet {
-    public static final Font SYSTEM_FONT = new Font(Font.MONOSPACED, Font.PLAIN, 20); // TODO: Replace 10 with proportional value
+    public static final Font SYSTEM_FONT = new Font(Font.DIALOG, Font.PLAIN, calculateFontSize());
+
 
     private final Font defaultFont;
     private final Font hoveredFont;
@@ -28,5 +30,11 @@ public final class FontSet {
         this.hoveredFont = hoveredFont;
         this.pressedFont = defaultFont;
         this.releasedFont = hoveredFont;
+    }
+
+    private static int calculateFontSize() {
+        return (int) (Toolkit.getDefaultToolkit()
+            .getScreenSize()
+            .width/100);
     }
 }

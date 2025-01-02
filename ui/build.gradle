@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'com._2p1team.cmadmin'
-version = '1.0-WORK-IN-PROGRESS'
+version = '1.0-FIRST-STABLE-VERSION'
 jar.enabled = true
 
 repositories {
