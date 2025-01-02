@@ -11,29 +11,29 @@ import java.awt.Color;
 
 public final class AppearanceRepository {
     public static final Appearance TITLE_BAR_APPEARANCE = new AppearanceBuilder()
-        .setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)))
+        .setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.TITLE_BAR_BACKGROUND)))
         .build();
 
     public static final Appearance EXIT_BUTTON_APPEARANCE = new AppearanceBuilder()
         .enableInteractivity()
         .setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)))
-        .setForegroundConfiguration(new ForegroundConfiguration(Color.white, Color.red))
+        .setForegroundConfiguration(new ForegroundConfiguration(Color.gray, Color.red))
         .build();
 
     public static final Appearance ICONIFY_BUTTON_APPEARANCE = new AppearanceBuilder()
         .enableInteractivity()
         .setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)))
-        .setForegroundConfiguration(new ForegroundConfiguration(Color.white, Color.darkGray))
+        .setForegroundConfiguration(new ForegroundConfiguration(Color.gray, Color.darkGray))
         .build();
 
     public static final Appearance TITLE_TEXT_APPEARANCE = new AppearanceBuilder()
         .setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)))
-        .setForegroundConfiguration(new ForegroundConfiguration(Color.white))
+        .setForegroundConfiguration(new ForegroundConfiguration(Color.gray))
         .build();
 
     public static final Appearance DASHBOARD_LABEL_APPEARANCE = new AppearanceBuilder()
         .setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)))
-        .setForegroundConfiguration(new ForegroundConfiguration(Color.white))
+        .setForegroundConfiguration(new ForegroundConfiguration(Color.gray))
         .setIconSet(new IconSet(Util.loadImageIcon("/assets/dashboardIcon.png", 5)))
         .build();
 

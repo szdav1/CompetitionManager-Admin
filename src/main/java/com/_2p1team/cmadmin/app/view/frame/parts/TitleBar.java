@@ -38,9 +38,9 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
         this.iconifyButton = new Button(N_BUTTON_SIZE, "_", AppearanceRepository.ICONIFY_BUTTON_APPEARANCE);
         this.controller = new TitleBarController(this);
 
-        this.leftPanel = new Panel(new Dimension(), new FlowLayout(FlowLayout.LEFT), this.getAppearance());
-        this.centerPanel = new Panel(new Dimension(), new FlowLayout(FlowLayout.CENTER), this.getAppearance());
-        this.rightPanel = new Panel(new Dimension(), new FlowLayout(FlowLayout.RIGHT), this.getAppearance());
+        this.leftPanel = new Panel(new Dimension(), new FlowLayout(FlowLayout.LEFT, 0, 0), this.getAppearance());
+        this.centerPanel = new Panel(new Dimension(), new FlowLayout(FlowLayout.CENTER, 0, 0), this.getAppearance());
+        this.rightPanel = new Panel(new Dimension(), new FlowLayout(FlowLayout.RIGHT, 0, 0), this.getAppearance());
 
         this.dashboardLabel = new Label(TITLE_TEXT_SIZE, "Dashboard", AppearanceRepository.DASHBOARD_LABEL_APPEARANCE);
         this.dashboardLabel.setHorizontalAlignment(SwingConstants.LEFT);
