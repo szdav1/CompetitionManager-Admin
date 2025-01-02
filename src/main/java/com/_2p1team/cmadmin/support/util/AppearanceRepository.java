@@ -1,43 +1,63 @@
 package com._2p1team.cmadmin.support.util;
 
+import static com._2p1team.cmadmin.support.appdata.SizeData.SCREEN_HEIGHT;
+import static com._2p1team.cmadmin.support.appdata.SizeData.SCREEN_WIDTH;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import com._2p1team.cmadmin.swing.override.graphics.build.AppearanceBuilder;
-import com._2p1team.cmadmin.swing.override.graphics.configs.BackgroundConfiguration;
-import com._2p1team.cmadmin.swing.override.graphics.configs.ForegroundConfiguration;
-import com._2p1team.cmadmin.swing.override.graphics.configs.IconSet;
-import com._2p1team.cmadmin.swing.override.graphics.configs.SimplePaintConfiguration;
+import com._2p1team.cmadmin.swing.override.graphics.configs.*;
 
 import java.awt.Color;
 
 public final class AppearanceRepository {
     public static final Appearance TITLE_BAR_APPEARANCE = new AppearanceBuilder()
-        .setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.TITLE_BAR_BACKGROUND)))
+        .setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(Color.black)))
         .build();
 
     public static final Appearance EXIT_BUTTON_APPEARANCE = new AppearanceBuilder()
         .enableInteractivity()
         .setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)))
-        .setForegroundConfiguration(new ForegroundConfiguration(Color.gray, Color.red))
+        .setForegroundConfiguration(new ForegroundConfiguration(Color.white, Color.red))
         .build();
 
     public static final Appearance ICONIFY_BUTTON_APPEARANCE = new AppearanceBuilder()
         .enableInteractivity()
         .setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)))
-        .setForegroundConfiguration(new ForegroundConfiguration(Color.gray, Color.darkGray))
+        .setForegroundConfiguration(new ForegroundConfiguration(Color.white, Color.darkGray))
         .build();
 
     public static final Appearance TITLE_TEXT_APPEARANCE = new AppearanceBuilder()
         .setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)))
-        .setForegroundConfiguration(new ForegroundConfiguration(Color.gray))
+        .setForegroundConfiguration(new ForegroundConfiguration(Color.darkGray))
         .build();
 
-    public static final Appearance DASHBOARD_LABEL_APPEARANCE = new AppearanceBuilder()
+    public static final Appearance CENTER_PANEL_APPEARANCE = new AppearanceBuilder()
+        .setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(Color.black)))
+        .setIconSet(new IconSet(Util.loadImageIcon("/assets/background.png", SCREEN_WIDTH, SCREEN_HEIGHT)))
+        .build();
+
+    public static final Appearance FILE_MENU_BUTTON_APPEARANCE = new AppearanceBuilder()
+        .enableInteractivity()
         .setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)))
-        .setForegroundConfiguration(new ForegroundConfiguration(Color.gray))
-        .setIconSet(new IconSet(Util.loadImageIcon("/assets/dashboardIcon.png", 5)))
+        .setForegroundConfiguration(new ForegroundConfiguration(Color.white, Color.darkGray))
+        .setIconSet(new IconSet(Util.loadImageIcon("/assets/fileIcon.png", 6)))
         .build();
 
-    public static final Appearance SIDEBAR_APPEARANCE = new AppearanceBuilder()
-        .setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.BACKGROUND_BLUE)))
+    public static final Appearance DATABASE_MENU_BUTTON_APPEARANCE = new AppearanceBuilder()
+        .enableInteractivity()
+        .setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)))
+        .setForegroundConfiguration(new ForegroundConfiguration(Color.white, Color.darkGray))
+        .setIconSet(new IconSet(Util.loadImageIcon("/assets/databaseIcon.png", 6)))
+        .build();
+
+    public static final Appearance SETTINGS_MENU_BUTTON_APPEARANCE = new AppearanceBuilder()
+        .enableInteractivity()
+        .setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)))
+        .setForegroundConfiguration(new ForegroundConfiguration(Color.white, Color.darkGray))
+        .setIconSet(new IconSet(Util.loadImageIcon("/assets/settingsIcon.png", 6)))
+        .build();
+
+    public static final Appearance DROPDOWN_APPEARANCE = new AppearanceBuilder()
+        .setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(Color.black)))
+        .setBorderConfiguration(new BorderConfiguration(1, new LinearGradientPaintConfiguration(Color.red, Color.pink)))
         .build();
 }

@@ -1,7 +1,6 @@
 package com._2p1team.cmadmin.swing.override.frame;
 
 import com._2p1team.cmadmin.swing.override.components.Container;
-import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import lombok.Getter;
 import lombok.ToString;
@@ -14,11 +13,9 @@ import java.awt.Image;
 @ToString
 public abstract class AbstractFrame extends JFrame implements Container {
     private final Panel contentPanel;
-    private final Label backgroundLabel;
 
     public AbstractFrame(final Image iconImage, final String title) {
         this.contentPanel = new Panel();
-        this.backgroundLabel = new Label();
 
         this.setUpFrame(iconImage, title);
     }

@@ -1,12 +1,12 @@
 package com._2p1team.cmadmin.app.view.frame;
 
-import com._2p1team.cmadmin.app.view.frame.parts.Sidebar;
+import com._2p1team.cmadmin.app.view.frame.parts.CenterPanel;
+import com._2p1team.cmadmin.app.view.frame.parts.FooterPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.TitleBar;
-import static com._2p1team.cmadmin.support.appdata.SizeData.SCREEN_HEIGHT;
-import static com._2p1team.cmadmin.support.appdata.SizeData.SCREEN_WIDTH;
-import com._2p1team.cmadmin.support.util.Util;
 import com._2p1team.cmadmin.swing.override.constants.Position;
 import com._2p1team.cmadmin.swing.override.frame.AbstractFrame;
+import lombok.AccessLevel;
+import lombok.Getter;
 
 import javax.swing.JComponent;
 import java.awt.BorderLayout;
@@ -14,23 +14,25 @@ import java.awt.Image;
 
 public final class AppFrame extends AbstractFrame {
     private final TitleBar titleBar;
-    private final Sidebar sidebar;
+    @Getter(AccessLevel.PACKAGE)
+    private final CenterPanel centerPanel;
+    private final FooterPanel footerPanel;
 
     public AppFrame(Image iconImage, String title) {
         super(iconImage, title);
-        FrameManager.initManager(this);
 
         this.titleBar = new TitleBar();
-        this.sidebar = new Sidebar();
+        this.centerPanel = new CenterPanel();
+        this.footerPanel = new FooterPanel();
 
+        FrameManager.initManager(this);
         this.createFrameUI();
     }
 
     private void createFrameUI() {
-        this.getBackgroundLabel().setIcon(Util.loadImageIcon("/assets/background.png", SCREEN_WIDTH, SCREEN_HEIGHT));
         this.addComponent(this.titleBar, Position.TOP);
-        this.addComponent(this.sidebar, Position.LEFT);
-        this.addComponent(this.getBackgroundLabel(), Position.CENTER);
+        this.addComponent(this.centerPanel, Position.CENTER);
+        this.addComponent(this.footerPanel, Position.BOTTOM);
     }
 
     @Override

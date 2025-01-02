@@ -1,10 +1,12 @@
 package com._2p1team.cmadmin.app.view.frame.parts;
 
 import com._2p1team.cmadmin.app.control.frame.parts.TitleBarController;
+import com._2p1team.cmadmin.app.view.components.menu.MenuButton;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
 import com._2p1team.cmadmin.app.view.interfaces.ControlComponent;
 import com._2p1team.cmadmin.support.appdata.SizeData;
-import static com._2p1team.cmadmin.support.appdata.SizeData.*;
+import static com._2p1team.cmadmin.support.appdata.SizeData.N_BUTTON_SIZE;
+import static com._2p1team.cmadmin.support.appdata.SizeData.TITLE_TEXT_SIZE;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
@@ -12,7 +14,6 @@ import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import lombok.Getter;
 
 import javax.swing.JComponent;
-import javax.swing.SwingConstants;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -28,7 +29,10 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
     private final Panel centerPanel;
     private final Panel rightPanel;
 
-    private final Label dashboardLabel;
+    private final MenuButton fileButton;
+    private final MenuButton databaseButton;
+    private final MenuButton settingsButton;
+
     private final Label titleLabel;
 
     public TitleBar() {
@@ -42,8 +46,9 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
         this.centerPanel = new Panel(new Dimension(), new FlowLayout(FlowLayout.CENTER, 0, 0), this.getAppearance());
         this.rightPanel = new Panel(new Dimension(), new FlowLayout(FlowLayout.RIGHT, 0, 0), this.getAppearance());
 
-        this.dashboardLabel = new Label(TITLE_TEXT_SIZE, "Dashboard", AppearanceRepository.DASHBOARD_LABEL_APPEARANCE);
-        this.dashboardLabel.setHorizontalAlignment(SwingConstants.LEFT);
+        this.fileButton = new MenuButton("File", AppearanceRepository.FILE_MENU_BUTTON_APPEARANCE);
+        this.databaseButton = new MenuButton("Database", AppearanceRepository.DATABASE_MENU_BUTTON_APPEARANCE);
+        this.settingsButton = new MenuButton("Settings", AppearanceRepository.SETTINGS_MENU_BUTTON_APPEARANCE);
 
         this.titleLabel = new Label(TITLE_TEXT_SIZE, "CompetitionManager - Admin", AppearanceRepository.TITLE_TEXT_APPEARANCE);
 
@@ -52,7 +57,9 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
 
     @Override
     public void setUpComponent() {
-        this.leftPanel.addComponent(this.dashboardLabel);
+        this.leftPanel.addComponent(this.fileButton);
+        this.leftPanel.addComponent(this.databaseButton);
+        this.leftPanel.addComponent(this.settingsButton);
 
         this.centerPanel.addComponent(this.titleLabel);
 
