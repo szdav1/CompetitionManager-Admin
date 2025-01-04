@@ -32,7 +32,7 @@ public final class AppearanceRepository {
 
     public static final Appearance CENTER_PANEL_APPEARANCE = new AppearanceBuilder()
         .setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(Color.black)))
-        .setIconSet(new IconSet(Util.loadImageIcon("/assets/background.png", SCREEN_WIDTH, SCREEN_HEIGHT)))
+        .setIconSet(new IconSet(Util.loadImageIcon("/assets/background-temp.jpg", SCREEN_WIDTH, SCREEN_HEIGHT)))
         .build();
 
     public static final Appearance FILE_MENU_BUTTON_APPEARANCE = new AppearanceBuilder()
