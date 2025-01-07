@@ -9,9 +9,7 @@
         <list />
       </option>
       <option name="taskNames">
-        <list>
-          <option value="shadowJar" />
-        </list>
+        <list />
       </option>
       <option name="vmOptions" />
     </ExternalSystemSettings>
@@ -19,6 +17,9 @@
     <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
     <DebugAllEnabled>false</DebugAllEnabled>
     <RunAsTest>false</RunAsTest>
-    <method v="2" />
+    <method v="2">
+      <option name="Gradle.BeforeRunTask" enabled="true" tasks="build shadowJar" externalProjectPath="$PROJECT_DIR$" vmOptions="" scriptParameters="" />
+      <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_External Tools_copy-to-remote" />
+    </method>
   </configuration>
 </component>
