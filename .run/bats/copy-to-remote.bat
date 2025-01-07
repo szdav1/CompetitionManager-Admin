@@ -1,0 +1,2 @@
+copy D:\projects\CompetitionManager\Admin\build\libs\Admin-1.0-WORK-IN-PROGRESS-all.jar Z:\DAVID\TestWorkplace\CompetitionManager\
+xcopy /s D:\projects\CompetitionManager\Admin\build\resources\main\* Z:\DAVID\TestWorkplace\CompetitionManager\resources

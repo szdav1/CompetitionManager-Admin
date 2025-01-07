@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Admin [build-run]" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com._2p1team.cmadmin.app.App" />
+    <module name="Admin.main" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+      <option name="Gradle.BeforeRunTask" enabled="true" tasks="build" externalProjectPath="$PROJECT_DIR$" vmOptions="" scriptParameters="" />
+    </method>
+  </configuration>
+</component>

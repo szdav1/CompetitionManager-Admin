@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="[UI-Visibility-Tester]" type="Application" factoryName="Application">
+  <configuration default="false" name="Admin.ui [visibility-tester]" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="com._2p1team.cmadmin.visibility.UIVisibilityTester" />
     <module name="Admin.ui.test" />
     <method v="2">
