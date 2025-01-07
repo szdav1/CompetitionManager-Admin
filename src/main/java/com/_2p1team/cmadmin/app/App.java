@@ -1,4 +1,4 @@
-package com._2p1team.cmadmin.app.view;
+package com._2p1team.cmadmin.app;
 
 import com._2p1team.cmadmin.app.view.frame.AppFrame;
 

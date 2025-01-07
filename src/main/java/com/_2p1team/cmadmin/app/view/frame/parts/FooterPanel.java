@@ -1,7 +1,7 @@
 package com._2p1team.cmadmin.app.view.frame.parts;
 
-import static com._2p1team.cmadmin.support.appdata.SizeData.TITLE_SIZE;
-import static com._2p1team.cmadmin.support.appdata.SizeData.TITLE_TEXT_SIZE;
+import static com._2p1team.cmadmin.support.constants.SizeData.TITLE_SIZE;
+import static com._2p1team.cmadmin.support.constants.SizeData.TITLE_TEXT_SIZE;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;

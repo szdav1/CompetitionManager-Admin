@@ -1,8 +1,8 @@
 package com._2p1team.cmadmin.app.view.frame.parts;
 
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
-import static com._2p1team.cmadmin.support.appdata.SizeData.SCREEN_HEIGHT;
-import static com._2p1team.cmadmin.support.appdata.SizeData.SCREEN_WIDTH;
+import static com._2p1team.cmadmin.support.constants.SizeData.SCREEN_HEIGHT;
+import static com._2p1team.cmadmin.support.constants.SizeData.SCREEN_WIDTH;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;

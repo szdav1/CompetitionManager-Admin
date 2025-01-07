@@ -18,3 +18,5 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 Admin.iml
+.run/bats/
+.run/Admin [compile-to-remote].run.xml

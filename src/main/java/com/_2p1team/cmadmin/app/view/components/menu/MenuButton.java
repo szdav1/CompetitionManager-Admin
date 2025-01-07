@@ -1,6 +1,6 @@
 package com._2p1team.cmadmin.app.view.components.menu;
 
-import static com._2p1team.cmadmin.support.appdata.SizeData.*;
+import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;

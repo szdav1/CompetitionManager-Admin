@@ -34,7 +34,7 @@ test {
 jar {
     manifest {
         attributes(
-                'Main-class': ''
+                'Main-class': 'com._2p1team.cmadmin.app.App'
         )
     }
 }

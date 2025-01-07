@@ -1,7 +1,7 @@
 package com._2p1team.cmadmin.support.util;
 
-import static com._2p1team.cmadmin.support.appdata.SizeData.SCREEN_HEIGHT;
-import static com._2p1team.cmadmin.support.appdata.SizeData.SCREEN_WIDTH;
+import static com._2p1team.cmadmin.support.constants.SizeData.SCREEN_HEIGHT;
+import static com._2p1team.cmadmin.support.constants.SizeData.SCREEN_WIDTH;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import com._2p1team.cmadmin.swing.override.graphics.build.AppearanceBuilder;
 import com._2p1team.cmadmin.swing.override.graphics.configs.*;
@@ -39,21 +39,21 @@ public final class AppearanceRepository {
         .enableInteractivity()
         .setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)))
         .setForegroundConfiguration(new ForegroundConfiguration(Color.white, Color.darkGray))
-        .setIconSet(new IconSet(Util.loadImageIcon("/assets/fileIcon.png", 6)))
+        .setIconSet(new IconSet(Util.loadImageIcon("/assets/fileIcon.png", 4)))
         .build();
 
     public static final Appearance DATABASE_MENU_BUTTON_APPEARANCE = new AppearanceBuilder()
         .enableInteractivity()
         .setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)))
         .setForegroundConfiguration(new ForegroundConfiguration(Color.white, Color.darkGray))
-        .setIconSet(new IconSet(Util.loadImageIcon("/assets/databaseIcon.png", 6)))
+        .setIconSet(new IconSet(Util.loadImageIcon("/assets/databaseIcon.png", 4)))
         .build();
 
     public static final Appearance SETTINGS_MENU_BUTTON_APPEARANCE = new AppearanceBuilder()
         .enableInteractivity()
         .setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)))
         .setForegroundConfiguration(new ForegroundConfiguration(Color.white, Color.darkGray))
-        .setIconSet(new IconSet(Util.loadImageIcon("/assets/settingsIcon.png", 6)))
+        .setIconSet(new IconSet(Util.loadImageIcon("/assets/settingsIcon.png", 4)))
         .build();
 
     public static final Appearance DROPDOWN_APPEARANCE = new AppearanceBuilder()
