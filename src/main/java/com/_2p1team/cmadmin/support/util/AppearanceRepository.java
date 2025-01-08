@@ -48,7 +48,7 @@ public final class AppearanceRepository {
         .setBackgroundConfiguration(
             new BackgroundConfiguration(
                 new SimplePaintConfiguration(CustomColors.OPAQUE),
-                new SimplePaintConfiguration(CustomColors.ORANGEISH)
+                new LinearGradientPaintConfiguration(CustomColors.ORANGEISH, CustomColors.REDDISH)
             )
         )
         .setForegroundConfiguration(new ForegroundConfiguration(Color.white, Color.darkGray))
@@ -65,7 +65,7 @@ public final class AppearanceRepository {
         .setBackgroundConfiguration(
             new BackgroundConfiguration(
                 new SimplePaintConfiguration(CustomColors.OPAQUE),
-                new SimplePaintConfiguration(CustomColors.ORANGEISH)
+                new LinearGradientPaintConfiguration(CustomColors.ORANGEISH, CustomColors.REDDISH)
             )
         )
         .setForegroundConfiguration(new ForegroundConfiguration(Color.white, Color.darkGray))
@@ -82,7 +82,7 @@ public final class AppearanceRepository {
         .setBackgroundConfiguration(
             new BackgroundConfiguration(
                 new SimplePaintConfiguration(CustomColors.OPAQUE),
-                new SimplePaintConfiguration(CustomColors.ORANGEISH)
+                new LinearGradientPaintConfiguration(CustomColors.ORANGEISH, CustomColors.REDDISH)
             )
         )
         .setForegroundConfiguration(new ForegroundConfiguration(Color.white, Color.darkGray))
