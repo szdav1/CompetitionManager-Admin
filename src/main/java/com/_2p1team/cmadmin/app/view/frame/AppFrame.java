@@ -43,6 +43,7 @@ public final class AppFrame extends AbstractFrame {
 
     private void createFrameUI() {
         this.mainPanel.addComponent(this.titleBar, Position.TOP);
+        this.mainPanel.addComponent(this.centerPanel, Position.CENTER);
         this.mainPanel.addComponent(this.footerPanel, Position.BOTTOM);
 
         this.rootPanel.addComponent(this.mainPanel, Position.LOW);

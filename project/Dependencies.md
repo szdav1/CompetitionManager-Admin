@@ -11,5 +11,3 @@
 | Lombok          | ----------------- | 1.18.36 | https://projectlombok.org/setup/gradle                                                   |
 | Shadow          | ----------------- | 8.3.5   | https://gradleup.com/shadow/getting-started/                                             |
 | JDBC            | Oracle            | 17      | https://www.oracle.com/database/technologies/appdev/jdbc-downloads.html                  |
-
-

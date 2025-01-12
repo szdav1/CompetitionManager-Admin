@@ -18,7 +18,7 @@ public final class SizeData {
 
     public static final int N_BUTTON_WIDTH = SCREEN_WIDTH*2/100;
     public static final int BUTTON_WIDTH = SCREEN_HEIGHT*13/100;
-    public static final int W_BUTTON_WIDTH = SCREEN_HEIGHT*12/100;
+    public static final int W_BUTTON_WIDTH = SCREEN_HEIGHT*18/100;
     public static final int BUTTON_HEIGHT = TITLE_HEIGHT;
     public static final Dimension N_BUTTON_SIZE = new Dimension(N_BUTTON_WIDTH, BUTTON_HEIGHT);
     public static final Dimension BUTTON_SIZE = new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT);

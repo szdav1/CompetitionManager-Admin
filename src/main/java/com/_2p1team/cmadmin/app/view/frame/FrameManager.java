@@ -34,15 +34,21 @@ public final class FrameManager {
     public static void addToFrame(final JComponent component, final Position position) {
         frame.getCenterPanel()
             .addComponent(component, position);
+
+        repaintFrame();
     }
 
     public static void addToFrame(final JComponent component) {
         frame.getCenterPanel()
             .addComponent(component);
+
+        repaintFrame();
     }
 
     public static void removeFromFrame(final JComponent component) {
         frame.getCenterPanel()
             .removeComponent(component);
+
+        repaintFrame();
     }
 }

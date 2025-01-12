@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.awt.FlowLayout;
+import java.awt.Point;
 import java.awt.Rectangle;
 
 @Getter
@@ -21,6 +22,10 @@ public final class MenuButton extends Button {
         super(BUTTON_SIZE, text, appearance);
 
         this.toggled = false;
-        this.dropdownPanel = new Panel(new Rectangle(0, 0, W_BUTTON_WIDTH, BUTTON_HEIGHT), new FlowLayout(FlowLayout.CENTER, 0, 0), AppearanceRepository.DROPDOWN_APPEARANCE);
+        this.dropdownPanel = new Panel(new Rectangle(0, 0, BUTTON_WIDTH, BUTTON_HEIGHT*5), new FlowLayout(FlowLayout.CENTER, 0, 0), AppearanceRepository.DROPDOWN_APPEARANCE);
+    }
+
+    public void setDropdownPanelPosition(int x, int y) {
+        this.dropdownPanel.setLocation(new Point(x, y));
     }
 }

@@ -23,7 +23,6 @@ import java.util.List;
 public final class TitleBar extends Panel implements ComplexComponent, ControlComponent {
     private final Button exitButton;
     private final Button iconifyButton;
-    private final TitleBarController controller;
 
     private final Panel leftPanel;
     private final Panel centerPanel;
@@ -34,23 +33,29 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
     private final MenuButton settingsButton;
 
     private final Label titleLabel;
+    private final TitleBarController controller;
 
     public TitleBar() {
         super(SizeData.TITLE_SIZE, new GridLayout(1, 3), AppearanceRepository.TITLE_BAR_APPEARANCE);
 
         this.exitButton = new Button(N_BUTTON_SIZE, "x", AppearanceRepository.EXIT_BUTTON_APPEARANCE);
         this.iconifyButton = new Button(N_BUTTON_SIZE, "_", AppearanceRepository.ICONIFY_BUTTON_APPEARANCE);
-        this.controller = new TitleBarController(this);
 
         this.leftPanel = new Panel(new Dimension(), new FlowLayout(FlowLayout.LEFT, 0, 0), this.getAppearance());
         this.centerPanel = new Panel(new Dimension(), new FlowLayout(FlowLayout.CENTER, 0, 0), this.getAppearance());
         this.rightPanel = new Panel(new Dimension(), new FlowLayout(FlowLayout.RIGHT, 0, 0), this.getAppearance());
 
         this.fileButton = new MenuButton("File", AppearanceRepository.FILE_MENU_BUTTON_APPEARANCE);
+        this.fileButton.setDropdownPanelPosition(0, 0);
+
         this.databaseButton = new MenuButton("Database", AppearanceRepository.DATABASE_MENU_BUTTON_APPEARANCE);
+        this.databaseButton.setDropdownPanelPosition(SizeData.BUTTON_WIDTH, 0);
+
         this.settingsButton = new MenuButton("Settings", AppearanceRepository.SETTINGS_MENU_BUTTON_APPEARANCE);
+        this.settingsButton.setDropdownPanelPosition(SizeData.BUTTON_WIDTH*2, 0);
 
         this.titleLabel = new Label(TITLE_TEXT_SIZE, "CompetitionManager - Admin", AppearanceRepository.TITLE_TEXT_APPEARANCE);
+        this.controller = new TitleBarController(this);
 
         this.setUpComponent();
     }
@@ -73,6 +78,6 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
 
     @Override
     public List<JComponent> getControls() {
-        return List.of(this.exitButton, this.iconifyButton);
+        return List.of(this.exitButton, this.iconifyButton, this.fileButton, this.databaseButton, this.settingsButton);
     }
 }
