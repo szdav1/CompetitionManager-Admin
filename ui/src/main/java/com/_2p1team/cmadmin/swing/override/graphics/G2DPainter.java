@@ -134,7 +134,8 @@ public final class G2DPainter {
             );
     }
 
-    private static void paintBorder(final Graphics2D g2, Point2D start, Point2D end, final Appearance appearance) {
+    private static void
+    paintBorder(final Graphics2D g2, Point2D start, Point2D end, final Appearance appearance) {
         if (appearance.getBorderConfiguration().getThickness() <= 0 && appearance.getBorderConfiguration().getRadius() <= 0)
             return;
 
@@ -259,7 +260,6 @@ public final class G2DPainter {
         setFontOfComponent(component);
         setForegroundOfComponent(component);
         setIconOfComponent(component);
-        component.repaint();
     }
 
     public static void paintScrollBarTrack(final Graphics2D g2, final Rectangle paintBounds, final Appearance appearance) {
