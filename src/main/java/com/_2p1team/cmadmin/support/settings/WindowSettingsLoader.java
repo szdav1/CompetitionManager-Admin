@@ -1,3 +1,4 @@
+// TODO: Disable this class after sent to production
 package com._2p1team.cmadmin.support.settings;
 
 import com._2p1team.cmadmin.support.util.ResourceManager;
@@ -25,7 +26,7 @@ public final class WindowSettingsLoader {
             JSONObject jsonObject = new JSONObject(fileContents.toString());
             this.windowSettings = jsonObject.getJSONObject("window");
         }
-        catch (Exception exc) { // TODO: Replace with UI error display
+        catch (Exception exc) {
             exc.printStackTrace();
         }
     }
