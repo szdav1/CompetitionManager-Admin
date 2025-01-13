@@ -47,17 +47,38 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
 
         this.fileButton = new MenuButton("File", AppearanceRepository.FILE_MENU_BUTTON_APPEARANCE);
         this.fileButton.setDropdownPanelPosition(0, 0);
+        this.fillFileMenu();
 
         this.databaseButton = new MenuButton("Database", AppearanceRepository.DATABASE_MENU_BUTTON_APPEARANCE);
         this.databaseButton.setDropdownPanelPosition(SizeData.BUTTON_WIDTH, 0);
+        this.fillDatabaseMenu();
 
         this.settingsButton = new MenuButton("Settings", AppearanceRepository.SETTINGS_MENU_BUTTON_APPEARANCE);
         this.settingsButton.setDropdownPanelPosition(SizeData.BUTTON_WIDTH*2, 0);
+        this.fillSettingsMenu();
 
         this.titleLabel = new Label(TITLE_TEXT_SIZE, "CompetitionManager - Admin", AppearanceRepository.TITLE_TEXT_APPEARANCE);
         this.controller = new TitleBarController(this);
 
         this.setUpComponent();
+    }
+
+    private void fillFileMenu() {
+        this.fileButton.addButtonToDropdownPanel("Competition", AppearanceRepository.DROPDOWN_BUTTON_1);
+        this.fileButton.addButtonToDropdownPanel("Poule", AppearanceRepository.DROPDOWN_BUTTON_2);
+        this.fileButton.addButtonToDropdownPanel("Table", AppearanceRepository.DROPDOWN_BUTTON_3);
+    }
+
+    private void fillDatabaseMenu() {
+        this.databaseButton.addButtonToDropdownPanel("Connect", AppearanceRepository.DROPDOWN_BUTTON_1);
+        this.databaseButton.addButtonToDropdownPanel("View", AppearanceRepository.DROPDOWN_BUTTON_2);
+        this.databaseButton.addButtonToDropdownPanel("Manage", AppearanceRepository.DROPDOWN_BUTTON_3);
+    }
+
+    private void fillSettingsMenu() {
+        this.settingsButton.addButtonToDropdownPanel("Window", AppearanceRepository.DROPDOWN_BUTTON_1);
+        this.settingsButton.addButtonToDropdownPanel("Language", AppearanceRepository.DROPDOWN_BUTTON_2);
+        this.settingsButton.addButtonToDropdownPanel("About", AppearanceRepository.DROPDOWN_BUTTON_3);
     }
 
     @Override

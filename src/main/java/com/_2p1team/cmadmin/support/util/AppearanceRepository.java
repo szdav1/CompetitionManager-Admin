@@ -27,4 +27,10 @@ public final class AppearanceRepository {
     public static final Appearance SETTINGS_MENU_BUTTON_APPEARANCE = new SettingsMenuButtonAppearance();
 
     public static final Appearance DROPDOWN_APPEARANCE = new DropdownAppearance();
+
+    public static final Appearance DROPDOWN_BUTTON_1 = new DropdownButtonAppearance1();
+
+    public static final Appearance DROPDOWN_BUTTON_2 = new DropdownButtonAppearance2();
+
+    public static final Appearance DROPDOWN_BUTTON_3 = new DropdownButtonAppearance3();
 }

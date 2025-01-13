@@ -8,6 +8,7 @@ import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -27,5 +28,11 @@ public final class MenuButton extends Button {
 
     public void setDropdownPanelPosition(int x, int y) {
         this.dropdownPanel.setLocation(new Point(x, y));
+    }
+
+    public void addButtonToDropdownPanel(final String buttonText, final Appearance appearance) {
+        Button button = new Button(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT), buttonText, appearance);
+
+        this.dropdownPanel.addComponent(button);
     }
 }
