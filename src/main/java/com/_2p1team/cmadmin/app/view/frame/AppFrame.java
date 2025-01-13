@@ -4,8 +4,7 @@ import com._2p1team.cmadmin.app.view.frame.parts.CenterPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.FooterPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.RootPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.TitleBar;
-import static com._2p1team.cmadmin.support.constants.SizeData.SCREEN_HEIGHT;
-import static com._2p1team.cmadmin.support.constants.SizeData.SCREEN_WIDTH;
+import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import com._2p1team.cmadmin.swing.override.constants.Position;
@@ -30,9 +29,15 @@ public final class AppFrame extends AbstractFrame {
     public AppFrame(Image iconImage, String title) {
         super(iconImage, title);
         this.setLayout(null);
+        this.setBounds(new Rectangle(
+            (SCREEN_WIDTH/2)-(FRAME_WIDTH/2),
+            (SCREEN_HEIGHT/2)-(FRAME_HEIGHT/2),
+            FRAME_WIDTH,
+            FRAME_HEIGHT
+        ));
 
         this.rootPanel = new RootPanel();
-        this.mainPanel = new Panel(new Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT), new BorderLayout(), AppearanceRepository.MAIN_PANEL_APPEARANCE);
+        this.mainPanel = new Panel(new Rectangle(0, 0, FRAME_WIDTH, FRAME_HEIGHT), new BorderLayout(), AppearanceRepository.MAIN_PANEL_APPEARANCE);
         this.titleBar = new TitleBar();
         this.centerPanel = new CenterPanel();
         this.footerPanel = new FooterPanel();

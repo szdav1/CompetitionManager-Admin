@@ -13,7 +13,7 @@ public final class RootPanel extends Panel implements ComplexComponent {
     private final Label backgroundLabel;
 
     public RootPanel() {
-        super(new Rectangle(0, 0, SizeData.SCREEN_WIDTH, SizeData.SCREEN_HEIGHT), null, AppearanceRepository.ROOT_PANEL_APPEARANCE);
+        super(new Rectangle(0, 0, SizeData.FRAME_WIDTH, SizeData.FRAME_HEIGHT), null, AppearanceRepository.ROOT_PANEL_APPEARANCE);
 
         this.backgroundLabel = new Label(this.getBounds(), AppearanceRepository.BACKGROUND_LABEL_APPEARANCE);
         
