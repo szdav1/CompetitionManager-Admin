@@ -33,4 +33,8 @@ public final class AppearanceRepository {
     public static final Appearance DROPDOWN_BUTTON_2 = new DropdownButtonAppearance2();
 
     public static final Appearance DROPDOWN_BUTTON_3 = new DropdownButtonAppearance3();
+
+    public static final Appearance MODAL_BACKGROUND_APPEARANCE = new ModalBackgroundAppearance();
+
+    public static final Appearance MODAL_APPEARANCE = new ModalAppearance();
 }

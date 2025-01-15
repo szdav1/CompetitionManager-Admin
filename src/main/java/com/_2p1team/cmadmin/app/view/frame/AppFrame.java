@@ -1,5 +1,6 @@
 package com._2p1team.cmadmin.app.view.frame;
 
+import com._2p1team.cmadmin.app.view.components.modals.DatabaseConnectModal;
 import com._2p1team.cmadmin.app.view.frame.parts.CenterPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.FooterPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.RootPanel;
@@ -18,6 +19,9 @@ import java.awt.Image;
 import java.awt.Rectangle;
 
 public final class AppFrame extends AbstractFrame {
+    @Getter(/*AccessLevel.PACKAGE*/) // TODO: For testing purposes only
+    private final DatabaseConnectModal databaseConnectModal;
+
     @Getter(AccessLevel.PACKAGE)
     private final RootPanel rootPanel;
     @Getter(AccessLevel.PACKAGE)
@@ -26,6 +30,7 @@ public final class AppFrame extends AbstractFrame {
     @Getter(AccessLevel.PACKAGE)
     private final CenterPanel centerPanel;
     private final FooterPanel footerPanel;
+
 
     public AppFrame(Image iconImage, String title) {
         super(iconImage, title);
@@ -37,6 +42,7 @@ public final class AppFrame extends AbstractFrame {
             FRAME_HEIGHT
         ));
 
+        this.databaseConnectModal = new DatabaseConnectModal();
 
         this.rootPanel = new RootPanel();
         this.mainPanel = new Panel(new Rectangle(0, 0, FRAME_WIDTH, FRAME_HEIGHT), new BorderLayout(), AppearanceRepository.MAIN_PANEL_APPEARANCE);
@@ -58,6 +64,10 @@ public final class AppFrame extends AbstractFrame {
         this.titleBar.setUpFileMenu();
         this.titleBar.setUpDatabaseMenu();
         this.titleBar.setUpSettingsMenu();
+
+        this.rootPanel.addComponent(this.databaseConnectModal.getBackgroundPanel(), Position.HIGH);
+
+        this.databaseConnectModal.disappear();
 
         this.addComponent(this.rootPanel);
     }

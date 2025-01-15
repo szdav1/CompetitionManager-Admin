@@ -68,7 +68,25 @@ public final class TitleBarController extends AbstractController implements Mous
     public void controlDropdownPanelButtons(final ActionEvent event) {
         this.dropdownPanelButtons.forEach(dropdownPanelButton -> {
             if (event.getSource().equals(dropdownPanelButton)) {
-                System.out.println(dropdownPanelButton.getText());
+                int index = this.dropdownPanelButtons.indexOf(dropdownPanelButton);
+                this.clearDropdownPanels(null);
+
+                switch (index) {
+                    // File menu
+                    case 0 -> {}
+                    case 1 -> {}
+                    case 2 -> {}
+
+                    // Database menu
+                    case 3 -> FrameManager.displayDatabaseConnectModal();
+                    case 4 -> {}
+                    case 5 -> {}
+
+                    // Settings menu
+                    case 6 -> {}
+                    case 7 -> {}
+                    case 8 -> {}
+                }
             }
         });
     }

@@ -2,12 +2,14 @@ package com._2p1team.cmadmin.app.view.frame;
 
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import com._2p1team.cmadmin.swing.override.constants.Position;
+import lombok.Getter;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
 public final class FrameManager {
     private static boolean hasInstance = false;
+    @Getter // TODO: For testing purposes only
     private static AppFrame frame;
 
     public static void initManager(final AppFrame frame) {
@@ -77,5 +79,20 @@ public final class FrameManager {
     public static JComponent removeFromFrameRoot(final JComponent component) {
         return frame.getRootPanel()
             .removeComponent(component);
+    }
+
+    public static void repaintRootPanel() {
+        frame.getRootPanel()
+            .repaint();
+    }
+
+    public static void displayDatabaseConnectModal() {
+        frame.getDatabaseConnectModal()
+                .appear();
+    }
+
+    public static void hideDatabaseConnectModal() {
+        frame.getDatabaseConnectModal()
+            .disappear();
     }
 }
