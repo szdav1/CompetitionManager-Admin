@@ -86,6 +86,11 @@ public final class FrameManager {
             .repaint();
     }
 
+    public static void revalidateRootPanel() {
+        frame.getRootPanel()
+            .revalidate();
+    }
+
     public static void displayDatabaseConnectModal() {
         frame.getDatabaseConnectModal()
                 .appear();

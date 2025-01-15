@@ -38,12 +38,12 @@ public abstract class AbstractModal extends Panel implements ComplexComponent, C
 
     public void appear() {
         this.backgroundPanel.setVisible(true);
-        FrameManager.repaintRootPanel();
+        FrameManager.revalidateRootPanel();
     }
 
     public void disappear() {
         this.backgroundPanel.setVisible(false);
-        FrameManager.repaintRootPanel();
+        FrameManager.revalidateRootPanel();
     }
 
     @Override
