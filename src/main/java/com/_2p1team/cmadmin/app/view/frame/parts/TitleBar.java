@@ -13,6 +13,7 @@ import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import com._2p1team.cmadmin.swing.override.constants.Position;
+import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import lombok.Getter;
 
 import javax.swing.JComponent;
@@ -63,21 +64,21 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
     }
 
     private void initFileMenu() {
-        this.fileButton.addButtonToDropdownPanel("Competition", AppearanceRepository.DROPDOWN_BUTTON_1);
-        this.fileButton.addButtonToDropdownPanel("Poule", AppearanceRepository.DROPDOWN_BUTTON_2);
-        this.fileButton.addButtonToDropdownPanel("Table", AppearanceRepository.DROPDOWN_BUTTON_3);
+        this.fileButton.addButtonToDropdownPanel("Competition", new Appearance(AppearanceRepository.DROPDOWN_BUTTON_1));
+        this.fileButton.addButtonToDropdownPanel("Poule", new Appearance(AppearanceRepository.DROPDOWN_BUTTON_2));
+        this.fileButton.addButtonToDropdownPanel("Table", new Appearance(AppearanceRepository.DROPDOWN_BUTTON_3));
     }
 
     private void initDatabaseMenu() {
-        this.databaseButton.addButtonToDropdownPanel("Connect", AppearanceRepository.DROPDOWN_BUTTON_1);
-        this.databaseButton.addButtonToDropdownPanel("View", AppearanceRepository.DROPDOWN_BUTTON_2);
-        this.databaseButton.addButtonToDropdownPanel("Manage", AppearanceRepository.DROPDOWN_BUTTON_3);
+        this.databaseButton.addButtonToDropdownPanel("Connect", new Appearance(AppearanceRepository.DROPDOWN_BUTTON_1));
+        this.databaseButton.addButtonToDropdownPanel("View", new Appearance(AppearanceRepository.DROPDOWN_BUTTON_2));
+        this.databaseButton.addButtonToDropdownPanel("Manage", new Appearance(AppearanceRepository.DROPDOWN_BUTTON_3));
     }
 
     private void initSettingsMenu() {
-        this.settingsButton.addButtonToDropdownPanel("Window", AppearanceRepository.DROPDOWN_BUTTON_1);
-        this.settingsButton.addButtonToDropdownPanel("Language", AppearanceRepository.DROPDOWN_BUTTON_2);
-        this.settingsButton.addButtonToDropdownPanel("About", AppearanceRepository.DROPDOWN_BUTTON_3);
+        this.settingsButton.addButtonToDropdownPanel("Window", new Appearance(AppearanceRepository.DROPDOWN_BUTTON_1));
+        this.settingsButton.addButtonToDropdownPanel("Language", new Appearance(AppearanceRepository.DROPDOWN_BUTTON_2));
+        this.settingsButton.addButtonToDropdownPanel("About", new Appearance(AppearanceRepository.DROPDOWN_BUTTON_3));
     }
 
     public void setUpFileMenu() {

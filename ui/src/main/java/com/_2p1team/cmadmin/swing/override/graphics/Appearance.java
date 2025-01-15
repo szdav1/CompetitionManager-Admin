@@ -30,6 +30,16 @@ public class Appearance {
         );
     }
 
+    public Appearance(final Appearance appearance) {
+        this.interactivityEnabled = appearance.interactivityEnabled;
+        this.state = UIState.DEFAULT;
+        this.backgroundConfiguration = appearance.backgroundConfiguration;
+        this.foregroundConfiguration = appearance.foregroundConfiguration;
+        this.iconSet = appearance.iconSet;
+        this.fontSet = appearance.fontSet;
+        this.borderConfiguration = appearance.borderConfiguration;
+    }
+
     public Appearance(
         final boolean interactivityEnabled,
         final BackgroundConfiguration backgroundConfiguration,
