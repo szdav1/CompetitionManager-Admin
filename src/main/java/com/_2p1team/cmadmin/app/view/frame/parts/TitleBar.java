@@ -2,6 +2,7 @@ package com._2p1team.cmadmin.app.view.frame.parts;
 
 import com._2p1team.cmadmin.app.control.frame.parts.TitleBarController;
 import com._2p1team.cmadmin.app.view.components.menu.MenuButton;
+import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
 import com._2p1team.cmadmin.app.view.interfaces.ControlComponent;
 import com._2p1team.cmadmin.support.constants.SizeData;
@@ -11,6 +12,7 @@ import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
+import com._2p1team.cmadmin.swing.override.constants.Position;
 import lombok.Getter;
 
 import javax.swing.JComponent;
@@ -47,15 +49,12 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
 
         this.fileButton = new MenuButton("File", AppearanceRepository.FILE_MENU_BUTTON_APPEARANCE);
         this.fileButton.setDropdownPanelPosition(0, 0);
-        this.fillFileMenu();
 
         this.databaseButton = new MenuButton("Database", AppearanceRepository.DATABASE_MENU_BUTTON_APPEARANCE);
         this.databaseButton.setDropdownPanelPosition(SizeData.BUTTON_WIDTH, 0);
-        this.fillDatabaseMenu();
 
         this.settingsButton = new MenuButton("Settings", AppearanceRepository.SETTINGS_MENU_BUTTON_APPEARANCE);
         this.settingsButton.setDropdownPanelPosition(SizeData.BUTTON_WIDTH*2, 0);
-        this.fillSettingsMenu();
 
         this.titleLabel = new Label(TITLE_TEXT_SIZE, "CompetitionManager - Admin", AppearanceRepository.TITLE_TEXT_APPEARANCE);
         this.controller = new TitleBarController(this);
@@ -63,22 +62,36 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
         this.setUpComponent();
     }
 
-    private void fillFileMenu() {
+    public void initFileMenu() {
         this.fileButton.addButtonToDropdownPanel("Competition", AppearanceRepository.DROPDOWN_BUTTON_1);
         this.fileButton.addButtonToDropdownPanel("Poule", AppearanceRepository.DROPDOWN_BUTTON_2);
         this.fileButton.addButtonToDropdownPanel("Table", AppearanceRepository.DROPDOWN_BUTTON_3);
+
+        FrameManager.addToFrame(this.fileButton.getDropdownPanel(), Position.HIGH);
+        this.fileButton.getDropdownPanel()
+            .setVisible(false);
     }
 
-    private void fillDatabaseMenu() {
+    public void initDatabaseMenu() {
         this.databaseButton.addButtonToDropdownPanel("Connect", AppearanceRepository.DROPDOWN_BUTTON_1);
         this.databaseButton.addButtonToDropdownPanel("View", AppearanceRepository.DROPDOWN_BUTTON_2);
         this.databaseButton.addButtonToDropdownPanel("Manage", AppearanceRepository.DROPDOWN_BUTTON_3);
+
+        FrameManager.addToFrame(this.databaseButton.getDropdownPanel(), Position.HIGH);
+
+        this.databaseButton.getDropdownPanel()
+            .setVisible(false);
     }
 
-    private void fillSettingsMenu() {
+    public void initSettingsMenu() {
         this.settingsButton.addButtonToDropdownPanel("Window", AppearanceRepository.DROPDOWN_BUTTON_1);
         this.settingsButton.addButtonToDropdownPanel("Language", AppearanceRepository.DROPDOWN_BUTTON_2);
         this.settingsButton.addButtonToDropdownPanel("About", AppearanceRepository.DROPDOWN_BUTTON_3);
+
+        FrameManager.addToFrame(this.settingsButton.getDropdownPanel(), Position.HIGH);
+
+        this.settingsButton.getDropdownPanel()
+            .setVisible(false);
     }
 
     @Override

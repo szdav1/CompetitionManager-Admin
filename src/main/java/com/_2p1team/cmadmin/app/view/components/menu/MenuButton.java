@@ -1,9 +1,11 @@
 package com._2p1team.cmadmin.app.view.components.menu;
 
+import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
+import com._2p1team.cmadmin.swing.override.constants.Position;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import lombok.Getter;
 import lombok.Setter;

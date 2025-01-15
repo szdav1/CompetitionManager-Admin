@@ -4,7 +4,6 @@ import com._2p1team.cmadmin.app.control.AbstractController;
 import com._2p1team.cmadmin.app.view.components.menu.MenuButton;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import com._2p1team.cmadmin.app.view.frame.parts.TitleBar;
-import com._2p1team.cmadmin.swing.override.constants.Position;
 
 import javax.swing.JComponent;
 import java.awt.event.ActionEvent;
@@ -43,7 +42,12 @@ public final class TitleBarController extends AbstractController implements Mous
         this.menuButtons.forEach(mb -> {
             if (!mb.equals(source)) {
                 mb.setToggled(false);
-                FrameManager.removeFromFrame(mb.getDropdownPanel());
+
+                mb.getDropdownPanel()
+                    .setVisible(false);
+
+                FrameManager.getCenterPanel()
+                    .revalidate();
             }
         });
     }
@@ -79,8 +83,13 @@ public final class TitleBarController extends AbstractController implements Mous
     public void mouseEntered(MouseEvent e) {
         this.menuButtons.forEach(menuButton -> {
             if (e.getSource().equals(menuButton)) {
-                if (!menuButton.isToggled())
-                    FrameManager.addToFrame(menuButton.getDropdownPanel(), Position.HIGH);
+                if (!menuButton.isToggled()) {
+                    menuButton.getDropdownPanel()
+                        .setVisible(true);
+
+                    FrameManager.getCenterPanel()
+                        .revalidate();
+                }
 
                 this.clearDropdownPanels(menuButton);
             }
@@ -91,8 +100,13 @@ public final class TitleBarController extends AbstractController implements Mous
     public void mouseExited(MouseEvent e) {
         this.menuButtons.forEach(menuButton -> {
             if (e.getSource().equals(menuButton)) {
-                if (!menuButton.isToggled())
-                    FrameManager.removeFromFrame(menuButton.getDropdownPanel());
+                if (!menuButton.isToggled()) {
+                    menuButton.getDropdownPanel()
+                        .setVisible(false);
+
+                    FrameManager.getCenterPanel()
+                        .revalidate();
+                }
             }
         });
     }

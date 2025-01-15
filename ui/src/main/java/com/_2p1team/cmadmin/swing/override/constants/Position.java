@@ -12,6 +12,7 @@ public enum Position {
     MID(2),
     LOW(1),
     BACKGROUND(0),
+    DEEP(-1),
 
     TOP(BorderLayout.NORTH),
     LEFT(BorderLayout.WEST),

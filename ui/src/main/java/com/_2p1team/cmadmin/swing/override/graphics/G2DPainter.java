@@ -67,7 +67,6 @@ public final class G2DPainter {
     }
 
     private static void paintBackground(final Graphics2D g2, Point2D start, Point2D end, final Appearance appearance) {
-        Rectangle paintSurface = g2.getClipBounds();
         g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         LinearGradientPaint lgp = determineBackgroundPaint(start, end, appearance);
 
@@ -134,12 +133,10 @@ public final class G2DPainter {
             );
     }
 
-    private static void
-    paintBorder(final Graphics2D g2, Point2D start, Point2D end, final Appearance appearance) {
+    private static void paintBorder(final Graphics2D g2, Point2D start, Point2D end, final Appearance appearance) {
         if (appearance.getBorderConfiguration().getThickness() <= 0 && appearance.getBorderConfiguration().getRadius() <= 0)
             return;
 
-        Rectangle paintSurface = g2.getClipBounds();
         g2.setStroke(new BasicStroke(appearance.getBorderConfiguration().getThickness()));
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         LinearGradientPaint lgp = determineBorderPaint(start, end, appearance);

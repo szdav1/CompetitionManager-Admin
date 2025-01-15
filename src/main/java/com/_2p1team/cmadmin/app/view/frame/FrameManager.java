@@ -1,5 +1,6 @@
 package com._2p1team.cmadmin.app.view.frame;
 
+import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import com._2p1team.cmadmin.swing.override.constants.Position;
 
 import javax.swing.JComponent;
@@ -15,6 +16,15 @@ public final class FrameManager {
 
         hasInstance = true;
         FrameManager.frame = frame;
+    }
+
+    public static Panel getCenterPanel() {
+        return frame.getCenterPanel();
+    }
+
+    public static void repaintCenterPanel() {
+        frame.getCenterPanel().repaint();
+        frame.getCenterPanel().revalidate();
     }
 
     public static void repaintFrame() {
@@ -45,10 +55,27 @@ public final class FrameManager {
         repaintFrame();
     }
 
-    public static void removeFromFrame(final JComponent component) {
-        frame.getCenterPanel()
+    public static JComponent removeFromFrame(final JComponent component) {
+        return frame.getCenterPanel()
             .removeComponent(component);
+    }
+
+    public static void addToFrameRoot(final JComponent component, final Position position) {
+        frame.getRootPanel()
+            .addComponent(component, position);
 
         repaintFrame();
+    }
+
+    public static void addToFrameRoot(final JComponent component) {
+        frame.getRootPanel()
+            .addComponent(component);
+
+        repaintFrame();
+    }
+
+    public static JComponent removeFromFrameRoot(final JComponent component) {
+        return frame.getRootPanel()
+            .removeComponent(component);
     }
 }

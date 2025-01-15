@@ -18,6 +18,7 @@ import java.awt.Image;
 import java.awt.Rectangle;
 
 public final class AppFrame extends AbstractFrame {
+    @Getter(AccessLevel.PACKAGE)
     private final RootPanel rootPanel;
     @Getter(AccessLevel.PACKAGE)
     private final Panel mainPanel;
@@ -36,6 +37,7 @@ public final class AppFrame extends AbstractFrame {
             FRAME_HEIGHT
         ));
 
+
         this.rootPanel = new RootPanel();
         this.mainPanel = new Panel(new Rectangle(0, 0, FRAME_WIDTH, FRAME_HEIGHT), new BorderLayout(), AppearanceRepository.MAIN_PANEL_APPEARANCE);
         this.titleBar = new TitleBar();
@@ -52,6 +54,10 @@ public final class AppFrame extends AbstractFrame {
         this.mainPanel.addComponent(this.footerPanel, Position.BOTTOM);
 
         this.rootPanel.addComponent(this.mainPanel, Position.LOW);
+
+        this.titleBar.initFileMenu();
+        this.titleBar.initDatabaseMenu();
+        this.titleBar.initSettingsMenu();
 
         this.addComponent(this.rootPanel);
     }
