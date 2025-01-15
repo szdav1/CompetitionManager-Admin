@@ -4,6 +4,7 @@ import com._2p1team.cmadmin.app.control.AbstractController;
 import com._2p1team.cmadmin.app.view.components.menu.MenuButton;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import com._2p1team.cmadmin.app.view.frame.parts.TitleBar;
+import com._2p1team.cmadmin.swing.override.components.button.Button;
 
 import javax.swing.JComponent;
 import java.awt.event.ActionEvent;
@@ -14,6 +15,7 @@ import java.util.List;
 
 public final class TitleBarController extends AbstractController implements MouseListener {
     private final List<MenuButton> menuButtons;
+    private final List<Button> dropdownPanelButtons;
 
     public TitleBarController(final TitleBar titleBar) {
         super(titleBar);
@@ -22,6 +24,11 @@ public final class TitleBarController extends AbstractController implements Mous
         this.menuButtons.add((MenuButton) this.getControls().get(2));
         this.menuButtons.add((MenuButton) this.getControls().get(3));
         this.menuButtons.add((MenuButton) this.getControls().get(4));
+
+        this.dropdownPanelButtons = new ArrayList<>();
+        this.menuButtons.forEach(menuButton -> {
+            this.dropdownPanelButtons.addAll(menuButton.getButtons());
+        });
     }
 
     public void controlFrameState(final ActionEvent event) {
@@ -61,10 +68,15 @@ public final class TitleBarController extends AbstractController implements Mous
         });
     }
 
+    public void controlDropdownPanelButtons(final ActionEvent event) {
+        System.out.println(this.dropdownPanelButtons);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         this.controlFrameState(e);
         this.controlDropdownPanels(e);
+        this.controlDropdownPanelButtons(e);
     }
 
     @Override

@@ -63,9 +63,9 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
     }
 
     public void initFileMenu() {
-        this.fileButton.addButtonToDropdownPanel("Competition", AppearanceRepository.DROPDOWN_BUTTON_1);
-        this.fileButton.addButtonToDropdownPanel("Poule", AppearanceRepository.DROPDOWN_BUTTON_2);
-        this.fileButton.addButtonToDropdownPanel("Table", AppearanceRepository.DROPDOWN_BUTTON_3);
+        this.fileButton.addButtonToDropdownPanel("Competition", AppearanceRepository.DROPDOWN_BUTTON_1, this.controller);
+        this.fileButton.addButtonToDropdownPanel("Poule", AppearanceRepository.DROPDOWN_BUTTON_2, this.controller);
+        this.fileButton.addButtonToDropdownPanel("Table", AppearanceRepository.DROPDOWN_BUTTON_3, this.controller);
 
         FrameManager.addToFrame(this.fileButton.getDropdownPanel(), Position.HIGH);
         this.fileButton.getDropdownPanel()
@@ -73,9 +73,9 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
     }
 
     public void initDatabaseMenu() {
-        this.databaseButton.addButtonToDropdownPanel("Connect", AppearanceRepository.DROPDOWN_BUTTON_1);
-        this.databaseButton.addButtonToDropdownPanel("View", AppearanceRepository.DROPDOWN_BUTTON_2);
-        this.databaseButton.addButtonToDropdownPanel("Manage", AppearanceRepository.DROPDOWN_BUTTON_3);
+        this.databaseButton.addButtonToDropdownPanel("Connect", AppearanceRepository.DROPDOWN_BUTTON_1, this.controller);
+        this.databaseButton.addButtonToDropdownPanel("View", AppearanceRepository.DROPDOWN_BUTTON_2, this.controller);
+        this.databaseButton.addButtonToDropdownPanel("Manage", AppearanceRepository.DROPDOWN_BUTTON_3, this.controller);
 
         FrameManager.addToFrame(this.databaseButton.getDropdownPanel(), Position.HIGH);
 
@@ -84,9 +84,9 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
     }
 
     public void initSettingsMenu() {
-        this.settingsButton.addButtonToDropdownPanel("Window", AppearanceRepository.DROPDOWN_BUTTON_1);
-        this.settingsButton.addButtonToDropdownPanel("Language", AppearanceRepository.DROPDOWN_BUTTON_2);
-        this.settingsButton.addButtonToDropdownPanel("About", AppearanceRepository.DROPDOWN_BUTTON_3);
+        this.settingsButton.addButtonToDropdownPanel("Window", AppearanceRepository.DROPDOWN_BUTTON_1, this.controller);
+        this.settingsButton.addButtonToDropdownPanel("Language", AppearanceRepository.DROPDOWN_BUTTON_2, this.controller);
+        this.settingsButton.addButtonToDropdownPanel("About", AppearanceRepository.DROPDOWN_BUTTON_3, this.controller);
 
         FrameManager.addToFrame(this.settingsButton.getDropdownPanel(), Position.HIGH);
 
