@@ -36,9 +36,8 @@ public final class MenuButton extends Button {
         this.dropdownPanel.setLocation(new Point(x, y));
     }
 
-    public void addButtonToDropdownPanel(final String buttonText, final Appearance appearance, final AbstractController controller) {
+    public void addButtonToDropdownPanel(final String buttonText, final Appearance appearance) {
         Button button = new Button(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT), buttonText, appearance);
-        button.addActionListener(controller);
 
         this.dropdownPanel.addComponent(button);
         this.buttons.add(button);

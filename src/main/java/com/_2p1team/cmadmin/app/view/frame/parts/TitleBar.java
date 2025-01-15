@@ -48,13 +48,13 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
         this.rightPanel = new Panel(new Dimension(), new FlowLayout(FlowLayout.RIGHT, 0, 0), this.getAppearance());
 
         this.fileButton = new MenuButton("File", AppearanceRepository.FILE_MENU_BUTTON_APPEARANCE);
-        this.fileButton.setDropdownPanelPosition(0, 0);
+        this.initFileMenu();
 
         this.databaseButton = new MenuButton("Database", AppearanceRepository.DATABASE_MENU_BUTTON_APPEARANCE);
-        this.databaseButton.setDropdownPanelPosition(SizeData.BUTTON_WIDTH, 0);
+        this.initDatabaseMenu();
 
         this.settingsButton = new MenuButton("Settings", AppearanceRepository.SETTINGS_MENU_BUTTON_APPEARANCE);
-        this.settingsButton.setDropdownPanelPosition(SizeData.BUTTON_WIDTH*2, 0);
+        this.initSettingsMenu();
 
         this.titleLabel = new Label(TITLE_TEXT_SIZE, "CompetitionManager - Admin", AppearanceRepository.TITLE_TEXT_APPEARANCE);
         this.controller = new TitleBarController(this);
@@ -62,34 +62,41 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
         this.setUpComponent();
     }
 
-    public void initFileMenu() {
-        this.fileButton.addButtonToDropdownPanel("Competition", AppearanceRepository.DROPDOWN_BUTTON_1, this.controller);
-        this.fileButton.addButtonToDropdownPanel("Poule", AppearanceRepository.DROPDOWN_BUTTON_2, this.controller);
-        this.fileButton.addButtonToDropdownPanel("Table", AppearanceRepository.DROPDOWN_BUTTON_3, this.controller);
+    private void initFileMenu() {
+        this.fileButton.addButtonToDropdownPanel("Competition", AppearanceRepository.DROPDOWN_BUTTON_1);
+        this.fileButton.addButtonToDropdownPanel("Poule", AppearanceRepository.DROPDOWN_BUTTON_2);
+        this.fileButton.addButtonToDropdownPanel("Table", AppearanceRepository.DROPDOWN_BUTTON_3);
+    }
 
+    private void initDatabaseMenu() {
+        this.databaseButton.addButtonToDropdownPanel("Connect", AppearanceRepository.DROPDOWN_BUTTON_1);
+        this.databaseButton.addButtonToDropdownPanel("View", AppearanceRepository.DROPDOWN_BUTTON_2);
+        this.databaseButton.addButtonToDropdownPanel("Manage", AppearanceRepository.DROPDOWN_BUTTON_3);
+    }
+
+    private void initSettingsMenu() {
+        this.settingsButton.addButtonToDropdownPanel("Window", AppearanceRepository.DROPDOWN_BUTTON_1);
+        this.settingsButton.addButtonToDropdownPanel("Language", AppearanceRepository.DROPDOWN_BUTTON_2);
+        this.settingsButton.addButtonToDropdownPanel("About", AppearanceRepository.DROPDOWN_BUTTON_3);
+    }
+
+    public void setUpFileMenu() {
+        this.fileButton.setDropdownPanelPosition(0, 0);
         FrameManager.addToFrame(this.fileButton.getDropdownPanel(), Position.HIGH);
         this.fileButton.getDropdownPanel()
             .setVisible(false);
     }
 
-    public void initDatabaseMenu() {
-        this.databaseButton.addButtonToDropdownPanel("Connect", AppearanceRepository.DROPDOWN_BUTTON_1, this.controller);
-        this.databaseButton.addButtonToDropdownPanel("View", AppearanceRepository.DROPDOWN_BUTTON_2, this.controller);
-        this.databaseButton.addButtonToDropdownPanel("Manage", AppearanceRepository.DROPDOWN_BUTTON_3, this.controller);
-
+    public void setUpDatabaseMenu() {
+        this.databaseButton.setDropdownPanelPosition(SizeData.BUTTON_WIDTH, 0);
         FrameManager.addToFrame(this.databaseButton.getDropdownPanel(), Position.HIGH);
-
         this.databaseButton.getDropdownPanel()
             .setVisible(false);
     }
 
-    public void initSettingsMenu() {
-        this.settingsButton.addButtonToDropdownPanel("Window", AppearanceRepository.DROPDOWN_BUTTON_1, this.controller);
-        this.settingsButton.addButtonToDropdownPanel("Language", AppearanceRepository.DROPDOWN_BUTTON_2, this.controller);
-        this.settingsButton.addButtonToDropdownPanel("About", AppearanceRepository.DROPDOWN_BUTTON_3, this.controller);
-
+    public void setUpSettingsMenu() {
+        this.settingsButton.setDropdownPanelPosition(SizeData.BUTTON_WIDTH*2, 0);
         FrameManager.addToFrame(this.settingsButton.getDropdownPanel(), Position.HIGH);
-
         this.settingsButton.getDropdownPanel()
             .setVisible(false);
     }

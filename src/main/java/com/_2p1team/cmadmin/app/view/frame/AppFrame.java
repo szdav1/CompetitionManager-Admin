@@ -55,9 +55,9 @@ public final class AppFrame extends AbstractFrame {
 
         this.rootPanel.addComponent(this.mainPanel, Position.LOW);
 
-        this.titleBar.initFileMenu();
-        this.titleBar.initDatabaseMenu();
-        this.titleBar.initSettingsMenu();
+        this.titleBar.setUpFileMenu();
+        this.titleBar.setUpDatabaseMenu();
+        this.titleBar.setUpSettingsMenu();
 
         this.addComponent(this.rootPanel);
     }

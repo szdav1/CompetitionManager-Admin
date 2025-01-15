@@ -9,6 +9,8 @@ public final class App {
          *       Work out a better way for the Settings to be loaded and handled
          *       Work out a better way for size calculations
          *       Add controller to dropdown panel buttons
+         *       Create different Appearances for the dropdown panel buttons and optimise their working and
+         *          the structure of the controller code
          * */
         AppFrame frame = new AppFrame(null, "CompetitionManager - Admin");
     }

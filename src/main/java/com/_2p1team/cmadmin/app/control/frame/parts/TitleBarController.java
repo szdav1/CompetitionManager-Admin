@@ -6,7 +6,6 @@ import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import com._2p1team.cmadmin.app.view.frame.parts.TitleBar;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 
-import javax.swing.JComponent;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -26,16 +25,14 @@ public final class TitleBarController extends AbstractController implements Mous
         this.menuButtons.add((MenuButton) this.getControls().get(4));
 
         this.dropdownPanelButtons = new ArrayList<>();
-        this.menuButtons.forEach(menuButton -> {
-            this.dropdownPanelButtons.addAll(menuButton.getButtons());
-        });
+        this.menuButtons.forEach(menuButton -> dropdownPanelButtons.addAll(menuButton.getButtons()));
+        this.dropdownPanelButtons.forEach(dropdownPanelButton -> dropdownPanelButton.addActionListener(this));
     }
 
     public void controlFrameState(final ActionEvent event) {
         this.getControls().forEach(control -> {
             if (event.getSource().equals(control)) {
                 int controlIndex = this.getControls().indexOf(control);
-                JComponent source = this.getControls().get(controlIndex);
 
                 switch (controlIndex) {
                     case 0 -> FrameManager.exitFrame();
@@ -46,11 +43,11 @@ public final class TitleBarController extends AbstractController implements Mous
     }
 
     private void clearDropdownPanels(final MenuButton source) {
-        this.menuButtons.forEach(mb -> {
-            if (!mb.equals(source)) {
-                mb.setToggled(false);
+        this.menuButtons.forEach(menuButton -> {
+            if (!menuButton.equals(source)) {
+                menuButton.setToggled(false);
 
-                mb.getDropdownPanel()
+                menuButton.getDropdownPanel()
                     .setVisible(false);
 
                 FrameManager.getCenterPanel()
@@ -69,7 +66,11 @@ public final class TitleBarController extends AbstractController implements Mous
     }
 
     public void controlDropdownPanelButtons(final ActionEvent event) {
-        System.out.println(this.dropdownPanelButtons);
+        this.dropdownPanelButtons.forEach(dropdownPanelButton -> {
+            if (event.getSource().equals(dropdownPanelButton)) {
+                System.out.println(dropdownPanelButton.getText());
+            }
+        });
     }
 
     @Override
