@@ -4,6 +4,6 @@ import javax.swing.JComponent;
 import java.util.List;
 
 @FunctionalInterface
-public interface KeyControlComponent {
+public interface KeyControlledComponent {
     List<JComponent> getKeyControls();
 }

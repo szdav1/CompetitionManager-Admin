@@ -4,6 +4,7 @@ import com._2p1team.cmadmin.app.control.components.modal.ModalController;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
 import com._2p1team.cmadmin.app.view.interfaces.ControlComponent;
+import com._2p1team.cmadmin.app.view.interfaces.KeyControlledComponent;
 import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
@@ -18,12 +19,11 @@ import java.awt.FlowLayout;
 import java.awt.Rectangle;
 
 @Getter
-public abstract class AbstractModal extends Panel implements ComplexComponent, ControlComponent {
+public abstract class AbstractModal extends Panel implements ComplexComponent, ControlComponent, KeyControlledComponent {
     private final Panel backgroundPanel;
     private final Panel topPanel;
     private final Button closeButton;
     private final ModalController controller;
-
 
     public AbstractModal() {
         super(new Rectangle(FRAME_WIDTH/4, FRAME_HEIGHT/4, FRAME_WIDTH/2, FRAME_HEIGHT/2), new BorderLayout(), new Appearance(AppearanceRepository.MODAL_APPEARANCE));

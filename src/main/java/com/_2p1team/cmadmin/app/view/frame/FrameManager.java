@@ -1,5 +1,6 @@
 package com._2p1team.cmadmin.app.view.frame;
 
+import com._2p1team.cmadmin.support.constants.states.FrameState;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import com._2p1team.cmadmin.swing.override.constants.Position;
 import lombok.Getter;
@@ -20,13 +21,12 @@ public final class FrameManager {
         FrameManager.frame = frame;
     }
 
-    public static Panel getCenterPanel() {
-        return frame.getCenterPanel();
+    public static FrameState getState() {
+        return frame.getFrameState();
     }
 
-    public static void repaintCenterPanel() {
-        frame.getCenterPanel().repaint();
-        frame.getCenterPanel().revalidate();
+    public static Panel getCenterPanel() {
+        return frame.getCenterPanel();
     }
 
     public static void repaintFrame() {
@@ -81,11 +81,6 @@ public final class FrameManager {
             .removeComponent(component);
     }
 
-    public static void repaintRootPanel() {
-        frame.getRootPanel()
-            .repaint();
-    }
-
     public static void revalidateRootPanel() {
         frame.getRootPanel()
             .revalidate();
@@ -94,10 +89,17 @@ public final class FrameManager {
     public static void displayDatabaseConnectModal() {
         frame.getDatabaseConnectModal()
                 .appear();
+
+        frame.setOpenedModal(frame.getDatabaseConnectModal());
+        frame.setFrameState(FrameState.MODAL_OPENED);
     }
 
-    public static void hideDatabaseConnectModal() {
-        frame.getDatabaseConnectModal()
-            .disappear();
+    public static void hideOpenedModal() {
+        if (frame.getOpenedModal() != null) {
+            frame.getOpenedModal()
+                    .disappear();
+
+            revalidateRootPanel();
+        }
     }
 }

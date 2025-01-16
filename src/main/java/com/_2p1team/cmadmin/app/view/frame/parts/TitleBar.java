@@ -5,7 +5,7 @@ import com._2p1team.cmadmin.app.view.components.menu.MenuButton;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
 import com._2p1team.cmadmin.app.view.interfaces.ControlComponent;
-import com._2p1team.cmadmin.app.view.interfaces.KeyControlComponent;
+import com._2p1team.cmadmin.app.view.interfaces.KeyControlledComponent;
 import com._2p1team.cmadmin.support.constants.SizeData;
 import static com._2p1team.cmadmin.support.constants.SizeData.N_BUTTON_SIZE;
 import static com._2p1team.cmadmin.support.constants.SizeData.TITLE_TEXT_SIZE;
@@ -24,7 +24,7 @@ import java.awt.GridLayout;
 import java.util.List;
 
 @Getter
-public final class TitleBar extends Panel implements ComplexComponent, ControlComponent, KeyControlComponent {
+public final class TitleBar extends Panel implements ComplexComponent, ControlComponent, KeyControlledComponent {
     private final Button exitButton;
     private final Button iconifyButton;
 
