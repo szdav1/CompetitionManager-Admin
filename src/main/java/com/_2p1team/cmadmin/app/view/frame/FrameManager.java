@@ -86,6 +86,14 @@ public final class FrameManager {
             .revalidate();
     }
 
+    public static void displayClosingConfirmationModal() {
+        frame.getClosingConfirmationModal()
+            .appear();
+
+        frame.setOpenedModal(frame.getClosingConfirmationModal());
+        frame.setFrameState(FrameState.MODAL_OPENED);
+    }
+
     public static void displayDatabaseConnectModal() {
         frame.getDatabaseConnectModal()
                 .appear();
@@ -98,8 +106,6 @@ public final class FrameManager {
         if (frame.getOpenedModal() != null) {
             frame.getOpenedModal()
                     .disappear();
-
-            revalidateRootPanel();
         }
     }
 }
