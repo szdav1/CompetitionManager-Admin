@@ -28,13 +28,17 @@ public final class AppearanceRepository {
 
     public static final Appearance DROPDOWN_APPEARANCE = new DropdownAppearance();
 
-    public static final Appearance DROPDOWN_BUTTON_1 = new DropdownButtonAppearance1();
+    public static final Appearance BASE_BUTTON_APPEARANCE = new BaseButtonAppearance();
 
-    public static final Appearance DROPDOWN_BUTTON_2 = new DropdownButtonAppearance2();
-
-    public static final Appearance DROPDOWN_BUTTON_3 = new DropdownButtonAppearance3();
+    public static final Appearance MODAL_TITLE_BAR_APPEARANCE = new ModalTitleBarAppearance();
 
     public static final Appearance MODAL_BACKGROUND_APPEARANCE = new ModalBackgroundAppearance();
 
     public static final Appearance MODAL_APPEARANCE = new ModalAppearance();
+
+    public static final Appearance MODAL_CENTER_PANEL_APPEARANCE = new ModalCenterPanelAppearance();
+
+    public static final Appearance EXIT_CONFIRM_LABEL_APPEARANCE = new ExitConfirmLabelAppearance();
+
+    public static final Appearance EXIT_LABEL_APPEARANCE = new ExitLabelAppearance();
 }

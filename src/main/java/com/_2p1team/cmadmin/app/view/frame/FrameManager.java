@@ -34,7 +34,11 @@ public final class FrameManager {
         frame.revalidate();
     }
 
-    public static void exitFrame() {
+    public static void attemptExitFrame() {
+        displayClosingConfirmationModal();
+    }
+
+    public static void directExitFrame() {
         frame.dispose();
         System.exit(0);
     }

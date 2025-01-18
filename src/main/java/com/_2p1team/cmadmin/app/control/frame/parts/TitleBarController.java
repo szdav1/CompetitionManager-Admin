@@ -35,7 +35,7 @@ public final class TitleBarController extends AbstractController implements Mous
                 int controlIndex = this.getControls().indexOf(control);
 
                 switch (controlIndex) {
-                    case 0 -> FrameManager.exitFrame();
+                    case 0 -> FrameManager.attemptExitFrame();
                     case 1 -> FrameManager.iconifyFrame();
                 }
             }

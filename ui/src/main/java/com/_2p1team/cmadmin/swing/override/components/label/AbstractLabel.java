@@ -3,7 +3,6 @@ package com._2p1team.cmadmin.swing.override.components.label;
 import com._2p1team.cmadmin.swing.override.components.AppearanceComponent;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import com._2p1team.cmadmin.swing.override.graphics.G2DPainter;
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
@@ -15,7 +14,6 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 @Getter
-@AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public abstract class AbstractLabel extends JLabel implements AppearanceComponent {
     private final Appearance appearance;
@@ -58,6 +56,18 @@ public abstract class AbstractLabel extends JLabel implements AppearanceComponen
 
     public AbstractLabel(Rectangle bounds, final Appearance appearance) {
         this(bounds, "", appearance);
+    }
+
+    public AbstractLabel(Appearance appearance) {
+        this(
+            new Dimension(
+                appearance.getIconSet()
+                    .getDefaultIcon().getIconWidth(),
+                appearance.getIconSet()
+                    .getDefaultIcon().getIconHeight()
+            ),
+            appearance
+        );
     }
 
     @Override

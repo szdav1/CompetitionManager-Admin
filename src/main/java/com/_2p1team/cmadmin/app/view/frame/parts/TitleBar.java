@@ -65,21 +65,21 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
     }
 
     private void initFileMenu() {
-        this.fileButton.addButtonToDropdownPanel("Competition", new Appearance(AppearanceRepository.DROPDOWN_BUTTON_1));
-        this.fileButton.addButtonToDropdownPanel("Poule", new Appearance(AppearanceRepository.DROPDOWN_BUTTON_2));
-        this.fileButton.addButtonToDropdownPanel("Table", new Appearance(AppearanceRepository.DROPDOWN_BUTTON_3));
+        this.fileButton.addButtonToDropdownPanel("Competition", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.fileButton.addButtonToDropdownPanel("Poule", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.fileButton.addButtonToDropdownPanel("Table", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
     }
 
     private void initDatabaseMenu() {
-        this.databaseButton.addButtonToDropdownPanel("Connect", new Appearance(AppearanceRepository.DROPDOWN_BUTTON_1));
-        this.databaseButton.addButtonToDropdownPanel("View", new Appearance(AppearanceRepository.DROPDOWN_BUTTON_2));
-        this.databaseButton.addButtonToDropdownPanel("Manage", new Appearance(AppearanceRepository.DROPDOWN_BUTTON_3));
+        this.databaseButton.addButtonToDropdownPanel("Connect", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.databaseButton.addButtonToDropdownPanel("View", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.databaseButton.addButtonToDropdownPanel("Manage", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
     }
 
     private void initSettingsMenu() {
-        this.settingsButton.addButtonToDropdownPanel("Window", new Appearance(AppearanceRepository.DROPDOWN_BUTTON_1));
-        this.settingsButton.addButtonToDropdownPanel("Language", new Appearance(AppearanceRepository.DROPDOWN_BUTTON_2));
-        this.settingsButton.addButtonToDropdownPanel("About", new Appearance(AppearanceRepository.DROPDOWN_BUTTON_3));
+        this.settingsButton.addButtonToDropdownPanel("Window", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.settingsButton.addButtonToDropdownPanel("Language", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.settingsButton.addButtonToDropdownPanel("About", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
     }
 
     public void setUpFileMenu() {

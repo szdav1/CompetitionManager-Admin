@@ -13,6 +13,6 @@ public final class FrameController extends WindowAdapter {
 
     @Override
     public void windowClosing(WindowEvent e) {
-        FrameManager.displayClosingConfirmationModal();
+        FrameManager.attemptExitFrame();
     }
 }

@@ -1,6 +1,7 @@
 package com._2p1team.cmadmin.support.util;
 
 import javax.swing.ImageIcon;
+import java.awt.Dimension;
 import java.awt.Image;
 
 public final class Util {
@@ -19,5 +20,11 @@ public final class Util {
     public static ImageIcon loadImageIcon(final String path, int width, int height) {
         return new ImageIcon(loadImageIcon(path).getImage()
             .getScaledInstance(width, height, Image.SCALE_SMOOTH));
+    }
+
+    public static ImageIcon loadImageIcon(final String path, final Dimension dimension) {
+        System.out.println(dimension);
+        return new ImageIcon(loadImageIcon(path).getImage()
+            .getScaledInstance(dimension.width, dimension.height, Image.SCALE_SMOOTH));
     }
 }

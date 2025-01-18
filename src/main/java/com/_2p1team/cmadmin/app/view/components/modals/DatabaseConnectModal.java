@@ -9,6 +9,11 @@ public final class DatabaseConnectModal extends AbstractModal {
     }
 
     @Override
+    public void setUpComponent() {
+
+    }
+
+    @Override
     public List<JComponent> getControls() {
         return List.of(this.getCloseButton());
     }

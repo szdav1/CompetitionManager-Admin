@@ -28,6 +28,10 @@ public class Label extends AbstractLabel {
         super(bounds, appearance);
     }
 
+    public Label(Appearance appearance) {
+        super(appearance);
+    }
+
     @Override
     public Appearance getComponentAppearance() {
         return this.getAppearance();
