@@ -11,6 +11,6 @@ import com._2p1team.cmadmin.swing.override.graphics.configs.SimplePaintConfigura
 public final class ExitLabelAppearance extends Appearance {
     public ExitLabelAppearance() {
         this.setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)));
-        this.setIconSet(new IconSet(Util.loadImageIcon("/assets/exitIcon.png", DirectSize.sizeByFrame(9, 12))));
+        this.setIconSet(new IconSet(Util.loadImageIcon("/assets/exitIcon.png", DirectSize.sizeByFrame(9, 14))));
     }
 }

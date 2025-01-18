@@ -25,8 +25,8 @@ public final class WindowClosingConfirmationModal extends AbstractModal {
         this.innerPanel = new Panel(new Dimension(this.getWidth(), this.getHeight()-BUTTON_HEIGHT), null, AppearanceRepository.MODAL_TITLE_BAR_APPEARANCE);
         this.exitLabel = new Label(AppearanceRepository.EXIT_LABEL_APPEARANCE);
         this.exitLabel.setLocation((this.getWidth()/2)-(this.exitLabel.getWidth()/2), (this.getHeight()/2)-(this.exitLabel.getHeight()/2)-(BUTTON_HEIGHT*2));
-        this.confirmButton = new Button(BUTTON_SIZE, "Confirm", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
-        this.cancelButton = new Button(BUTTON_SIZE, "Cancel", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.confirmButton = new Button(BUTTON_SIZE, "Confirm [Enter]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.cancelButton = new Button(BUTTON_SIZE, "Cancel [Esc]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
         new WindowClosingConfirmationModalController(this);
         this.setUpComponent();

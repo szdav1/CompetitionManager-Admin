@@ -3,6 +3,16 @@ package com._2p1team.cmadmin.app.view.components.modals;
 import javax.swing.JComponent;
 import java.util.List;
 
+/*
+* FIXME
+* =====
+* Things needed in order to connect to a database
+* URL:
+*       Append to the beginning: jdbc:mysql://
+*       Append to the end:       ?useSSL=false&serverTimezone=UTC
+* User
+* Password
+* */
 public final class DatabaseConnectModal extends AbstractModal {
     public DatabaseConnectModal() {
         super();
@@ -15,11 +25,11 @@ public final class DatabaseConnectModal extends AbstractModal {
 
     @Override
     public List<JComponent> getControls() {
-        return List.of(this.getCloseButton());
+        return List.of();
     }
 
     @Override
     public List<JComponent> getKeyControls() {
-        return List.of(this.getCloseButton());
+        return List.of();
     }
 }
