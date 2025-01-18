@@ -13,6 +13,7 @@ import java.util.List;
 * User
 * Password
 * */
+// TODO: Think about whether this is needed or not
 public final class DatabaseConnectModal extends AbstractModal {
     public DatabaseConnectModal() {
         super();

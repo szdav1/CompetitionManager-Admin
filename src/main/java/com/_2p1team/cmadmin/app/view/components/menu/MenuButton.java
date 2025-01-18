@@ -1,6 +1,5 @@
 package com._2p1team.cmadmin.app.view.components.menu;
 
-import com._2p1team.cmadmin.app.control.AbstractController;
 import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
@@ -28,7 +27,7 @@ public final class MenuButton extends Button {
         super(BUTTON_SIZE, text, appearance);
 
         this.toggled = false;
-        this.dropdownPanel = new Panel(new Rectangle(0, 0, BUTTON_WIDTH, BUTTON_HEIGHT*5), new FlowLayout(FlowLayout.CENTER, 0, 0), AppearanceRepository.DROPDOWN_APPEARANCE);
+        this.dropdownPanel = new Panel(new Rectangle(0, 0, W_BUTTON_WIDTH, BUTTON_HEIGHT*5), new FlowLayout(FlowLayout.CENTER, 0, 0), AppearanceRepository.DROPDOWN_APPEARANCE);
         this.buttons = new ArrayList<>();
     }
 
@@ -37,7 +36,7 @@ public final class MenuButton extends Button {
     }
 
     public void addButtonToDropdownPanel(final String buttonText, final Appearance appearance) {
-        Button button = new Button(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT), buttonText, appearance);
+        Button button = new Button(new Dimension(W_BUTTON_WIDTH, BUTTON_HEIGHT), buttonText, appearance);
 
         this.dropdownPanel.addComponent(button);
         this.buttons.add(button);
