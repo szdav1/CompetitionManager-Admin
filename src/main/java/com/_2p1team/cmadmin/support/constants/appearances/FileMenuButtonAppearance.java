@@ -2,7 +2,7 @@ package com._2p1team.cmadmin.support.constants.appearances;
 
 import com._2p1team.cmadmin.support.constants.AppearanceConstants;
 import com._2p1team.cmadmin.support.constants.CustomColors;
-import com._2p1team.cmadmin.support.util.DirectSize;
+import com._2p1team.cmadmin.support.util.DirectIconSize;
 import com._2p1team.cmadmin.support.util.Util;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import com._2p1team.cmadmin.swing.override.graphics.build.BorderConfigurationBuilder;
@@ -29,6 +29,6 @@ public final class FileMenuButtonAppearance extends Appearance {
                 .build()
         );
 
-        this.setIconSet(new IconSet(Util.loadImageIcon("/assets/fileIcon.png", DirectSize.sizeByFrame(1, 2))));
+        this.setIconSet(new IconSet(Util.loadImageIcon("/assets/fileIcon.png", DirectIconSize.sizeByFrame(1, 2))));
     }
 }

@@ -1,7 +1,5 @@
 package com._2p1team.cmadmin.support.settings;
 
-import java.awt.Dimension;
-
 public final class WindowSettings {
     public static final WindowSettingsLoader loader = new WindowSettingsLoader("/settings/Settings.json");
 
