@@ -27,6 +27,8 @@ public final class TitleBarController extends AbstractController implements Mous
         this.dropdownPanelButtons = new ArrayList<>();
         this.menuButtons.forEach(menuButton -> dropdownPanelButtons.addAll(menuButton.getButtons()));
         this.dropdownPanelButtons.forEach(dropdownPanelButton -> dropdownPanelButton.addActionListener(this));
+
+        new TitleBarKeyController(titleBar);
     }
 
     public void controlFrameState(final ActionEvent event) {
