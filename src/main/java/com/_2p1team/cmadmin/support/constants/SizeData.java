@@ -44,4 +44,8 @@ public final class SizeData {
 
     public static final int W_LABEL_WIDTH = FRAME_WIDTH*25/100;
     public static final Dimension W_LABEL_SIZE = new Dimension(W_LABEL_WIDTH, BUTTON_HEIGHT);
+
+    public static final int SHORTCUT_KEY_LABEL_WIDTH = FRAME_WIDTH/100;
+    public static final int SHORTCUT_KEY_LABEL_HEIGHT = SHORTCUT_KEY_LABEL_WIDTH;
+    public static final Dimension SHORTCUT_KEY_LABEL_SIZE = new Dimension(SHORTCUT_KEY_LABEL_WIDTH, SHORTCUT_KEY_LABEL_HEIGHT);
 }

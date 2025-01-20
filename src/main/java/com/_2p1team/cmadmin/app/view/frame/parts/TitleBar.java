@@ -6,6 +6,7 @@ import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
 import com._2p1team.cmadmin.app.view.interfaces.ControlComponent;
 import com._2p1team.cmadmin.app.view.interfaces.KeyControlledComponent;
+import com._2p1team.cmadmin.support.constants.AppearanceConstants;
 import com._2p1team.cmadmin.support.constants.SizeData;
 import static com._2p1team.cmadmin.support.constants.SizeData.N_BUTTON_SIZE;
 import static com._2p1team.cmadmin.support.constants.SizeData.TITLE_TEXT_SIZE;
@@ -18,6 +19,8 @@ import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import lombok.Getter;
 
 import javax.swing.JComponent;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -68,18 +71,36 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
         this.fileButton.addButtonToDropdownPanel("Competition [F1]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
         this.fileButton.addButtonToDropdownPanel("Poule [F3]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
         this.fileButton.addButtonToDropdownPanel("Table [F5]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+
+        this.fileButton.getButtons()
+            .forEach(button -> {
+                button.setBorder(new EmptyBorder(0, AppearanceConstants.PADDING, 0, 0));
+                button.setHorizontalAlignment(SwingConstants.LEFT);
+            });
     }
 
     private void initDatabaseMenu() {
-        this.databaseButton.addButtonToDropdownPanel("Connect [F2]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
-        this.databaseButton.addButtonToDropdownPanel("View [F4]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
-        this.databaseButton.addButtonToDropdownPanel("Manage [F6]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.databaseButton.addButtonToDropdownPanel("View [F2]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.databaseButton.addButtonToDropdownPanel("Add Fencer [F4]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.databaseButton.addButtonToDropdownPanel("Remove Fencer [F6]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+
+        this.databaseButton.getButtons()
+            .forEach(button -> {
+                button.setBorder(new EmptyBorder(0, AppearanceConstants.PADDING, 0, 0));
+                button.setHorizontalAlignment(SwingConstants.LEFT);
+            });
     }
 
     private void initSettingsMenu() {
         this.settingsButton.addButtonToDropdownPanel("Window", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
         this.settingsButton.addButtonToDropdownPanel("Language", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
         this.settingsButton.addButtonToDropdownPanel("About", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+
+        this.settingsButton.getButtons()
+            .forEach(button -> {
+                button.setBorder(new EmptyBorder(0, AppearanceConstants.PADDING, 0, 0));
+                button.setHorizontalAlignment(SwingConstants.LEFT);
+            });
     }
 
     public void setUpFileMenu() {

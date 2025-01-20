@@ -1,6 +1,7 @@
 package com._2p1team.cmadmin.app.control.frame;
 
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
+import com._2p1team.cmadmin.support.constants.states.FrameState;
 import com._2p1team.cmadmin.swing.override.frame.AbstractFrame;
 
 import java.awt.event.WindowAdapter;
@@ -13,6 +14,7 @@ public final class FrameController extends WindowAdapter {
 
     @Override
     public void windowClosing(WindowEvent e) {
-        FrameManager.attemptExitFrame();
+        if (FrameManager.getState() != FrameState.MODAL_OPENED)
+            FrameManager.attemptExitFrame();
     }
 }

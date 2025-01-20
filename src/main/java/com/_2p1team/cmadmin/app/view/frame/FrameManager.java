@@ -110,6 +110,8 @@ public final class FrameManager {
         if (frame.getOpenedModal() != null) {
             frame.getOpenedModal()
                     .disappear();
+
+            frame.setFrameState(FrameState.DEFAULT);
         }
     }
 }

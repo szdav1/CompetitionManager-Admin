@@ -8,7 +8,7 @@ import com._2p1team.cmadmin.swing.override.components.button.Button;
 import java.awt.event.ActionEvent;
 
 public final class WindowClosingConfirmationModalController extends AbstractController {
-    public WindowClosingConfirmationModalController(WindowClosingConfirmationModal component) {
+    public WindowClosingConfirmationModalController(final WindowClosingConfirmationModal component) {
         super(component);
 
         new WindowClosingConfirmationModalKeyController(component);

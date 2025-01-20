@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
 public final class WindowClosingConfirmationModalKeyController extends AbstractKeyController {
-    public WindowClosingConfirmationModalKeyController(WindowClosingConfirmationModal keyControlledComponent) {
+    public WindowClosingConfirmationModalKeyController(final WindowClosingConfirmationModal keyControlledComponent) {
         super(keyControlledComponent);
 
         this.getKeyControlledComponent()
@@ -33,7 +33,6 @@ public final class WindowClosingConfirmationModalKeyController extends AbstractK
         public void actionPerformed(ActionEvent e) {
             if (FrameManager.getState() == FrameState.MODAL_OPENED) {
                 FrameManager.directExitFrame();
-                System.out.println("Hello");
             }
         }
     }

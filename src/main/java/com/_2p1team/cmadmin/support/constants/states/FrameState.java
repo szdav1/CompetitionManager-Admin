@@ -7,7 +7,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum FrameState {
     DEFAULT(0),
-    MODAL_OPENED(1);
+    MODAL_OPENED(1),
+    CLOSE_FRAME_MODAL_OPENED(2);
 
     private final int value;
 }
