@@ -1,6 +1,5 @@
 package com._2p1team.cmadmin.support.constants;
 
-import com._2p1team.cmadmin.support.settings.WindowSettings;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -9,17 +8,12 @@ import java.awt.Toolkit;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class SizeData {
+
     public static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
     public static final int SCREEN_WIDTH = SCREEN_SIZE.width;
     public static final int SCREEN_HEIGHT = SCREEN_SIZE.height;
 
-    public static final Dimension FRAME_SIZE =
-        !WindowSettings.getWindowSize().isBlank() && WindowSettings.getWindowSize().equalsIgnoreCase("full_screen") ?
-            SCREEN_SIZE :
-            new Dimension(
-                WindowSettings.getWindowWidth(),
-                WindowSettings.getWindowHeight()
-            );
+    public static final Dimension FRAME_SIZE = SCREEN_SIZE;
 
     public static final int FRAME_WIDTH = FRAME_SIZE.width;
     public static final int FRAME_HEIGHT = FRAME_SIZE.height;
@@ -48,4 +42,5 @@ public final class SizeData {
     public static final int SHORTCUT_KEY_LABEL_WIDTH = FRAME_WIDTH/100;
     public static final int SHORTCUT_KEY_LABEL_HEIGHT = SHORTCUT_KEY_LABEL_WIDTH;
     public static final Dimension SHORTCUT_KEY_LABEL_SIZE = new Dimension(SHORTCUT_KEY_LABEL_WIDTH, SHORTCUT_KEY_LABEL_HEIGHT);
+
 }
