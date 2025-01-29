@@ -1,6 +1,7 @@
 package com._2p1team.cmadmin.app.control.frame.parts;
 
 import com._2p1team.cmadmin.app.control.AbstractKeyController;
+import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import com._2p1team.cmadmin.app.view.frame.parts.TitleBar;
 
 import javax.swing.AbstractAction;
@@ -53,7 +54,7 @@ public final class TitleBarKeyController extends AbstractKeyController {
     private static class ViewDatabaseAction extends AbstractAction {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("View database");
+            FrameManager.displayViewDatabaseModal();
         }
     }
 

@@ -2,7 +2,7 @@ package com._2p1team.cmadmin.app.view.frame;
 
 import com._2p1team.cmadmin.app.control.frame.FrameController;
 import com._2p1team.cmadmin.app.view.components.modals.AbstractModal;
-import com._2p1team.cmadmin.app.view.components.modals.DatabaseConnectModal;
+import com._2p1team.cmadmin.app.view.components.modals.ViewDatabaseModal;
 import com._2p1team.cmadmin.app.view.components.modals.WindowClosingConfirmationModal;
 import com._2p1team.cmadmin.app.view.frame.parts.CenterPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.FooterPanel;
@@ -33,7 +33,7 @@ public final class AppFrame extends AbstractFrame {
     @Getter(AccessLevel.PACKAGE)
     private final WindowClosingConfirmationModal closingConfirmationModal;
     @Getter(/*AccessLevel.PACKAGE*/) // TODO: For testing purposes only
-    private final DatabaseConnectModal databaseConnectModal;
+    private final ViewDatabaseModal viewDatabaseModal;
 
     @Getter(AccessLevel.PACKAGE)
     @Setter(AccessLevel.PACKAGE)
@@ -62,7 +62,7 @@ public final class AppFrame extends AbstractFrame {
         this.frameState = FrameState.DEFAULT;
 
         this.closingConfirmationModal = new WindowClosingConfirmationModal();
-        this.databaseConnectModal = new DatabaseConnectModal();
+        this.viewDatabaseModal = new ViewDatabaseModal();
 
         this.openedModal = null;
 
@@ -90,10 +90,10 @@ public final class AppFrame extends AbstractFrame {
         this.titleBar.setUpSettingsMenu();
 
         this.rootPanel.addComponent(this.closingConfirmationModal.getBackgroundPanel(), Position.HIGH);
-        this.rootPanel.addComponent(this.databaseConnectModal.getBackgroundPanel(), Position.HIGH);
+        this.rootPanel.addComponent(this.viewDatabaseModal.getBackgroundPanel(), Position.HIGH);
 
         this.closingConfirmationModal.disappear();
-        this.databaseConnectModal.disappear();
+        this.viewDatabaseModal.disappear();
 
         this.addComponent(this.rootPanel);
     }

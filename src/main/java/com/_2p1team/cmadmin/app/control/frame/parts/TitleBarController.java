@@ -83,7 +83,7 @@ public final class TitleBarController extends AbstractController implements Mous
                     }
 
                     // Database menu
-                    case 3 -> FrameManager.displayDatabaseConnectModal();
+                    case 3 -> FrameManager.displayViewDatabaseModal();
                     case 4 -> {
                     }
                     case 5 -> {

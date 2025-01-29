@@ -14,8 +14,8 @@ import java.util.List;
 * Password
 * */
 // TODO: Think about whether this is needed or not
-public final class DatabaseConnectModal extends AbstractModal {
-    public DatabaseConnectModal() {
+public final class ViewDatabaseModal extends AbstractModal {
+    public ViewDatabaseModal() {
         super();
     }
 

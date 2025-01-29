@@ -98,11 +98,11 @@ public final class FrameManager {
         frame.setFrameState(FrameState.MODAL_OPENED);
     }
 
-    public static void displayDatabaseConnectModal() {
-        frame.getDatabaseConnectModal()
+    public static void displayViewDatabaseModal() {
+        frame.getViewDatabaseModal()
                 .appear();
 
-        frame.setOpenedModal(frame.getDatabaseConnectModal());
+        frame.setOpenedModal(frame.getViewDatabaseModal());
         frame.setFrameState(FrameState.MODAL_OPENED);
     }
 
