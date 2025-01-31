@@ -32,7 +32,7 @@ public final class AppFrame extends AbstractFrame {
 
     @Getter(AccessLevel.PACKAGE)
     private final WindowClosingConfirmationModal closingConfirmationModal;
-    @Getter(/*AccessLevel.PACKAGE*/) // TODO: For testing purposes only
+    @Getter(AccessLevel.PACKAGE)
     private final ViewDatabaseModal viewDatabaseModal;
 
     @Getter(AccessLevel.PACKAGE)
