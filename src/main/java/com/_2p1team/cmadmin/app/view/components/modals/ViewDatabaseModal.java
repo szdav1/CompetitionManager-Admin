@@ -4,16 +4,13 @@ import javax.swing.JComponent;
 import java.util.List;
 
 /*
-* FIXME
-* =====
-* Things needed in order to connect to a database
-* URL:
-*       Append to the beginning: jdbc:mysql://
-*       Append to the end:       ?useSSL=false&serverTimezone=UTC
-* User
-* Password
-* */
-// TODO: Think about whether this is needed or not
+ * Things needed in order to connect to a database
+ * URL:
+ *       Append to the beginning: jdbc:mysql://
+ *       Append to the end:       ?useSSL=false&serverTimezone=UTC
+ * User
+ * Password
+ * */
 public final class ViewDatabaseModal extends AbstractModal {
     public ViewDatabaseModal() {
         super();
