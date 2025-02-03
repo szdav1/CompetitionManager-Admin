@@ -46,4 +46,8 @@ public final class AppearanceRepository {
 
     public static final Appearance EXIT_LABEL_APPEARANCE = new ExitLabelAppearance();
 
+    public static final Appearance BASE_LABEL_APPEARANCE = new BaseLabelAppearance();
+
+    public static final Appearance COMPETITOR_COMPONENT_APPEARANCE = new CompetitorComponentAppearance();
+
 }

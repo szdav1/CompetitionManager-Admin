@@ -27,4 +27,8 @@ public class Competitor {
         return LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 
+    public String getBirthDateAsString() {
+        return this.birthDate;
+    }
+
 }
