@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import java.awt.Dimension;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -39,8 +40,9 @@ public final class SizeData {
     public static final int W_LABEL_WIDTH = FRAME_WIDTH*25/100;
     public static final Dimension W_LABEL_SIZE = new Dimension(W_LABEL_WIDTH, BUTTON_HEIGHT);
 
-    public static final int SHORTCUT_KEY_LABEL_WIDTH = FRAME_WIDTH/100;
-    public static final int SHORTCUT_KEY_LABEL_HEIGHT = SHORTCUT_KEY_LABEL_WIDTH;
-    public static final Dimension SHORTCUT_KEY_LABEL_SIZE = new Dimension(SHORTCUT_KEY_LABEL_WIDTH, SHORTCUT_KEY_LABEL_HEIGHT);
+    public static final int MODAL_WIDTH = FRAME_WIDTH*70/100;
+    public static final int MODAL_HEIGHT = FRAME_HEIGHT*70/100;
+    public static final Dimension MODAL_SIZE = new Dimension(MODAL_WIDTH, MODAL_HEIGHT);
+    public static final Rectangle MODAL_BOUNDS = new Rectangle((FRAME_WIDTH/2)-(MODAL_WIDTH/2), (FRAME_HEIGHT/2)-(MODAL_HEIGHT/2), MODAL_WIDTH, MODAL_HEIGHT);
 
 }
