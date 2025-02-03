@@ -12,6 +12,7 @@ import java.awt.Image;
 @Getter
 @ToString
 public abstract class AbstractFrame extends JFrame implements Container {
+
     private final Panel contentPanel;
 
     public AbstractFrame(final Image iconImage, final String title) {
@@ -31,4 +32,5 @@ public abstract class AbstractFrame extends JFrame implements Container {
         this.setLayout(new BorderLayout());
         this.setVisible(true);
     }
+
 }

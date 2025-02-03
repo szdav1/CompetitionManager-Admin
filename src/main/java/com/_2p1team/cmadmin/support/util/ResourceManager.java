@@ -1,9 +1,14 @@
 package com._2p1team.cmadmin.support.util;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+
 import java.io.FileReader;
 import java.net.URL;
 
+@AllArgsConstructor(access=AccessLevel.NONE)
 public final class ResourceManager {
+
     public static String get(final String filePath) {
         URL fileURL = ResourceManager.class.getResource(filePath);
 
@@ -17,4 +22,5 @@ public final class ResourceManager {
             return "resources"+filePath;
         }
     }
+
 }

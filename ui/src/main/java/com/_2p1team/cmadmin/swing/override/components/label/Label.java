@@ -1,14 +1,15 @@
 package com._2p1team.cmadmin.swing.override.components.label;
 
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.awt.event.MouseEvent;
-
 import com._2p1team.cmadmin.swing.override.constants.UIState;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import com._2p1team.cmadmin.swing.override.graphics.G2DPainter;
 
+import java.awt.Dimension;
+import java.awt.Rectangle;
+import java.awt.event.MouseEvent;
+
 public class Label extends AbstractLabel {
+
     public Label() {
     }
 
@@ -64,4 +65,5 @@ public class Label extends AbstractLabel {
         this.getAppearance().setState(UIState.DEFAULT);
         G2DPainter.drawComponentUIElements(this);
     }
+
 }

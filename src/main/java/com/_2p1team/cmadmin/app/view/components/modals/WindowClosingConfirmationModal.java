@@ -14,6 +14,7 @@ import java.awt.Rectangle;
 import java.util.List;
 
 public final class WindowClosingConfirmationModal extends AbstractModal {
+
     private final Label confirmLabel;
     private final Panel innerPanel;
     private final Label exitLabel;
@@ -50,4 +51,5 @@ public final class WindowClosingConfirmationModal extends AbstractModal {
     public List<JComponent> getKeyControls() {
         return List.of(this.confirmButton, this.cancelButton);
     }
+
 }

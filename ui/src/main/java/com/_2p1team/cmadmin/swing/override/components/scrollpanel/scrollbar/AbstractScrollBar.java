@@ -7,8 +7,9 @@ import lombok.Getter;
 import javax.swing.JScrollBar;
 
 @Getter
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper=false)
 public abstract class AbstractScrollBar extends JScrollBar {
+
     private final Appearance appearance;
 
     public AbstractScrollBar(final int orientation, final Appearance appearance) {
@@ -19,4 +20,5 @@ public abstract class AbstractScrollBar extends JScrollBar {
         this.repaint();
         this.setUI(new ScrollBarUI(appearance));
     }
+
 }

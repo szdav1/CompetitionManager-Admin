@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.util.List;
 
 public final class TitleBarKeyController extends AbstractKeyController {
+
     public TitleBarKeyController(final TitleBar keyControlledComponent) {
         super(keyControlledComponent);
 
@@ -31,44 +32,57 @@ public final class TitleBarKeyController extends AbstractKeyController {
     }
 
     private static class NewCompetitionAction extends AbstractAction {
+
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("New Competition");
         }
+
     }
 
     private static class NewPouleAction extends AbstractAction {
+
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("New poule");
         }
+
     }
 
     private static class NewTableAction extends AbstractAction {
+
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("New table");
         }
+
     }
 
     private static class ViewDatabaseAction extends AbstractAction {
+
         @Override
         public void actionPerformed(ActionEvent e) {
             FrameManager.displayViewDatabaseModal();
         }
+
     }
 
     private static class AddFencerAction extends AbstractAction {
+
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("Add fencer");
         }
+
     }
 
     private static class RemoveFencerAction extends AbstractAction {
+
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("Remove fencer");
         }
+
     }
+
 }

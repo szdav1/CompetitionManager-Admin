@@ -8,6 +8,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public final class FrameController extends WindowAdapter {
+
     public FrameController(final AbstractFrame frame) {
         frame.addWindowListener(this);
     }
@@ -17,4 +18,5 @@ public final class FrameController extends WindowAdapter {
         if (FrameManager.getState() != FrameState.MODAL_OPENED)
             FrameManager.attemptExitFrame();
     }
+
 }

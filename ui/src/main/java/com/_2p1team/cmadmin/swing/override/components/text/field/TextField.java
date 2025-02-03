@@ -9,6 +9,7 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
 public class TextField extends AbstractTextField {
+
     public TextField(Appearance appearance) {
         super(appearance);
     }
@@ -64,4 +65,5 @@ public class TextField extends AbstractTextField {
         this.getAppearance().setState(UIState.DEFAULT);
         G2DPainter.drawComponentUIElements(this);
     }
+
 }

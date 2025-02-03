@@ -11,8 +11,10 @@ import com._2p1team.cmadmin.swing.override.graphics.configs.SimplePaintConfigura
 import java.awt.Color;
 
 public final class DropdownAppearance extends Appearance {
+
     public DropdownAppearance() {
         this.setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(Color.black)));
         this.setBorderConfiguration(new BorderConfiguration(1, AppearanceConstants.BORDER_RADIUS, new LinearGradientPaintConfiguration(CustomColors.REDDISH, CustomColors.OPAQUE, CustomColors.OPAQUE, CustomColors.ORANGEISH, CustomColors.REDDISH)));
     }
+
 }

@@ -4,6 +4,7 @@ import com._2p1team.cmadmin.swing.override.graphics.configs.BorderConfiguration;
 import com._2p1team.cmadmin.swing.override.graphics.configs.LinearGradientPaintConfiguration;
 
 public final class BorderConfigurationBuilder {
+
     private final BorderConfiguration configuration;
 
     public BorderConfigurationBuilder() {
@@ -43,4 +44,5 @@ public final class BorderConfigurationBuilder {
     public BorderConfiguration build() {
         return this.configuration;
     }
+
 }

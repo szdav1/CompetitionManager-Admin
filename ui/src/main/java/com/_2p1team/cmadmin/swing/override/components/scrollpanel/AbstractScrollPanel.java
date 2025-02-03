@@ -15,8 +15,9 @@ import java.awt.LayoutManager;
 import java.awt.Rectangle;
 
 @Getter
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper=false)
 public abstract class AbstractScrollPanel extends JScrollPane implements Container, AppearanceComponent {
+
     private final Appearance appearance;
     private final Panel viewPanel;
 
@@ -70,4 +71,5 @@ public abstract class AbstractScrollPanel extends JScrollPane implements Contain
     public AbstractScrollPanel(Rectangle bounds, final Appearance appearance) {
         this(bounds, null, appearance);
     }
+
 }

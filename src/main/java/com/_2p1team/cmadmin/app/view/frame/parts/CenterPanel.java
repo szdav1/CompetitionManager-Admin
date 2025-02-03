@@ -17,4 +17,5 @@ public final class CenterPanel extends Panel implements ComplexComponent {
     @Override
     public void setUpComponent() {
     }
+
 }

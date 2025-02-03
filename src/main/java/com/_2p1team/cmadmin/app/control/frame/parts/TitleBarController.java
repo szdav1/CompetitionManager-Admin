@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class TitleBarController extends AbstractController implements MouseListener {
+
     private final List<MenuButton> menuButtons;
     private final List<Button> dropdownPanelButtons;
 
@@ -151,4 +152,5 @@ public final class TitleBarController extends AbstractController implements Mous
             }
         });
     }
+
 }

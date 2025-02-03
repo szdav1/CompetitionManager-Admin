@@ -8,6 +8,7 @@ import com._2p1team.cmadmin.swing.override.components.button.Button;
 import java.awt.event.ActionEvent;
 
 public final class WindowClosingConfirmationModalController extends AbstractController {
+
     public WindowClosingConfirmationModalController(final WindowClosingConfirmationModal component) {
         super(component);
 
@@ -29,4 +30,5 @@ public final class WindowClosingConfirmationModalController extends AbstractCont
         else if (e.getSource().equals(cancelButton))
             FrameManager.hideOpenedModal();
     }
+
 }

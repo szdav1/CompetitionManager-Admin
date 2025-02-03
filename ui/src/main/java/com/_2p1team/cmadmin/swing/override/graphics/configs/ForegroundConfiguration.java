@@ -1,13 +1,14 @@
 package com._2p1team.cmadmin.swing.override.graphics.configs;
 
-import java.awt.Color;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import java.awt.Color;
 
 @Data
 @AllArgsConstructor
 public final class ForegroundConfiguration {
+
     private final Color defaultColor;
     private final Color hoveredColor;
     private final Color pressedColor;
@@ -27,4 +28,5 @@ public final class ForegroundConfiguration {
         this.pressedColor = defaultColor;
         this.releasedColor = hoveredColor;
     }
+
 }

@@ -1,14 +1,15 @@
 package com._2p1team.cmadmin.swing.override.graphics.configs;
 
-import java.awt.Font;
-import java.awt.Toolkit;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import java.awt.Font;
+import java.awt.Toolkit;
 
 @Data
 @AllArgsConstructor
 public final class FontSet {
+
     public static final Font SYSTEM_FONT = new Font(Font.DIALOG, Font.PLAIN, calculateFontSize());
 
 
@@ -37,4 +38,5 @@ public final class FontSet {
             .getScreenSize()
             .width/100);
     }
+
 }

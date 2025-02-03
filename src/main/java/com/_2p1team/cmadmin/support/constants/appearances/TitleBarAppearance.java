@@ -6,7 +6,9 @@ import com._2p1team.cmadmin.swing.override.graphics.configs.BackgroundConfigurat
 import com._2p1team.cmadmin.swing.override.graphics.configs.SimplePaintConfiguration;
 
 public final class TitleBarAppearance extends Appearance {
+
     public TitleBarAppearance() {
         this.setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE_BLACK)));
     }
+
 }

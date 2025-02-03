@@ -6,7 +6,9 @@ import com._2p1team.cmadmin.swing.override.graphics.configs.BackgroundConfigurat
 import com._2p1team.cmadmin.swing.override.graphics.configs.SimplePaintConfiguration;
 
 public final class RootPanelAppearance extends Appearance {
+
     public RootPanelAppearance() {
         this.setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)));
     }
+
 }

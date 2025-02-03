@@ -9,6 +9,7 @@ import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import java.awt.FlowLayout;
 
 public final class FooterPanel extends Panel {
+
     public FooterPanel() {
         super(TITLE_SIZE, new FlowLayout(FlowLayout.CENTER), AppearanceRepository.TITLE_BAR_APPEARANCE);
 
@@ -16,4 +17,5 @@ public final class FooterPanel extends Panel {
 
         this.addComponent(versionLabel);
     }
+
 }

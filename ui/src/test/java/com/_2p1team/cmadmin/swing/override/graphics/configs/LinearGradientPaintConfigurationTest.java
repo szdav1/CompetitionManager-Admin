@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.awt.Color;
 
 class LinearGradientPaintConfigurationTest {
+
     static LinearGradientPaintConfiguration configuration;
 
     @BeforeAll
@@ -40,4 +41,5 @@ class LinearGradientPaintConfigurationTest {
             () -> Assertions.assertEquals(1.0f, configuration.getFractions()[3])
         );
     }
+
 }

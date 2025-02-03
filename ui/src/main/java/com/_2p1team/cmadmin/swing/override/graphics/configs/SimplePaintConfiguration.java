@@ -1,12 +1,13 @@
 package com._2p1team.cmadmin.swing.override.graphics.configs;
 
-import java.awt.Color;
-
 import lombok.AccessLevel;
 import lombok.Setter;
 
+import java.awt.Color;
+
 @Setter(AccessLevel.PRIVATE)
 public final class SimplePaintConfiguration extends AbstractPaintConfiguration {
+
     public SimplePaintConfiguration() {
     }
 
@@ -18,4 +19,5 @@ public final class SimplePaintConfiguration extends AbstractPaintConfiguration {
     public Color getColor() {
         return this.getColors()[0];
     }
+
 }

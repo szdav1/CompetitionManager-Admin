@@ -8,7 +8,8 @@ import com._2p1team.cmadmin.app.view.frame.parts.CenterPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.FooterPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.RootPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.TitleBar;
-import static com._2p1team.cmadmin.support.constants.SizeData.*;
+import static com._2p1team.cmadmin.support.constants.SizeData.FRAME_HEIGHT;
+import static com._2p1team.cmadmin.support.constants.SizeData.FRAME_WIDTH;
 import com._2p1team.cmadmin.support.constants.states.FrameState;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
@@ -26,19 +27,11 @@ import java.awt.Rectangle;
 
 
 public final class AppFrame extends AbstractFrame {
-    @Getter
-    @Setter(AccessLevel.PACKAGE)
-    private FrameState frameState;
 
     @Getter(AccessLevel.PACKAGE)
     private final WindowClosingConfirmationModal closingConfirmationModal;
     @Getter(AccessLevel.PACKAGE)
     private final ViewDatabaseModal viewDatabaseModal;
-
-    @Getter(AccessLevel.PACKAGE)
-    @Setter(AccessLevel.PACKAGE)
-    private AbstractModal openedModal;
-
     @Getter(AccessLevel.PACKAGE)
     private final RootPanel rootPanel;
     @Getter(AccessLevel.PACKAGE)
@@ -47,6 +40,12 @@ public final class AppFrame extends AbstractFrame {
     @Getter(AccessLevel.PACKAGE)
     private final CenterPanel centerPanel;
     private final FooterPanel footerPanel;
+    @Getter
+    @Setter(AccessLevel.PACKAGE)
+    private FrameState frameState;
+    @Getter(AccessLevel.PACKAGE)
+    @Setter(AccessLevel.PACKAGE)
+    private AbstractModal openedModal;
 
     public AppFrame(Image iconImage, String title) {
         super(iconImage, title);
@@ -111,4 +110,5 @@ public final class AppFrame extends AbstractFrame {
         this.revalidate();
         return component;
     }
+
 }

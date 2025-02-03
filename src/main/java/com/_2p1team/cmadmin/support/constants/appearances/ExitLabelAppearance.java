@@ -9,8 +9,10 @@ import com._2p1team.cmadmin.swing.override.graphics.configs.IconSet;
 import com._2p1team.cmadmin.swing.override.graphics.configs.SimplePaintConfiguration;
 
 public final class ExitLabelAppearance extends Appearance {
+
     public ExitLabelAppearance() {
         this.setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)));
         this.setIconSet(new IconSet(Util.loadImageIcon("/assets/exitIcon.png", DirectIconSize.sizeByFrame(9, 14))));
     }
+
 }

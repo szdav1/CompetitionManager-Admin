@@ -8,6 +8,7 @@ import com._2p1team.cmadmin.swing.override.graphics.configs.BackgroundConfigurat
 import com._2p1team.cmadmin.swing.override.graphics.configs.SimplePaintConfiguration;
 
 public final class ModalTitleBarAppearance extends Appearance {
+
     public ModalTitleBarAppearance() {
         this.setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)));
 
@@ -17,4 +18,5 @@ public final class ModalTitleBarAppearance extends Appearance {
                 .build()
         );
     }
+
 }

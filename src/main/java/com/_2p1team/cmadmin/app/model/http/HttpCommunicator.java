@@ -1,5 +1,8 @@
 package com._2p1team.cmadmin.app.model.http;
 
+import com._2p1team.cmadmin.app.model.competitor.Competitor;
+import com._2p1team.cmadmin.support.constants.HttpEndPoints;
+import com._2p1team.cmadmin.support.util.JsonConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
@@ -7,30 +10,35 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.List;
 
-@AllArgsConstructor(access = AccessLevel.NONE)
+@AllArgsConstructor(access=AccessLevel.NONE)
 public final class HttpCommunicator {
 
-    private static final String URI_HEAD = "http://localhost:8080";
     private static HttpRequest request;
     private static HttpClient client = HttpClient.newHttpClient();
     private static HttpResponse<String> response;
 
-    public static String sendGetRequest(final String url) {
-        try {
-            request = HttpRequest.newBuilder()
-                .uri(new URI(URI_HEAD+url))
-                .GET()
-                .build();
 
-            response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        }
-        catch (Exception exception) {
-            exception.printStackTrace(); // TODO: Create UI error handling
+    @AllArgsConstructor(access=AccessLevel.NONE)
+    public static final class CompetitorApi {
+
+        public static List<Competitor> getAllCompetitors() {
+            try {
+                HttpCommunicator.request = HttpRequest.newBuilder()
+                    .uri(new URI(HttpEndPoints.GET_ALL_COMPETITORS.getUrl()))
+                    .GET()
+                    .build();
+
+                HttpCommunicator.response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            }
+            catch (Exception exception) {
+                exception.printStackTrace(); // TODO: Create UI error handling (modal error handling)
+            }
+
+            return JsonConverter.jsonToFencers(response.body());
         }
 
-        return response.body();
     }
-
 
 }

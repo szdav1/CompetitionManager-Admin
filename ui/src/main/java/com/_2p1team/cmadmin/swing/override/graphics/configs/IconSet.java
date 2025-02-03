@@ -1,13 +1,14 @@
 package com._2p1team.cmadmin.swing.override.graphics.configs;
 
-import javax.swing.ImageIcon;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import javax.swing.ImageIcon;
 
 @Data
 @AllArgsConstructor
 public final class IconSet {
+
     private final ImageIcon defaultIcon;
     private final ImageIcon hoveredIcon;
     private final ImageIcon pressedIcon;
@@ -27,4 +28,5 @@ public final class IconSet {
         this.pressedIcon = defaultIcon;
         this.releasedIcon = hoveredIcon;
     }
+
 }

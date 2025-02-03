@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public final class BackgroundConfiguration {
+
     private AbstractPaintConfiguration defaultConfiguration;
     private AbstractPaintConfiguration hoveredConfiguration;
     private AbstractPaintConfiguration pressedConfiguration;
@@ -25,4 +26,5 @@ public final class BackgroundConfiguration {
         this.pressedConfiguration = defaultConfiguration;
         this.releasedConfiguration = hoveredConfiguration;
     }
+
 }

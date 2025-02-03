@@ -1,19 +1,19 @@
 package com._2p1team.cmadmin.swing.override.components.panel;
 
+import com._2p1team.cmadmin.swing.override.constants.Position;
+import com._2p1team.cmadmin.swing.override.constants.UIState;
+import com._2p1team.cmadmin.swing.override.graphics.Appearance;
+import com._2p1team.cmadmin.swing.override.graphics.G2DPainter;
+
+import javax.swing.JComponent;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.LayoutManager;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JComponent;
-
-import com._2p1team.cmadmin.swing.override.constants.Position;
-import com._2p1team.cmadmin.swing.override.constants.UIState;
-import com._2p1team.cmadmin.swing.override.graphics.Appearance;
-import com._2p1team.cmadmin.swing.override.graphics.G2DPainter;
-
 public class Panel extends AbstractPanel {
+
     public Panel(Appearance appearance) {
         super(appearance);
     }
@@ -87,4 +87,5 @@ public class Panel extends AbstractPanel {
         this.revalidate();
         return component;
     }
+
 }

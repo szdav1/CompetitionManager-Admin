@@ -10,6 +10,7 @@ import java.util.List;
 
 @Getter
 public abstract class AbstractController implements ActionListener {
+
     private final ControlComponent component;
     private final List<JComponent> controls;
 
@@ -22,4 +23,5 @@ public abstract class AbstractController implements ActionListener {
                 button.addActionListener(this);
         });
     }
+
 }

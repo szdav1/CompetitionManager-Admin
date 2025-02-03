@@ -26,6 +26,7 @@ import java.awt.event.KeyEvent;
 
 @Getter
 public abstract class AbstractModal extends Panel implements ComplexComponent, ControlComponent, KeyControlledComponent, ActionListener {
+
     private final Panel backgroundPanel;
     private final Panel topPanel;
     private final Panel centerPanel;
@@ -56,14 +57,6 @@ public abstract class AbstractModal extends Panel implements ComplexComponent, C
         this.backgroundPanel.addComponent(this, Position.HIGH);
     }
 
-    private static class CloseModalAction extends AbstractAction {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (FrameManager.getState() == FrameState.MODAL_OPENED)
-                FrameManager.hideOpenedModal();
-        }
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.closeButton))
@@ -79,4 +72,15 @@ public abstract class AbstractModal extends Panel implements ComplexComponent, C
         this.backgroundPanel.setVisible(false);
         FrameManager.revalidateRootPanel();
     }
+
+    private static class CloseModalAction extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (FrameManager.getState() == FrameState.MODAL_OPENED)
+                FrameManager.hideOpenedModal();
+        }
+
+    }
+
 }

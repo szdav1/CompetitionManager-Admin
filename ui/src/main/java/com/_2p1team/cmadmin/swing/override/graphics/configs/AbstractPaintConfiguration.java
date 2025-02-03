@@ -1,13 +1,14 @@
 package com._2p1team.cmadmin.swing.override.graphics.configs;
 
-import java.awt.Color;
-
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
 
+import java.awt.Color;
+
 @Data
 public abstract class AbstractPaintConfiguration {
+
     @Setter(AccessLevel.NONE)
     private Color[] colors;
     @Setter(AccessLevel.NONE)
@@ -25,4 +26,5 @@ public abstract class AbstractPaintConfiguration {
     public void setFractions(float... fractions) {
         this.fractions = fractions;
     }
+
 }

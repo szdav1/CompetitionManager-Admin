@@ -11,6 +11,7 @@ import com._2p1team.cmadmin.swing.override.graphics.configs.*;
 import java.awt.Color;
 
 public final class FileMenuButtonAppearance extends Appearance {
+
     public FileMenuButtonAppearance() {
         this.enableInteractivity();
 
@@ -31,4 +32,5 @@ public final class FileMenuButtonAppearance extends Appearance {
 
         this.setIconSet(new IconSet(Util.loadImageIcon("/assets/fileIcon.png", DirectIconSize.sizeByFrame(1, 2))));
     }
+
 }

@@ -9,6 +9,7 @@ import java.util.List;
 
 @Getter
 public abstract class AbstractKeyController {
+
     private final KeyControlledComponent keyControlledComponent;
     private final List<Button> controllerComponents;
 
@@ -21,4 +22,5 @@ public abstract class AbstractKeyController {
         this.keyControlledComponent = keyControlledComponent;
         this.controllerComponents = new ArrayList<>();
     }
+
 }

@@ -17,11 +17,12 @@ import java.util.List;
 
 @Getter
 public final class MenuButton extends Button {
-    @Setter
-    private boolean toggled;
+
     private final Panel dropdownPanel;
     @Getter
     private final List<Button> buttons;
+    @Setter
+    private boolean toggled;
 
     public MenuButton(final String text, final Appearance appearance) {
         super(BUTTON_SIZE, text, appearance);
@@ -41,4 +42,5 @@ public final class MenuButton extends Button {
         this.dropdownPanel.addComponent(button);
         this.buttons.add(button);
     }
+
 }

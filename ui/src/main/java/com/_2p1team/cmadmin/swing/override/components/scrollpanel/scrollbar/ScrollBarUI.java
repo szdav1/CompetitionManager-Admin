@@ -16,8 +16,9 @@ import java.awt.Rectangle;
 
 @Getter
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper=false)
 public final class ScrollBarUI extends BasicScrollBarUI {
+
     private final Appearance appearance;
 
     private JButton removeButtons() {
@@ -51,4 +52,5 @@ public final class ScrollBarUI extends BasicScrollBarUI {
         Graphics2D g2 = (Graphics2D) g;
         G2DPainter.paintScrollBarThumb(g2, thumbBounds, this.appearance);
     }
+
 }

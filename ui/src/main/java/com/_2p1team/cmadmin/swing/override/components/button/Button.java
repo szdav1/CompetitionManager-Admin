@@ -9,6 +9,7 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
 public class Button extends AbstractButton {
+
     public Button(Appearance appearance) {
         super(appearance);
     }
@@ -64,4 +65,5 @@ public class Button extends AbstractButton {
         this.getAppearance().setState(UIState.DEFAULT);
         G2DPainter.drawComponentUIElements(this);
     }
+
 }

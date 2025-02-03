@@ -11,6 +11,7 @@ import com._2p1team.cmadmin.swing.override.graphics.configs.*;
 import java.awt.Color;
 
 public final class SettingsMenuButtonAppearance extends Appearance {
+
     public SettingsMenuButtonAppearance() {
         this.enableInteractivity();
 
@@ -31,4 +32,5 @@ public final class SettingsMenuButtonAppearance extends Appearance {
 
         this.setIconSet(new IconSet(Util.loadImageIcon("/assets/settingsIcon.png", DirectIconSize.sizeByFrame(1, 2))));
     }
+
 }

@@ -11,10 +11,12 @@ import java.awt.Color;
 import java.awt.Font;
 
 public final class ExitButtonAppearance extends Appearance {
+
     public ExitButtonAppearance() {
         this.enableInteractivity();
         this.setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)));
         this.setForegroundConfiguration(new ForegroundConfiguration(Color.white, Color.red));
         this.setFontSet(new FontSet(new Font(FontSet.SYSTEM_FONT.getFamily(), Font.BOLD, FontSet.SYSTEM_FONT.getSize())));
     }
+
 }

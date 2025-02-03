@@ -15,8 +15,9 @@ import java.awt.Rectangle;
 
 @Getter
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper=false)
 public abstract class AbstractTextField extends JTextField implements AppearanceComponent {
+
     private final Appearance appearance;
 
     public AbstractTextField() {
@@ -68,4 +69,5 @@ public abstract class AbstractTextField extends JTextField implements Appearance
         super.paint(g);
         g2.dispose();
     }
+
 }

@@ -28,6 +28,7 @@ import java.util.List;
 
 @Getter
 public final class TitleBar extends Panel implements ComplexComponent, ControlComponent, KeyControlledComponent {
+
     private final Button exitButton;
     private final Button iconifyButton;
 
@@ -149,4 +150,5 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
     public List<JComponent> getKeyControls() {
         return List.of(this.exitButton);
     }
+
 }

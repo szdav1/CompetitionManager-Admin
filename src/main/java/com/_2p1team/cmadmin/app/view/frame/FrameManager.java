@@ -8,6 +8,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 
 public final class FrameManager {
+
     private static boolean hasInstance = false;
     private static AppFrame frame;
 
@@ -112,4 +113,5 @@ public final class FrameManager {
             frame.setFrameState(FrameState.DEFAULT);
         }
     }
+
 }

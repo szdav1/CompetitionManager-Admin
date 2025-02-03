@@ -3,6 +3,7 @@ package com._2p1team.cmadmin.swing.override.graphics.configs;
 import java.awt.Color;
 
 public final class LinearGradientPaintConfiguration extends AbstractPaintConfiguration {
+
     public LinearGradientPaintConfiguration() {
     }
 
@@ -26,4 +27,5 @@ public final class LinearGradientPaintConfiguration extends AbstractPaintConfigu
 
         this.getFractions()[this.getFractions().length-1] = (float) Math.ceil(this.getFractions()[this.getFractions().length-1]);
     }
+
 }

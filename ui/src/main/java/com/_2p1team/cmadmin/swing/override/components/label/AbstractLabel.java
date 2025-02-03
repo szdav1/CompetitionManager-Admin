@@ -14,8 +14,9 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 @Getter
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper=false)
 public abstract class AbstractLabel extends JLabel implements AppearanceComponent {
+
     private final Appearance appearance;
 
     public AbstractLabel() {
@@ -77,4 +78,5 @@ public abstract class AbstractLabel extends JLabel implements AppearanceComponen
         super.paint(g);
         g2.dispose();
     }
+
 }

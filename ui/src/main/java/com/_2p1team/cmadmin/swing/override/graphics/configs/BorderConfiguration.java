@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public final class BorderConfiguration {
+
     private int thickness;
     private int radius;
     private AbstractPaintConfiguration defaultConfiguration;
@@ -57,4 +58,5 @@ public final class BorderConfiguration {
         this.pressedConfiguration = defaultConfiguration;
         this.releasedConfiguration = hoveredConfiguration;
     }
+
 }

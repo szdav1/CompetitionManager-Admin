@@ -2,8 +2,12 @@ package com._2p1team.cmadmin.support.util;
 
 import com._2p1team.cmadmin.support.constants.appearances.*;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor(access=AccessLevel.NONE)
 public final class AppearanceRepository {
+
     public static final Appearance ROOT_PANEL_APPEARANCE = new RootPanelAppearance();
 
     public static final Appearance BACKGROUND_LABEL_APPEARANCE = new BackgroundLabelAppearance();
@@ -41,4 +45,5 @@ public final class AppearanceRepository {
     public static final Appearance EXIT_CONFIRM_LABEL_APPEARANCE = new ExitConfirmLabelAppearance();
 
     public static final Appearance EXIT_LABEL_APPEARANCE = new ExitLabelAppearance();
+
 }

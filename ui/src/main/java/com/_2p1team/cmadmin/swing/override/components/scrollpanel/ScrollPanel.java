@@ -10,6 +10,7 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
 public class ScrollPanel extends AbstractScrollPanel {
+
     public ScrollPanel() {
     }
 
@@ -68,4 +69,5 @@ public class ScrollPanel extends AbstractScrollPanel {
     @Override
     public void mouseExited(MouseEvent e) {
     }
+
 }

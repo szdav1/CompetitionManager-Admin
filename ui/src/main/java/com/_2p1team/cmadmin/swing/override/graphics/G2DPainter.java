@@ -10,8 +10,9 @@ import javax.swing.JComponent;
 import java.awt.*;
 import java.awt.geom.Point2D;
 
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access=AccessLevel.PRIVATE)
 public final class G2DPainter {
+
     private static LinearGradientPaint determineBackgroundPaint(final Point2D start, final Point2D end, final Appearance appearance) {
         return appearance.isInteractivityEnabled() ?
             new LinearGradientPaint(
@@ -285,4 +286,5 @@ public final class G2DPainter {
         g2.setPaint(createScrollBarThumbPaint(paintBounds, appearance));
         g2.fillRoundRect(paintBounds.x, paintBounds.y, paintBounds.width, paintBounds.height, appearance.getBorderConfiguration().getRadius(), appearance.getBorderConfiguration().getRadius());
     }
+
 }

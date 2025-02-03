@@ -13,8 +13,9 @@ import java.awt.*;
 
 @Getter
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper=false)
 public abstract class AbstractPanel extends JLayeredPane implements AppearanceComponent, Container {
+
     private final Appearance appearance;
 
     public AbstractPanel() {
@@ -54,4 +55,5 @@ public abstract class AbstractPanel extends JLayeredPane implements AppearanceCo
         super.paint(g);
         g2.dispose();
     }
+
 }

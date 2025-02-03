@@ -4,6 +4,7 @@ import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import com._2p1team.cmadmin.swing.override.graphics.configs.*;
 
 public final class AppearanceBuilder {
+
     private final Appearance appearance;
 
     public AppearanceBuilder() {
@@ -48,4 +49,5 @@ public final class AppearanceBuilder {
     public Appearance build() {
         return this.appearance;
     }
+
 }

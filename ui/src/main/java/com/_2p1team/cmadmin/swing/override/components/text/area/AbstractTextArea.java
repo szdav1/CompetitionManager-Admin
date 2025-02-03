@@ -15,8 +15,9 @@ import java.awt.Rectangle;
 
 @Getter
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper=false)
 public abstract class AbstractTextArea extends JTextArea implements AppearanceComponent {
+
     private final Appearance appearance;
 
     public AbstractTextArea() {
@@ -66,4 +67,5 @@ public abstract class AbstractTextArea extends JTextArea implements AppearanceCo
         super.paint(g);
         g2.dispose();
     }
+
 }

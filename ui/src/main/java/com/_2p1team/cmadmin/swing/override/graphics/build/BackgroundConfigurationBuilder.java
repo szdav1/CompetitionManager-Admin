@@ -4,6 +4,7 @@ import com._2p1team.cmadmin.swing.override.graphics.configs.AbstractPaintConfigu
 import com._2p1team.cmadmin.swing.override.graphics.configs.BackgroundConfiguration;
 
 public final class BackgroundConfigurationBuilder {
+
     private final BackgroundConfiguration configuration;
 
     public BackgroundConfigurationBuilder() {
@@ -33,4 +34,5 @@ public final class BackgroundConfigurationBuilder {
     public BackgroundConfiguration build() {
         return this.configuration;
     }
+
 }

@@ -5,5 +5,7 @@ import java.util.List;
 
 @FunctionalInterface
 public interface KeyControlledComponent {
+
     List<JComponent> getKeyControls();
+
 }

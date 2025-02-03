@@ -9,8 +9,10 @@ import com._2p1team.cmadmin.swing.override.graphics.configs.SimplePaintConfigura
 import java.awt.Color;
 
 public final class TitleTextAppearance extends Appearance {
+
     public TitleTextAppearance() {
         this.setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)));
         this.setForegroundConfiguration(new ForegroundConfiguration(Color.white));
     }
+
 }

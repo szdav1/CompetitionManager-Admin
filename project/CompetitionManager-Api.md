@@ -7,36 +7,36 @@
 Tartalom
 
 - `Competitor`
-  
-  - Get all
-  
-  - Get
-  
-  - New
-  
-  - Update
-  
-  - Delete
+
+    - Get all
+
+    - Get
+
+    - New
+
+    - Update
+
+    - Delete
 
 - `Competition`
-  
-  - Get all
-  
-  - Get
-  
-  - New
-  
-  - Update
+
+    - Get all
+
+    - Get
+
+    - New
+
+    - Update
 
 - `Leaderboard`
-  
-  - Get all
-  
-  - Get
-  
-  - New
-  
-  - Update
+
+    - Get all
+
+    - Get
+
+    - New
+
+    - Update
 
 - `Test`
 
@@ -54,7 +54,8 @@ Tartalom
 
 # Megjegyzés
 
-**A végpontok URl-jének kezdete a szoftver telepítése után változni fog, a fejlesztési idő alatt végig a következő lesz:**
+**A végpontok URl-jének kezdete a szoftver telepítése után változni fog, a fejlesztési idő alatt végig a következő lesz:
+**
 
 `localhost:8080`
 
@@ -96,14 +97,14 @@ Egy versenyző lekérdezése az adatbázisból **id** alapján.
 
 - `ECONNREFUSED` - Nem jött létre kapcsolat
 
-- `404 Not found` 
-  
+- `404 Not found`
+
   `{`
-  
+
   `    "message": "Competitor with '{id}' id not found",`
-  
+
   `    "status": "NOT_FOUND"`
-  
+
   `}`
 
 - `A megadott id-vel rendelkező versenyző objektum`
@@ -116,7 +117,7 @@ Egy versenyző lekérdezése az adatbázisból **id** alapján.
 
 **URL**: /api/competitor/new
 
-**Body**: 
+**Body**:
 
 `{`
 
@@ -148,11 +149,11 @@ Egy létező versenyző valamely adat(ainak)  módosítása.
 
 `{`
 
-    `"name": "",`
+`"name": "",`
 
-    `"club": "",`
+`"club": "",`
 
-    `"birthDate": ""`
+`"birthDate": ""`
 
 `}`
 
@@ -163,13 +164,13 @@ Egy létező versenyző valamely adat(ainak)  módosítása.
 - `ECONNREFUSED` - Nem jött létre kapcsolat
 
 - `404 Not found`
-  
+
   `{`
-  
-      `"message": "Competitor with '{id}' id not found",`
-  
-      `"status": "NOT_FOUND"`
-  
+
+  `"message": "Competitor with '{id}' id not found",`
+
+  `"status": "NOT_FOUND"`
+
   `}`
 
 - `A megadott id-vel rendelkező versenyző objektum a frissített értékekkel`
@@ -186,18 +187,18 @@ Egy létező versenyző törlése az adatbázisból.
 
 **Használat**: `Admin`
 
-**Válasz**: 
+**Válasz**:
 
 - `ECONNREFUSED` - Nem jött létre kapcsolat
 
 - `404 Not found`
-  
+
   `{`
-  
-      `"message": "Competitor with '{id}' id not found",`
-  
-      `"status": "NOT_FOUND"`
-  
+
+  `"message": "Competitor with '{id}' id not found",`
+
+  `"status": "NOT_FOUND"`
+
   `}`
 
 - `204 No content`
@@ -239,13 +240,13 @@ Egy verseny lekérdezése az adatbázisból **id** alapján.
 - `ECONNREFUSED` - Nem jött létre kapcsolat
 
 - `404 Not found`
-  
+
   `{`
-  
-      `"message": "Competition with '{id}' id not found",`
-  
-      `"status": "NOT_FOUND"`
-  
+
+  `"message": "Competition with '{id}' id not found",`
+
+  `"status": "NOT_FOUND"`
+
   `}`
 
 - `A megadott id-vel rendelkező verseny objektum`
@@ -262,11 +263,11 @@ Egy verseny lekérdezése az adatbázisból **id** alapján.
 
 `{`
 
-    `"name": "",`
+`"name": "",`
 
-    `"location": "",`
+`"location": "",`
 
-    `"date": ""`
+`"date": ""`
 
 `}`
 
@@ -290,11 +291,11 @@ Egy létező verseny valamely adat(ainak) módosítása.
 
 `{`
 
-    `"name": "",`
+`"name": "",`
 
-    `"location": "",`
+`"location": "",`
 
-    `"date": ""`
+`"date": ""`
 
 `}`
 
@@ -305,13 +306,13 @@ Egy létező verseny valamely adat(ainak) módosítása.
 - `ECONNREFUSED` - Nem jött létre kapcsolat
 
 - `404 Not found`
-  
+
   `{`
-  
-      `"message": "Competition with '{id}' id not found",`
-  
-      `"status": "NOT_FOUND"`
-  
+
+  `"message": "Competition with '{id}' id not found",`
+
+  `"status": "NOT_FOUND"`
+
   `}`
 
 - `A megadott id-vel rendelkező verseny objektum a frissített értékekkel`
@@ -353,13 +354,13 @@ Válasz**:
 - `ECONNREFUSED` - Nem jött létre kapcsolat
 
 - `404 Not found`
-  
+
   `{`
-  
-      `"message": "Leaderboard with '{id}' id not found",`
-  
-      `"status": "NOT_FOUND"`
-  
+
+  `"message": "Leaderboard with '{id}' id not found",`
+
+  `"status": "NOT_FOUND"`
+
   `}`
 
 - `A megadott id-vel rendelkező ranglista elem objektum`
@@ -376,11 +377,11 @@ Válasz**:
 
 `{`
 
-    `"competitionId": "",`
+`"competitionId": "",`
 
-    `"competitorId": "",`
+`"competitorId": "",`
 
-    `"placement": ""`
+`"placement": ""`
 
 `}`
 
@@ -404,11 +405,11 @@ Egy létező ranglista elem valamely adat(ainak) módosítása.
 
 `{`
 
-    `"competitionId": "",`
+`"competitionId": "",`
 
-    `"competitorId": "",`
+`"competitorId": "",`
 
-    `"placement": ""`
+`"placement": ""`
 
 `}`
 
@@ -419,13 +420,13 @@ Egy létező ranglista elem valamely adat(ainak) módosítása.
 - `ECONNREFUSED` - Nem jött létre kapcsolat
 
 - `404 Not found`
-  
+
   `{`
-  
-      `"message": "Leaderboard with '{id}' id not found",`
-  
-      `"status": "NOT_FOUND"`
-  
+
+  `"message": "Leaderboard with '{id}' id not found",`
+
+  `"status": "NOT_FOUND"`
+
   `}`
 
 - `A megadott id-vel rendelkező ranglista elem objektum a frissített értékekkel`
@@ -442,20 +443,18 @@ Egy létező ranglista elem valamely adat(ainak) módosítása.
 
 **Használat**: `Admin` `Frontend`
 
-**Válasz**: 
+**Válasz**:
 
 - `ECONNREFUSED` - Nem jött létre kapcsolat
 
 - `202 Accepted`
-  
+
   `{`
-  
+
   `    "message": "Connection established"`
-  
+
   `}`
 
 ---
 
 @2024 2+1 team
-
-

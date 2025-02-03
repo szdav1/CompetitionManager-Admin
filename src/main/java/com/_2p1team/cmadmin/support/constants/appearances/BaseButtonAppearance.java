@@ -12,6 +12,7 @@ import com._2p1team.cmadmin.swing.override.graphics.configs.SimplePaintConfigura
 import java.awt.Color;
 
 public final class BaseButtonAppearance extends Appearance {
+
     public BaseButtonAppearance() {
         this.enableInteractivity();
 
@@ -30,4 +31,5 @@ public final class BaseButtonAppearance extends Appearance {
                 .build()
         );
     }
+
 }

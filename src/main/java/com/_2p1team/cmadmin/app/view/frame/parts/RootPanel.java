@@ -10,13 +10,14 @@ import com._2p1team.cmadmin.swing.override.constants.Position;
 import java.awt.Rectangle;
 
 public final class RootPanel extends Panel implements ComplexComponent {
+
     private final Label backgroundLabel;
 
     public RootPanel() {
         super(new Rectangle(0, 0, SizeData.FRAME_WIDTH, SizeData.FRAME_HEIGHT), null, AppearanceRepository.ROOT_PANEL_APPEARANCE);
 
         this.backgroundLabel = new Label(this.getBounds(), AppearanceRepository.BACKGROUND_LABEL_APPEARANCE);
-        
+
         this.setUpComponent();
     }
 
@@ -24,4 +25,5 @@ public final class RootPanel extends Panel implements ComplexComponent {
     public void setUpComponent() {
         this.addComponent(this.backgroundLabel, Position.BACKGROUND);
     }
+
 }
