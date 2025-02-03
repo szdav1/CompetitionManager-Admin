@@ -1,9 +1,13 @@
 package com._2p1team.cmadmin.support.util;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+
 import javax.swing.ImageIcon;
 import java.awt.Dimension;
 import java.awt.Image;
 
+@AllArgsConstructor(access = AccessLevel.NONE)
 public final class Util {
     public static ImageIcon loadImageIcon(final String path) {
         return new ImageIcon(ResourceManager.get(path));
