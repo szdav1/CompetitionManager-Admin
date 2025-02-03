@@ -52,12 +52,6 @@ public final class AppFrame extends AbstractFrame {
         super(iconImage, title);
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.setLayout(null);
-        this.setBounds(new Rectangle(
-            (SCREEN_WIDTH/2)-(FRAME_WIDTH/2),
-            (SCREEN_HEIGHT/2)-(FRAME_HEIGHT/2),
-            FRAME_WIDTH,
-            FRAME_HEIGHT
-        ));
 
         this.frameState = FrameState.DEFAULT;
 
