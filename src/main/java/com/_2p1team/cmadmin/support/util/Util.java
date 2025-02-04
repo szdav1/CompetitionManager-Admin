@@ -28,7 +28,6 @@ public final class Util {
     }
 
     public static ImageIcon loadImageIcon(final String path, final Dimension dimension) {
-        System.out.println(dimension);
         return new ImageIcon(loadImageIcon(path).getImage()
             .getScaledInstance(dimension.width, dimension.height, Image.SCALE_SMOOTH));
     }

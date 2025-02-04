@@ -1,0 +1,56 @@
+package com._2p1team.cmadmin.app.control.components.modal;
+
+import com._2p1team.cmadmin.app.control.AbstractKeyController;
+import com._2p1team.cmadmin.app.view.components.modals.ExceptionModal;
+import com._2p1team.cmadmin.app.view.frame.FrameManager;
+import com._2p1team.cmadmin.support.constants.states.FrameState;
+
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+
+public final class ExceptionModalKeyController extends AbstractKeyController {
+
+    public ExceptionModalKeyController(final ExceptionModal keyControlledComponent) {
+        super(keyControlledComponent);
+
+        keyControlledComponent.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+            .put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "CloseExceptionModalAction");
+
+        keyControlledComponent.getActionMap()
+            .put("CloseExceptionModalAction", new CloseExceptionModalAction());
+
+        keyControlledComponent.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+            .put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "DirectExitFrameAction");
+
+        keyControlledComponent.getActionMap()
+            .put("DirectExitFrameAction", new DirectExitFrameAction());
+    }
+
+    private static final class CloseExceptionModalAction extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (FrameManager.getState() != FrameState.MODAL_OPENED)
+                return;
+
+            FrameManager.hideOpenedModal();
+        }
+
+    }
+
+    private static final class DirectExitFrameAction extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (FrameManager.getState() != FrameState.MODAL_OPENED)
+                return;
+
+            FrameManager.directExitFrame();
+        }
+
+    }
+
+}

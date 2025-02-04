@@ -1,7 +1,9 @@
 package com._2p1team.cmadmin.app.model.http;
 
 import com._2p1team.cmadmin.app.model.competitor.Competitor;
+import com._2p1team.cmadmin.support.constants.BeforeLaunchException;
 import com._2p1team.cmadmin.support.constants.HttpEndPoints;
+import com._2p1team.cmadmin.support.util.BeforeLaunchExceptionQueue;
 import com._2p1team.cmadmin.support.util.JsonConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -10,13 +12,14 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor(access=AccessLevel.NONE)
 public final class HttpCommunicator {
 
     private static HttpRequest request;
-    private static HttpClient client = HttpClient.newHttpClient();
+    private static final HttpClient client = HttpClient.newHttpClient();
     private static HttpResponse<String> response;
 
 
@@ -31,12 +34,14 @@ public final class HttpCommunicator {
                     .build();
 
                 HttpCommunicator.response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+                return JsonConverter.jsonToFencers(response.body());
             }
             catch (Exception exception) {
-                exception.printStackTrace(); // TODO: Create UI error handling (modal error handling)
+                BeforeLaunchExceptionQueue.exceptionType = BeforeLaunchException.HTTP_COMMUNICATION_EXCEPTION;
             }
 
-            return JsonConverter.jsonToFencers(response.body());
+            return new ArrayList<>();
         }
 
     }

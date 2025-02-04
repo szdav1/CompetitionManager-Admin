@@ -2,7 +2,8 @@ package com._2p1team.cmadmin.app.view.frame;
 
 import com._2p1team.cmadmin.app.control.frame.FrameController;
 import com._2p1team.cmadmin.app.view.components.modals.AbstractModal;
-import com._2p1team.cmadmin.app.view.components.modals.ViewDatabaseModal;
+import com._2p1team.cmadmin.app.view.components.modals.ExceptionModal;
+import com._2p1team.cmadmin.app.view.components.modals.ViewCompetitorsModal;
 import com._2p1team.cmadmin.app.view.components.modals.WindowClosingConfirmationModal;
 import com._2p1team.cmadmin.app.view.frame.parts.CenterPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.FooterPanel;
@@ -12,6 +13,7 @@ import static com._2p1team.cmadmin.support.constants.SizeData.FRAME_HEIGHT;
 import static com._2p1team.cmadmin.support.constants.SizeData.FRAME_WIDTH;
 import com._2p1team.cmadmin.support.constants.states.FrameState;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
+import com._2p1team.cmadmin.support.util.BeforeLaunchExceptionQueue;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import com._2p1team.cmadmin.swing.override.constants.Position;
 import com._2p1team.cmadmin.swing.override.frame.AbstractFrame;
@@ -26,24 +28,22 @@ import java.awt.Image;
 import java.awt.Rectangle;
 
 
+@Getter(AccessLevel.PACKAGE)
 public final class AppFrame extends AbstractFrame {
 
-    @Getter(AccessLevel.PACKAGE)
     private final WindowClosingConfirmationModal closingConfirmationModal;
-    @Getter(AccessLevel.PACKAGE)
-    private final ViewDatabaseModal viewDatabaseModal;
-    @Getter(AccessLevel.PACKAGE)
+    private final ViewCompetitorsModal viewCompetitorsModal;
+    private final ExceptionModal httpConnectionExceptionModal;
+
     private final RootPanel rootPanel;
-    @Getter(AccessLevel.PACKAGE)
     private final Panel mainPanel;
     private final TitleBar titleBar;
-    @Getter(AccessLevel.PACKAGE)
     private final CenterPanel centerPanel;
     private final FooterPanel footerPanel;
-    @Getter
+
     @Setter(AccessLevel.PACKAGE)
     private FrameState frameState;
-    @Getter(AccessLevel.PACKAGE)
+
     @Setter(AccessLevel.PACKAGE)
     private AbstractModal openedModal;
 
@@ -55,7 +55,8 @@ public final class AppFrame extends AbstractFrame {
         this.frameState = FrameState.DEFAULT;
 
         this.closingConfirmationModal = new WindowClosingConfirmationModal();
-        this.viewDatabaseModal = new ViewDatabaseModal();
+        this.viewCompetitorsModal = new ViewCompetitorsModal();
+        this.httpConnectionExceptionModal = new ExceptionModal();
 
         this.openedModal = null;
 
@@ -69,6 +70,16 @@ public final class AppFrame extends AbstractFrame {
 
         FrameManager.initManager(this);
         this.createFrameUI();
+        this.handleBeforeLaunchQueuedExceptions();
+    }
+
+    private void handleBeforeLaunchQueuedExceptions() {
+        switch (BeforeLaunchExceptionQueue.exceptionType) {
+            case HTTP_COMMUNICATION_EXCEPTION -> FrameManager.displayHttpConnectionExceptionModal();
+            default -> {
+                // NONE
+            }
+        }
     }
 
     private void createFrameUI() {
@@ -83,10 +94,12 @@ public final class AppFrame extends AbstractFrame {
         this.titleBar.setUpSettingsMenu();
 
         this.rootPanel.addComponent(this.closingConfirmationModal.getBackgroundPanel(), Position.HIGH);
-        this.rootPanel.addComponent(this.viewDatabaseModal.getBackgroundPanel(), Position.HIGH);
+        this.rootPanel.addComponent(this.viewCompetitorsModal.getBackgroundPanel(), Position.HIGH);
+        this.rootPanel.addComponent(this.httpConnectionExceptionModal.getBackgroundPanel(), Position.HIGH);
 
         this.closingConfirmationModal.disappear();
-        this.viewDatabaseModal.disappear();
+        this.viewCompetitorsModal.disappear();
+        this.httpConnectionExceptionModal.disappear();
 
         this.addComponent(this.rootPanel);
     }

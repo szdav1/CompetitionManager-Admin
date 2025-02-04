@@ -50,4 +50,6 @@ public final class AppearanceRepository {
 
     public static final Appearance COMPETITOR_COMPONENT_APPEARANCE = new CompetitorComponentAppearance();
 
+    public static final Appearance HTTP_EXCEPTION_LABEL_APPEARANCE = new HttpExceptionLabelAppearance();
+
 }

@@ -90,6 +90,9 @@ public final class FrameManager {
     }
 
     public static void displayClosingConfirmationModal() {
+        if (frame.getFrameState() != FrameState.DEFAULT)
+            return;
+
         frame.getClosingConfirmationModal()
             .appear();
 
@@ -98,10 +101,24 @@ public final class FrameManager {
     }
 
     public static void displayViewDatabaseModal() {
-        frame.getViewDatabaseModal()
+        if (frame.getFrameState() != FrameState.DEFAULT)
+            return;
+
+        frame.getViewCompetitorsModal()
             .appear();
 
-        frame.setOpenedModal(frame.getViewDatabaseModal());
+        frame.setOpenedModal(frame.getViewCompetitorsModal());
+        frame.setFrameState(FrameState.MODAL_OPENED);
+    }
+
+    public static void displayHttpConnectionExceptionModal() {
+        if (frame.getFrameState() != FrameState.DEFAULT)
+            return;
+
+        frame.getHttpConnectionExceptionModal()
+            .appear();
+
+        frame.setOpenedModal(frame.getHttpConnectionExceptionModal());
         frame.setFrameState(FrameState.MODAL_OPENED);
     }
 
