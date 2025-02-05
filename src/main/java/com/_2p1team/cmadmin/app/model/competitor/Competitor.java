@@ -1,11 +1,13 @@
 package com._2p1team.cmadmin.app.model.competitor;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 @Data
+@AllArgsConstructor
 public final class Competitor {
 
     private Long id;

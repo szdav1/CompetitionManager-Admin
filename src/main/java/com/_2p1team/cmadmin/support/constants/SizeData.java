@@ -35,7 +35,8 @@ public final class SizeData {
     public static final Dimension N_BUTTON_SIZE = new Dimension(N_BUTTON_WIDTH, BUTTON_HEIGHT);
     public static final Dimension BUTTON_SIZE = new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT);
     public static final Dimension W_BUTTON_SIZE = new Dimension(W_BUTTON_WIDTH, BUTTON_HEIGHT);
-    public static final Dimension X_BUTTON_SIZE = new Dimension(W_BUTTON_WIDTH*3, BUTTON_HEIGHT);
+    public static final Dimension X_BUTTON_SIZE = new Dimension(FRAME_WIDTH*16/100, BUTTON_HEIGHT);
+    public static final Dimension XL_BUTTON_SIZE = new Dimension(W_BUTTON_WIDTH*3, BUTTON_HEIGHT);
 
     public static final int W_LABEL_WIDTH = FRAME_WIDTH*25/100;
     public static final Dimension W_LABEL_SIZE = new Dimension(W_LABEL_WIDTH, BUTTON_HEIGHT);
