@@ -70,11 +70,11 @@ public final class AppFrame extends AbstractFrame {
 
         FrameManager.initManager(this);
         this.createFrameUI();
-        this.handleBeforeLaunchQueuedExceptions();
+        this.handleBeforeLaunchQueuedException();
     }
 
-    private void handleBeforeLaunchQueuedExceptions() {
-        switch (BeforeLaunchExceptionQueue.exceptionType) {
+    private void handleBeforeLaunchQueuedException() {
+        switch (BeforeLaunchExceptionQueue.getExceptionType()) {
             case HTTP_COMMUNICATION_EXCEPTION -> FrameManager.displayHttpConnectionExceptionModal();
             default -> {
                 // NONE

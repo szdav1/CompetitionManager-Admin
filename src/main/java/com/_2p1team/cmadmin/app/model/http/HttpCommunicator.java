@@ -1,7 +1,7 @@
 package com._2p1team.cmadmin.app.model.http;
 
 import com._2p1team.cmadmin.app.model.competitor.Competitor;
-import com._2p1team.cmadmin.support.constants.BeforeLaunchException;
+import com._2p1team.cmadmin.support.constants.BeforeLaunchExceptionType;
 import com._2p1team.cmadmin.support.constants.HttpEndPoints;
 import com._2p1team.cmadmin.support.util.BeforeLaunchExceptionQueue;
 import com._2p1team.cmadmin.support.util.JsonConverter;
@@ -38,7 +38,7 @@ public final class HttpCommunicator {
                 return JsonConverter.jsonToFencers(response.body());
             }
             catch (Exception exception) {
-                BeforeLaunchExceptionQueue.exceptionType = BeforeLaunchException.HTTP_COMMUNICATION_EXCEPTION;
+                BeforeLaunchExceptionQueue.setExceptionType(BeforeLaunchExceptionType.HTTP_COMMUNICATION_EXCEPTION);
             }
 
             return new ArrayList<>();
