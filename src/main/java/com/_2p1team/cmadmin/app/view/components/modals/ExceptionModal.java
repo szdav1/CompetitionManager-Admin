@@ -28,7 +28,7 @@ public final class ExceptionModal extends AbstractModal {
         this.innerPanel = new Panel(new Dimension(this.getWidth(), this.getHeight()-BUTTON_HEIGHT), null, AppearanceRepository.MODAL_CENTER_PANEL_APPEARANCE);
         this.iconLabel = new Label(AppearanceRepository.HTTP_EXCEPTION_LABEL_APPEARANCE);
         this.iconLabel.setLocation((this.getWidth()/2)-(this.iconLabel.getWidth()/2), (this.innerPanel.getHeight()/2)-(this.iconLabel.getHeight()/2)-BUTTON_HEIGHT);
-        this.exceptionMessageLabel = new Label(X_BUTTON_SIZE, "Connection with server couldn't be established", AppearanceRepository.EXIT_CONFIRM_LABEL_APPEARANCE);
+        this.exceptionMessageLabel = new Label(XL_BUTTON_SIZE, "Connection with server couldn't be established", AppearanceRepository.EXIT_CONFIRM_LABEL_APPEARANCE);
         this.exitButton = new Button(W_BUTTON_SIZE, "Exit [Enter]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
         new ExceptionModalController(this);
