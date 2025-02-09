@@ -3,10 +3,15 @@ package com._2p1team.cmadmin.app.view.components.modals;
 import com._2p1team.cmadmin.app.model.competitor.Competitor;
 import com._2p1team.cmadmin.app.view.components.competitor.CompetitorComponent;
 import com._2p1team.cmadmin.repository.CompetitorRepository;
+import static com._2p1team.cmadmin.support.constants.SizeData.BUTTON_HEIGHT;
+import com._2p1team.cmadmin.support.util.AppearanceRepository;
+import com._2p1team.cmadmin.swing.override.components.scrollpanel.ScrollPanel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.swing.JComponent;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,14 +20,20 @@ import java.util.List;
 public final class ViewCompetitorsModal extends AbstractModal {
 
     private final Header header;
+    private final ScrollPanel scrollPanel;
     private final List<CompetitorComponent> competitorComponents;
 
     public ViewCompetitorsModal() {
         super();
 
         this.header = new Header();
+        
+        this.scrollPanel = new ScrollPanel(new Dimension(this.getWidth()-2, this.getHeight()-(BUTTON_HEIGHT*2)), new FlowLayout(FlowLayout.CENTER, 0, 0), AppearanceRepository.BASE_SCROLL_PANEL_APPEARANCE);
+        this.scrollPanel.setScrollSpeed(BUTTON_HEIGHT);
+
         this.competitorComponents = new ArrayList<>();
-        CompetitorRepository.competitors.forEach(competitor -> competitorComponents.add(new CompetitorComponent(competitor)));
+        CompetitorRepository.competitors
+            .forEach(competitor -> competitorComponents.add(new CompetitorComponent(competitor)));
 
         this.setUpComponent();
     }
@@ -38,8 +49,10 @@ public final class ViewCompetitorsModal extends AbstractModal {
 
     @Override
     public void setUpComponent() {
-        this.getCenterPanel().addComponent(this.header);
-        this.competitorComponents.forEach(competitorComponent -> this.getCenterPanel().addComponent(competitorComponent));
+        this.scrollPanel.addComponent(this.header);
+        this.competitorComponents.forEach(this.scrollPanel::addComponent);
+
+        this.getCenterPanel().addComponent(this.scrollPanel);
     }
 
     @Override

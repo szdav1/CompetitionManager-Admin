@@ -2,7 +2,8 @@ package com._2p1team.cmadmin.app.view.components.competitor;
 
 import com._2p1team.cmadmin.app.model.competitor.Competitor;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
-import static com._2p1team.cmadmin.support.constants.SizeData.*;
+import static com._2p1team.cmadmin.support.constants.SizeData.W_BUTTON_SIZE;
+import static com._2p1team.cmadmin.support.constants.SizeData.X_BUTTON_SIZE;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;

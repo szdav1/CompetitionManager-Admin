@@ -57,12 +57,6 @@ public abstract class AbstractModal extends Panel implements ComplexComponent, C
         this.backgroundPanel.addComponent(this, Position.HIGH);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(this.closeButton))
-            FrameManager.hideOpenedModal();
-    }
-
     public void appear() {
         this.backgroundPanel.setVisible(true);
         FrameManager.revalidateRootPanel();
@@ -71,6 +65,12 @@ public abstract class AbstractModal extends Panel implements ComplexComponent, C
     public void disappear() {
         this.backgroundPanel.setVisible(false);
         FrameManager.revalidateRootPanel();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(this.closeButton))
+            FrameManager.hideOpenedModal();
     }
 
     private static class CloseModalAction extends AbstractAction {

@@ -127,7 +127,7 @@ class UIVisibilityTester {
 //        frame.add(btn);
 //        frame.add(tf);
 //        frame.add(ta);
-//        frame.add(sp);
+        frame.add(sp);
         frame.repaint();
         frame.setVisible(true);
     }

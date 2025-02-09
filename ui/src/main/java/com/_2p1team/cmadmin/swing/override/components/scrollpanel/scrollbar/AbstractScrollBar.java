@@ -16,9 +16,11 @@ public abstract class AbstractScrollBar extends JScrollBar {
         this.appearance = appearance;
 
         this.setOrientation(orientation);
+        this.setUI(new ScrollBarUI(appearance));
+        this.setOpaque(false);
+        this.setBorder(null);
         this.revalidate();
         this.repaint();
-        this.setUI(new ScrollBarUI(appearance));
     }
 
 }

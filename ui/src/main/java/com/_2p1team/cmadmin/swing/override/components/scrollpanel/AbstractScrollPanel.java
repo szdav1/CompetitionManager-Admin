@@ -5,14 +5,16 @@ import com._2p1team.cmadmin.swing.override.components.Container;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import com._2p1team.cmadmin.swing.override.components.scrollpanel.scrollbar.CustomScrollBar;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
+import com._2p1team.cmadmin.swing.override.graphics.G2DPainter;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
+import javax.swing.JComponent;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-import java.awt.Dimension;
-import java.awt.LayoutManager;
-import java.awt.Rectangle;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @EqualsAndHashCode(callSuper=false)
@@ -20,14 +22,20 @@ public abstract class AbstractScrollPanel extends JScrollPane implements Contain
 
     private final Appearance appearance;
     private final Panel viewPanel;
+    private final List<JComponent> contents;
 
     public AbstractScrollPanel() {
         this.appearance = new Appearance();
         this.viewPanel = new Panel(new Dimension(0, 0), null, this.appearance);
+        this.viewPanel.setOpaque(false);
+        this.contents = new ArrayList<>();
 
         this.setFocusable(false);
         this.setBorder(null);
+        this.setViewportBorder(null);
         this.setViewportView(this.viewPanel);
+        this.setOpaque(false);
+        this.getViewport().setOpaque(false);
         this.setHorizontalScrollBar(new CustomScrollBar(JScrollBar.HORIZONTAL, appearance));
         this.setVerticalScrollBar(new CustomScrollBar(JScrollBar.VERTICAL, appearance));
         this.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -37,10 +45,15 @@ public abstract class AbstractScrollPanel extends JScrollPane implements Contain
     public AbstractScrollPanel(Dimension preferredSize, final LayoutManager layout, final Appearance appearance) {
         this.appearance = appearance;
         this.viewPanel = new Panel(new Dimension(0, 0), layout, appearance);
+        this.viewPanel.setOpaque(false);
+        this.contents = new ArrayList<>();
 
         this.setFocusable(false);
         this.setBorder(null);
+        this.setViewportBorder(null);
         this.setViewportView(this.viewPanel);
+        this.setOpaque(false);
+        this.getViewport().setOpaque(false);
         this.setHorizontalScrollBar(new CustomScrollBar(JScrollBar.HORIZONTAL, appearance));
         this.setVerticalScrollBar(new CustomScrollBar(JScrollBar.VERTICAL, appearance));
         this.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -56,10 +69,15 @@ public abstract class AbstractScrollPanel extends JScrollPane implements Contain
     public AbstractScrollPanel(Rectangle bounds, final LayoutManager layout, final Appearance appearance) {
         this.appearance = appearance;
         this.viewPanel = new Panel(new Dimension(0, 0), layout, appearance);
+        this.viewPanel.setOpaque(false);
+        this.contents = new ArrayList<>();
 
         this.setFocusable(false);
         this.setBorder(null);
+        this.setViewportBorder(null);
         this.setViewportView(this.viewPanel);
+        this.setOpaque(false);
+        this.getViewport().setOpaque(false);
         this.setHorizontalScrollBar(new CustomScrollBar(JScrollBar.HORIZONTAL, appearance));
         this.setVerticalScrollBar(new CustomScrollBar(JScrollBar.VERTICAL, appearance));
         this.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -70,6 +88,19 @@ public abstract class AbstractScrollPanel extends JScrollPane implements Contain
 
     public AbstractScrollPanel(Rectangle bounds, final Appearance appearance) {
         this(bounds, null, appearance);
+    }
+
+    public void setScrollSpeed(int speed) {
+        this.getHorizontalScrollBar().setUnitIncrement(speed);
+        this.getVerticalScrollBar().setUnitIncrement(speed);
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g;
+        G2DPainter.paint(g2, this);
+        super.paint(g);
+        g2.dispose();
     }
 
 }

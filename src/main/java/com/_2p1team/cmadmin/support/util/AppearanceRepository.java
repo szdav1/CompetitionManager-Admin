@@ -52,4 +52,6 @@ public final class AppearanceRepository {
 
     public static final Appearance HTTP_EXCEPTION_LABEL_APPEARANCE = new HttpExceptionLabelAppearance();
 
+    public static final Appearance BASE_SCROLL_PANEL_APPEARANCE = new BaseScrollPanelAppearance();
+
 }
