@@ -8,6 +8,7 @@ import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.constants.states.FrameState;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
+import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import com._2p1team.cmadmin.swing.override.constants.Position;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
@@ -28,6 +29,7 @@ import java.awt.event.KeyEvent;
 public abstract class AbstractModal extends Panel implements ComplexComponent, ControlComponent, KeyControlledComponent, ActionListener {
 
     private final Panel backgroundPanel;
+    private final Label titleLabel;
     private final Panel topPanel;
     private final Panel centerPanel;
     private final Panel bottomPanel;
@@ -36,7 +38,10 @@ public abstract class AbstractModal extends Panel implements ComplexComponent, C
     public AbstractModal() {
         super(MODAL_BOUNDS, new BorderLayout(), AppearanceRepository.MODAL_APPEARANCE);
 
+        Panel innerTopPanel = new Panel(new Dimension(this.getWidth()-N_BUTTON_WIDTH, BUTTON_HEIGHT), new FlowLayout(FlowLayout.LEFT, 0, 0), AppearanceRepository.MODAL_TITLE_BAR_APPEARANCE);
+
         this.backgroundPanel = new Panel(new Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT), null, AppearanceRepository.MODAL_BACKGROUND_APPEARANCE);
+        this.titleLabel = new Label(W_BUTTON_SIZE, "", AppearanceRepository.MODAL_TITLE_LABEL_APPEARANCE);
         this.topPanel = new Panel(new Dimension(this.getWidth(), BUTTON_HEIGHT), new FlowLayout(FlowLayout.RIGHT, 0, 0), AppearanceRepository.MODAL_TITLE_BAR_APPEARANCE);
         this.centerPanel = new Panel(new Dimension(this.getWidth(), this.getHeight()), new FlowLayout(FlowLayout.CENTER, 0, 0), AppearanceRepository.MODAL_CENTER_PANEL_APPEARANCE);
         this.bottomPanel = new Panel(this.topPanel.getPreferredSize(), new FlowLayout(FlowLayout.CENTER, 0, 0), AppearanceRepository.MODAL_TITLE_BAR_APPEARANCE);
@@ -45,9 +50,13 @@ public abstract class AbstractModal extends Panel implements ComplexComponent, C
         this.closeButton.addActionListener(this);
         this.closeButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
             .put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "CloseModal");
+
         this.closeButton.getActionMap()
             .put("CloseModal", new CloseModalAction());
 
+        innerTopPanel.addComponent(this.titleLabel);
+
+        this.topPanel.addComponent(innerTopPanel);
         this.topPanel.addComponent(this.closeButton);
 
         this.addComponent(this.topPanel, Position.TOP);
@@ -55,6 +64,10 @@ public abstract class AbstractModal extends Panel implements ComplexComponent, C
         this.addComponent(this.bottomPanel, Position.BOTTOM);
 
         this.backgroundPanel.addComponent(this, Position.HIGH);
+    }
+
+    public void setTitle(String title) {
+        this.titleLabel.setText(title);
     }
 
     public void appear() {

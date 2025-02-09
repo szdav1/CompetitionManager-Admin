@@ -42,6 +42,8 @@ public final class AppearanceRepository {
 
     public static final Appearance MODAL_CENTER_PANEL_APPEARANCE = new ModalCenterPanelAppearance();
 
+    public static final Appearance MODAL_TITLE_LABEL_APPEARANCE = new ModalTitleLabelAppearance();
+
     public static final Appearance EXIT_CONFIRM_LABEL_APPEARANCE = new ExitConfirmLabelAppearance();
 
     public static final Appearance EXIT_LABEL_APPEARANCE = new ExitLabelAppearance();

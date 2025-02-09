@@ -25,9 +25,10 @@ public final class ViewCompetitorsModal extends AbstractModal {
 
     public ViewCompetitorsModal() {
         super();
+        this.setTitle("Competitors");
 
         this.header = new Header();
-        
+
         this.scrollPanel = new ScrollPanel(new Dimension(this.getWidth()-2, this.getHeight()-(BUTTON_HEIGHT*2)), new FlowLayout(FlowLayout.CENTER, 0, 0), AppearanceRepository.BASE_SCROLL_PANEL_APPEARANCE);
         this.scrollPanel.setScrollSpeed(BUTTON_HEIGHT);
 
