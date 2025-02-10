@@ -46,24 +46,32 @@ public class TextField extends AbstractTextField {
     public void mousePressed(MouseEvent e) {
         this.getAppearance().setState(UIState.PRESSED);
         G2DPainter.drawComponentUIElements(this);
+        this.repaint();
+        this.revalidate();
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
         this.getAppearance().setState(UIState.RELEASED);
         G2DPainter.drawComponentUIElements(this);
+        this.repaint();
+        this.revalidate();
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
         this.getAppearance().setState(UIState.HOVERED);
         G2DPainter.drawComponentUIElements(this);
+        this.repaint();
+        this.revalidate();
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         this.getAppearance().setState(UIState.DEFAULT);
         G2DPainter.drawComponentUIElements(this);
+        this.repaint();
+        this.revalidate();
     }
 
 }

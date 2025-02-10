@@ -25,9 +25,6 @@ public final class SizeData {
     public static final int TITLE_TEXT_WIDTH = FRAME_WIDTH*32/100;
     public static final Dimension TITLE_TEXT_SIZE = new Dimension(TITLE_TEXT_WIDTH, TITLE_HEIGHT);
 
-    public static final int SIDEBAR_WIDTH = FRAME_WIDTH*15/100;
-    public static final Dimension SIDEBAR_SIZE = new Dimension(SIDEBAR_WIDTH, FRAME_HEIGHT);
-
     public static final int BUTTON_WIDTH = FRAME_HEIGHT*13/100;
     public static final int N_BUTTON_WIDTH = FRAME_WIDTH*2/100;
     public static final int W_BUTTON_WIDTH = FRAME_HEIGHT*18/100;
@@ -45,5 +42,9 @@ public final class SizeData {
     public static final int MODAL_HEIGHT = FRAME_HEIGHT*70/100;
     public static final Dimension MODAL_SIZE = new Dimension(MODAL_WIDTH, MODAL_HEIGHT);
     public static final Rectangle MODAL_BOUNDS = new Rectangle((FRAME_WIDTH/2)-(MODAL_WIDTH/2), (FRAME_HEIGHT/2)-(MODAL_HEIGHT/2), MODAL_WIDTH, MODAL_HEIGHT);
+
+    public static final int POULE_PANEL_WIDTH = (W_BUTTON_WIDTH*2)+(N_BUTTON_WIDTH*14);
+    public static final int POULE_PANEL_HEIGHT = BUTTON_HEIGHT*9;
+    public static final Dimension POULE_PANEL_SIZE = new Dimension(POULE_PANEL_WIDTH, POULE_PANEL_HEIGHT);
 
 }

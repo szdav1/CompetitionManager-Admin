@@ -12,7 +12,7 @@ public final class NewPouleModal extends AbstractModal {
         this.setTitle("New Poule");
 
         Poule p = new Poule(8);
-        this.addComponent(p, Position.CENTER);
+        this.getCenterPanel().addComponent(p, Position.CENTER);
     }
 
     @Override

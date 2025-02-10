@@ -56,4 +56,6 @@ public final class AppearanceRepository {
 
     public static final Appearance BASE_SCROLL_PANEL_APPEARANCE = new BaseScrollPanelAppearance();
 
+    public static final Appearance POULE_BOX_APPEARANCE = new PouleBoxAppearance();
+
 }
