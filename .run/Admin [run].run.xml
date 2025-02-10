@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
     <configuration default="false" name="Admin [run]" type="Application" factoryName="Application">
-        <option name="MAIN_CLASS_NAME" value="com._2p1team.cmadmin.app.App"/>
+        <option name="MAIN_CLASS_NAME" value="com._2p1team.cmadmin.app.AdminApp"/>
         <module name="Admin.main"/>
         <method v="2">
             <option name="Make" enabled="true"/>
