@@ -78,8 +78,7 @@ public final class TitleBarController extends AbstractController implements Mous
                     // File menu
                     case 0 -> {
                     }
-                    case 1 -> {
-                    }
+                    case 1 -> FrameManager.displayNewPouleModal();
                     case 2 -> {
                     }
 

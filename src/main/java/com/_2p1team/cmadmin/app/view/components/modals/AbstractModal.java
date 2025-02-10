@@ -48,10 +48,11 @@ public abstract class AbstractModal extends Panel implements ComplexComponent, C
 
         this.closeButton = new Button(N_BUTTON_SIZE, "x", new Appearance(AppearanceRepository.EXIT_BUTTON_APPEARANCE));
         this.closeButton.addActionListener(this);
-        this.closeButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+        
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
             .put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "CloseModal");
 
-        this.closeButton.getActionMap()
+        this.getActionMap()
             .put("CloseModal", new CloseModalAction());
 
         innerTopPanel.addComponent(this.titleLabel);

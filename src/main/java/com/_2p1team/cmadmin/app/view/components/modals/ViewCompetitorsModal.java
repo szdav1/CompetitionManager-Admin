@@ -24,7 +24,6 @@ public final class ViewCompetitorsModal extends AbstractModal {
     private final List<CompetitorComponent> competitorComponents;
 
     public ViewCompetitorsModal() {
-        super();
         this.setTitle("Competitors");
 
         this.header = new Header();

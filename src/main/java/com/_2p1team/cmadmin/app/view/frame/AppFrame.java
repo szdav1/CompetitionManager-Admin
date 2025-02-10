@@ -1,10 +1,7 @@
 package com._2p1team.cmadmin.app.view.frame;
 
 import com._2p1team.cmadmin.app.control.frame.FrameController;
-import com._2p1team.cmadmin.app.view.components.modals.AbstractModal;
-import com._2p1team.cmadmin.app.view.components.modals.ExceptionModal;
-import com._2p1team.cmadmin.app.view.components.modals.ViewCompetitorsModal;
-import com._2p1team.cmadmin.app.view.components.modals.WindowClosingConfirmationModal;
+import com._2p1team.cmadmin.app.view.components.modals.*;
 import com._2p1team.cmadmin.app.view.frame.parts.CenterPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.FooterPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.RootPanel;
@@ -32,6 +29,7 @@ import java.awt.Rectangle;
 public final class AppFrame extends AbstractFrame {
 
     private final WindowClosingConfirmationModal closingConfirmationModal;
+    private final NewPouleModal newPouleModal;
     private final ViewCompetitorsModal viewCompetitorsModal;
     private final ExceptionModal httpConnectionExceptionModal;
 
@@ -55,6 +53,7 @@ public final class AppFrame extends AbstractFrame {
         this.frameState = FrameState.DEFAULT;
 
         this.closingConfirmationModal = new WindowClosingConfirmationModal();
+        this.newPouleModal = new NewPouleModal();
         this.viewCompetitorsModal = new ViewCompetitorsModal();
         this.httpConnectionExceptionModal = new ExceptionModal();
 
@@ -94,10 +93,12 @@ public final class AppFrame extends AbstractFrame {
         this.titleBar.setUpSettingsMenu();
 
         this.rootPanel.addComponent(this.closingConfirmationModal.getBackgroundPanel(), Position.HIGH);
+        this.rootPanel.addComponent(this.newPouleModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.viewCompetitorsModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.httpConnectionExceptionModal.getBackgroundPanel(), Position.HIGH);
 
         this.closingConfirmationModal.disappear();
+        this.newPouleModal.disappear();
         this.viewCompetitorsModal.disappear();
         this.httpConnectionExceptionModal.disappear();
 

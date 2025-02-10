@@ -100,6 +100,17 @@ public final class FrameManager {
         frame.setFrameState(FrameState.MODAL_OPENED);
     }
 
+    public static void displayNewPouleModal() {
+        if (frame.getFrameState() != FrameState.DEFAULT)
+            return;
+
+        frame.getNewPouleModal()
+            .appear();
+
+        frame.setOpenedModal(frame.getNewPouleModal());
+        frame.setFrameState(FrameState.MODAL_OPENED);
+    }
+
     public static void displayViewDatabaseModal() {
         if (frame.getFrameState() != FrameState.DEFAULT)
             return;
