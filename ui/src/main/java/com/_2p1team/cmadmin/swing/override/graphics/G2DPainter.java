@@ -13,8 +13,8 @@ import java.awt.geom.Point2D;
 @AllArgsConstructor(access=AccessLevel.PRIVATE)
 public final class G2DPainter {
 
-    private static LinearGradientPaint determineBackgroundPaint(final Point2D start, final Point2D end, final Appearance appearance) {
-        return appearance.isInteractivityEnabled() ?
+    private static <C extends JComponent & AppearanceComponent> LinearGradientPaint determineBackgroundPaint(final Point2D start, final Point2D end, final Appearance appearance, final C component) {
+        return appearance.isInteractivityEnabled() && component.isEnabled() ?
             new LinearGradientPaint(
                 start,
                 end,
@@ -67,9 +67,9 @@ public final class G2DPainter {
             );
     }
 
-    private static void paintBackground(final Graphics2D g2, Point2D start, Point2D end, final Appearance appearance) {
+    private static <C extends JComponent & AppearanceComponent> void paintBackground(final Graphics2D g2, Point2D start, Point2D end, final Appearance appearance, final C component) {
         g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        LinearGradientPaint lgp = determineBackgroundPaint(start, end, appearance);
+        LinearGradientPaint lgp = determineBackgroundPaint(start, end, appearance, component);
 
         g2.setPaint(lgp);
         g2.fillRoundRect(
@@ -82,8 +82,8 @@ public final class G2DPainter {
         );
     }
 
-    private static LinearGradientPaint determineBorderPaint(final Point2D start, final Point2D end, final Appearance appearance) {
-        return appearance.isInteractivityEnabled() ?
+    private static <C extends JComponent & AppearanceComponent> LinearGradientPaint determineBorderPaint(final Point2D start, final Point2D end, final Appearance appearance, final C component) {
+        return appearance.isInteractivityEnabled() && component.isEnabled() ?
             new LinearGradientPaint(
                 start,
                 end,
@@ -134,13 +134,13 @@ public final class G2DPainter {
             );
     }
 
-    private static void paintBorder(final Graphics2D g2, Point2D start, Point2D end, final Appearance appearance) {
+    private static <C extends JComponent & AppearanceComponent> void paintBorder(final Graphics2D g2, Point2D start, Point2D end, final Appearance appearance, final C component) {
         if (appearance.getBorderConfiguration().getThickness() <= 0 && appearance.getBorderConfiguration().getRadius() <= 0)
             return;
 
         g2.setStroke(new BasicStroke(appearance.getBorderConfiguration().getThickness()));
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        LinearGradientPaint lgp = determineBorderPaint(start, end, appearance);
+        LinearGradientPaint lgp = determineBorderPaint(start, end, appearance, component);
 
         g2.setPaint(lgp);
         g2.drawRoundRect(
@@ -157,8 +157,8 @@ public final class G2DPainter {
         Point2D start = new Point2D.Double(0, 0);
         Point2D end = new Point2D.Double(component.getWidth(), component.getHeight());
 
-        paintBackground(g2, start, end, component.getComponentAppearance());
-        paintBorder(g2, start, end, component.getComponentAppearance());
+        paintBackground(g2, start, end, component.getComponentAppearance(), component);
+        paintBorder(g2, start, end, component.getComponentAppearance(), component);
     }
 
     private static <C extends JComponent & AppearanceComponent> void setFontOfComponent(final C component) {
@@ -251,7 +251,7 @@ public final class G2DPainter {
     }
 
     public static <C extends JComponent & AppearanceComponent> void drawComponentUIElements(final C component) {
-        if (!component.getComponentAppearance().isInteractivityEnabled())
+        if (!component.getComponentAppearance().isInteractivityEnabled() || !component.isEnabled())
             return;
 
         setFontOfComponent(component);

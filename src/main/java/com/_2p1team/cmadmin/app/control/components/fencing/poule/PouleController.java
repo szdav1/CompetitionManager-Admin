@@ -1,65 +1,66 @@
 package com._2p1team.cmadmin.app.control.components.fencing.poule;
 
 import com._2p1team.cmadmin.app.control.AbstractController;
+import com._2p1team.cmadmin.app.view.components.fencing.poule.Box;
 import com._2p1team.cmadmin.app.view.components.fencing.poule.Poule;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-// TODO: Create MouseController class, finish writing the mouse actions of the Poule component
-public final class PouleController extends AbstractController implements MouseListener {
+
+public final class PouleController extends AbstractController {
+
+    private final Poule poule;
+    private final Box[][] pouleBoxes;
 
     public PouleController(final Poule component) {
         super(component);
 
-        component.getBoxes()
-            .forEach(boxes -> boxes.forEach(box -> box.addMouseListener(this)));
+        this.poule = component;
+        this.pouleBoxes = this.poule.getBoxes();
+
+        for (Box[] pouleBoxRow : this.pouleBoxes) {
+            for (Box box : pouleBoxRow) {
+                box.addMouseListener(this);
+            }
+        }
     }
+
+    private void handleBoxHighlighting(final MouseEvent mouseEvent) {
+        for (int y = 1; y < this.pouleBoxes.length; y++) {
+            for (int x = 3; x < this.pouleBoxes[y].length-5; x++) {
+                final Box box = this.pouleBoxes[y][x];
+
+                if (mouseEvent.getSource().equals(box) && box.isEnabled()) {
+                    if (mouseEvent.getID() == MouseEvent.MOUSE_ENTERED)
+                        box.requestFocus();
+
+                    // Highlight current box
+                    box.setBackground(mouseEvent.getID() == MouseEvent.MOUSE_ENTERED ? Color.darkGray : Color.black);
+                    // Highlight logically paired box
+                    this.pouleBoxes[x-2][y+2].setBackground(mouseEvent.getID() == MouseEvent.MOUSE_ENTERED ? Color.darkGray : Color.black);
+                    // Highlight competitor name boxes
+                    this.pouleBoxes[y][0].setBackground(mouseEvent.getID() == MouseEvent.MOUSE_ENTERED ? Color.darkGray : Color.black);
+                    this.pouleBoxes[x-2][0].setBackground(mouseEvent.getID() == MouseEvent.MOUSE_ENTERED ? Color.darkGray : Color.black);
+                    return;
+                }
+            }
+        }
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        Poule poule = (Poule) this.getComponent();
-
-        poule.getBoxes()
-            .forEach(boxes -> boxes.forEach(box -> {
-                if (e.getSource().equals(box) && box.isEnabled()) {
-                    int sourceBoxIndex = boxes.indexOf(box);
-
-                    box.setOpaque(true);
-                    box.setBackground(Color.gray);
-                }
-            }));
+        this.handleBoxHighlighting(e);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        Poule poule = (Poule) this.getComponent();
-
-        poule.getBoxes()
-            .forEach(boxes -> boxes.forEach(box -> {
-                if (e.getSource().equals(box) && box.isEnabled()) {
-                    box.setOpaque(false);
-                    box.setBackground(Color.black);
-                }
-            }));
+        this.handleBoxHighlighting(e);
     }
 
 }

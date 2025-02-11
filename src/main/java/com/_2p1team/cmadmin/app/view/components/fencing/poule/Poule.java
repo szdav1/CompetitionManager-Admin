@@ -5,6 +5,7 @@ import com._2p1team.cmadmin.app.model.competitor.Competitor;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
 import com._2p1team.cmadmin.app.view.interfaces.ControlComponent;
 import com._2p1team.cmadmin.app.view.interfaces.KeyControlledComponent;
+import com._2p1team.cmadmin.support.constants.CustomColors;
 import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.Container;
@@ -13,24 +14,23 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.swing.JComponent;
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
-// TODO: Create the UI design plan for the Poule component and implement it
+
 @Data
 @EqualsAndHashCode(callSuper=false)
 public class Poule extends Panel implements ComplexComponent, Container, ControlComponent, KeyControlledComponent {
 
     private int numberOfCompetitors;
     private final List<Competitor> competitors;
-    private List<List<Box>> boxes;
+    private Box[][] boxes;
 
     public Poule(int numberOfCompetitors) {
         super(POULE_PANEL_SIZE, null, AppearanceRepository.MODAL_APPEARANCE);
 
         this.numberOfCompetitors = numberOfCompetitors;
         this.competitors = new ArrayList<>();
-        this.boxes = new ArrayList<>();
+        this.boxes = new Box[9][this.numberOfCompetitors+8];
 
         this.setUpComponent();
         new PouleController(this);
@@ -71,7 +71,7 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
         if (x-2 == y && y > 0) {
             box.setOpaque(true);
             box.setEnabled(false);
-            box.setBackground(Color.white);
+            box.setBackground(CustomColors.ORANGEISH);
         }
     }
 
@@ -87,7 +87,7 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
     private void disableStatsSection(int x, int y, final Box box) {
         int rowLength = this.numberOfCompetitors+8;
 
-        if (y > 0 && x >= rowLength-5 && x < rowLength)
+        if (y >= 0 && x >= rowLength-5 && x < rowLength)
             box.setEnabled(false);
     }
 
@@ -100,8 +100,6 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
 
     private void createLayout() {
         for (int y = 0; y < this.numberOfCompetitors+1; y++) {
-            final List<Box> boxRow = new ArrayList<>();
-
             for (int x = 0; x < this.numberOfCompetitors+8; x++) {
                 Box box = new Box(
                     x > 1 ? ((x-2)*N_BUTTON_WIDTH)+(W_BUTTON_WIDTH*2) : x == 0 ? 0 : W_BUTTON_WIDTH,
@@ -112,12 +110,15 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
                 );
 
                 this.performBoxModifications(x, y, box);
-                boxRow.add(box);
+                this.boxes[y][x] = box;
             }
-            this.boxes.add(boxRow);
         }
 
-        this.boxes.forEach(boxes -> boxes.forEach(this::addComponent));
+        for (Box[] boxRow : this.boxes) {
+            for (Box box : boxRow) {
+                this.addComponent(box);
+            }
+        }
     }
 
     @Override

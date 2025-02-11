@@ -1,7 +1,12 @@
 package com._2p1team.cmadmin.support.constants;
 
+import com._2p1team.cmadmin.support.util.Util;
 import com._2p1team.cmadmin.swing.override.graphics.configs.BorderConfiguration;
 import com._2p1team.cmadmin.swing.override.graphics.configs.LinearGradientPaintConfiguration;
+
+import java.awt.Cursor;
+import java.awt.Point;
+import java.awt.Toolkit;
 
 public final class AppearanceConstants {
 
@@ -28,5 +33,8 @@ public final class AppearanceConstants {
             CustomColors.REDDISH
         )
     );
+
+    public static final Cursor DISABLED_CURSOR = Toolkit.getDefaultToolkit()
+        .createCustomCursor(Util.loadImageIcon("/assets/disabledIcon.png").getImage(), new Point(0, 0), "DisabledCursor");
 
 }
