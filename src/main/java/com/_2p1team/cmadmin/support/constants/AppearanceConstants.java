@@ -16,6 +16,7 @@ public final class AppearanceConstants {
 
     public static final BorderConfiguration BASE_BORDER_CONFIGURATION = new BorderConfiguration(
         1,
+        BORDER_RADIUS,
         new LinearGradientPaintConfiguration(
             CustomColors.REDDISH,
             CustomColors.OPAQUE,
@@ -27,6 +28,7 @@ public final class AppearanceConstants {
 
     public static final BorderConfiguration BASE_FULL_BORDER_CONFIGURATION = new BorderConfiguration(
         1,
+        BORDER_RADIUS,
         new LinearGradientPaintConfiguration(
             CustomColors.REDDISH,
             CustomColors.ORANGEISH,

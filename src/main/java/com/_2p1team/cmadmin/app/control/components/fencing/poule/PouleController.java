@@ -26,28 +26,31 @@ public final class PouleController extends AbstractController {
         }
     }
 
+    private void focusEnteredBox(final Box box, final MouseEvent mouseEvent) {
+        if (mouseEvent.getID() == MouseEvent.MOUSE_ENTERED)
+            box.requestFocus();
+    }
+
+    private void highlightBoxes(final int x, final int y, final Box box, final MouseEvent mouseEvent) {
+        box.setBackground(mouseEvent.getID() == MouseEvent.MOUSE_ENTERED ? Color.darkGray : Color.black);
+        this.pouleBoxes[x-2][y+2].setBackground(mouseEvent.getID() == MouseEvent.MOUSE_ENTERED ? Color.darkGray : Color.black);
+        this.pouleBoxes[y][0].setBackground(mouseEvent.getID() == MouseEvent.MOUSE_ENTERED ? Color.darkGray : Color.black);
+        this.pouleBoxes[x-2][0].setBackground(mouseEvent.getID() == MouseEvent.MOUSE_ENTERED ? Color.darkGray : Color.black);
+    }
+
     private void handleBoxHighlighting(final MouseEvent mouseEvent) {
         for (int y = 1; y < this.pouleBoxes.length; y++) {
             for (int x = 3; x < this.pouleBoxes[y].length-5; x++) {
                 final Box box = this.pouleBoxes[y][x];
 
                 if (mouseEvent.getSource().equals(box) && box.isEnabled()) {
-                    if (mouseEvent.getID() == MouseEvent.MOUSE_ENTERED)
-                        box.requestFocus();
-
-                    // Highlight current box
-                    box.setBackground(mouseEvent.getID() == MouseEvent.MOUSE_ENTERED ? Color.darkGray : Color.black);
-                    // Highlight logically paired box
-                    this.pouleBoxes[x-2][y+2].setBackground(mouseEvent.getID() == MouseEvent.MOUSE_ENTERED ? Color.darkGray : Color.black);
-                    // Highlight competitor name boxes
-                    this.pouleBoxes[y][0].setBackground(mouseEvent.getID() == MouseEvent.MOUSE_ENTERED ? Color.darkGray : Color.black);
-                    this.pouleBoxes[x-2][0].setBackground(mouseEvent.getID() == MouseEvent.MOUSE_ENTERED ? Color.darkGray : Color.black);
+                    this.focusEnteredBox(box, mouseEvent);
+                    this.highlightBoxes(x, y, box, mouseEvent);
                     return;
                 }
             }
         }
     }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {

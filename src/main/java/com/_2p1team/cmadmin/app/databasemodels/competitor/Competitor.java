@@ -1,4 +1,4 @@
-package com._2p1team.cmadmin.app.model.competitor;
+package com._2p1team.cmadmin.app.databasemodels.competitor;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

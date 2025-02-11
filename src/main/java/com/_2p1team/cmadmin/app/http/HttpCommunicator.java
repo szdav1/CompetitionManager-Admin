@@ -1,6 +1,6 @@
-package com._2p1team.cmadmin.app.model.http;
+package com._2p1team.cmadmin.app.http;
 
-import com._2p1team.cmadmin.app.model.competitor.Competitor;
+import com._2p1team.cmadmin.app.databasemodels.competitor.Competitor;
 import com._2p1team.cmadmin.support.constants.BeforeLaunchExceptionType;
 import com._2p1team.cmadmin.support.constants.HttpEndPoints;
 import com._2p1team.cmadmin.support.util.BeforeLaunchExceptionQueue;

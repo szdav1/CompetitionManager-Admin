@@ -44,7 +44,7 @@ public final class SizeData {
     public static final Rectangle MODAL_BOUNDS = new Rectangle((FRAME_WIDTH/2)-(MODAL_WIDTH/2), (FRAME_HEIGHT/2)-(MODAL_HEIGHT/2), MODAL_WIDTH, MODAL_HEIGHT);
 
     public static final int POULE_PANEL_WIDTH = (W_BUTTON_WIDTH*2)+(N_BUTTON_WIDTH*14);
-    public static final int POULE_PANEL_HEIGHT = BUTTON_HEIGHT*9;
+    public static final int POULE_PANEL_HEIGHT = BUTTON_HEIGHT*13;
     public static final Dimension POULE_PANEL_SIZE = new Dimension(POULE_PANEL_WIDTH, POULE_PANEL_HEIGHT);
 
 }

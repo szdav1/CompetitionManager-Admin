@@ -1,19 +1,22 @@
 package com._2p1team.cmadmin.app.view.components.fencing.poule;
 
 import com._2p1team.cmadmin.app.control.components.fencing.poule.PouleController;
-import com._2p1team.cmadmin.app.model.competitor.Competitor;
+import com._2p1team.cmadmin.app.databasemodels.competitor.Competitor;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
 import com._2p1team.cmadmin.app.view.interfaces.ControlComponent;
 import com._2p1team.cmadmin.app.view.interfaces.KeyControlledComponent;
 import com._2p1team.cmadmin.support.constants.CustomColors;
+import com._2p1team.cmadmin.support.constants.SizeData;
 import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.Container;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
+import com._2p1team.cmadmin.swing.override.constants.Position;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.swing.JComponent;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,11 +29,11 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
     private Box[][] boxes;
 
     public Poule(int numberOfCompetitors) {
-        super(POULE_PANEL_SIZE, null, AppearanceRepository.MODAL_APPEARANCE);
+        super(POULE_PANEL_SIZE, null, AppearanceRepository.POULE_PANEL_APPEARANCE);
 
         this.numberOfCompetitors = numberOfCompetitors;
         this.competitors = new ArrayList<>();
-        this.boxes = new Box[9][this.numberOfCompetitors+8];
+        this.boxes = new Box[this.numberOfCompetitors+1][this.numberOfCompetitors+8];
 
         this.setUpComponent();
         new PouleController(this);
@@ -123,7 +126,18 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
 
     @Override
     public void setUpComponent() {
+        final Panel divider = new Panel(
+            new Rectangle(
+                (W_BUTTON_WIDTH*2)+(N_BUTTON_WIDTH*(this.numberOfCompetitors+1))-2,
+                0,
+                4,
+                BUTTON_HEIGHT*(this.numberOfCompetitors+1)
+            ),
+            AppearanceRepository.DIVIDER_APPEARANCE
+        );
+
         this.createLayout();
+        this.addComponent(divider, Position.HIGH);
     }
 
     @Override
