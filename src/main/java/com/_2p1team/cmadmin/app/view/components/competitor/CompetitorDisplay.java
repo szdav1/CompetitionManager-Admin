@@ -14,14 +14,14 @@ import java.awt.FlowLayout;
 
 @Data
 @EqualsAndHashCode(callSuper=true)
-public class CompetitorComponent extends Panel implements ComplexComponent {
+public class CompetitorDisplay extends Panel implements ComplexComponent {
 
     private final Label idLabel;
     private final Label nameLabel;
     private final Label clubLabel;
     private final Label birthDateLabel;
 
-    public CompetitorComponent(final Competitor competitor) {
+    public CompetitorDisplay(final Competitor competitor) {
         super(AppearanceRepository.COMPETITOR_COMPONENT_APPEARANCE);
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 

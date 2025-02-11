@@ -11,7 +11,7 @@ public final class BaseLabelAppearance extends Appearance {
 
     public BaseLabelAppearance() {
         this.setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(Color.black)));
-        this.setBorderConfiguration(AppearanceConstants.BASE_BORDER_CONFIGURATION);
+        this.setBorderConfiguration(AppearanceConstants.BASE_BORDER_NO_ROUND_CONFIGURATION);
     }
 
 }

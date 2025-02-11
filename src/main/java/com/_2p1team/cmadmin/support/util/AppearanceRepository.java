@@ -58,6 +58,12 @@ public final class AppearanceRepository {
 
     public static final Appearance POULE_PANEL_APPEARANCE = new PoulePanelAppearance();
 
-    public static final Appearance DIVIDER_APPEARANCE = new DividerAppearance();
+    public static final Appearance VERTICAL_DIVIDER_APPEARANCE = new VerticalDividerAppearance();
+
+    public static final Appearance HORIZONTAL_DIVIDER_APPEARANCE = new HorizontalDividerAppearance();
+
+    public static final Appearance LABELED_INPUT_APPEARANCE = new LabeledInputAppearance();
+
+    public static final Appearance SMALL_INPUT_APPEARANCE = new SmallInputAppearance();
 
 }

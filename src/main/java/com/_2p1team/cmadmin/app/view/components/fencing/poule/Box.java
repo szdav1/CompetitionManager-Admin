@@ -6,11 +6,15 @@ import com._2p1team.cmadmin.swing.override.graphics.configs.FontSet;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
+import java.awt.Rectangle;
 
 public class Box extends JTextField {
+    
+    public static final Color DEFAULT_BACKGROUND = Color.black;
+    public static final Color HIGHLIGHTED_BACKGROUND = Color.gray;
 
-    public Box(int x, int y, int width, int height, String text) {
-        this.setBounds(x, y, width, height);
+    public Box(Rectangle bounds, String text) {
+        this.setBounds(bounds.x, bounds.y, bounds.width, bounds.height);
         this.setText(text);
         this.setOpaque(true);
         this.setForeground(Color.white);
@@ -19,6 +23,7 @@ public class Box extends JTextField {
         this.setCaretColor(this.getForeground());
         this.setHorizontalAlignment(JTextField.CENTER);
         this.setBorder(new LineBorder(CustomColors.ORANGEISH, 1));
+        this.setRequestFocusEnabled(false);
     }
 
 }

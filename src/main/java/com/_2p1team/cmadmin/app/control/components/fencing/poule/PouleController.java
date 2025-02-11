@@ -4,7 +4,6 @@ import com._2p1team.cmadmin.app.control.AbstractController;
 import com._2p1team.cmadmin.app.view.components.fencing.poule.Box;
 import com._2p1team.cmadmin.app.view.components.fencing.poule.Poule;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 
@@ -12,6 +11,7 @@ public final class PouleController extends AbstractController {
 
     private final Poule poule;
     private final Box[][] pouleBoxes;
+    private final PouleKeyController pouleKeyController;
 
     public PouleController(final Poule component) {
         super(component);
@@ -24,6 +24,8 @@ public final class PouleController extends AbstractController {
                 box.addMouseListener(this);
             }
         }
+
+        this.pouleKeyController = new PouleKeyController(this.poule);
     }
 
     private void focusEnteredBox(final Box box, final MouseEvent mouseEvent) {
@@ -32,10 +34,21 @@ public final class PouleController extends AbstractController {
     }
 
     private void highlightBoxes(final int x, final int y, final Box box, final MouseEvent mouseEvent) {
-        box.setBackground(mouseEvent.getID() == MouseEvent.MOUSE_ENTERED ? Color.darkGray : Color.black);
-        this.pouleBoxes[x-2][y+2].setBackground(mouseEvent.getID() == MouseEvent.MOUSE_ENTERED ? Color.darkGray : Color.black);
-        this.pouleBoxes[y][0].setBackground(mouseEvent.getID() == MouseEvent.MOUSE_ENTERED ? Color.darkGray : Color.black);
-        this.pouleBoxes[x-2][0].setBackground(mouseEvent.getID() == MouseEvent.MOUSE_ENTERED ? Color.darkGray : Color.black);
+        if (mouseEvent.getID() == MouseEvent.MOUSE_ENTERED) {
+            box.setBackground(Box.HIGHLIGHTED_BACKGROUND);
+            this.pouleBoxes[x-2][y+2].setBackground(Box.HIGHLIGHTED_BACKGROUND);
+            this.pouleBoxes[y][0].setBackground(Box.HIGHLIGHTED_BACKGROUND);
+            this.pouleBoxes[x-2][0].setBackground(Box.HIGHLIGHTED_BACKGROUND);
+
+            this.pouleKeyController.setHighlightedBox(box);
+            this.pouleKeyController.setHighlightedBoxSibling(this.pouleBoxes[x-2][y+2]);
+        }
+        else if (mouseEvent.getID() == MouseEvent.MOUSE_EXITED) {
+            box.setBackground(Box.DEFAULT_BACKGROUND);
+            this.pouleBoxes[x-2][y+2].setBackground(Box.DEFAULT_BACKGROUND);
+            this.pouleBoxes[y][0].setBackground(Box.DEFAULT_BACKGROUND);
+            this.pouleBoxes[x-2][0].setBackground(Box.DEFAULT_BACKGROUND);
+        }
     }
 
     private void handleBoxHighlighting(final MouseEvent mouseEvent) {

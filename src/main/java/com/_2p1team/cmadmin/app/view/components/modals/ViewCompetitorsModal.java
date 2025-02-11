@@ -1,7 +1,7 @@
 package com._2p1team.cmadmin.app.view.components.modals;
 
 import com._2p1team.cmadmin.app.databasemodels.competitor.Competitor;
-import com._2p1team.cmadmin.app.view.components.competitor.CompetitorComponent;
+import com._2p1team.cmadmin.app.view.components.competitor.CompetitorDisplay;
 import com._2p1team.cmadmin.repository.CompetitorRepository;
 import static com._2p1team.cmadmin.support.constants.SizeData.BUTTON_HEIGHT;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
@@ -21,7 +21,7 @@ public final class ViewCompetitorsModal extends AbstractModal {
 
     private final Header header;
     private final ScrollPanel scrollPanel;
-    private final List<CompetitorComponent> competitorComponents;
+    private final List<CompetitorDisplay> competitorDisplays;
 
     public ViewCompetitorsModal() {
         this.setTitle("Competitors");
@@ -31,14 +31,14 @@ public final class ViewCompetitorsModal extends AbstractModal {
         this.scrollPanel = new ScrollPanel(new Dimension(this.getWidth()-2, this.getHeight()-(BUTTON_HEIGHT*2)), new FlowLayout(FlowLayout.CENTER, 0, 0), AppearanceRepository.BASE_SCROLL_PANEL_APPEARANCE);
         this.scrollPanel.setScrollSpeed(BUTTON_HEIGHT);
 
-        this.competitorComponents = new ArrayList<>();
+        this.competitorDisplays = new ArrayList<>();
         CompetitorRepository.competitors
-            .forEach(competitor -> competitorComponents.add(new CompetitorComponent(competitor)));
+            .forEach(competitor -> competitorDisplays.add(new CompetitorDisplay(competitor)));
 
         this.setUpComponent();
     }
 
-    private static final class Header extends CompetitorComponent {
+    private static final class Header extends CompetitorDisplay {
 
         public Header() {
             super(new Competitor(0L, "Name", "Club", "Birth Date"));
@@ -50,7 +50,7 @@ public final class ViewCompetitorsModal extends AbstractModal {
     @Override
     public void setUpComponent() {
         this.scrollPanel.addComponent(this.header);
-        this.competitorComponents.forEach(this.scrollPanel::addComponent);
+        this.competitorDisplays.forEach(this.scrollPanel::addComponent);
 
         this.getCenterPanel().addComponent(this.scrollPanel);
     }
