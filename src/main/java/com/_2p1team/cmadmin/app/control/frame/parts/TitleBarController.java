@@ -8,11 +8,10 @@ import com._2p1team.cmadmin.swing.override.components.button.Button;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class TitleBarController extends AbstractController implements MouseListener {
+public final class TitleBarController extends AbstractController {
 
     private final List<MenuButton> menuButtons;
     private final List<Button> dropdownPanelButtons;
@@ -101,6 +100,23 @@ public final class TitleBarController extends AbstractController implements Mous
         });
     }
 
+    private void handleMenuButtons(final MouseEvent mouseEvent) {
+        this.menuButtons.forEach(menuButton -> {
+            if (mouseEvent.getSource().equals(menuButton)) {
+                if (!menuButton.isToggled()) {
+                    menuButton.getDropdownPanel()
+                        .setVisible(mouseEvent.getID() == MouseEvent.MOUSE_ENTERED);
+
+                    FrameManager.getCenterPanel()
+                        .revalidate();
+                }
+
+                if (mouseEvent.getID() == MouseEvent.MOUSE_ENTERED)
+                    this.clearDropdownPanels(menuButton);
+            }
+        });
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         this.controlFrameState(e);
@@ -109,47 +125,13 @@ public final class TitleBarController extends AbstractController implements Mous
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    }
-
-    @Override
     public void mouseEntered(MouseEvent e) {
-        this.menuButtons.forEach(menuButton -> {
-            if (e.getSource().equals(menuButton)) {
-                if (!menuButton.isToggled()) {
-                    menuButton.getDropdownPanel()
-                        .setVisible(true);
-
-                    FrameManager.getCenterPanel()
-                        .revalidate();
-                }
-
-                this.clearDropdownPanels(menuButton);
-            }
-        });
+        this.handleMenuButtons(e);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        this.menuButtons.forEach(menuButton -> {
-            if (e.getSource().equals(menuButton)) {
-                if (!menuButton.isToggled()) {
-                    menuButton.getDropdownPanel()
-                        .setVisible(false);
-
-                    FrameManager.getCenterPanel()
-                        .revalidate();
-                }
-            }
-        });
+        this.handleMenuButtons(e);
     }
 
 }

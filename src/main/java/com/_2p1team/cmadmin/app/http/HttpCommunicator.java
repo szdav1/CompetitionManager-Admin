@@ -22,7 +22,6 @@ public final class HttpCommunicator {
     private static final HttpClient client = HttpClient.newHttpClient();
     private static HttpResponse<String> response;
 
-
     @AllArgsConstructor(access=AccessLevel.NONE)
     public static final class CompetitorApi {
 

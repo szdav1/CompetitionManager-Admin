@@ -92,7 +92,7 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
         this.insertDataButton = new Button(BUTTON_SIZE, "Insert", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
         this.dateLabel = new Label(BUTTON_SIZE, String.valueOf(LocalDate.now()), new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
         this.pouleNumberLabel = new Label(BUTTON_SIZE, "Poule No.: ", new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
-        this.refereeLabel = new Label(new Dimension(BUTTON_WIDTH*2, BUTTON_HEIGHT ), "Referee: ", new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
+        this.refereeLabel = new Label(new Dimension(BUTTON_WIDTH*2, BUTTON_HEIGHT), "Referee: ", new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
         this.finishButton = new Button(BUTTON_SIZE, "Finish", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
         this.setUpComponent();

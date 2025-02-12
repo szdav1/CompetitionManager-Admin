@@ -37,7 +37,6 @@ public final class WindowClosingConfirmationModalKeyController extends AbstractK
                 FrameManager.directExitFrame();
             }
         }
-
     }
 
 }
