@@ -37,8 +37,8 @@ public final class PouleController extends AbstractController {
         if (mouseEvent.getID() == MouseEvent.MOUSE_ENTERED) {
             box.setBackground(Box.HIGHLIGHTED_BACKGROUND);
             this.pouleBoxes[x-2][y+2].setBackground(Box.HIGHLIGHTED_BACKGROUND);
-            this.pouleBoxes[y][0].setBackground(Box.HIGHLIGHTED_BACKGROUND);
-            this.pouleBoxes[x-2][0].setBackground(Box.HIGHLIGHTED_BACKGROUND);
+            this.pouleBoxes[y][1].setBackground(Box.HIGHLIGHTED_BACKGROUND);
+            this.pouleBoxes[x-2][1].setBackground(Box.HIGHLIGHTED_BACKGROUND);
 
             this.pouleKeyController.setHighlightedBox(box);
             this.pouleKeyController.setHighlightedBoxSibling(this.pouleBoxes[x-2][y+2]);
@@ -46,8 +46,8 @@ public final class PouleController extends AbstractController {
         else if (mouseEvent.getID() == MouseEvent.MOUSE_EXITED) {
             box.setBackground(Box.DEFAULT_BACKGROUND);
             this.pouleBoxes[x-2][y+2].setBackground(Box.DEFAULT_BACKGROUND);
-            this.pouleBoxes[y][0].setBackground(Box.DEFAULT_BACKGROUND);
-            this.pouleBoxes[x-2][0].setBackground(Box.DEFAULT_BACKGROUND);
+            this.pouleBoxes[y][1].setBackground(Box.DEFAULT_BACKGROUND);
+            this.pouleBoxes[x-2][1].setBackground(Box.DEFAULT_BACKGROUND);
         }
     }
 
