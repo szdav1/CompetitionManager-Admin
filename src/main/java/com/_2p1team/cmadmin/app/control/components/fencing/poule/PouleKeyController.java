@@ -25,20 +25,36 @@ public final class PouleKeyController extends AbstractKeyController {
         this.poule = keyControlledComponent;
 
         this.poule.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-            .put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, KeyEvent.ALT_DOWN_MASK), "FocusSiblingBox");
+            .put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "FocusSiblingBox");
 
         this.poule.getActionMap()
             .put("FocusSiblingBox", new FocusSiblingBoxAction());
+
+        this.poule.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+            .put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, KeyEvent.ALT_DOWN_MASK), "SubmitPouleDataAction");
+
+        this.poule.getActionMap()
+            .put("SubmitPouleDataAction", new SubmitPouleDataAction());
     }
 
     private final class FocusSiblingBoxAction extends AbstractAction {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            System.out.println("Action");
             if (PouleKeyController.this.highlightedBox.isFocusOwner())
                 PouleKeyController.this.highlightedBoxSibling.requestFocus();
             else
                 PouleKeyController.this.highlightedBox.requestFocus();
+        }
+
+    }
+
+    private static final class SubmitPouleDataAction extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("Submitting poule data");
         }
 
     }

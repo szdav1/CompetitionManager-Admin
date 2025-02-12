@@ -5,13 +5,11 @@ import lombok.Getter;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.util.List;
 
 @Getter
-public abstract class AbstractController implements ActionListener, MouseListener {
+public abstract class AbstractController implements ActionListener, MouseListener, KeyListener {
 
     private final ControlComponent component;
     private final List<JComponent> controls;
@@ -44,6 +42,18 @@ public abstract class AbstractController implements ActionListener, MouseListene
 
     @Override
     public void mouseExited(MouseEvent e) {
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
     }
 
 }

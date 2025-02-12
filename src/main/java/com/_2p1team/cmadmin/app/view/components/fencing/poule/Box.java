@@ -26,4 +26,12 @@ public class Box extends JTextField {
         this.setRequestFocusEnabled(false);
     }
 
+    public boolean compareContentsWith(final Box box) {
+        return this.getText().equalsIgnoreCase(box.getText());
+    }
+
+    public boolean compareContentsTo(final String string) {
+        return this.getText().equalsIgnoreCase(string);
+    }
+
 }

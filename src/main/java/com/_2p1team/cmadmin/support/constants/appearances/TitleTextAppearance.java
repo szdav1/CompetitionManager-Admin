@@ -16,7 +16,7 @@ public final class TitleTextAppearance extends Appearance {
     public TitleTextAppearance() {
         this.setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)));
         this.setForegroundConfiguration(new ForegroundConfiguration(Color.white));
-        this.setIconSet(new IconSet(Util.loadImageIcon("/assets/appIcon.png", DirectIconSize.sizeByFrame(2, 4))));
+        this.setIconSet(new IconSet(Util.loadImageIcon("/assets/appIcon.png", DirectIconSize.sizeByFrame(2, 3))));
     }
 
 }
