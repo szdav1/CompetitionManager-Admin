@@ -9,6 +9,9 @@ public final class NewPouleModal extends AbstractModal {
 
     public NewPouleModal() {
         this.setTitle("New Poule");
+
+        Poule p = new Poule(8);
+        this.getCenterPanel().addComponent(p);
     }
 
     @Override

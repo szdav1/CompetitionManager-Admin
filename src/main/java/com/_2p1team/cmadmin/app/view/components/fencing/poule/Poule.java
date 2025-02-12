@@ -47,6 +47,7 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
     private final Label dateLabel;
     private final Label pouleNumberLabel;
     private final Label refereeLabel;
+    private final Button finishButton;
 
     public Poule(final int numberOfCompetitors) {
         super(new Dimension(POULE_PANEL_WIDTH, BUTTON_HEIGHT*(numberOfCompetitors+6)+PADDING), null, new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
@@ -80,7 +81,7 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
 
         this.dataPanelRightContainer = new Panel(
             new Dimension((this.dataPanel.getWidth()/2)-PADDING, this.dataPanel.getHeight()-PADDING),
-            new FlowLayout(FlowLayout.CENTER, PADDING, PADDING),
+            new FlowLayout(FlowLayout.CENTER, PADDING/2, PADDING/2),
             new Appearance(AppearanceRepository.LABELED_INPUT_APPEARANCE)
         );
 
@@ -92,6 +93,7 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
         this.dateLabel = new Label(BUTTON_SIZE, String.valueOf(LocalDate.now()), new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
         this.pouleNumberLabel = new Label(BUTTON_SIZE, "Poule No.: ", new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
         this.refereeLabel = new Label(new Dimension(BUTTON_WIDTH*2, BUTTON_HEIGHT ), "Referee: ", new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
+        this.finishButton = new Button(BUTTON_SIZE, "Finish", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
         this.setUpComponent();
         new PouleController(this);
@@ -233,6 +235,7 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
         this.dataPanelRightContainer.addComponent(this.pouleNumberLabel);
         this.dataPanelRightContainer.addComponent(this.dateLabel);
         this.dataPanelRightContainer.addComponent(this.refereeLabel);
+        this.dataPanelRightContainer.addComponent(this.finishButton);
 
         this.dataPanel.addComponent(this.dataPanelLeftContainer);
         this.dataPanel.addComponent(this.dataPanelRightContainer);
