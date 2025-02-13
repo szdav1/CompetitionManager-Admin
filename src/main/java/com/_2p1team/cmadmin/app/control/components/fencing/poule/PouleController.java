@@ -3,6 +3,7 @@ package com._2p1team.cmadmin.app.control.components.fencing.poule;
 import com._2p1team.cmadmin.app.control.AbstractController;
 import com._2p1team.cmadmin.app.view.components.fencing.poule.Box;
 import com._2p1team.cmadmin.app.view.components.fencing.poule.Poule;
+import com._2p1team.cmadmin.swing.override.components.button.Button;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -14,6 +15,8 @@ public final class PouleController extends AbstractController {
 
     private final Poule poule;
     private final Box[][] pouleBoxes;
+    private final Button insertButton;
+    private final Button finishButton;
     private final PouleKeyController pouleKeyController;
 
     public PouleController(final Poule component) {
@@ -21,6 +24,8 @@ public final class PouleController extends AbstractController {
 
         this.poule = component;
         this.pouleBoxes = this.poule.getBoxes();
+        this.insertButton = this.poule.getInsertDataButton();
+        this.finishButton = this.poule.getFinishButton();
         this.pouleKeyController = new PouleKeyController(this.poule);
 
         this.addListeners();
@@ -33,6 +38,9 @@ public final class PouleController extends AbstractController {
                 box.addKeyListener(this);
             }
         }
+
+        this.insertButton.addActionListener(this);
+        this.finishButton.addActionListener(this);
     }
 
     private Optional<Box> getSiblingBox(final Box box) {
@@ -137,6 +145,10 @@ public final class PouleController extends AbstractController {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(this.insertButton))
+            System.out.println("Inserting data");
+        else if (e.getSource().equals(this.finishButton))
+            System.out.println("Finishing poule");
     }
 
     @Override
