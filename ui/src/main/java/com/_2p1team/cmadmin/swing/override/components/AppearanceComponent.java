@@ -8,4 +8,8 @@ public interface AppearanceComponent extends MouseListener {
 
     Appearance getComponentAppearance();
 
+    void displayError();
+
+    void hideError();
+
 }

@@ -2,6 +2,7 @@ package com._2p1team.cmadmin.swing.override.graphics;
 
 import com._2p1team.cmadmin.swing.override.components.AppearanceComponent;
 import com._2p1team.cmadmin.swing.override.components.label.AbstractLabel;
+import com._2p1team.cmadmin.swing.override.constants.UIState;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
@@ -14,6 +15,18 @@ import java.awt.geom.Point2D;
 public final class G2DPainter {
 
     private static <C extends JComponent & AppearanceComponent> LinearGradientPaint determineBackgroundPaint(final Point2D start, final Point2D end, final Appearance appearance, final C component) {
+        if (appearance.getState() == UIState.ERROR)
+            return new LinearGradientPaint(
+                start,
+                end,
+                appearance.getBackgroundConfiguration()
+                    .getErrorConfiguration()
+                    .getFractions(),
+                appearance.getBackgroundConfiguration()
+                    .getErrorConfiguration()
+                    .getColors()
+            );
+
         return appearance.isInteractivityEnabled() && component.isEnabled() ?
             new LinearGradientPaint(
                 start,

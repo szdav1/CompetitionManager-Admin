@@ -3,7 +3,6 @@ package com._2p1team.cmadmin.app.view.components.fencing.poule;
 import com._2p1team.cmadmin.app.control.components.fencing.poule.PouleController;
 import com._2p1team.cmadmin.app.databasemodels.competitor.Competitor;
 import com._2p1team.cmadmin.app.view.components.input.LabeledInput;
-import com._2p1team.cmadmin.app.view.components.modals.PouleExceptionModal;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
 import com._2p1team.cmadmin.app.view.interfaces.ControlComponent;
 import com._2p1team.cmadmin.app.view.interfaces.KeyControlledComponent;

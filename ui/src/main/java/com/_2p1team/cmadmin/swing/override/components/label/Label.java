@@ -34,6 +34,18 @@ public class Label extends AbstractLabel {
     }
 
     @Override
+    public void displayError() {
+        this.getAppearance().setState(UIState.ERROR);
+        this.repaint();
+    }
+
+    @Override
+    public void hideError() {
+        this.getAppearance().setState(UIState.DEFAULT);
+        this.repaint();
+    }
+
+    @Override
     public Appearance getComponentAppearance() {
         return this.getAppearance();
     }

@@ -1,6 +1,7 @@
 package com._2p1team.cmadmin.swing.override.components.scrollpanel;
 
 import com._2p1team.cmadmin.swing.override.constants.Position;
+import com._2p1team.cmadmin.swing.override.constants.UIState;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 
 import javax.swing.JComponent;
@@ -47,6 +48,18 @@ public class ScrollPanel extends AbstractScrollPanel {
         this.setViewportView(this.getViewPanel());
         this.repaint();
         this.revalidate();
+    }
+
+    @Override
+    public void displayError() {
+        this.getAppearance().setState(UIState.ERROR);
+        this.repaint();
+    }
+
+    @Override
+    public void hideError() {
+        this.getAppearance().setState(UIState.DEFAULT);
+        this.repaint();
     }
 
     @Override

@@ -4,5 +4,6 @@ public enum UIState {
     DEFAULT,
     HOVERED,
     PRESSED,
-    RELEASED;
+    RELEASED,
+    ERROR;
 }
