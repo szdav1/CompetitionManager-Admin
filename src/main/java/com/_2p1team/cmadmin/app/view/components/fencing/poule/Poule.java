@@ -27,7 +27,7 @@ import java.awt.Rectangle;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+// TODO: Implement normal error handling (Possibly by adding it to the Appearance class and the custom G2DPainter
 @Data
 @EqualsAndHashCode(callSuper=false)
 public class Poule extends Panel implements ComplexComponent, Container, ControlComponent, KeyControlledComponent {

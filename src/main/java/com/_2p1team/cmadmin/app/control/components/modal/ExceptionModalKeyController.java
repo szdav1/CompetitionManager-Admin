@@ -1,7 +1,7 @@
 package com._2p1team.cmadmin.app.control.components.modal;
 
 import com._2p1team.cmadmin.app.control.AbstractKeyController;
-import com._2p1team.cmadmin.app.view.components.modals.ExceptionModal;
+import com._2p1team.cmadmin.app.view.components.modals.HttpExceptionModal;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import com._2p1team.cmadmin.support.constants.states.FrameState;
 
@@ -13,7 +13,7 @@ import java.awt.event.KeyEvent;
 
 public final class ExceptionModalKeyController extends AbstractKeyController {
 
-    public ExceptionModalKeyController(final ExceptionModal keyControlledComponent) {
+    public ExceptionModalKeyController(final HttpExceptionModal keyControlledComponent) {
         super(keyControlledComponent);
 
         keyControlledComponent.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)

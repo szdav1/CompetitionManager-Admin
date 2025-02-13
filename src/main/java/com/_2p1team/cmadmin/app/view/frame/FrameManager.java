@@ -129,12 +129,12 @@ public final class FrameManager {
         if (frame.getFrameState() != FrameState.DEFAULT)
             return;
 
-        frame.getHttpConnectionExceptionModal()
+        frame.getHttpConnectionHttpExceptionModal()
             .appear();
 
-        frame.setOpenedModal(frame.getHttpConnectionExceptionModal());
+        frame.setOpenedModal(frame.getHttpConnectionHttpExceptionModal());
         frame.setFrameState(FrameState.MODAL_OPENED);
-        frame.setPreviousModal(frame.getHttpConnectionExceptionModal());
+        frame.setPreviousModal(frame.getHttpConnectionHttpExceptionModal());
     }
 
     public static void displayPouleExceptionModal() {

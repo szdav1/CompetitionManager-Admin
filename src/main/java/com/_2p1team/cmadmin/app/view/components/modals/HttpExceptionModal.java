@@ -16,7 +16,7 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper=true)
-public final class ExceptionModal extends AbstractModal {
+public final class HttpExceptionModal extends AbstractModal {
 
     private Exception exception;
     private final Panel innerPanel;
@@ -24,7 +24,7 @@ public final class ExceptionModal extends AbstractModal {
     private final Label exceptionMessageLabel;
     private final Button exitButton;
 
-    public ExceptionModal() {
+    public HttpExceptionModal() {
         this.innerPanel = new Panel(new Dimension(this.getWidth(), this.getHeight()-BUTTON_HEIGHT), null, AppearanceRepository.MODAL_CENTER_PANEL_APPEARANCE);
         this.iconLabel = new Label(AppearanceRepository.HTTP_EXCEPTION_LABEL_APPEARANCE);
         this.iconLabel.setLocation((this.getWidth()/2)-(this.iconLabel.getWidth()/2), (this.innerPanel.getHeight()/2)-(this.iconLabel.getHeight()/2)-BUTTON_HEIGHT);

@@ -31,7 +31,7 @@ public final class AppFrame extends AbstractFrame {
     private final WindowClosingConfirmationModal closingConfirmationModal;
     private final NewPouleModal newPouleModal;
     private final ViewCompetitorsModal viewCompetitorsModal;
-    private final ExceptionModal httpConnectionExceptionModal;
+    private final HttpExceptionModal httpConnectionHttpExceptionModal;
 
     private final RootPanel rootPanel;
     private final Panel mainPanel;
@@ -60,7 +60,7 @@ public final class AppFrame extends AbstractFrame {
         this.closingConfirmationModal = new WindowClosingConfirmationModal();
         this.newPouleModal = new NewPouleModal();
         this.viewCompetitorsModal = new ViewCompetitorsModal();
-        this.httpConnectionExceptionModal = new ExceptionModal();
+        this.httpConnectionHttpExceptionModal = new HttpExceptionModal();
 
         this.openedModal = null;
 
@@ -99,19 +99,19 @@ public final class AppFrame extends AbstractFrame {
         this.titleBar.setUpDatabaseMenu();
         this.titleBar.setUpSettingsMenu();
 
-        this.rootPanel.addComponent(this.pouleExceptionModal.getBackgroundPanel(), Position.HIGH);
 
         this.rootPanel.addComponent(this.closingConfirmationModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.newPouleModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.viewCompetitorsModal.getBackgroundPanel(), Position.HIGH);
-        this.rootPanel.addComponent(this.httpConnectionExceptionModal.getBackgroundPanel(), Position.HIGH);
+        this.rootPanel.addComponent(this.httpConnectionHttpExceptionModal.getBackgroundPanel(), Position.HIGH);
+        this.rootPanel.addComponent(this.pouleExceptionModal.getBackgroundPanel(), Position.HIGH);
 
-        this.pouleExceptionModal.disappear();
 
         this.closingConfirmationModal.disappear();
         this.newPouleModal.disappear();
         this.viewCompetitorsModal.disappear();
-        this.httpConnectionExceptionModal.disappear();
+        this.httpConnectionHttpExceptionModal.disappear();
+        this.pouleExceptionModal.disappear();
 
         this.addComponent(this.rootPanel);
     }
