@@ -14,9 +14,15 @@ import java.util.Optional;
 
 public final class PouleController extends AbstractController {
 
-    private static final List<Integer> validKeyCodes = List.of(
+    private static final List<Integer> validKeyCodesForPouleBoxes = List.of(
         KeyEvent.VK_0, KeyEvent.VK_1, KeyEvent.VK_2, KeyEvent.VK_3, KeyEvent.VK_4, KeyEvent.VK_5, KeyEvent.VK_V,
         KeyEvent.VK_NUMPAD0, KeyEvent.VK_NUMPAD1, KeyEvent.VK_NUMPAD2, KeyEvent.VK_NUMPAD3, KeyEvent.VK_NUMPAD4, KeyEvent.VK_NUMPAD5
+    );
+
+    private static final List<Integer> validKeyCodesForInputBoxes = List.of(
+        KeyEvent.VK_1, KeyEvent.VK_2, KeyEvent.VK_3, KeyEvent.VK_4, KeyEvent.VK_5, KeyEvent.VK_6, KeyEvent.VK_7, KeyEvent.VK_8,
+        KeyEvent.VK_NUMPAD1, KeyEvent.VK_NUMPAD2, KeyEvent.VK_NUMPAD3, KeyEvent.VK_NUMPAD4, KeyEvent.VK_NUMPAD5, KeyEvent.VK_NUMPAD6,
+        KeyEvent.VK_NUMPAD7, KeyEvent.VK_NUMPAD8
     );
 
     private final Poule poule;
@@ -129,7 +135,7 @@ public final class PouleController extends AbstractController {
         if (!keyEvent.getSource().equals(box) || keyEvent.getKeyCode() == KeyEvent.VK_ENTER || keyEvent.getKeyCode() == KeyEvent.VK_SPACE)
             return;
 
-        if (!validKeyCodes.contains(eventKeyCode))
+        if (!validKeyCodesForPouleBoxes.contains(eventKeyCode))
             box.setText("");
         else if (eventKeyCode == KeyEvent.VK_5 || eventKeyCode == KeyEvent.VK_NUMPAD5)
             box.setText("v");
@@ -165,7 +171,8 @@ public final class PouleController extends AbstractController {
     }
 
     private void validateValuesToBeInserted(final KeyEvent keyEvent) {
-        // TODO: Implement this
+        final Object eventSource = keyEvent.getSource();
+        final int keyCode = keyEvent.getKeyCode();
     }
 
     @Override

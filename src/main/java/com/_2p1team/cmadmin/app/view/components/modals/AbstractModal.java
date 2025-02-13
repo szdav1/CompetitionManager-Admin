@@ -36,7 +36,7 @@ public abstract class AbstractModal extends Panel implements ComplexComponent, C
     private final Button closeButton;
 
     public AbstractModal() {
-        super(MODAL_BOUNDS, new BorderLayout(), AppearanceRepository.MODAL_APPEARANCE);
+        super(MODAL_BOUNDS, new BorderLayout(), new Appearance(AppearanceRepository.MODAL_APPEARANCE));
 
         Panel innerTopPanel = new Panel(new Dimension(this.getWidth()-N_BUTTON_WIDTH, BUTTON_HEIGHT), new FlowLayout(FlowLayout.LEFT, 0, 0), AppearanceRepository.MODAL_TITLE_BAR_APPEARANCE);
 

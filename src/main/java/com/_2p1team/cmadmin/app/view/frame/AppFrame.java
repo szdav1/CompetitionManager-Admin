@@ -39,8 +39,13 @@ public final class AppFrame extends AbstractFrame {
     private final CenterPanel centerPanel;
     private final FooterPanel footerPanel;
 
+    private final PouleExceptionModal pouleExceptionModal;
+
     @Setter(AccessLevel.PACKAGE)
     private FrameState frameState;
+
+    @Setter(AccessLevel.PACKAGE)
+    private AbstractModal previousModal;
 
     @Setter(AccessLevel.PACKAGE)
     private AbstractModal openedModal;
@@ -64,6 +69,8 @@ public final class AppFrame extends AbstractFrame {
         this.titleBar = new TitleBar();
         this.centerPanel = new CenterPanel();
         this.footerPanel = new FooterPanel();
+
+        this.pouleExceptionModal = new PouleExceptionModal();
 
         new FrameController(this);
 
@@ -92,10 +99,14 @@ public final class AppFrame extends AbstractFrame {
         this.titleBar.setUpDatabaseMenu();
         this.titleBar.setUpSettingsMenu();
 
+        this.rootPanel.addComponent(this.pouleExceptionModal.getBackgroundPanel(), Position.HIGH);
+
         this.rootPanel.addComponent(this.closingConfirmationModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.newPouleModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.viewCompetitorsModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.httpConnectionExceptionModal.getBackgroundPanel(), Position.HIGH);
+
+        this.pouleExceptionModal.disappear();
 
         this.closingConfirmationModal.disappear();
         this.newPouleModal.disappear();

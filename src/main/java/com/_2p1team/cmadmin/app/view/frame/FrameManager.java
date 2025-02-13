@@ -98,6 +98,7 @@ public final class FrameManager {
 
         frame.setOpenedModal(frame.getClosingConfirmationModal());
         frame.setFrameState(FrameState.MODAL_OPENED);
+        frame.setPreviousModal(frame.getClosingConfirmationModal());
     }
 
     public static void displayNewPouleModal() {
@@ -109,6 +110,7 @@ public final class FrameManager {
 
         frame.setOpenedModal(frame.getNewPouleModal());
         frame.setFrameState(FrameState.MODAL_OPENED);
+        frame.setPreviousModal(frame.getNewPouleModal());
     }
 
     public static void displayViewDatabaseModal() {
@@ -120,6 +122,7 @@ public final class FrameManager {
 
         frame.setOpenedModal(frame.getViewCompetitorsModal());
         frame.setFrameState(FrameState.MODAL_OPENED);
+        frame.setPreviousModal(frame.getViewCompetitorsModal());
     }
 
     public static void displayHttpConnectionExceptionModal() {
@@ -131,6 +134,21 @@ public final class FrameManager {
 
         frame.setOpenedModal(frame.getHttpConnectionExceptionModal());
         frame.setFrameState(FrameState.MODAL_OPENED);
+        frame.setPreviousModal(frame.getHttpConnectionExceptionModal());
+    }
+
+    public static void displayPouleExceptionModal() {
+        if (frame.getFrameState() != FrameState.MODAL_OPENED)
+            return;
+
+        hideOpenedModal();
+
+        frame.getPouleExceptionModal()
+            .appear();
+
+        frame.setOpenedModal(frame.getPouleExceptionModal());
+        frame.setFrameState(FrameState.MODAL_OPENED);
+        frame.setPreviousModal(frame.getPouleExceptionModal());
     }
 
     public static void hideOpenedModal() {
