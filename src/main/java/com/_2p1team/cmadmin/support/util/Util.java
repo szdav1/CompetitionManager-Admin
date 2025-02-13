@@ -32,4 +32,15 @@ public final class Util {
             .getScaledInstance(dimension.width, dimension.height, Image.SCALE_SMOOTH));
     }
 
+    public static boolean isAllNum(final String string) {
+        try {
+            Integer.parseInt(string);
+        }
+        catch (Exception exception) {
+            return false;
+        }
+
+        return true;
+    }
+
 }

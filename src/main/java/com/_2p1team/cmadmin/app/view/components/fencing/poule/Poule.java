@@ -39,11 +39,13 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
     private final Panel dataPanel;
     private final Panel dataPanelLeftContainer;
     private final Panel dataPanelRightContainer;
+
     private final LabeledInput competitor1IndexInput;
     private final LabeledInput competitor2IndexInput;
     private final LabeledInput competitor1PointInput;
     private final LabeledInput competitor2PointInput;
     private final Button insertDataButton;
+
     private final Label dateLabel;
     private final Label pouleNumberLabel;
     private final Label refereeLabel;
@@ -90,6 +92,7 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
         this.competitor1PointInput = new LabeledInput("Point 1");
         this.competitor2PointInput = new LabeledInput("Point 2");
         this.insertDataButton = new Button(BUTTON_SIZE, "Insert", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+
         this.dateLabel = new Label(BUTTON_SIZE, String.valueOf(LocalDate.now()), new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
         this.pouleNumberLabel = new Label(BUTTON_SIZE, "Poule No.: ", new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
         this.refereeLabel = new Label(new Dimension(BUTTON_WIDTH*2, BUTTON_HEIGHT), "Referee: ", new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));

@@ -3,6 +3,7 @@ package com._2p1team.cmadmin.app.control.components.fencing.poule;
 import com._2p1team.cmadmin.app.control.AbstractController;
 import com._2p1team.cmadmin.app.view.components.fencing.poule.Box;
 import com._2p1team.cmadmin.app.view.components.fencing.poule.Poule;
+import com._2p1team.cmadmin.app.view.components.input.LabeledInput;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 
 import java.awt.event.ActionEvent;
@@ -13,19 +14,40 @@ import java.util.Optional;
 
 public final class PouleController extends AbstractController {
 
+    private static final List<Integer> VALID_KEY_CODES = List.of(
+        KeyEvent.VK_0, KeyEvent.VK_1, KeyEvent.VK_2, KeyEvent.VK_3, KeyEvent.VK_4, KeyEvent.VK_5, KeyEvent.VK_V,
+        KeyEvent.VK_NUMPAD0, KeyEvent.VK_NUMPAD1, KeyEvent.VK_NUMPAD2, KeyEvent.VK_NUMPAD3, KeyEvent.VK_NUMPAD4, KeyEvent.VK_NUMPAD5
+    );
+
     private final Poule poule;
+
     private final Box[][] pouleBoxes;
     private final Button insertButton;
     private final Button finishButton;
+
+    private final LabeledInput competitor1;
+    private final LabeledInput competitor2;
+    private final LabeledInput point1;
+    private final LabeledInput point2;
+    private final List<LabeledInput> inputs;
+
     private final PouleKeyController pouleKeyController;
 
     public PouleController(final Poule component) {
         super(component);
 
         this.poule = component;
+
         this.pouleBoxes = this.poule.getBoxes();
         this.insertButton = this.poule.getInsertDataButton();
         this.finishButton = this.poule.getFinishButton();
+
+        this.competitor1 = this.poule.getCompetitor1IndexInput();
+        this.competitor2 = this.poule.getCompetitor2IndexInput();
+        this.point1 = this.poule.getCompetitor1PointInput();
+        this.point2 = this.poule.getCompetitor2PointInput();
+        this.inputs = List.of(this.competitor1, this.competitor2, this.point1, this.point2);
+
         this.pouleKeyController = new PouleKeyController(this.poule);
 
         this.addListeners();
@@ -41,6 +63,11 @@ public final class PouleController extends AbstractController {
 
         this.insertButton.addActionListener(this);
         this.finishButton.addActionListener(this);
+
+        this.competitor1.getInput().addKeyListener(this);
+        this.competitor2.getInput().addKeyListener(this);
+        this.point1.getInput().addKeyListener(this);
+        this.point2.getInput().addKeyListener(this);
     }
 
     private Optional<Box> getSiblingBox(final Box box) {
@@ -71,9 +98,8 @@ public final class PouleController extends AbstractController {
             this.pouleBoxes[y][1].setBackground(Box.HIGHLIGHTED_BACKGROUND);
             this.pouleBoxes[x-2][1].setBackground(Box.HIGHLIGHTED_BACKGROUND);
 
-
             this.pouleKeyController.setHighlightedBox(box);
-            this.pouleKeyController.setHighlightedBoxSibling(this.pouleBoxes[x-2][y+2]);
+            this.pouleKeyController.setHighlightedBoxSibling(siblingBox);
         }
         else if (mouseEvent.getID() == MouseEvent.MOUSE_EXITED) {
             box.setBackground(Box.DEFAULT_BACKGROUND);
@@ -98,17 +124,12 @@ public final class PouleController extends AbstractController {
     }
 
     private void validateInputKeyCodes(final Box box, final KeyEvent keyEvent) {
-        List<Integer> validKeyCodes = List.of(
-            KeyEvent.VK_0, KeyEvent.VK_1, KeyEvent.VK_2, KeyEvent.VK_3, KeyEvent.VK_4, KeyEvent.VK_5, KeyEvent.VK_V,
-            KeyEvent.VK_NUMPAD0, KeyEvent.VK_NUMPAD1, KeyEvent.VK_NUMPAD2, KeyEvent.VK_NUMPAD3, KeyEvent.VK_NUMPAD4, KeyEvent.VK_NUMPAD5
-        );
-
         final int eventKeyCode = keyEvent.getKeyCode();
 
         if (!keyEvent.getSource().equals(box) || keyEvent.getKeyCode() == KeyEvent.VK_ENTER || keyEvent.getKeyCode() == KeyEvent.VK_SPACE)
             return;
 
-        if (!validKeyCodes.contains(eventKeyCode))
+        if (!VALID_KEY_CODES.contains(eventKeyCode))
             box.setText("");
         else if (eventKeyCode == KeyEvent.VK_5 || eventKeyCode == KeyEvent.VK_NUMPAD5)
             box.setText("v");
@@ -128,11 +149,11 @@ public final class PouleController extends AbstractController {
         box.setText(box.getText().replaceAll(" ", ""));
 
         switch (box.getText()) {
-            case "0", "1", "2", "3", "4", "v" -> {}
+            case "0", "1", "2", "3", "4", "v" -> {
+            }
             default -> box.setText("");
         }
     }
-
 
     private void handlePouleBoxInput(final KeyEvent keyEvent) {
         for (Box[] pouleBoxRow : this.pouleBoxes) {
@@ -143,17 +164,27 @@ public final class PouleController extends AbstractController {
         }
     }
 
+    private void validateValuesToBeInserted(final KeyEvent keyEvent) {
+        final int keyCode = keyEvent.getKeyCode();
+
+        List<LabeledInput> sourceInput = this.inputs.stream()
+            .filter(keyEvent.getSource()::equals)
+            .toList();
+
+        if (sourceInput.isEmpty())
+            return;
+
+
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(this.insertButton))
-            System.out.println("Inserting data");
-        else if (e.getSource().equals(this.finishButton))
-            System.out.println("Finishing poule");
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         this.handlePouleBoxInput(e);
+        this.validateValuesToBeInserted(e);
     }
 
     @Override

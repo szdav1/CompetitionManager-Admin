@@ -10,6 +10,8 @@ import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.swing.JLabel;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
@@ -17,16 +19,27 @@ import java.awt.FlowLayout;
 @EqualsAndHashCode(callSuper=false)
 public final class LabeledInput extends Panel implements ComplexComponent {
 
-    private final Label label;
+    private final JLabel label;
     private final TextField input;
 
     public LabeledInput(String title) {
         super(new Dimension(BUTTON_WIDTH+N_BUTTON_WIDTH, BUTTON_HEIGHT), new FlowLayout(FlowLayout.LEFT, 0, 0), new Appearance(AppearanceRepository.LABELED_INPUT_APPEARANCE));
 
-        this.label = new Label(BUTTON_SIZE, title, new Appearance(AppearanceRepository.LABELED_INPUT_APPEARANCE));
+        this.label = new JLabel();
+        this.label.setPreferredSize(BUTTON_SIZE);
+        this.label.setText(title);
+        this.label.setForeground(Color.white);
         this.input = new TextField(N_BUTTON_SIZE, new Appearance(AppearanceRepository.SMALL_INPUT_APPEARANCE));
 
         this.setUpComponent();
+    }
+
+    public void setText(final String text) {
+        this.input.setText(text);
+    }
+
+    public String getText() {
+        return this.input.getText();
     }
 
     @Override
