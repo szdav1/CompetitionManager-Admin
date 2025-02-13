@@ -14,7 +14,7 @@ import java.util.Optional;
 
 public final class PouleController extends AbstractController {
 
-    private static final List<Integer> VALID_KEY_CODES = List.of(
+    private static final List<Integer> validKeyCodes = List.of(
         KeyEvent.VK_0, KeyEvent.VK_1, KeyEvent.VK_2, KeyEvent.VK_3, KeyEvent.VK_4, KeyEvent.VK_5, KeyEvent.VK_V,
         KeyEvent.VK_NUMPAD0, KeyEvent.VK_NUMPAD1, KeyEvent.VK_NUMPAD2, KeyEvent.VK_NUMPAD3, KeyEvent.VK_NUMPAD4, KeyEvent.VK_NUMPAD5
     );
@@ -129,7 +129,7 @@ public final class PouleController extends AbstractController {
         if (!keyEvent.getSource().equals(box) || keyEvent.getKeyCode() == KeyEvent.VK_ENTER || keyEvent.getKeyCode() == KeyEvent.VK_SPACE)
             return;
 
-        if (!VALID_KEY_CODES.contains(eventKeyCode))
+        if (!validKeyCodes.contains(eventKeyCode))
             box.setText("");
         else if (eventKeyCode == KeyEvent.VK_5 || eventKeyCode == KeyEvent.VK_NUMPAD5)
             box.setText("v");
@@ -165,14 +165,7 @@ public final class PouleController extends AbstractController {
     }
 
     private void validateValuesToBeInserted(final KeyEvent keyEvent) {
-        final int keyCode = keyEvent.getKeyCode();
-
-        List<LabeledInput> sourceInput = this.inputs.stream()
-            .filter(keyEvent.getSource()::equals)
-            .toList();
-
-        if (sourceInput.isEmpty())
-            return;
+        // TODO: Implement this
     }
 
     @Override

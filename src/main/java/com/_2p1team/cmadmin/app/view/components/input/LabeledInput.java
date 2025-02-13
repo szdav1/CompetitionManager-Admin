@@ -30,9 +30,8 @@ public final class LabeledInput extends Panel implements ComplexComponent {
         this.setUpComponent();
     }
 
-    public void displayError() {
-        this.label.setOpaque(true);
-        this.label.setBackground(Color.red);
+    public void setText(final String text) {
+        this.input.setText(text);
     }
 
     public String getText() {
