@@ -41,7 +41,6 @@ public final class PouleKeyController extends AbstractKeyController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Action");
             if (PouleKeyController.this.highlightedBox.isFocusOwner())
                 PouleKeyController.this.highlightedBoxSibling.requestFocus();
             else

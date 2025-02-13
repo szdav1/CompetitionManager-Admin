@@ -173,8 +173,6 @@ public final class PouleController extends AbstractController {
 
         if (sourceInput.isEmpty())
             return;
-
-
     }
 
     @Override
