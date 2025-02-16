@@ -19,10 +19,14 @@ public final class PouleController extends AbstractController {
         KeyEvent.VK_NUMPAD0, KeyEvent.VK_NUMPAD1, KeyEvent.VK_NUMPAD2, KeyEvent.VK_NUMPAD3, KeyEvent.VK_NUMPAD4, KeyEvent.VK_NUMPAD5
     );
 
-    private static final List<Integer> validKeyCodesForInputBoxes = List.of(
+    private static final List<Integer> validKeyCodesForManualIndexInsertions = List.of(
         KeyEvent.VK_1, KeyEvent.VK_2, KeyEvent.VK_3, KeyEvent.VK_4, KeyEvent.VK_5, KeyEvent.VK_6, KeyEvent.VK_7, KeyEvent.VK_8,
         KeyEvent.VK_NUMPAD1, KeyEvent.VK_NUMPAD2, KeyEvent.VK_NUMPAD3, KeyEvent.VK_NUMPAD4, KeyEvent.VK_NUMPAD5, KeyEvent.VK_NUMPAD6,
         KeyEvent.VK_NUMPAD7, KeyEvent.VK_NUMPAD8
+    );
+
+    private static final List<Integer> ambientKeyCodes = List.of(
+        KeyEvent.VK_TAB, KeyEvent.VK_CAPS_LOCK, KeyEvent.VK_SHIFT, KeyEvent.VK_CONTROL, KeyEvent.VK_ALT, KeyEvent.VK_ALT_GRAPH, KeyEvent.VK_ENTER
     );
 
     private final Poule poule;
@@ -35,7 +39,7 @@ public final class PouleController extends AbstractController {
     private final LabeledInput competitor2;
     private final LabeledInput point1;
     private final LabeledInput point2;
-    private final List<LabeledInput> inputs;
+    private final List<LabeledInput> labeledInputs;
 
     private final PouleKeyController pouleKeyController;
 
@@ -52,7 +56,7 @@ public final class PouleController extends AbstractController {
         this.competitor2 = this.poule.getCompetitor2IndexInput();
         this.point1 = this.poule.getCompetitor1PointInput();
         this.point2 = this.poule.getCompetitor2PointInput();
-        this.inputs = List.of(this.competitor1, this.competitor2, this.point1, this.point2);
+        this.labeledInputs = List.of(this.competitor1, this.competitor2, this.point1, this.point2);
 
         this.pouleKeyController = new PouleKeyController(this.poule);
 
@@ -129,19 +133,19 @@ public final class PouleController extends AbstractController {
         }
     }
 
-    private void validateInputKeyCodes(final Box box, final KeyEvent keyEvent) {
-        final int eventKeyCode = keyEvent.getKeyCode();
+    private void validatePouleBoxInputKeyCodes(final Box box, final KeyEvent keyEvent) {
+        final int keyCode = keyEvent.getKeyCode();
 
         if (!keyEvent.getSource().equals(box) || keyEvent.getKeyCode() == KeyEvent.VK_ENTER || keyEvent.getKeyCode() == KeyEvent.VK_SPACE)
             return;
 
-        if (!validKeyCodesForPouleBoxes.contains(eventKeyCode))
+        if (!validKeyCodesForPouleBoxes.contains(keyCode) && !ambientKeyCodes.contains(keyCode))
             box.setText("");
-        else if (eventKeyCode == KeyEvent.VK_5 || eventKeyCode == KeyEvent.VK_NUMPAD5)
+        else if (keyCode == KeyEvent.VK_5 || keyCode == KeyEvent.VK_NUMPAD5)
             box.setText("v");
     }
 
-    private void validateBoxInput(final Box box) {
+    private void validatePouleBoxInput(final Box box) {
         final Box siblingBox = this.getSiblingBox(box).orElse(null);
 
         if (siblingBox == null)
@@ -164,25 +168,101 @@ public final class PouleController extends AbstractController {
     private void handlePouleBoxInput(final KeyEvent keyEvent) {
         for (Box[] pouleBoxRow : this.pouleBoxes) {
             for (Box box : pouleBoxRow) {
-                this.validateInputKeyCodes(box, keyEvent);
-                this.validateBoxInput(box);
+                this.validatePouleBoxInputKeyCodes(box, keyEvent);
+                this.validatePouleBoxInput(box);
             }
         }
     }
 
-    private void validateValuesToBeInserted(final KeyEvent keyEvent) {
-        final Object eventSource = keyEvent.getSource();
+    private void validateManualInsertKeyCodes(final LabeledInput labeledInput, final KeyEvent keyEvent) {
         final int keyCode = keyEvent.getKeyCode();
+
+        if (!keyEvent.getSource().equals(labeledInput.getInput()) || keyCode == KeyEvent.VK_SPACE)
+            return;
+
+        if (labeledInput.equals(this.competitor1) || labeledInput.equals(this.competitor2)) {
+            if (!validKeyCodesForManualIndexInsertions.contains(keyCode) && !ambientKeyCodes.contains(keyCode))
+                labeledInput.setText("");
+        }
+        else if (labeledInput.equals(this.point1) || labeledInput.equals(this.point2)) {
+            if (!validKeyCodesForPouleBoxes.contains(keyCode) && !ambientKeyCodes.contains(keyCode))
+                labeledInput.setText("");
+            else if (keyCode == KeyEvent.VK_5 || keyCode == KeyEvent.VK_NUMPAD5)
+                labeledInput.setText("v");
+        }
+    }
+
+    private void validateManualInsertData(final LabeledInput labeledInput) {
+        if (labeledInput.getText().length() >= 2)
+            labeledInput.setText("");
+
+
+        if (labeledInput.equals(this.competitor1) || labeledInput.equals(this.competitor2)) {
+            if (this.competitor1.getText().equalsIgnoreCase(this.competitor2.getText()))
+                this.competitor2.setText("");
+
+            try {
+                int numberData = Integer.parseInt(labeledInput.getText());
+
+                if (numberData > this.poule.getNumberOfCompetitors())
+                    labeledInput.setText("");
+            }
+            catch (Exception exception) {
+                labeledInput.setText("");
+            }
+        }
+        else if (labeledInput.equals(this.point1) || labeledInput.equals(this.point2)) {
+            if (this.point1.getText().equalsIgnoreCase(this.point2.getText()))
+                this.point2.setText("");
+
+            LabeledInput siblingInput = this.point1.equals(labeledInput) ? this.point2 : this.point1;
+
+            if (!siblingInput.getText().equalsIgnoreCase("v") && !labeledInput.getText().equalsIgnoreCase("v") && !siblingInput.getText().isBlank())
+                labeledInput.setText("");
+        }
+    }
+
+    private void validateManualDataInserts(final KeyEvent keyEvent) {
+        for (LabeledInput labeledInput : this.labeledInputs) {
+            this.validateManualInsertKeyCodes(labeledInput, keyEvent);
+            this.validateManualInsertData(labeledInput);
+        }
+    }
+
+    private void insertManualInputData() {
+        String competitor1String = this.competitor1.getText();
+        String competitor2String = this.competitor2.getText();
+        String point1String = this.point1.getText();
+        String point2String = this.point2.getText();
+
+        try {
+            int competitor1 = Integer.parseInt(competitor1String);
+            int competitor2 = Integer.parseInt(competitor2String);
+            int point1 = point1String.equalsIgnoreCase("v") ? 5 : Integer.parseInt(point1String);
+            int point2 = point2String.equalsIgnoreCase("v") ? 5 : Integer.parseInt(point2String);
+
+            this.pouleBoxes[competitor1][competitor2+2].setText(point1String);
+            this.pouleBoxes[competitor2][competitor1+2].setText(point2String);
+
+            this.competitor1.setText("");
+            this.competitor2.setText("");
+            this.point1.setText("");
+            this.point2.setText("");
+        }
+        catch (Exception exception) {
+        }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(this.insertButton))
+            this.insertManualInputData();
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         this.handlePouleBoxInput(e);
-        this.validateValuesToBeInserted(e);
+        this.validateManualDataInserts(e);
     }
 
     @Override
