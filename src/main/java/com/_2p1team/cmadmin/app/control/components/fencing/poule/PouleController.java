@@ -238,8 +238,6 @@ public final class PouleController extends AbstractController {
         try {
             int competitor1 = Integer.parseInt(competitor1String);
             int competitor2 = Integer.parseInt(competitor2String);
-            int point1 = point1String.equalsIgnoreCase("v") ? 5 : Integer.parseInt(point1String);
-            int point2 = point2String.equalsIgnoreCase("v") ? 5 : Integer.parseInt(point2String);
 
             this.pouleBoxes[competitor1][competitor2+2].setText(point1String);
             this.pouleBoxes[competitor2][competitor1+2].setText(point2String);
