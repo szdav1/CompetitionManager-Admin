@@ -11,6 +11,7 @@ import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.util.Random;
 
 public final class PouleKeyController extends AbstractKeyController {
 
@@ -40,6 +41,12 @@ public final class PouleKeyController extends AbstractKeyController {
         this.point2 = this.poule.getCompetitor2PointInput();
 
         this.poule.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+            .put(KeyStroke.getKeyStroke(KeyEvent.VK_F12, 0), "FillPouleAction");
+
+        this.poule.getActionMap()
+            .put("FillPouleAction", new FillPouleAction());
+
+        this.poule.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
             .put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "FocusSiblingBox");
 
         this.poule.getActionMap()
@@ -50,6 +57,38 @@ public final class PouleKeyController extends AbstractKeyController {
 
         this.poule.getActionMap()
             .put("SubmitPouleDataAction", new SubmitPouleDataAction());
+    }
+
+    private final class FillPouleAction extends AbstractAction {
+
+        private static final Random random = new Random();
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            for (int y = 1; y < PouleKeyController.this.pouleBoxes.length; y++) {
+                for (int x = 3; x < PouleKeyController.this.pouleBoxes[y].length-5; x++) {
+                    if (!PouleKeyController.this.pouleBoxes[y][x].isEnabled())
+                        continue;
+
+                    boolean winner = random.nextBoolean();
+                    int num1 = 0;
+                    int num2 = 0;
+
+                    if (winner) {
+                        num1 = 5;
+                        num2 = random.nextInt(0, 5);
+                    }
+                    else {
+                        num1 = random.nextInt(0, 5);
+                        num2 = 5;
+                    }
+
+                    PouleKeyController.this.pouleBoxes[y][x].setText(num1 == 5 ? "v" : String.valueOf(num1));
+                    PouleKeyController.this.pouleBoxes[x-2][y+2].setText(num2 == 5 ? "v" : String.valueOf(num2));
+                }
+            }
+        }
+
     }
 
     private final class FocusSiblingBoxAction extends AbstractAction {

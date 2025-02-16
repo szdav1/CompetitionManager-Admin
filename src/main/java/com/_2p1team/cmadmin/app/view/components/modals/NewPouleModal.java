@@ -28,7 +28,7 @@ public final class NewPouleModal extends AbstractModal {
 
 //        this.setUpComponent();
 
-        Poule p = new Poule(7);
+        Poule p = new Poule(4);
         this.getCenterPanel().addComponent(p);
     }
 

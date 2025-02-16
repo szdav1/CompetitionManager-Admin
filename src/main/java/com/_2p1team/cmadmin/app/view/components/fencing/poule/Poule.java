@@ -1,11 +1,12 @@
 package com._2p1team.cmadmin.app.view.components.fencing.poule;
 
 import com._2p1team.cmadmin.app.control.components.fencing.poule.PouleController;
-import com._2p1team.cmadmin.app.databasemodels.competitor.Competitor;
+import com._2p1team.cmadmin.app.dto.competitor.Competitor;
 import com._2p1team.cmadmin.app.view.components.input.LabeledInput;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
 import com._2p1team.cmadmin.app.view.interfaces.ControlComponent;
 import com._2p1team.cmadmin.app.view.interfaces.KeyControlledComponent;
+import com._2p1team.cmadmin.support.constants.AppearanceConstants;
 import static com._2p1team.cmadmin.support.constants.AppearanceConstants.PADDING;
 import com._2p1team.cmadmin.support.constants.CustomColors;
 import static com._2p1team.cmadmin.support.constants.SizeData.*;
@@ -14,6 +15,7 @@ import com._2p1team.cmadmin.swing.override.components.Container;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
+import com._2p1team.cmadmin.swing.override.components.text.field.TextField;
 import com._2p1team.cmadmin.swing.override.constants.Position;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import lombok.Data;
@@ -26,7 +28,7 @@ import java.awt.Rectangle;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-// TODO: Implement normal error handling (Possibly by adding it to the Appearance class and the custom G2DPainter
+
 @Data
 @EqualsAndHashCode(callSuper=false)
 public class Poule extends Panel implements ComplexComponent, Container, ControlComponent, KeyControlledComponent {
@@ -34,6 +36,7 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
     private int numberOfCompetitors;
     private final List<Competitor> competitors;
     private Box[][] boxes;
+    private final int rowLength;
 
     private final Label dataPanelLabel;
     private final Panel dataPanel;
@@ -48,7 +51,7 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
 
     private final Label dateLabel;
     private final Label pouleNumberLabel;
-    private final Label refereeLabel;
+    private final TextField refereeLabel;
     private final Button finishButton;
 
     public Poule(final int numberOfCompetitors) {
@@ -57,6 +60,7 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
         this.numberOfCompetitors = numberOfCompetitors;
         this.competitors = new ArrayList<>();
         this.boxes = new Box[this.numberOfCompetitors+1][this.numberOfCompetitors+8];
+        this.rowLength = this.numberOfCompetitors+8;
 
         this.dataPanelLabel = new Label(
             new Rectangle(PADDING, BUTTON_HEIGHT*(this.numberOfCompetitors+1), BUTTON_WIDTH, BUTTON_HEIGHT),
@@ -95,11 +99,83 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
 
         this.dateLabel = new Label(BUTTON_SIZE, String.valueOf(LocalDate.now()), new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
         this.pouleNumberLabel = new Label(BUTTON_SIZE, "Poule No.: ", new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
-        this.refereeLabel = new Label(new Dimension(BUTTON_WIDTH*2, BUTTON_HEIGHT), "Referee: ", new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
+        this.refereeLabel = new TextField(new Dimension(BUTTON_WIDTH*2, BUTTON_HEIGHT), "Referee: ", new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
         this.finishButton = new Button(BUTTON_SIZE, "Finish", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
         this.setUpComponent();
         new PouleController(this);
+    }
+
+    private boolean checkCompetitorData() {
+        boolean hasError = false;
+        for (int y = 1; y < this.boxes.length; y++) {
+            for (int x = 3; x < this.boxes[y].length-5; x++) {
+                if (this.boxes[y][x].getText().isBlank() && this.boxes[y][x].isEnabled()) {
+                    this.boxes[y][x].setBackground(AppearanceConstants.ERROR_COLOR);
+                    hasError = true;
+                }
+            }
+        }
+
+        return hasError;
+    }
+
+    private void calculateWinsAnsTs() {
+        for (int y = 1; y < this.boxes.length; y++) {
+            int wins = 0;
+            int ts = 0;
+
+            for (int x = 3; x < this.boxes[y].length-5; x++) {
+                Box box = this.boxes[y][x];
+
+                if (!box.isEnabled())
+                    continue;
+
+                if (box.getText().equalsIgnoreCase("v")) {
+                    wins++;
+                    ts += 5;
+                }
+                else {
+                    ts += Integer.parseInt(box.getText());
+                }
+            }
+
+            this.boxes[y][this.rowLength-5].setText(String.valueOf(wins));
+            this.boxes[y][this.rowLength-4].setText(String.valueOf(ts));
+        }
+    }
+
+    private void calculateTrAndIndex() {
+        for (int x = 3; x < this.rowLength-5; x++) {
+            int tr = 0;
+
+            for (int y = 1; y < this.numberOfCompetitors+1; y++) {
+                Box box = this.boxes[y][x];
+
+                if (!box.isEnabled())
+                    continue;
+
+                tr += box.getText().equalsIgnoreCase("v") ? 5 : Integer.parseInt(box.getText());
+            }
+
+            this.boxes[x-2][this.rowLength-3].setText(String.valueOf(tr));
+        }
+
+        for (int y = 1; y < this.boxes.length; y++) {
+            this.boxes[y][this.rowLength-2].setText(String.valueOf(Integer.parseInt(this.boxes[y][this.rowLength-4].getText())-Integer.parseInt(this.boxes[y][this.rowLength-3].getText())));
+        }
+    }
+
+    private void sortCompetitorsByIndex() {
+        // TODO: Implement sorting fencers by index
+    }
+
+    public void calculateCompetitorData() {
+        if (this.checkCompetitorData())
+            return;
+
+        this.calculateWinsAnsTs();
+        this.calculateTrAndIndex();
     }
 
     public void setPouleNumber(int pouleNumber) {
@@ -117,25 +193,23 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
         box.setEnabled(false);
         box.setDisabledTextColor(box.getForeground());
 
-        int rowLength = this.numberOfCompetitors+8;
-
         switch (x) {
             case 0 -> box.setText("Club");
             case 1 -> box.setText("Name");
             case 2 -> box.setText("#");
         }
 
-        if (x > 2 && x < rowLength-5)
+        if (x > 2 && x < this.rowLength-5)
             box.setText(String.valueOf(x-2));
-        else if (x == rowLength-5)
+        else if (x == this.rowLength-5)
             box.setText("V");
-        else if (x == rowLength-4)
+        else if (x == this.rowLength-4)
             box.setText("TS");
-        else if (x == rowLength-3)
+        else if (x == this.rowLength-3)
             box.setText("TR");
-        else if (x == rowLength-2)
+        else if (x == this.rowLength-2)
             box.setText("Ind");
-        else if (x == rowLength-1)
+        else if (x == this.rowLength-1)
             box.setText("Pl");
     }
 

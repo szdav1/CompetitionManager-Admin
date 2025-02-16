@@ -1,6 +1,6 @@
 package com._2p1team.cmadmin.support.util;
 
-import com._2p1team.cmadmin.app.databasemodels.competitor.Competitor;
+import com._2p1team.cmadmin.app.dto.competitor.Competitor;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import lombok.AccessLevel;

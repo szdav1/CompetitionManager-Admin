@@ -1,6 +1,6 @@
 package com._2p1team.cmadmin.app.view.components.modals;
 
-import com._2p1team.cmadmin.app.databasemodels.competitor.Competitor;
+import com._2p1team.cmadmin.app.dto.competitor.Competitor;
 import com._2p1team.cmadmin.app.view.components.competitor.CompetitorDisplay;
 import com._2p1team.cmadmin.repository.CompetitorRepository;
 import static com._2p1team.cmadmin.support.constants.SizeData.BUTTON_HEIGHT;

@@ -1,6 +1,6 @@
 package com._2p1team.cmadmin.repository;
 
-import com._2p1team.cmadmin.app.databasemodels.competitor.Competitor;
+import com._2p1team.cmadmin.app.dto.competitor.Competitor;
 import com._2p1team.cmadmin.app.http.HttpCommunicator;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
