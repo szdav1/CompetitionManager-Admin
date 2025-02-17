@@ -9,6 +9,7 @@ import static com._2p1team.cmadmin.support.constants.SizeData.W_BUTTON_SIZE;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
+import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -26,14 +27,14 @@ public class CompetitorDisplay extends Panel implements ComplexComponent {
     private final Label birthDateLabel;
 
     public CompetitorDisplay(Dimension idPreferredSize, Dimension otherPreferredSize, final Competitor competitor) {
-        super(AppearanceRepository.COMPETITOR_COMPONENT_APPEARANCE);
+        super(new Appearance(AppearanceRepository.COMPETITOR_COMPONENT_APPEARANCE));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         this.checkbox = new Checkbox();
-        this.idLabel = new Label(idPreferredSize, String.valueOf(competitor.getId()), AppearanceRepository.BASE_LABEL_APPEARANCE);
-        this.nameLabel = new Label(otherPreferredSize, competitor.getName(), AppearanceRepository.BASE_LABEL_APPEARANCE);
-        this.clubLabel = new Label(otherPreferredSize, competitor.getClub(), AppearanceRepository.BASE_LABEL_APPEARANCE);
-        this.birthDateLabel = new Label(otherPreferredSize, competitor.getBirthDateAsString(), AppearanceRepository.BASE_LABEL_APPEARANCE);
+        this.idLabel = new Label(idPreferredSize, String.valueOf(competitor.getId()), new Appearance(AppearanceRepository.BASE_LABEL_APPEARANCE));
+        this.nameLabel = new Label(otherPreferredSize, competitor.getName(), new Appearance(AppearanceRepository.BASE_LABEL_APPEARANCE));
+        this.clubLabel = new Label(otherPreferredSize, competitor.getClub(), new Appearance(AppearanceRepository.BASE_LABEL_APPEARANCE));
+        this.birthDateLabel = new Label(otherPreferredSize, competitor.getBirthDateAsString(), new Appearance(AppearanceRepository.BASE_LABEL_APPEARANCE));
 
         this.setUpComponent();
     }
