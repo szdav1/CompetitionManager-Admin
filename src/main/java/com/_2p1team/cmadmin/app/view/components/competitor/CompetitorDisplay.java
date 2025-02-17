@@ -1,40 +1,63 @@
 package com._2p1team.cmadmin.app.view.components.competitor;
 
 import com._2p1team.cmadmin.app.dto.competitor.Competitor;
+import com._2p1team.cmadmin.app.view.components.checkbox.Checkbox;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
+import com._2p1team.cmadmin.support.constants.CustomColors;
+import static com._2p1team.cmadmin.support.constants.SizeData.BUTTON_SIZE;
 import static com._2p1team.cmadmin.support.constants.SizeData.W_BUTTON_SIZE;
-import static com._2p1team.cmadmin.support.constants.SizeData.X_BUTTON_SIZE;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 @Data
 @EqualsAndHashCode(callSuper=true)
 public class CompetitorDisplay extends Panel implements ComplexComponent {
 
+    private final Checkbox checkbox;
     private final Label idLabel;
     private final Label nameLabel;
     private final Label clubLabel;
     private final Label birthDateLabel;
 
-    public CompetitorDisplay(final Competitor competitor) {
+    public CompetitorDisplay(Dimension idPreferredSize, Dimension otherPreferredSize, final Competitor competitor) {
         super(AppearanceRepository.COMPETITOR_COMPONENT_APPEARANCE);
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
-        this.idLabel = new Label(W_BUTTON_SIZE, String.valueOf(competitor.getId()), AppearanceRepository.BASE_LABEL_APPEARANCE);
-        this.nameLabel = new Label(X_BUTTON_SIZE, competitor.getName(), AppearanceRepository.BASE_LABEL_APPEARANCE);
-        this.clubLabel = new Label(X_BUTTON_SIZE, competitor.getClub(), AppearanceRepository.BASE_LABEL_APPEARANCE);
-        this.birthDateLabel = new Label(X_BUTTON_SIZE, competitor.getBirthDateAsString(), AppearanceRepository.BASE_LABEL_APPEARANCE);
+        this.checkbox = new Checkbox();
+        this.idLabel = new Label(idPreferredSize, String.valueOf(competitor.getId()), AppearanceRepository.BASE_LABEL_APPEARANCE);
+        this.nameLabel = new Label(otherPreferredSize, competitor.getName(), AppearanceRepository.BASE_LABEL_APPEARANCE);
+        this.clubLabel = new Label(otherPreferredSize, competitor.getClub(), AppearanceRepository.BASE_LABEL_APPEARANCE);
+        this.birthDateLabel = new Label(otherPreferredSize, competitor.getBirthDateAsString(), AppearanceRepository.BASE_LABEL_APPEARANCE);
 
         this.setUpComponent();
     }
 
+    public CompetitorDisplay(final Competitor competitor) {
+        this(BUTTON_SIZE, W_BUTTON_SIZE, competitor);
+    }
+
+    public static final class Header extends CompetitorDisplay {
+
+        public Header() {
+            super(new Competitor(0L, "Name", "Club", "Birth Date"));
+            this.getIdLabel().setForeground(CustomColors.ORANGEISH);
+            this.getNameLabel().setForeground(CustomColors.ORANGEISH);
+            this.getClubLabel().setForeground(CustomColors.ORANGEISH);
+            this.getBirthDateLabel().setForeground(CustomColors.ORANGEISH);
+            this.getIdLabel().setText("Id");
+        }
+
+    }
+
     @Override
     public void setUpComponent() {
+        this.addComponent(this.checkbox);
         this.addComponent(this.idLabel);
         this.addComponent(this.nameLabel);
         this.addComponent(this.clubLabel);
