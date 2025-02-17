@@ -45,8 +45,17 @@ public class CompetitorDisplay extends Panel implements ComplexComponent {
 
     public static final class Header extends CompetitorDisplay {
 
+        public Header(Dimension idPreferredSize, Dimension otherPreferredSize) {
+            super(idPreferredSize, otherPreferredSize, new Competitor(0L, "Name", "Club", "Birth Date"));
+            this.setUIAttributes();
+        }
+
         public Header() {
             super(new Competitor(0L, "Name", "Club", "Birth Date"));
+            this.setUIAttributes();
+        }
+
+        private void setUIAttributes() {
             this.getIdLabel().setForeground(CustomColors.ORANGEISH);
             this.getNameLabel().setForeground(CustomColors.ORANGEISH);
             this.getClubLabel().setForeground(CustomColors.ORANGEISH);

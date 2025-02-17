@@ -40,6 +40,15 @@ public final class Checkbox extends JButton implements ActionListener {
             this.setIcon(null);
     }
 
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+
+        if (this.checked)
+            this.setIcon(this.checkIcon);
+        else
+            this.setIcon(null);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this))
