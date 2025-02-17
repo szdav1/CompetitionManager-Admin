@@ -23,7 +23,6 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO: Finish this
 @Data
 @EqualsAndHashCode(callSuper=false)
 public final class NewPouleModal extends AbstractModal {
