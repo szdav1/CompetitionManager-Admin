@@ -1,6 +1,7 @@
 package com._2p1team.cmadmin.app.view.frame;
 
 import com._2p1team.cmadmin.app.control.frame.FrameController;
+import com._2p1team.cmadmin.app.view.components.fencing.poule.PouleCompetitionPanel;
 import com._2p1team.cmadmin.app.view.components.modals.*;
 import com._2p1team.cmadmin.app.view.frame.parts.CenterPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.FooterPanel;
@@ -39,8 +40,6 @@ public final class AppFrame extends AbstractFrame {
     private final CenterPanel centerPanel;
     private final FooterPanel footerPanel;
 
-    private final PouleExceptionModal pouleExceptionModal;
-
     @Setter(AccessLevel.PACKAGE)
     private FrameState frameState;
 
@@ -50,19 +49,17 @@ public final class AppFrame extends AbstractFrame {
     @Setter(AccessLevel.PACKAGE)
     private AbstractModal openedModal;
 
+    private final PouleCompetitionPanel pouleCompetitionPanel;
+
     public AppFrame(Image iconImage, String title) {
         super(iconImage, title);
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.setLayout(null);
 
-        this.frameState = FrameState.DEFAULT;
-
         this.closingConfirmationModal = new WindowClosingConfirmationModal();
         this.newPouleModal = new NewPouleModal();
         this.viewCompetitorsModal = new ViewCompetitorsModal();
         this.httpConnectionHttpExceptionModal = new HttpExceptionModal();
-
-        this.openedModal = null;
 
         this.rootPanel = new RootPanel();
         this.mainPanel = new Panel(new Rectangle(0, 0, FRAME_WIDTH, FRAME_HEIGHT), new BorderLayout(), AppearanceRepository.MAIN_PANEL_APPEARANCE);
@@ -70,7 +67,10 @@ public final class AppFrame extends AbstractFrame {
         this.centerPanel = new CenterPanel();
         this.footerPanel = new FooterPanel();
 
-        this.pouleExceptionModal = new PouleExceptionModal();
+        this.frameState = FrameState.DEFAULT;
+        this.openedModal = null;
+
+        this.pouleCompetitionPanel = new PouleCompetitionPanel();
 
         new FrameController(this);
 
@@ -89,6 +89,10 @@ public final class AppFrame extends AbstractFrame {
     }
 
     private void createFrameUI() {
+        this.centerPanel.addComponent(this.pouleCompetitionPanel);
+
+        this.pouleCompetitionPanel.setVisible(false);
+
         this.mainPanel.addComponent(this.titleBar, Position.TOP);
         this.mainPanel.addComponent(this.centerPanel, Position.CENTER);
         this.mainPanel.addComponent(this.footerPanel, Position.BOTTOM);
@@ -99,19 +103,15 @@ public final class AppFrame extends AbstractFrame {
         this.titleBar.setUpDatabaseMenu();
         this.titleBar.setUpSettingsMenu();
 
-
         this.rootPanel.addComponent(this.closingConfirmationModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.newPouleModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.viewCompetitorsModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.httpConnectionHttpExceptionModal.getBackgroundPanel(), Position.HIGH);
-        this.rootPanel.addComponent(this.pouleExceptionModal.getBackgroundPanel(), Position.HIGH);
-
 
         this.closingConfirmationModal.disappear();
         this.newPouleModal.disappear();
         this.viewCompetitorsModal.disappear();
         this.httpConnectionHttpExceptionModal.disappear();
-        this.pouleExceptionModal.disappear();
 
         this.addComponent(this.rootPanel);
     }

@@ -63,7 +63,7 @@ public final class PouleController extends AbstractController {
         this.addListeners();
     }
 
-    private void addListeners() {
+    public void addListeners() {
         for (Box[] pouleBoxRow : this.pouleBoxes) {
             for (Box box : pouleBoxRow) {
                 box.addMouseListener(this);

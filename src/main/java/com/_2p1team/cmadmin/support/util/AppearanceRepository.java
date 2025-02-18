@@ -64,6 +64,6 @@ public final class AppearanceRepository {
 
     public static final Appearance LABELED_INPUT_APPEARANCE = new LabeledInputAppearance();
 
-    public static final Appearance SMALL_INPUT_APPEARANCE = new SmallInputAppearance();
+    public static final Appearance POULE_COMPETITION_PANEL_APPEARANCE = new PouleCompetitionPanelAppearance();
 
 }

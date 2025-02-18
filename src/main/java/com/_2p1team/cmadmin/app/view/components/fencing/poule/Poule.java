@@ -33,6 +33,13 @@ import java.util.List;
 @EqualsAndHashCode(callSuper=false)
 public class Poule extends Panel implements ComplexComponent, Container, ControlComponent, KeyControlledComponent {
 
+    public static final int MIN_SIZE = 4;
+    public static final int MAX_SIZE = 8;
+    public static final int DESIRED_SIZE = 7;
+
+    private final Panel verticalDivider;
+    private final Panel horizontalDivider;
+
     private int numberOfCompetitors;
     private final List<Competitor> competitors;
     private Box[][] boxes;
@@ -54,8 +61,30 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
     private final TextField refereeLabel;
     private final Button finishButton;
 
+    private final PouleController controller;
+
     public Poule(final int numberOfCompetitors) {
         super(new Dimension(POULE_PANEL_WIDTH, BUTTON_HEIGHT*(numberOfCompetitors+6)+PADDING), null, new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
+
+        this.verticalDivider = new Panel(
+            new Rectangle(
+                BUTTON_WIDTH+W_BUTTON_WIDTH+(N_BUTTON_WIDTH*(numberOfCompetitors+1))-2,
+                0,
+                4,
+                BUTTON_HEIGHT*(numberOfCompetitors+1)
+            ),
+            AppearanceRepository.VERTICAL_DIVIDER_APPEARANCE
+        );
+
+        this.horizontalDivider = new Panel(
+            new Rectangle(
+                0,
+                BUTTON_HEIGHT-2,
+                BUTTON_WIDTH+W_BUTTON_WIDTH+(N_BUTTON_WIDTH*(numberOfCompetitors+6)),
+                4
+            ),
+            AppearanceRepository.HORIZONTAL_DIVIDER_APPEARANCE
+        );
 
         this.numberOfCompetitors = numberOfCompetitors;
         this.competitors = new ArrayList<>();
@@ -103,7 +132,7 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
         this.finishButton = new Button(BUTTON_SIZE, "Finish", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
         this.setUpComponent();
-        new PouleController(this);
+        this.controller = new PouleController(this);
     }
 
     private boolean checkCompetitorData() {
@@ -281,28 +310,22 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
         }
     }
 
+    public void recreateLayout(final int numberOfCompetitors) {
+        this.numberOfCompetitors = numberOfCompetitors;
+        this.boxes = new Box[this.numberOfCompetitors+1][this.numberOfCompetitors+8];
+
+        this.removeAll();
+        this.setPreferredSize(new Dimension(POULE_PANEL_WIDTH, BUTTON_HEIGHT*(numberOfCompetitors+6)+PADDING));
+        this.createLayout();
+        this.addComponent(this.verticalDivider, Position.HIGH);
+        this.addComponent(this.horizontalDivider, Position.HIGH);
+        this.addComponent(this.dataPanelLabel);
+        this.addComponent(this.dataPanel);
+        this.controller.addListeners();
+    }
+
     @Override
     public void setUpComponent() {
-        final Panel verticalDivider = new Panel(
-            new Rectangle(
-                BUTTON_WIDTH+W_BUTTON_WIDTH+(N_BUTTON_WIDTH*(this.numberOfCompetitors+1))-2,
-                0,
-                4,
-                BUTTON_HEIGHT*(this.numberOfCompetitors+1)
-            ),
-            AppearanceRepository.VERTICAL_DIVIDER_APPEARANCE
-        );
-
-        final Panel horizontalDivider = new Panel(
-            new Rectangle(
-                0,
-                BUTTON_HEIGHT-2,
-                BUTTON_WIDTH+W_BUTTON_WIDTH+(N_BUTTON_WIDTH*(this.numberOfCompetitors+6)),
-                4
-            ),
-            AppearanceRepository.HORIZONTAL_DIVIDER_APPEARANCE
-        );
-
         this.dataPanelLeftContainer.addComponent(this.competitor1IndexInput);
         this.dataPanelLeftContainer.addComponent(this.competitor2IndexInput);
         this.dataPanelLeftContainer.addComponent(this.competitor1PointInput);
@@ -318,8 +341,8 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
         this.dataPanel.addComponent(this.dataPanelRightContainer);
 
         this.createLayout();
-        this.addComponent(verticalDivider, Position.HIGH);
-        this.addComponent(horizontalDivider, Position.HIGH);
+        this.addComponent(this.verticalDivider, Position.HIGH);
+        this.addComponent(this.horizontalDivider, Position.HIGH);
         this.addComponent(this.dataPanelLabel);
         this.addComponent(this.dataPanel);
     }

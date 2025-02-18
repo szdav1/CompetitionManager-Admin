@@ -1,12 +1,14 @@
 package com._2p1team.cmadmin.app.control.components.modal;
 
 import com._2p1team.cmadmin.app.control.AbstractController;
+import com._2p1team.cmadmin.app.http.HttpCommunicator;
 import com._2p1team.cmadmin.app.view.components.checkbox.Checkbox;
 import com._2p1team.cmadmin.app.view.components.competitor.CompetitorDisplay;
+import com._2p1team.cmadmin.app.view.components.fencing.poule.Poule;
 import com._2p1team.cmadmin.app.view.components.input.LabeledInput;
 import com._2p1team.cmadmin.app.view.components.modals.NewPouleModal;
-import static com._2p1team.cmadmin.support.constants.SizeData.BUTTON_WIDTH;
-import static com._2p1team.cmadmin.support.constants.SizeData.N_BUTTON_WIDTH;
+import com._2p1team.cmadmin.app.view.frame.FrameManager;
+import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.scrollpanel.ScrollPanel;
 
@@ -118,7 +120,7 @@ public final class NewPouleModalController extends AbstractController {
             selectedCompetitor.getCheckbox().setChecked(false);
         });
 
-        this.newPouleModal.getParticipatingCompetitors().addAll(selectedCompetitors);
+        NewPouleModal.getParticipatingCompetitors().addAll(selectedCompetitors);
         this.newPouleModal.getCompetitorDisplays().removeAll(selectedCompetitors);
         this.participatingScrollPanel.resizeViewPanel(N_BUTTON_WIDTH+(BUTTON_WIDTH*4));
 
@@ -128,11 +130,11 @@ public final class NewPouleModalController extends AbstractController {
     }
 
     public void removeCompetitorFromParticipatingList() {
-        this.searchResults = this.newPouleModal.getParticipatingCompetitors().stream()
+        this.searchResults = NewPouleModal.getParticipatingCompetitors().stream()
             .filter(competitorDisplay -> competitorDisplay.getCheckbox().isChecked())
             .toList();
 
-        this.newPouleModal.getParticipatingCompetitors().removeAll(searchResults);
+        NewPouleModal.getParticipatingCompetitors().removeAll(searchResults);
         this.newPouleModal.getCompetitorDisplays().addAll(searchResults);
 
         this.newPouleModal.getParticipatingCompetitorsScrollPanel().repaint();
@@ -145,7 +147,7 @@ public final class NewPouleModalController extends AbstractController {
     }
 
     private void highlightParticipatingCompetitors() {
-        this.newPouleModal.getParticipatingCompetitors().forEach(competitorDisplay -> competitorDisplay.getCheckbox().toggleChecked());
+        NewPouleModal.getParticipatingCompetitors().forEach(competitorDisplay -> competitorDisplay.getCheckbox().toggleChecked());
     }
 
     @Override
@@ -165,8 +167,27 @@ public final class NewPouleModalController extends AbstractController {
         else if (e.getSource().equals(this.removeButton))
             this.removeCompetitorFromParticipatingList();
 
-        else if (e.getSource().equals(this.createButton))
-            return;
+        else if (e.getSource().equals(this.createButton) && NewPouleModal.getParticipatingCompetitors().size() >= Poule.MIN_SIZE) {
+            this.newPouleModal.getCompetitorDisplays().clear();
+            this.scrollPanel.getViewPanel().removeAll();
+            this.scrollPanel.getContents().clear();
+            this.scrollPanel.resizeViewPanel(N_BUTTON_WIDTH+(BUTTON_WIDTH*4));
+
+            HttpCommunicator.CompetitorApi.getAllCompetitors()
+                .forEach(competitor -> this.newPouleModal.getCompetitorDisplays().add(new CompetitorDisplay(BUTTON_SIZE, BUTTON_SIZE, competitor)));
+
+            this.scrollPanel.addComponent(this.newPouleModal.getMainHeader());
+            this.newPouleModal.getCompetitorDisplays().forEach(this.scrollPanel::addComponent);
+            this.scrollPanel.resizeViewPanel(N_BUTTON_WIDTH+(BUTTON_WIDTH*4));
+
+            this.participatingScrollPanel.getViewPanel().removeAll();
+            this.participatingScrollPanel.getContents().clear();
+            this.participatingScrollPanel.addComponent(this.newPouleModal.getParticipatingHeader());
+            this.participatingScrollPanel.resizeViewPanel(N_BUTTON_WIDTH+(BUTTON_WIDTH*4));
+
+            FrameManager.hideOpenedModal();
+            FrameManager.displayPouleCompetitionPanel();
+        }
     }
 
     @Override

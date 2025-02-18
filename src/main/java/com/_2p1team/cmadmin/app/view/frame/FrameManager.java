@@ -137,18 +137,24 @@ public final class FrameManager {
         frame.setPreviousModal(frame.getHttpConnectionHttpExceptionModal());
     }
 
-    public static void displayPouleExceptionModal() {
-        if (frame.getFrameState() != FrameState.MODAL_OPENED)
+    public static void displayPouleCompetitionPanel() {
+        if (frame.getFrameState() != FrameState.DEFAULT)
             return;
 
-        hideOpenedModal();
-
-        frame.getPouleExceptionModal()
+        frame.getPouleCompetitionPanel()
             .appear();
 
-        frame.setOpenedModal(frame.getPouleExceptionModal());
-        frame.setFrameState(FrameState.MODAL_OPENED);
-        frame.setPreviousModal(frame.getPouleExceptionModal());
+        frame.setFrameState(FrameState.POULE_COMPETITION_PANEL_OPENED);
+    }
+
+    public static void hidePouleCompetitionPanel() {
+        if (frame.getFrameState() != FrameState.POULE_COMPETITION_PANEL_OPENED)
+            return;
+
+        frame.getPouleCompetitionPanel()
+            .disappear();
+
+        frame.setFrameState(FrameState.DEFAULT);
     }
 
     public static void hideOpenedModal() {

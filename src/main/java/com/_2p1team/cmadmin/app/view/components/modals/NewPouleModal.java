@@ -14,6 +14,7 @@ import com._2p1team.cmadmin.swing.override.components.scrollpanel.ScrollPanel;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
 import javax.swing.JComponent;
 import javax.swing.SwingConstants;
@@ -40,7 +41,10 @@ public final class NewPouleModal extends AbstractModal {
     private final Button searchButton;
     private final Button addButton;
     private final Button removeButton;
-    private final List<CompetitorDisplay> participatingCompetitors;
+
+    @Getter
+    private static final List<CompetitorDisplay> participatingCompetitors = new ArrayList<>();
+
     private final Label participatingLabel;
     private final CompetitorDisplay.Header participatingHeader;
     private final ScrollPanel participatingCompetitorsScrollPanel;
@@ -74,7 +78,6 @@ public final class NewPouleModal extends AbstractModal {
         this.searchButton = new Button(BUTTON_SIZE, "Search", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
         this.addButton = new Button(BUTTON_SIZE, "Add", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
         this.removeButton = new Button(BUTTON_SIZE, "Remove", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
-        this.participatingCompetitors = new ArrayList<>();
 
         this.participatingLabel = new Label(this.searchCompetitorLabel.getPreferredSize(), "Participating Competitors", new Appearance(AppearanceRepository.LABELED_INPUT_APPEARANCE));
         this.participatingLabel.setHorizontalAlignment(SwingConstants.LEFT);
