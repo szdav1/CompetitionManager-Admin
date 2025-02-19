@@ -2,7 +2,6 @@ package com._2p1team.cmadmin.app.control.components.fencing.poule;
 
 import com._2p1team.cmadmin.app.control.AbstractController;
 import com._2p1team.cmadmin.app.view.components.fencing.poule.PouleCompetitionPanel;
-import com._2p1team.cmadmin.app.view.components.fencing.poule.PouleCompetitionPanelKeyController;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 

@@ -60,7 +60,7 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
 
     private void drawPoules() {
         this.poules.forEach(this.scrollPanel::addComponent);
-        this.scrollPanel.resizeViewPanel(this.scrollPanel.getWidth());
+        this.scrollPanel.resizeViewPanel(this.scrollPanel.getViewPanel().getWidth());
     }
 
     private void createPoules() {
