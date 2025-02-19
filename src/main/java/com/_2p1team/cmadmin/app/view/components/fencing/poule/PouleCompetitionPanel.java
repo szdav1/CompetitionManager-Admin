@@ -46,8 +46,8 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
         this.centerPanel = new Panel(new Dimension(this.getWidth(), this.getHeight()-(BUTTON_HEIGHT*2)), new FlowLayout(FlowLayout.CENTER, PADDING, PADDING), new Appearance(AppearanceRepository.MODAL_CENTER_PANEL_APPEARANCE));
         this.bottomPanel = new Panel(new Dimension(this.getWidth(), BUTTON_HEIGHT), new FlowLayout(FlowLayout.RIGHT, 0, 0), new Appearance(AppearanceRepository.MODAL_TITLE_BAR_APPEARANCE));
 
-        this.scrollPanel = new ScrollPanel(this.centerPanel.getPreferredSize(), new FlowLayout(FlowLayout.CENTER, PADDING, PADDING), new Appearance(AppearanceRepository.BASE_SCROLL_PANEL_APPEARANCE));
-        this.scrollPanel.setScrollSpeed(POULE_PANEL_HEIGHT/4);
+        this.scrollPanel = new ScrollPanel(new Dimension(this.centerPanel.getWidth()-2, this.centerPanel.getHeight()-BUTTON_HEIGHT), new FlowLayout(FlowLayout.CENTER, PADDING, PADDING), new Appearance(AppearanceRepository.BASE_SCROLL_PANEL_APPEARANCE));
+        this.scrollPanel.setScrollSpeed(POULE_PANEL_HEIGHT/6);
 
         this.closeButton = new Button(N_BUTTON_SIZE, "x", new Appearance(AppearanceRepository.EXIT_BUTTON_APPEARANCE));
 

@@ -5,12 +5,16 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import javax.swing.JScrollBar;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 @Getter
 @EqualsAndHashCode(callSuper=false)
 public abstract class AbstractScrollBar extends JScrollBar {
 
     private final Appearance appearance;
+    private static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
+
 
     public AbstractScrollBar(final int orientation, final Appearance appearance) {
         this.appearance = appearance;
@@ -19,6 +23,10 @@ public abstract class AbstractScrollBar extends JScrollBar {
         this.setUI(new ScrollBarUI(appearance));
         this.setOpaque(false);
         this.setBorder(null);
+        this.setPreferredSize(new Dimension(
+            SCREEN_SIZE.width/100,
+            orientation == JScrollBar.HORIZONTAL ? SCREEN_SIZE.height*2/100 : SCREEN_SIZE.width/100
+        ));
         this.revalidate();
         this.repaint();
     }

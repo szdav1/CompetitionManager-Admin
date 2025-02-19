@@ -42,8 +42,8 @@ public class ScrollPanel extends AbstractScrollPanel {
         this.getViewPanel().setPreferredSize(new Dimension(newWidth, (int) (contentsHeight*1.3f)));
 
         this.setViewportView(this.getViewPanel());
-        this.repaint();
-        this.revalidate();
+        this.getViewPanel().repaint();
+        this.getViewPanel().revalidate();
     }
 
     @Override
