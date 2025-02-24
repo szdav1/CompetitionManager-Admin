@@ -84,7 +84,7 @@ public final class NewPouleModal extends AbstractModal {
 
         this.participatingHeader = new CompetitorDisplay.Header(BUTTON_SIZE, BUTTON_SIZE);
 
-        this.participatingCompetitorsScrollPanel = new ScrollPanel(new Dimension(this.rightPanel.getWidth(), this.rightPanel.getHeight()-this.rightPanelContainer.getHeight()-(BUTTON_HEIGHT*6)), new FlowLayout(FlowLayout.CENTER, 0, 0), new Appearance(AppearanceRepository.BASE_SCROLL_PANEL_APPEARANCE));
+        this.participatingCompetitorsScrollPanel = new ScrollPanel(new Dimension(this.rightPanel.getWidth(), this.rightPanel.getHeight()-this.rightPanelContainer.getHeight()-(BUTTON_HEIGHT*5)-PADDING), new FlowLayout(FlowLayout.CENTER, 0, 0), new Appearance(AppearanceRepository.BASE_SCROLL_PANEL_APPEARANCE));
         this.participatingCompetitorsScrollPanel.setScrollSpeed(BUTTON_HEIGHT);
         this.createButton = new Button(BUTTON_SIZE, "Create", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
