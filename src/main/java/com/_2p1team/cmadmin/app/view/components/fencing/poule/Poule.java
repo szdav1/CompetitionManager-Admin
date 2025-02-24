@@ -38,7 +38,7 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
 
     public static final int MIN_SIZE = 4;
     public static final int MAX_SIZE = 8;
-    public static final int DESIRED_SIZE = 7;
+    public static final int PREFERRED_SIZE = 7;
 
     private final Panel verticalDivider;
     private final Panel horizontalDivider;
@@ -218,7 +218,6 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
         competitorsToSort.sort(Comparator.comparing(CompetitorSortModel::index).reversed());
 
         for (int y = 1; y < this.numberOfCompetitors+1; y++) {
-            System.out.println(this.boxes[y][1].getText());
             for (CompetitorSortModel competitorSortModel : competitorsToSort) {
                 if (competitorSortModel.name().equalsIgnoreCase(this.boxes[y][1].getText()))
                     this.boxes[y][this.rowLength-1].setText(String.valueOf(competitorsToSort.indexOf(competitorSortModel)+1));
@@ -226,13 +225,37 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
         }
     }
 
-    public void calculateCompetitorData() {
+    private Competitor findStartingCompetitorByName(final String name) {
+        return this.startingCompetitors.stream()
+            .filter(startingCompetitor -> startingCompetitor.getName().equalsIgnoreCase(name))
+            .toList()
+            .getFirst();
+    }
+
+    private void finish() {
+        for (int y = 1; y < this.numberOfCompetitors+1; y++) {
+            final Competitor startingCompetitorObject = this.findStartingCompetitorByName(this.boxes[y][1].getText());
+            this.finishingCompetitors.add(new CompetitorTransferModel(
+                startingCompetitorObject.getId(),
+                startingCompetitorObject.getName(),
+                startingCompetitorObject.getClub(),
+                startingCompetitorObject.getBirthDateAsString(),
+                Integer.parseInt(this.boxes[y][this.rowLength-2].getText()),
+                Integer.parseInt(this.boxes[y][this.rowLength-1].getText())
+            ));
+        }
+    }
+
+    public boolean calculateCompetitorData() {
         if (this.checkCompetitorData())
-            return;
+            return true;
 
         this.calculateWinsAnsTs();
         this.calculateTrAndIndex();
         this.sortCompetitorsByIndex();
+        this.finish();
+
+        return false;
     }
 
     private void doFirstRowModifications(int x, int y, final Box box) {

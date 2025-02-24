@@ -41,8 +41,6 @@ public final class PouleController extends AbstractController {
     private final LabeledInput point2;
     private final List<LabeledInput> labeledInputs;
 
-    private final PouleKeyController pouleKeyController;
-
     public PouleController(final Poule component) {
         super(component);
 
@@ -57,8 +55,6 @@ public final class PouleController extends AbstractController {
         this.point1 = this.poule.getCompetitor1PointInput();
         this.point2 = this.poule.getCompetitor2PointInput();
         this.labeledInputs = List.of(this.competitor1, this.competitor2, this.point1, this.point2);
-
-        this.pouleKeyController = new PouleKeyController(this.poule);
 
         this.addListeners();
     }
@@ -107,9 +103,6 @@ public final class PouleController extends AbstractController {
             siblingBox.setBackground(Box.HIGHLIGHTED_BACKGROUND);
             this.pouleBoxes[y][1].setBackground(Box.HIGHLIGHTED_BACKGROUND);
             this.pouleBoxes[x-2][1].setBackground(Box.HIGHLIGHTED_BACKGROUND);
-
-            this.pouleKeyController.setHighlightedBox(box);
-            this.pouleKeyController.setHighlightedBoxSibling(siblingBox);
         }
         else if (mouseEvent.getID() == MouseEvent.MOUSE_EXITED) {
             box.setBackground(Box.DEFAULT_BACKGROUND);
@@ -251,6 +244,24 @@ public final class PouleController extends AbstractController {
         }
     }
 
+    private void handleBoxFocusing(final KeyEvent keyEvent) {
+        for (Box[] pouleBoxRow : this.pouleBoxes) {
+            for (Box box : pouleBoxRow) {
+                if (keyEvent.getSource().equals(box) && keyEvent.getKeyCode() == KeyEvent.VK_ENTER) {
+                    final Box siblingBox = this.getSiblingBox(box).orElse(null);
+
+                    if (siblingBox == null)
+                        continue;
+
+                    if (box.isFocusOwner())
+                        siblingBox.requestFocus();
+                    else
+                        box.requestFocus();
+                }
+            }
+        }
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.insertButton))
@@ -263,6 +274,16 @@ public final class PouleController extends AbstractController {
     public void keyReleased(KeyEvent e) {
         this.handlePouleBoxInput(e);
         this.validateManualDataInserts(e);
+        this.handleBoxFocusing(e);
+
+        if (
+            (e.getSource().equals(this.poule.getCompetitor1IndexInput().getInput()) ||
+            e.getSource().equals(this.poule.getCompetitor2IndexInput().getInput()) ||
+            e.getSource().equals(this.poule.getCompetitor1PointInput().getInput()) ||
+            e.getSource().equals(this.poule.getCompetitor2PointInput().getInput())) &&
+            e.getKeyCode() == KeyEvent.VK_ENTER
+        )
+            this.insertManualInputData();
     }
 
     @Override

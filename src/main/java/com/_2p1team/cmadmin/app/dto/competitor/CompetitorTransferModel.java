@@ -5,7 +5,8 @@ public record CompetitorTransferModel(
     String name,
     String club,
     String birthDate,
-    int poulePlace
+    int index,
+    int placement
 ) {
 
 }

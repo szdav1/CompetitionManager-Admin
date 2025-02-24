@@ -2,7 +2,9 @@ package com._2p1team.cmadmin.app.view.components.fencing.poule;
 
 import com._2p1team.cmadmin.app.control.components.fencing.poule.PouleCompetitionPanelController;
 import com._2p1team.cmadmin.app.dto.competitor.Competitor;
+import com._2p1team.cmadmin.app.dto.competitor.CompetitorTransferModel;
 import com._2p1team.cmadmin.app.view.components.competitor.CompetitorDisplay;
+import com._2p1team.cmadmin.app.view.components.competitor.CompetitorTransferDisplay;
 import com._2p1team.cmadmin.app.view.components.modals.NewPouleModal;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
 import com._2p1team.cmadmin.app.view.interfaces.ControlComponent;
@@ -17,6 +19,7 @@ import com._2p1team.cmadmin.swing.override.constants.Position;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
 import javax.swing.JComponent;
 import java.awt.BorderLayout;
@@ -27,7 +30,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-// TODO: Design the final form of this panel
 @Data
 @EqualsAndHashCode(callSuper=false)
 public final class PouleCompetitionPanel extends Panel implements ComplexComponent, ControlComponent, KeyControlledComponent {
@@ -38,21 +40,30 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
     private ScrollPanel scrollPanel;
 
     private final Button closeButton;
+    private final Button finishButton;
+    private final Button resultsButton;
+    private final Button bottomCloseButton;
 
     private List<CompetitorDisplay> competitors;
     private final List<Poule> poules;
+
+    @Getter
+    private static final List<CompetitorTransferModel> competitorTransferModels = new ArrayList<>();
 
     public PouleCompetitionPanel() {
         super(new Rectangle(0, 0, FRAME_WIDTH, FRAME_HEIGHT-(BUTTON_HEIGHT*2)), new BorderLayout(), new Appearance(AppearanceRepository.POULE_COMPETITION_PANEL_APPEARANCE));
 
         this.topPanel = new Panel(new Dimension(this.getWidth(), BUTTON_HEIGHT), new FlowLayout(FlowLayout.RIGHT, 0, 0), new Appearance(AppearanceRepository.MODAL_TITLE_BAR_APPEARANCE));
         this.centerPanel = new Panel(new Dimension(this.getWidth(), this.getHeight()-(BUTTON_HEIGHT*2)), new FlowLayout(FlowLayout.CENTER, PADDING, PADDING), new Appearance(AppearanceRepository.MODAL_CENTER_PANEL_APPEARANCE));
-        this.bottomPanel = new Panel(new Dimension(this.getWidth(), BUTTON_HEIGHT), new FlowLayout(FlowLayout.RIGHT, 0, 0), new Appearance(AppearanceRepository.MODAL_TITLE_BAR_APPEARANCE));
+        this.bottomPanel = new Panel(new Dimension(this.getWidth(), BUTTON_HEIGHT), new FlowLayout(FlowLayout.CENTER, 0, 0), new Appearance(AppearanceRepository.MODAL_TITLE_BAR_APPEARANCE));
 
         this.scrollPanel = new ScrollPanel(new Dimension(this.centerPanel.getWidth()-2, this.centerPanel.getHeight()-BUTTON_HEIGHT), new FlowLayout(FlowLayout.CENTER, PADDING, PADDING), new Appearance(AppearanceRepository.BASE_SCROLL_PANEL_APPEARANCE));
         this.scrollPanel.setScrollSpeed(POULE_PANEL_HEIGHT/6);
 
         this.closeButton = new Button(N_BUTTON_SIZE, "x", new Appearance(AppearanceRepository.EXIT_BUTTON_APPEARANCE));
+        this.finishButton = new Button(BUTTON_SIZE, "Finish All", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.resultsButton = new Button(BUTTON_SIZE, "Results", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.bottomCloseButton = new Button(BUTTON_SIZE, "Close", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
         this.competitors = new ArrayList<>();
         this.poules = new ArrayList<>();
@@ -102,15 +113,15 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
     private void createPoules() {
         this.competitors = NewPouleModal.getParticipatingCompetitors();
         int numberOfCompetitors = this.competitors.size();
-        int numberOfPoules = (int) Math.ceil((double) numberOfCompetitors/Poule.DESIRED_SIZE);
+        int numberOfPoules = (int) Math.ceil((double) numberOfCompetitors/Poule.PREFERRED_SIZE);
         int competitorsPerPoule = numberOfCompetitors/numberOfPoules;
         int remainderCompetitors = numberOfCompetitors%competitorsPerPoule;
 
-        if (numberOfCompetitors < Poule.DESIRED_SIZE)
+        if (numberOfCompetitors < Poule.PREFERRED_SIZE)
             this.poules.add(new Poule(numberOfCompetitors));
 
-        else if (numberOfCompetitors == Poule.DESIRED_SIZE)
-            this.poules.add(new Poule(Poule.DESIRED_SIZE));
+        else if (numberOfCompetitors == Poule.PREFERRED_SIZE)
+            this.poules.add(new Poule(Poule.PREFERRED_SIZE));
 
         else if (numberOfCompetitors == Poule.MAX_SIZE)
             this.poules.add(new Poule(numberOfCompetitors));
@@ -137,7 +148,6 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
                 if (index >= this.poules.size())
                     index = 0;
             }
-
         }
 
         this.poules.sort(Comparator.comparing(Poule::getNumberOfCompetitors).reversed());
@@ -145,13 +155,22 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
         this.drawPoules();
     }
 
-    public void disappear() {
-        this.setVisible(false);
+    private void resetPanel() {
         this.scrollPanel.getViewPanel().removeAll();
         this.scrollPanel.getContents().clear();
-        this.scrollPanel.resizeViewPanel(this.scrollPanel.getWidth());
-        this.poules.clear();
+        this.scrollPanel.resizeViewPanel(0);
         this.competitors.clear();
+    }
+
+    public void disappear() {
+        this.setVisible(false);
+        this.resetPanel();
+        this.poules.clear();
+        competitorTransferModels.clear();
+        this.bottomPanel.removeComponent(this.finishButton);
+        this.bottomPanel.removeComponent(this.resultsButton);
+        this.bottomPanel.removeComponent(this.bottomCloseButton);
+        this.bottomPanel.addComponent(this.finishButton);
     }
 
     public void appear() {
@@ -159,10 +178,47 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
         this.setVisible(true);
     }
 
+    public void finishPoules() {
+        for (Poule poule : this.poules) {
+            if (poule.calculateCompetitorData())
+                return;
+        }
+
+        this.poules.forEach(poule -> poule.getFinishingCompetitors().forEach(competitor -> competitorTransferModels.add(new CompetitorTransferModel(
+            competitor.id(),
+            competitor.name(),
+            competitor.club(),
+            competitor.birthDate(),
+            competitor.index(),
+            competitor.placement()
+        ))));
+
+        competitorTransferModels.sort(Comparator.comparing(CompetitorTransferModel::index).reversed());
+        this.bottomPanel.removeComponent(this.finishButton);
+        this.bottomPanel.addComponent(this.resultsButton);
+    }
+
+    public void showResults() {
+        this.resetPanel();
+
+        this.scrollPanel.addComponent(new CompetitorTransferDisplay.Header());
+
+        competitorTransferModels.forEach(competitorTransferModel -> {
+            final CompetitorTransferDisplay competitorTransferDisplay = new CompetitorTransferDisplay(competitorTransferModel);
+            competitorTransferDisplay.getPlacementLabel().setText(String.valueOf(competitorTransferModels.indexOf(competitorTransferModel)+1));
+            this.scrollPanel.addComponent(competitorTransferDisplay);
+        });
+
+        this.scrollPanel.resizeViewPanel(0);
+        this.bottomPanel.removeComponent(this.resultsButton);
+        this.bottomPanel.addComponent(this.bottomCloseButton);
+    }
+
     @Override
     public void setUpComponent() {
         this.topPanel.addComponent(this.closeButton);
         this.centerPanel.addComponent(this.scrollPanel);
+        this.bottomPanel.addComponent(this.finishButton);
 
         this.addComponent(this.topPanel, Position.TOP);
         this.addComponent(this.centerPanel, Position.CENTER);
