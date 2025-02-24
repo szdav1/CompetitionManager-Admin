@@ -1,7 +1,6 @@
 package com._2p1team.cmadmin.app.view.components.fencing.poule;
 
 import com._2p1team.cmadmin.app.control.components.fencing.poule.PouleCompetitionPanelController;
-import com._2p1team.cmadmin.app.dto.competitor.Competitor;
 import com._2p1team.cmadmin.app.view.components.competitor.CompetitorDisplay;
 import com._2p1team.cmadmin.app.view.components.modals.NewPouleModal;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
@@ -62,7 +61,11 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
     }
 
     private void drawPoules() {
-        this.poules.forEach(this.scrollPanel::addComponent);
+        this.poules.forEach(poule -> {
+            poule.setPouleNumberLabel(this.poules.indexOf(poule)+1);
+            this.scrollPanel.addComponent(poule);
+        });
+
         this.scrollPanel.resizeViewPanel(this.scrollPanel.getViewPanel().getWidth());
     }
 
@@ -74,7 +77,6 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
         int pouleBoxIndex = 1;
         int pouleIndex = 0;
 
-        // TODO: Fix this
         for (CompetitorDisplay sortedCompetitor : sortedCompetitors) {
             if (pouleIndex >= this.poules.size())
                 pouleIndex = 0;
@@ -124,27 +126,25 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
             int index = 0;
 
             while (remainderCompetitors > 0) {
-                Poule poule = this.poules.get(index);
-
-                if (poule.getNumberOfCompetitors() >= Poule.MAX_SIZE)
-                    continue;
-
-                poule.recreateLayout(poule.getNumberOfCompetitors()+1);
+                int numberOfCompetitorsInCurrentPoule = this.poules.get(index).getNumberOfCompetitors();
+                this.poules.remove(this.poules.get(index));
+                this.poules.add(new Poule(numberOfCompetitorsInCurrentPoule+1));
                 remainderCompetitors--;
                 index++;
 
                 if (index >= this.poules.size())
                     index = 0;
             }
+
         }
 
+        this.poules.sort(Comparator.comparing(Poule::getNumberOfCompetitors).reversed());
         this.fillPoules();
         this.drawPoules();
     }
 
     public void disappear() {
         this.setVisible(false);
-
         this.scrollPanel.getViewPanel().removeAll();
         this.scrollPanel.getContents().clear();
         this.scrollPanel.resizeViewPanel(this.scrollPanel.getWidth());
