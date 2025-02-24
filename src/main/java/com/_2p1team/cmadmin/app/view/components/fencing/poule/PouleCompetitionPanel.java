@@ -1,6 +1,7 @@
 package com._2p1team.cmadmin.app.view.components.fencing.poule;
 
 import com._2p1team.cmadmin.app.control.components.fencing.poule.PouleCompetitionPanelController;
+import com._2p1team.cmadmin.app.dto.competitor.Competitor;
 import com._2p1team.cmadmin.app.view.components.competitor.CompetitorDisplay;
 import com._2p1team.cmadmin.app.view.components.modals.NewPouleModal;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
@@ -23,7 +24,9 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+
 // TODO: Design the final form of this panel
 @Data
 @EqualsAndHashCode(callSuper=false)
@@ -61,6 +64,35 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
     private void drawPoules() {
         this.poules.forEach(this.scrollPanel::addComponent);
         this.scrollPanel.resizeViewPanel(this.scrollPanel.getViewPanel().getWidth());
+    }
+
+    private void fillPoules() {
+        List<CompetitorDisplay> sortedCompetitors = this.competitors.stream()
+            .sorted(Comparator.comparing(competitorDisplay -> competitorDisplay.getClubLabel().getText()))
+            .toList();
+
+        int pouleBoxIndex = 1;
+        int pouleIndex = 0;
+
+        // TODO: Fix this
+        for (CompetitorDisplay sortedCompetitor : sortedCompetitors) {
+            if (pouleIndex >= this.poules.size())
+                pouleIndex = 0;
+
+            final Poule poule = this.poules.get(pouleIndex);
+
+            if (pouleBoxIndex >= poule.getBoxes().length)
+                pouleBoxIndex = 1;
+
+            if (!poule.getBoxes()[pouleBoxIndex][0].getText().isBlank())
+                continue;
+
+            poule.getBoxes()[pouleBoxIndex][0].setText(sortedCompetitor.getClubLabel().getText());
+            poule.getBoxes()[pouleBoxIndex][1].setText(sortedCompetitor.getNameLabel().getText());
+
+            pouleBoxIndex++;
+            pouleIndex++;
+        }
     }
 
     private void createPoules() {
@@ -106,6 +138,7 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
             }
         }
 
+        this.fillPoules();
         this.drawPoules();
     }
 

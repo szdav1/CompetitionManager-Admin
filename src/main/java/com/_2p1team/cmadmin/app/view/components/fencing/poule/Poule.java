@@ -310,18 +310,33 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
         }
     }
 
+    private void resetBounds() {
+        this.verticalDivider.setBounds(new Rectangle( BUTTON_WIDTH+W_BUTTON_WIDTH+(N_BUTTON_WIDTH*(numberOfCompetitors+1))-2,  0,  4,  BUTTON_HEIGHT*(numberOfCompetitors+1)));
+        this.horizontalDivider.setBounds(new Rectangle( 0, BUTTON_HEIGHT-2, BUTTON_WIDTH+W_BUTTON_WIDTH+(N_BUTTON_WIDTH*(numberOfCompetitors+6)), 4));
+        this.dataPanelLabel.setBounds(new Rectangle(PADDING, BUTTON_HEIGHT*(this.numberOfCompetitors+1), BUTTON_WIDTH, BUTTON_HEIGHT));
+        this.dataPanel.setBounds(new Rectangle(PADDING, BUTTON_HEIGHT*(this.numberOfCompetitors+2), this.getWidth()-(PADDING*2), BUTTON_HEIGHT*4));
+    }
+
+    // TODO: Solve box problem
     public void recreateLayout(final int numberOfCompetitors) {
         this.numberOfCompetitors = numberOfCompetitors;
         this.boxes = new Box[this.numberOfCompetitors+1][this.numberOfCompetitors+8];
 
         this.removeAll();
         this.setPreferredSize(new Dimension(POULE_PANEL_WIDTH, BUTTON_HEIGHT*(numberOfCompetitors+6)+PADDING));
-        this.createLayout();
+        this.resetBounds();
         this.addComponent(this.verticalDivider, Position.HIGH);
         this.addComponent(this.horizontalDivider, Position.HIGH);
         this.addComponent(this.dataPanelLabel);
         this.addComponent(this.dataPanel);
+        this.createLayout();
         this.controller.addListeners();
+
+//        for (Box[] box : this.boxes) {
+//            for (Box box1 : box) {
+//                this.removeComponent(box1);
+//            }
+//        }
     }
 
     @Override
