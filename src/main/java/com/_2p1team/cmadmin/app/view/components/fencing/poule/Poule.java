@@ -2,6 +2,8 @@ package com._2p1team.cmadmin.app.view.components.fencing.poule;
 
 import com._2p1team.cmadmin.app.control.components.fencing.poule.PouleController;
 import com._2p1team.cmadmin.app.dto.competitor.Competitor;
+import com._2p1team.cmadmin.app.dto.competitor.CompetitorSortModel;
+import com._2p1team.cmadmin.app.dto.competitor.CompetitorTransferModel;
 import com._2p1team.cmadmin.app.view.components.input.LabeledInput;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
 import com._2p1team.cmadmin.app.view.interfaces.ControlComponent;
@@ -27,6 +29,7 @@ import java.awt.FlowLayout;
 import java.awt.Rectangle;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Data
@@ -41,7 +44,8 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
     private final Panel horizontalDivider;
 
     private int numberOfCompetitors;
-    private final List<Competitor> competitors;
+    private final List<Competitor> startingCompetitors;
+    private final List<CompetitorTransferModel> finishingCompetitors;
     private int rowLength;
     private Box[][] boxes;
 
@@ -87,7 +91,8 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
         );
 
         this.numberOfCompetitors = numberOfCompetitors;
-        this.competitors = new ArrayList<>();
+        this.startingCompetitors = new ArrayList<>();
+        this.finishingCompetitors = new ArrayList<>();
         this.rowLength = this.numberOfCompetitors+8;
         this.boxes = new Box[this.numberOfCompetitors+1][this.rowLength];
 
@@ -200,7 +205,25 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
     }
 
     private void sortCompetitorsByIndex() {
-        // TODO: Implement sorting fencers by index
+        List<CompetitorSortModel> competitorsToSort = new ArrayList<>();
+
+        for (int y = 1; y < this.numberOfCompetitors+1; y++) {
+            competitorsToSort.add(new CompetitorSortModel(
+                this.boxes[y][1].getText(),
+                Integer.parseInt(this.boxes[y][this.rowLength-5].getText()),
+                Integer.parseInt(this.boxes[y][this.rowLength-2].getText())
+            ));
+        }
+
+        competitorsToSort.sort(Comparator.comparing(CompetitorSortModel::index).reversed());
+
+        for (int y = 1; y < this.numberOfCompetitors+1; y++) {
+            System.out.println(this.boxes[y][1].getText());
+            for (CompetitorSortModel competitorSortModel : competitorsToSort) {
+                if (competitorSortModel.name().equalsIgnoreCase(this.boxes[y][1].getText()))
+                    this.boxes[y][this.rowLength-1].setText(String.valueOf(competitorsToSort.indexOf(competitorSortModel)+1));
+            }
+        }
     }
 
     public void calculateCompetitorData() {
@@ -209,6 +232,7 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
 
         this.calculateWinsAnsTs();
         this.calculateTrAndIndex();
+        this.sortCompetitorsByIndex();
     }
 
     private void doFirstRowModifications(int x, int y, final Box box) {

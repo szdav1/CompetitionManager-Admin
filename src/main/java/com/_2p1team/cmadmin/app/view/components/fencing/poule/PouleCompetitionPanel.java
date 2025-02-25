@@ -1,6 +1,7 @@
 package com._2p1team.cmadmin.app.view.components.fencing.poule;
 
 import com._2p1team.cmadmin.app.control.components.fencing.poule.PouleCompetitionPanelController;
+import com._2p1team.cmadmin.app.dto.competitor.Competitor;
 import com._2p1team.cmadmin.app.view.components.competitor.CompetitorDisplay;
 import com._2p1team.cmadmin.app.view.components.modals.NewPouleModal;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
@@ -91,6 +92,7 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
 
             poule.getBoxes()[pouleBoxIndex][0].setText(sortedCompetitor.getClubLabel().getText());
             poule.getBoxes()[pouleBoxIndex][1].setText(sortedCompetitor.getNameLabel().getText());
+            poule.getStartingCompetitors().add(new Competitor(sortedCompetitor));
 
             pouleBoxIndex++;
             pouleIndex++;
