@@ -22,10 +22,28 @@ public class NewPouleModalKeyController extends AbstractKeyController {
         this.controller = controller;
 
         this.newPouleModal.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+            .put(KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_DOWN_MASK), "HighlightAllCompetitors");
+
+        this.newPouleModal.getActionMap()
+            .put("HighlightAllCompetitors", new HighlightAllCompetitors());
+
+        this.newPouleModal.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+            .put(KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.ALT_DOWN_MASK), "HighlightAllParticipatingCompetitors");
+
+        this.newPouleModal.getActionMap()
+            .put("HighlightAllParticipatingCompetitors", new HighlightAllParticipatingCompetitors());
+
+        this.newPouleModal.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
             .put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "SearchForCompetitorAction");
 
         this.newPouleModal.getActionMap()
             .put("SearchForCompetitorAction", new SearchForCompetitorAction());
+
+        this.newPouleModal.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+            .put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, KeyEvent.ALT_DOWN_MASK), "AddSelectedCompetitorsToParticipatingList");
+
+        this.newPouleModal.getActionMap()
+            .put("AddSelectedCompetitorsToParticipatingList", new AddSelectedCompetitorsToParticipatingList());
 
         this.newPouleModal.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
             .put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), "DeleteParticipatingCompetitorAction");
@@ -34,12 +52,39 @@ public class NewPouleModalKeyController extends AbstractKeyController {
             .put("DeleteParticipatingCompetitorAction", new DeleteParticipatingCompetitorAction());
     }
 
+    private final class HighlightAllCompetitors extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            NewPouleModalKeyController.this.controller.highlightAllCompetitors();
+        }
+
+    }
+
+    private final class HighlightAllParticipatingCompetitors extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            NewPouleModalKeyController.this.controller.highlightParticipatingCompetitors();
+        }
+
+    }
+
     private final class SearchForCompetitorAction extends AbstractAction {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             if (FrameManager.getState() == FrameState.MODAL_OPENED)
                 NewPouleModalKeyController.this.controller.searchForCompetitors();
+        }
+
+    }
+
+    private final class AddSelectedCompetitorsToParticipatingList extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            NewPouleModalKeyController.this.controller.addCompetitorToParticipatingList();
         }
 
     }

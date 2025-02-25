@@ -11,12 +11,14 @@ import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.scrollpanel.ScrollPanel;
+import lombok.Getter;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.Comparator;
 import java.util.List;
 
+@Getter
 public final class NewPouleModalController extends AbstractController {
 
     private final NewPouleModal newPouleModal;
@@ -110,7 +112,7 @@ public final class NewPouleModalController extends AbstractController {
         this.scrollPanel.repaint();
     }
 
-    private void addCompetitorToParticipatingList() {
+    public void addCompetitorToParticipatingList() {
         List<CompetitorDisplay> selectedCompetitors = this.newPouleModal.getCompetitorDisplays().stream()
             .filter(competitorDisplay -> competitorDisplay.getCheckbox().isChecked())
             .toList();
@@ -142,11 +144,11 @@ public final class NewPouleModalController extends AbstractController {
         this.resetCompetitorDisplay();
     }
 
-    private void highlightAllCompetitors() {
+    public void highlightAllCompetitors() {
         this.searchResults.forEach(competitorDisplay -> competitorDisplay.getCheckbox().toggleChecked());
     }
 
-    private void highlightParticipatingCompetitors() {
+    public void highlightParticipatingCompetitors() {
         NewPouleModal.getParticipatingCompetitors().forEach(competitorDisplay -> competitorDisplay.getCheckbox().toggleChecked());
     }
 
