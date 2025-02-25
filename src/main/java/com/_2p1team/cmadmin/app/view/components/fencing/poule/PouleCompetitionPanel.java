@@ -193,7 +193,7 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
             competitor.placement()
         ))));
 
-        competitorTransferModels.sort(Comparator.comparing(CompetitorTransferModel::index).reversed());
+        competitorTransferModels.sort((ctm1, ctm2) -> ctm1.index() != ctm2.index() ? ctm2.index()-ctm1.index() : ctm2.placement() - ctm1.placement());
         this.bottomPanel.removeComponent(this.finishButton);
         this.bottomPanel.addComponent(this.resultsButton);
     }
