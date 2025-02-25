@@ -193,7 +193,7 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
             competitor.placement()
         ))));
 
-        competitorTransferModels.sort((ctm1, ctm2) -> ctm1.index() != ctm2.index() ? ctm2.index()-ctm1.index() : ctm2.placement() - ctm1.placement());
+        competitorTransferModels.sort((ctm1, ctm2) -> ctm1.index() != ctm2.index() ? ctm2.index()-ctm1.index() : ctm2.placement()-ctm1.placement());
         this.bottomPanel.removeComponent(this.finishButton);
         this.bottomPanel.addComponent(this.resultsButton);
     }
@@ -209,7 +209,8 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
             this.scrollPanel.addComponent(competitorTransferDisplay);
         });
 
-        this.scrollPanel.resizeViewPanel(0);
+        this.scrollPanel.resizeViewPanel(X_BUTTON_WIDTH*4);
+        this.scrollPanel.getViewPanel().setPreferredSize(new Dimension(this.scrollPanel.getViewPanel().getWidth(), this.scrollPanel.getHeight()));
         this.bottomPanel.removeComponent(this.resultsButton);
         this.bottomPanel.addComponent(this.bottomCloseButton);
     }
