@@ -68,4 +68,6 @@ public final class AppearanceRepository {
 
     public static final Appearance POULE_COMPETITION_PANEL_APPEARANCE = new PouleCompetitionPanelAppearance();
 
+    public static final Appearance TABLE_PANEL_APPEARANCE = new TableAppearance();
+
 }

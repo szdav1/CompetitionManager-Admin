@@ -1,4 +1,4 @@
-package com._2p1team.cmadmin.app.view.components.fencing.poule;
+package com._2p1team.cmadmin.app.view.components.fencing;
 
 import com._2p1team.cmadmin.support.constants.CustomColors;
 import com._2p1team.cmadmin.swing.override.graphics.configs.FontSet;
@@ -14,7 +14,7 @@ public class Box extends JTextField {
     public static final Color HIGHLIGHTED_BACKGROUND = Color.gray;
 
     public Box(Rectangle bounds, String text) {
-        this.setBounds(bounds.x, bounds.y, bounds.width, bounds.height);
+        this.setBounds(bounds);
         this.setText(text);
         this.setOpaque(true);
         this.setForeground(Color.white);

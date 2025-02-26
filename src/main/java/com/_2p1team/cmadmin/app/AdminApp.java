@@ -9,6 +9,26 @@ public final class AdminApp {
     // TODO: After completing the table, merge the poule and the table together to create the competition
     public static void main(String[] args) {
         AppFrame frame = new AppFrame(Util.loadImageIcon("/assets/appIcon.png").getImage(), "CompetitionManager - Admin");
+//        new Table(List.of(
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0)
+//        ));
     }
 
 }

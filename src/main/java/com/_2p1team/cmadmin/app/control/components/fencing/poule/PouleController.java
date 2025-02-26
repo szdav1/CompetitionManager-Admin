@@ -1,7 +1,7 @@
 package com._2p1team.cmadmin.app.control.components.fencing.poule;
 
 import com._2p1team.cmadmin.app.control.AbstractController;
-import com._2p1team.cmadmin.app.view.components.fencing.poule.Box;
+import com._2p1team.cmadmin.app.view.components.fencing.Box;
 import com._2p1team.cmadmin.app.view.components.fencing.poule.Poule;
 import com._2p1team.cmadmin.app.view.components.input.LabeledInput;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
