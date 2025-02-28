@@ -70,4 +70,6 @@ public final class AppearanceRepository {
 
     public static final Appearance TABLE_PANEL_APPEARANCE = new TableAppearance();
 
+    public static final Appearance TABLE_ELEMENT_APPEARANCE = new TableElementAppearance();
+
 }
