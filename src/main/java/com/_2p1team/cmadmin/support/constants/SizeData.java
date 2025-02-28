@@ -48,6 +48,7 @@ public final class SizeData {
     public static final int POULE_PANEL_HEIGHT = BUTTON_HEIGHT*14;
     public static final Dimension POULE_PANEL_SIZE = new Dimension(POULE_PANEL_WIDTH, POULE_PANEL_HEIGHT);
 
+    public static final Rectangle TABLE_ELEMENT_BOUNDS = new Rectangle(W_BUTTON_WIDTH*2, BUTTON_HEIGHT*3);
     public static final Rectangle TABLE_ELEMENT_CHILD_BOUNDS = new Rectangle(W_BUTTON_WIDTH, BUTTON_HEIGHT);
 
 }

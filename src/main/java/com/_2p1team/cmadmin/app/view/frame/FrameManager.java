@@ -144,6 +144,7 @@ public final class FrameManager {
         frame.getPouleCompetitionPanel()
             .appear();
 
+        frame.disableMenuButtons();
         frame.setFrameState(FrameState.POULE_COMPETITION_PANEL_OPENED);
     }
 
@@ -154,7 +155,18 @@ public final class FrameManager {
         frame.getPouleCompetitionPanel()
             .disappear();
 
+        frame.enableMenuButtons();
         frame.setFrameState(FrameState.DEFAULT);
+    }
+
+    public static void displayTableCompetitionPanel() {
+        if (frame.getFrameState() != FrameState.DEFAULT)
+            return;
+
+        frame.getTable()
+            .setVisible(true);
+
+        frame.disableMenuButtons();
     }
 
     public static void hideOpenedModal() {

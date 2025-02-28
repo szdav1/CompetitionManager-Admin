@@ -1,8 +1,11 @@
 package com._2p1team.cmadmin.app.view.components.fencing.table;
 
 import com._2p1team.cmadmin.app.dto.competitor.CompetitorTransferModel;
-import com._2p1team.cmadmin.app.view.components.fencing.Box;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
+import com._2p1team.cmadmin.support.constants.AppearanceConstants;
+import static com._2p1team.cmadmin.support.constants.AppearanceConstants.PADDING;
+import com._2p1team.cmadmin.support.constants.SizeData;
+import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
@@ -10,6 +13,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.awt.Dimension;
+import java.awt.Rectangle;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,15 +38,16 @@ public final class Table extends Panel implements ComplexComponent {
     private final List<CompetitorTransferModel> competitorTransferModels;
     private int tableSize;
     private String tableau;
-    private final List<Box> boxes;
+    private final List<TableElement> elements;
 
     public Table(final List<CompetitorTransferModel> competitorTransferModels) {
         super(new Dimension(0, 0), null, new Appearance(AppearanceRepository.TABLE_PANEL_APPEARANCE));
+        this.setBounds(new Rectangle(0, 0, FRAME_WIDTH, FRAME_HEIGHT));
 
         this.competitorTransferModels = competitorTransferModels;
         this.tableSize = this.determineTableSize();
         this.tableau = tableaus.get(this.tableSize);
-        this.boxes = new ArrayList<>(this.tableSize);
+        this.elements = new ArrayList<>(this.tableSize);
 
         this.setUpComponent();
     }
@@ -61,7 +67,9 @@ public final class Table extends Panel implements ComplexComponent {
     }
 
     private void createStructure() {
-
+        for (int i = 0; i < this.tableSize/2; i++) {
+            this.addComponent(new TableElement(PADDING, (PADDING*(i+1))+(SizeData.TABLE_ELEMENT_BOUNDS.height*i)+(BUTTON_HEIGHT*i)));
+        }
     }
 
     @Override

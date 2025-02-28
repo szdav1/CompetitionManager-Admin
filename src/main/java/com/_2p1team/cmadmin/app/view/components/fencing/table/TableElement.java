@@ -2,7 +2,8 @@ package com._2p1team.cmadmin.app.view.components.fencing.table;
 
 import com._2p1team.cmadmin.app.view.components.fencing.Box;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
-import static com._2p1team.cmadmin.support.constants.SizeData.*;
+import static com._2p1team.cmadmin.support.constants.SizeData.BUTTON_HEIGHT;
+import static com._2p1team.cmadmin.support.constants.SizeData.W_BUTTON_WIDTH;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
@@ -20,21 +21,22 @@ public final class TableElement extends Panel implements ComplexComponent {
     private final Box parentBox;
     private final Panel connector;
 
-    public TableElement() {
-        this(new Box(TABLE_ELEMENT_CHILD_BOUNDS, ""), new Box(TABLE_ELEMENT_CHILD_BOUNDS, ""), BUTTON_HEIGHT);
-    }
+    public TableElement(int x, int y) {
+        super(new Rectangle(x, y, W_BUTTON_WIDTH*2, BUTTON_HEIGHT*3), null, new Appearance(AppearanceRepository.TABLE_ELEMENT_APPEARANCE));
 
-    public TableElement(final Box topChildBox, final Box bottomChilBox, int horizontalGap) {
-        super(new Rectangle(W_BUTTON_WIDTH*2, BUTTON_HEIGHT*3), null, new Appearance(AppearanceRepository.TABLE_ELEMENT_APPEARANCE));
-
-        this.topChildBox = topChildBox;
-        this.bottomChildBox = bottomChilBox;
-        this.parentBox = new Box(TABLE_ELEMENT_CHILD_BOUNDS, "");
+        this.topChildBox = new Box(new Rectangle(0, 0, W_BUTTON_WIDTH, BUTTON_HEIGHT), "");
+        this.bottomChildBox = new Box(new Rectangle(0, BUTTON_HEIGHT*2, W_BUTTON_WIDTH, BUTTON_HEIGHT), "");
+        this.parentBox = new Box(new Rectangle(W_BUTTON_WIDTH, BUTTON_HEIGHT, W_BUTTON_WIDTH, BUTTON_HEIGHT), "");
         this.connector = new Panel();
+
+        this.setUpComponent();
     }
 
     @Override
     public void setUpComponent() {
+        this.addComponent(this.topChildBox);
+        this.addComponent(this.bottomChildBox);
+        this.addComponent(this.parentBox);
     }
 
 }

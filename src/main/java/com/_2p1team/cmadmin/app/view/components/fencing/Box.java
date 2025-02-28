@@ -23,7 +23,7 @@ public class Box extends JTextField {
         this.setCaretColor(this.getForeground());
         this.setHorizontalAlignment(JTextField.CENTER);
         this.setBorder(new LineBorder(CustomColors.ORANGEISH, 1));
-        this.setRequestFocusEnabled(false);
+        this.setEnabled(true);
     }
 
     public boolean compareContentsWith(final Box box) {

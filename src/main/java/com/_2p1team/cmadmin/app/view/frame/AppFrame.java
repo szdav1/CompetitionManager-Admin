@@ -1,7 +1,9 @@
 package com._2p1team.cmadmin.app.view.frame;
 
 import com._2p1team.cmadmin.app.control.frame.FrameController;
+import com._2p1team.cmadmin.app.dto.competitor.CompetitorTransferModel;
 import com._2p1team.cmadmin.app.view.components.fencing.poule.PouleCompetitionPanel;
+import com._2p1team.cmadmin.app.view.components.fencing.table.Table;
 import com._2p1team.cmadmin.app.view.components.modals.*;
 import com._2p1team.cmadmin.app.view.frame.parts.CenterPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.FooterPanel;
@@ -24,6 +26,7 @@ import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.util.List;
 
 
 @Getter(AccessLevel.PACKAGE)
@@ -50,6 +53,7 @@ public final class AppFrame extends AbstractFrame {
     private AbstractModal openedModal;
 
     private final PouleCompetitionPanel pouleCompetitionPanel;
+    private final Table table;
 
     public AppFrame(Image iconImage, String title) {
         super(iconImage, title);
@@ -71,12 +75,32 @@ public final class AppFrame extends AbstractFrame {
         this.openedModal = null;
 
         this.pouleCompetitionPanel = new PouleCompetitionPanel();
+        this.table = new Table(List.of(
+            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+            new CompetitorTransferModel(0L, "", "", "", 0, 0),
+            new CompetitorTransferModel(0L, "", "", "", 0, 0)
+        ));
 
         new FrameController(this);
 
         FrameManager.initManager(this);
         this.createFrameUI();
         this.handleBeforeLaunchQueuedException();
+    }
+
+    void disableMenuButtons() {
+        this.titleBar.getFileButton().setEnabled(false);
+        this.titleBar.getDatabaseButton().setEnabled(false);
+        this.titleBar.getSettingsButton().setEnabled(false);
+    }
+
+    void enableMenuButtons() {
+        this.titleBar.getFileButton().setEnabled(true);
+        this.titleBar.getDatabaseButton().setEnabled(true);
+        this.titleBar.getSettingsButton().setEnabled(true);
     }
 
     private void handleBeforeLaunchQueuedException() {
@@ -90,8 +114,10 @@ public final class AppFrame extends AbstractFrame {
 
     private void createFrameUI() {
         this.centerPanel.addComponent(this.pouleCompetitionPanel);
-
         this.pouleCompetitionPanel.setVisible(false);
+
+        this.centerPanel.addComponent(this.table);
+        this.table.setVisible(false);
 
         this.mainPanel.addComponent(this.titleBar, Position.TOP);
         this.mainPanel.addComponent(this.centerPanel, Position.CENTER);

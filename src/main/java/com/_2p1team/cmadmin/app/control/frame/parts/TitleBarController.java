@@ -78,8 +78,7 @@ public final class TitleBarController extends AbstractController {
                     case 0 -> {
                     }
                     case 1 -> FrameManager.displayNewPouleModal();
-                    case 2 -> {
-                    }
+                    case 2 -> FrameManager.displayTableCompetitionPanel();
 
                     // Database menu
                     case 3 -> FrameManager.displayViewDatabaseModal();
@@ -102,7 +101,7 @@ public final class TitleBarController extends AbstractController {
 
     private void handleMenuButtons(final MouseEvent mouseEvent) {
         this.menuButtons.forEach(menuButton -> {
-            if (mouseEvent.getSource().equals(menuButton)) {
+            if (mouseEvent.getSource().equals(menuButton) && menuButton.isEnabled()) {
                 if (!menuButton.isToggled()) {
                     menuButton.getDropdownPanel()
                         .setVisible(mouseEvent.getID() == MouseEvent.MOUSE_ENTERED);
