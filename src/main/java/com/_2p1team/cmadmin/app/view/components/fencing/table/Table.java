@@ -2,9 +2,6 @@ package com._2p1team.cmadmin.app.view.components.fencing.table;
 
 import com._2p1team.cmadmin.app.dto.competitor.CompetitorTransferModel;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
-import com._2p1team.cmadmin.support.constants.AppearanceConstants;
-import static com._2p1team.cmadmin.support.constants.AppearanceConstants.PADDING;
-import com._2p1team.cmadmin.support.constants.SizeData;
 import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
@@ -14,13 +11,13 @@ import lombok.EqualsAndHashCode;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
-import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 // TODO: Create table element, generate table, fill table, implement control logic
+
 @Data
 @EqualsAndHashCode(callSuper=false)
 public final class Table extends Panel implements ComplexComponent {
@@ -52,6 +49,16 @@ public final class Table extends Panel implements ComplexComponent {
         this.setUpComponent();
     }
 
+    private int determineNumberOfColumns() {
+        return switch (this.tableSize) {
+            case 16 -> 5;
+            case 32 -> 6;
+            case 64 -> 7;
+            case 128 -> 8;
+            default -> 4;
+        };
+    }
+
     private int determineTableSize() {
         final int numberOfCompetitors = this.competitorTransferModels.size();
         int nPowerOf2 = 3;
@@ -66,10 +73,66 @@ public final class Table extends Panel implements ComplexComponent {
             return MINIMUM_SIZE;
     }
 
-    private void createStructure() {
+    private void createFirstColumn() {
         for (int i = 0; i < this.tableSize/2; i++) {
-            this.addComponent(new TableElement(PADDING, (PADDING*(i+1))+(SizeData.TABLE_ELEMENT_BOUNDS.height*i)+(BUTTON_HEIGHT*i)));
+            int x = 0;
+            int y = (TABLE_ELEMENT_BOUNDS.height*i)+(BUTTON_HEIGHT*i);
+            final TableElement tableElement = new TableElement(x, y);
+
+            this.elements.add(tableElement);
+            this.addComponent(tableElement);
         }
+    }
+
+    private void createSecondColumn() {
+        int iterationCounter = 0;
+
+        for (int i = 0; i < this.tableSize/4; i++) {
+            final TableElement tableElement = new TableElement(this.elements.get(i+iterationCounter), this.elements.get(i+1+iterationCounter), 2);
+            iterationCounter++;
+
+            this.elements.add(tableElement);
+            this.addComponent(tableElement);
+        }
+    }
+
+    private void finishStructure() {
+        int iterationCounter = 0;
+        int rowCounter = 2;
+        int divisionHandler = 4;
+
+        for (int i = 0; i < this.determineNumberOfColumns(); i++) {
+            for (int j = 0; j < this.tableSize/divisionHandler; j++) {
+                final TableElement tableElement = new TableElement(this.elements.get(j+iterationCounter), this.elements.get(j+1+iterationCounter), rowCounter);
+                iterationCounter++;
+
+                this.elements.add(tableElement);
+                this.addComponent(tableElement);
+            }
+
+            rowCounter++;
+            divisionHandler += 2;
+        }
+    }
+
+    private void createStructure() {
+        this.createFirstColumn();
+//        this.createSecondColumn();
+        this.finishStructure();
+
+//        final TableElement tableElement = new TableElement(this.elements.getFirst(), this.elements.get(1), 2);
+//        final TableElement tableElement2 = new TableElement(this.elements.get(2), this.elements.get(3), 2);
+//
+//        this.elements.add(tableElement);
+//        this.elements.add(tableElement2);
+//
+//        this.addComponent(tableElement);
+//        this.addComponent(tableElement2);
+//
+//        final TableElement tableElement3 = new TableElement(this.elements.get(4), this.elements.get(5), 3);
+//
+//        this.addComponent(tableElement3);
+
     }
 
     @Override

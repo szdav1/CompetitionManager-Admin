@@ -53,7 +53,7 @@ public final class TitleBarKeyController extends AbstractKeyController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("New table");
+            FrameManager.displayTableCompetitionPanel();
         }
 
     }
