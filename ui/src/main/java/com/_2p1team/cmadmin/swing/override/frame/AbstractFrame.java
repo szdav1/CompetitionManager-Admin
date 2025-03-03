@@ -30,7 +30,6 @@ public abstract class AbstractFrame extends JFrame implements Container {
         this.setLocationRelativeTo(null);
         this.setUndecorated(true);
         this.setLayout(new BorderLayout());
-        this.setVisible(true);
     }
 
 }

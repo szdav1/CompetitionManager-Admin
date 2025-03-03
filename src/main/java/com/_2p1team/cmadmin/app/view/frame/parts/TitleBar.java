@@ -8,8 +8,7 @@ import com._2p1team.cmadmin.app.view.interfaces.ControlComponent;
 import com._2p1team.cmadmin.app.view.interfaces.KeyControlledComponent;
 import com._2p1team.cmadmin.support.constants.AppearanceConstants;
 import com._2p1team.cmadmin.support.constants.SizeData;
-import static com._2p1team.cmadmin.support.constants.SizeData.N_BUTTON_SIZE;
-import static com._2p1team.cmadmin.support.constants.SizeData.TITLE_TEXT_SIZE;
+import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
@@ -44,7 +43,11 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
     private final TitleBarController controller;
 
     public TitleBar() {
-        super(SizeData.TITLE_SIZE, new GridLayout(1, 3), AppearanceRepository.TITLE_BAR_APPEARANCE);
+        this(TITLE_SIZE);
+    }
+
+    public TitleBar(final Dimension preferredSize) {
+        super(preferredSize, new GridLayout(1, 3), AppearanceRepository.TITLE_BAR_APPEARANCE);
 
         this.exitButton = new Button(N_BUTTON_SIZE, "x", AppearanceRepository.EXIT_BUTTON_APPEARANCE);
         this.iconifyButton = new Button(N_BUTTON_SIZE, "_", AppearanceRepository.ICONIFY_BUTTON_APPEARANCE);

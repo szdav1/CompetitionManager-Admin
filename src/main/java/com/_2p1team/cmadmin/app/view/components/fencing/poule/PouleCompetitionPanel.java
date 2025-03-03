@@ -210,7 +210,7 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
         });
 
         this.scrollPanel.resizeViewPanel(X_BUTTON_WIDTH*4);
-        this.scrollPanel.getViewPanel().setPreferredSize(new Dimension(this.scrollPanel.getViewPanel().getWidth(), this.scrollPanel.getHeight()));
+        this.scrollPanel.getViewPanel().setPreferredSize(new Dimension(this.scrollPanel.getViewPanel().getWidth(), this.scrollPanel.getHeight()+PADDING));
         this.bottomPanel.removeComponent(this.resultsButton);
         this.bottomPanel.addComponent(this.bottomCloseButton);
     }

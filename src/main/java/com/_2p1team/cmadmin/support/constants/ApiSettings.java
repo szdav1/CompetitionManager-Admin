@@ -22,7 +22,9 @@ public enum ApiSettings {
     GET_ALL_LEADERBOARDS(API_DOMAIN.value+"leaderboard/"),
     GET_LEADERBOARD(API_DOMAIN.value+"leaderboard/%d"),
     NEW_LEADERBOARD(API_DOMAIN.value+"leaderboard/new"),
-    UPDATE_LEADERBOARD(API_DOMAIN.value+"leaderboard/%d");
+    UPDATE_LEADERBOARD(API_DOMAIN.value+"leaderboard/%d"),
+
+    TEST_CONNECTION(API_DOMAIN.value+"test");
 
     private final String value;
 }

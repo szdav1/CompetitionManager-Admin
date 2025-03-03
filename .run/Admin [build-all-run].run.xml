@@ -1,11 +1,10 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Admin [run]" type="Application" factoryName="Application">
-    <option name="ALTERNATIVE_JRE_PATH" value="corretto-21" />
-    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+  <configuration default="false" name="Admin [build-all-run]" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="com._2p1team.cmadmin.app.AdminApp" />
     <module name="Admin.main" />
     <method v="2">
       <option name="Make" enabled="true" />
+      <option name="Gradle.BeforeRunTask" enabled="true" tasks="build shadowJar" externalProjectPath="$PROJECT_DIR$" vmOptions="" scriptParameters="" />
     </method>
   </configuration>
 </component>

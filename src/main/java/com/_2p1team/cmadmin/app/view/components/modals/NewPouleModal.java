@@ -62,9 +62,6 @@ public final class NewPouleModal extends AbstractModal {
         this.mainHeader = new CompetitorDisplay.Header(BUTTON_SIZE, BUTTON_SIZE);
         this.competitorDisplays = new ArrayList<>();
 
-        HttpCommunicator.CompetitorApi.getAllCompetitors()
-            .forEach(competitor -> this.competitorDisplays.add(new CompetitorDisplay(BUTTON_SIZE, BUTTON_SIZE, competitor)));
-
         this.searchCompetitorLabel = new Label(new Dimension(this.rightPanel.getWidth(), BUTTON_HEIGHT), "Search competitor", new Appearance(AppearanceRepository.LABELED_INPUT_APPEARANCE));
         this.searchCompetitorLabel.setHorizontalAlignment(SwingConstants.LEFT);
 
@@ -95,6 +92,21 @@ public final class NewPouleModal extends AbstractModal {
 
         this.setUpComponent();
         new NewPouleModalController(this);
+    }
+
+    @Override
+    public void appear() {
+        super.appear();
+
+        this.competitorDisplays.clear();
+
+        HttpCommunicator.CompetitorApi.getAllCompetitors()
+            .forEach(competitor -> this.competitorDisplays.add(new CompetitorDisplay(BUTTON_SIZE, BUTTON_SIZE, competitor)));
+
+        this.scrollPanel.getContents().clear();
+        this.scrollPanel.getViewPanel().removeAll();
+        this.scrollPanel.addComponent(mainHeader);
+        this.competitorDisplays.forEach(this.scrollPanel::addComponent);
     }
 
     @Override

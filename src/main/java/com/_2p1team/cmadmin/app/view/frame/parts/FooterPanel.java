@@ -7,6 +7,7 @@ import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 public final class FooterPanel extends Panel implements ComplexComponent {
@@ -14,7 +15,11 @@ public final class FooterPanel extends Panel implements ComplexComponent {
     private final Label versionLabel;
 
     public FooterPanel() {
-        super(TITLE_SIZE, new FlowLayout(FlowLayout.CENTER), AppearanceRepository.TITLE_BAR_APPEARANCE);
+        this(TITLE_SIZE);
+    }
+
+    public FooterPanel(final Dimension preferredSize) {
+        super(preferredSize, new FlowLayout(FlowLayout.CENTER), AppearanceRepository.TITLE_BAR_APPEARANCE);
 
         this.versionLabel = new Label(TITLE_TEXT_SIZE, "Version 1.0 - Open Beta", AppearanceRepository.TITLE_TEXT_APPEARANCE);
 

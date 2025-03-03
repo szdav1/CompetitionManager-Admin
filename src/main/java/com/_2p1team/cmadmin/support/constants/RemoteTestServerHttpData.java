@@ -1,4 +1,4 @@
-package com._2p1team.cmadmin.support;
+package com._2p1team.cmadmin.support.constants;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

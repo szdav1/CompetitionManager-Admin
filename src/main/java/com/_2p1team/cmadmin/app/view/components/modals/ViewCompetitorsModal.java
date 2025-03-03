@@ -1,7 +1,7 @@
 package com._2p1team.cmadmin.app.view.components.modals;
 
+import com._2p1team.cmadmin.app.http.HttpCommunicator;
 import com._2p1team.cmadmin.app.view.components.competitor.CompetitorDisplay;
-import com._2p1team.cmadmin.repository.CompetitorRepository;
 import static com._2p1team.cmadmin.support.constants.SizeData.BUTTON_HEIGHT;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.scrollpanel.ScrollPanel;
@@ -31,7 +31,7 @@ public final class ViewCompetitorsModal extends AbstractModal {
         this.scrollPanel.setScrollSpeed(BUTTON_HEIGHT);
 
         this.competitorDisplays = new ArrayList<>();
-        CompetitorRepository.competitors
+        HttpCommunicator.CompetitorApi.getAllCompetitors()
             .forEach(competitor -> competitorDisplays.add(new CompetitorDisplay(competitor)));
 
         this.setUpComponent();

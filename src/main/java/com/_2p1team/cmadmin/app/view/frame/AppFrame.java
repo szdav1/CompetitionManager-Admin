@@ -9,11 +9,13 @@ import com._2p1team.cmadmin.app.view.frame.parts.CenterPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.FooterPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.RootPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.TitleBar;
-import static com._2p1team.cmadmin.support.constants.SizeData.FRAME_HEIGHT;
-import static com._2p1team.cmadmin.support.constants.SizeData.FRAME_WIDTH;
+import static com._2p1team.cmadmin.support.constants.AppearanceConstants.BORDER_RADIUS;
+import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.constants.states.FrameState;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.support.util.BeforeLaunchExceptionQueue;
+import com._2p1team.cmadmin.support.util.Util;
+import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import com._2p1team.cmadmin.swing.override.constants.Position;
 import com._2p1team.cmadmin.swing.override.frame.AbstractFrame;
@@ -23,9 +25,8 @@ import lombok.Setter;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import java.awt.BorderLayout;
-import java.awt.Image;
-import java.awt.Rectangle;
+import java.awt.*;
+import java.awt.geom.RoundRectangle2D;
 import java.util.List;
 
 
@@ -54,6 +55,55 @@ public final class AppFrame extends AbstractFrame {
 
     private final PouleCompetitionPanel pouleCompetitionPanel;
     private final Table table;
+
+    public AppFrame() {
+        super(Util.loadImageIcon("/assets/appIcon.png").getImage(), "Http Communication Error");
+
+        Label fatalErrorLabel = new Label(X_BUTTON_SIZE, "Fatal Error: Server is unreachable", AppearanceRepository.HTTP_EXCEPTION_MESSAGE_APPEARANCE);
+        Panel shade = new Panel(new Dimension(MODAL_WIDTH, MODAL_HEIGHT), new GridLayout(1, 1), AppearanceRepository.MODAL_BACKGROUND_APPEARANCE);
+
+        this.setSize(MODAL_WIDTH, MODAL_HEIGHT);
+        this.setExtendedState(JFrame.NORMAL);
+        this.setLocationRelativeTo(null);
+        this.setShape(new RoundRectangle2D.Double(0.0, 0.0, (double) MODAL_WIDTH, (double) MODAL_HEIGHT, (double) BORDER_RADIUS, (double) BORDER_RADIUS));
+
+        this.closingConfirmationModal = null;
+        this.newPouleModal = null;
+        this.viewCompetitorsModal = null;
+        this.httpConnectionHttpExceptionModal = null;
+
+        this.rootPanel = new RootPanel(MODAL_WIDTH, MODAL_HEIGHT);
+        this.mainPanel = new Panel(new Rectangle(0, 0, MODAL_WIDTH, MODAL_HEIGHT), new BorderLayout(), AppearanceRepository.MAIN_PANEL_APPEARANCE);
+        this.titleBar = new TitleBar(new Dimension(MODAL_WIDTH, BUTTON_HEIGHT));
+        this.centerPanel = new CenterPanel();
+        this.footerPanel = new FooterPanel(new Dimension(MODAL_WIDTH, BUTTON_HEIGHT));
+
+        this.pouleCompetitionPanel = null;
+        this.table = null;
+
+        this.titleBar.getLeftPanel().removeAll();
+        this.titleBar.getRightPanel().removeComponent(this.titleBar.getIconifyButton());
+
+        this.titleBar.getExitButton().addActionListener(e -> {
+            this.dispose();
+            System.exit(1);
+        });
+
+        shade.add(fatalErrorLabel, 1);
+
+        this.centerPanel.setLayout(new GridLayout(1, 1));
+        this.centerPanel.add(shade);
+
+        this.mainPanel.addComponent(this.titleBar, Position.TOP);
+        this.mainPanel.addComponent(this.centerPanel, Position.CENTER);
+        this.mainPanel.addComponent(this.footerPanel, Position.BOTTOM);
+
+        this.rootPanel.addComponent(this.mainPanel, Position.LOW);
+
+        this.addComponent(this.rootPanel, Position.LOW);
+
+        FrameManager.initManager(this);
+    }
 
     public AppFrame(Image iconImage, String title) {
         super(iconImage, title);
@@ -106,9 +156,6 @@ public final class AppFrame extends AbstractFrame {
     private void handleBeforeLaunchQueuedException() {
         switch (BeforeLaunchExceptionQueue.getExceptionType()) {
             case HTTP_COMMUNICATION_EXCEPTION -> FrameManager.displayHttpConnectionExceptionModal();
-            default -> {
-                // NONE
-            }
         }
     }
 
