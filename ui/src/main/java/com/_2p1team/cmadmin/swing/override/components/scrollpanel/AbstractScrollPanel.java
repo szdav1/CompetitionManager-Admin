@@ -8,27 +8,32 @@ import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import com._2p1team.cmadmin.swing.override.graphics.G2DPainter;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.swing.JComponent;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import java.awt.*;
+import java.awt.event.MouseWheelListener;
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @EqualsAndHashCode(callSuper=false)
-public abstract class AbstractScrollPanel extends JScrollPane implements Container, AppearanceComponent {
+public abstract class AbstractScrollPanel extends JScrollPane implements Container, AppearanceComponent, MouseWheelListener {
 
     private final Appearance appearance;
     private final Panel viewPanel;
     private final List<JComponent> contents;
+    @Setter
+    private int scrollCounter;
 
     public AbstractScrollPanel() {
         this.appearance = new Appearance();
         this.viewPanel = new Panel(new Dimension(0, 0), null, this.appearance);
         this.viewPanel.setOpaque(false);
         this.contents = new ArrayList<>();
+        this.scrollCounter = 0;
 
         this.setFocusable(false);
         this.setBorder(null);
@@ -40,6 +45,7 @@ public abstract class AbstractScrollPanel extends JScrollPane implements Contain
         this.setVerticalScrollBar(new CustomScrollBar(JScrollBar.VERTICAL, appearance));
         this.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        this.addMouseWheelListener(this);
     }
 
     public AbstractScrollPanel(Dimension preferredSize, final LayoutManager layout, final Appearance appearance) {
@@ -47,6 +53,7 @@ public abstract class AbstractScrollPanel extends JScrollPane implements Contain
         this.viewPanel = new Panel(new Dimension(0, 0), layout, appearance);
         this.viewPanel.setOpaque(false);
         this.contents = new ArrayList<>();
+        this.scrollCounter = 0;
 
         this.setFocusable(false);
         this.setBorder(null);
@@ -60,6 +67,7 @@ public abstract class AbstractScrollPanel extends JScrollPane implements Contain
         this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         this.setPreferredSize(preferredSize);
         this.setBounds(new Rectangle(0, 0, preferredSize.width, preferredSize.height));
+        this.addMouseWheelListener(this);
     }
 
     public AbstractScrollPanel(Dimension preferredSize, final Appearance appearance) {
@@ -71,6 +79,7 @@ public abstract class AbstractScrollPanel extends JScrollPane implements Contain
         this.viewPanel = new Panel(new Dimension(0, 0), layout, appearance);
         this.viewPanel.setOpaque(false);
         this.contents = new ArrayList<>();
+        this.scrollCounter = 0;
 
         this.setFocusable(false);
         this.setBorder(null);
@@ -84,6 +93,7 @@ public abstract class AbstractScrollPanel extends JScrollPane implements Contain
         this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         this.setBounds(bounds);
         this.setPreferredSize(new Dimension(bounds.width, bounds.height));
+        this.addMouseWheelListener(this);
     }
 
     public AbstractScrollPanel(Rectangle bounds, final Appearance appearance) {
@@ -94,6 +104,11 @@ public abstract class AbstractScrollPanel extends JScrollPane implements Contain
         this.getHorizontalScrollBar().setUnitIncrement(speed);
         this.getVerticalScrollBar().setUnitIncrement(speed);
     }
+
+    public int getScrollPosition() {
+        return this.scrollCounter*this.getHorizontalScrollBar().getUnitIncrement();
+    }
+
 
     @Override
     public void paint(Graphics g) {

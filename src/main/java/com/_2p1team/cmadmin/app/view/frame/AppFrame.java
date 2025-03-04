@@ -144,60 +144,60 @@ public final class AppFrame extends AbstractFrame {
             new CompetitorTransferModel(0L, "", "", "", 0, 0), // 16
             new CompetitorTransferModel(0L, "", "", "", 0, 0), // 17
             new CompetitorTransferModel(0L, "", "", "", 0, 0), // 18
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 19
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 20
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 21
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 22
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 23
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 24
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 25
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 26
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 27
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 28
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 29
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 30
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 31
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 32
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 33
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 34
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 35
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 36
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 37
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 38
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 39
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 40
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 41
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 42
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 43
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 44
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 45
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 46
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 47
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 48
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 49
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 50
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 51
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 52
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 53
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 54
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 55
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 56
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 57
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 58
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 59
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 60
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 61
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 62
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 63
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 64
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 65
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 66
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 67
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 68
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 69
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 70
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 71
-            new CompetitorTransferModel(0L, "", "", "", 0, 0) // 72
+            new CompetitorTransferModel(0L, "", "", "", 0, 0) // 19
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 20
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 21
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 22
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 23
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 24
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 25
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 26
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 27
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 28
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 29
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0) // 30
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 31
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 32
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0) // 33
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 34
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 35
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 36
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 37
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 38
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 39
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 40
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 41
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 42
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 43
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 44
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 45
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 46
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 47
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 48
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 49
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 50
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 51
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 52
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 53
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 54
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 55
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 56
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 57
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 58
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 59
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 60
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 61
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 62
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 63
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 64
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 65
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 66
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 67
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 68
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 69
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 70
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 71
+//            new CompetitorTransferModel(0L, "", "", "", 0, 0) // 72
         ));
 
         new FrameController(this);
@@ -229,6 +229,7 @@ public final class AppFrame extends AbstractFrame {
         this.centerPanel.addComponent(this.pouleCompetitionPanel);
         this.pouleCompetitionPanel.setVisible(false);
 
+        // Temporary
         this.centerPanel.addComponent(this.table);
         this.table.setVisible(false);
 

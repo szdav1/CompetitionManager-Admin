@@ -1,6 +1,5 @@
 package com._2p1team.cmadmin.swing.override.components.scrollpanel;
 
-import com._2p1team.cmadmin.swing.override.components.AppearanceComponent;
 import com._2p1team.cmadmin.swing.override.constants.Position;
 import com._2p1team.cmadmin.swing.override.constants.UIState;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
@@ -10,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.LayoutManager;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 
 public class ScrollPanel extends AbstractScrollPanel {
 
@@ -99,6 +99,14 @@ public class ScrollPanel extends AbstractScrollPanel {
 
     @Override
     public void mouseExited(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseWheelMoved(MouseWheelEvent e) {
+        if (e.getScrollType() == MouseWheelEvent.WHEEL_UNIT_SCROLL) {
+            if (this.getScrollCounter()+e.getWheelRotation() >= 0)
+                this.setScrollCounter(this.getScrollCounter()+e.getWheelRotation());
+        }
     }
 
 }
