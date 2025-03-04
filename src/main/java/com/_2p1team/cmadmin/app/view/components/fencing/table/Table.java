@@ -5,6 +5,7 @@ import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
 import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
+import com._2p1team.cmadmin.swing.override.components.scrollpanel.ScrollPanel;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -36,6 +37,7 @@ public final class Table extends Panel implements ComplexComponent {
     private int tableSize;
     private String tableau;
     private final List<TableElement> elements;
+    private final ScrollPanel scrollPanel;
 
     public Table(final List<CompetitorTransferModel> competitorTransferModels) {
         super(new Dimension(0, 0), null, new Appearance(AppearanceRepository.TABLE_PANEL_APPEARANCE));
@@ -46,6 +48,9 @@ public final class Table extends Panel implements ComplexComponent {
         this.tableau = tableaus.get(this.tableSize);
         this.elements = new ArrayList<>(this.tableSize);
 
+        this.scrollPanel = new ScrollPanel(FRAME_SIZE, null, AppearanceRepository.BASE_SCROLL_PANEL_APPEARANCE);
+        this.scrollPanel.setScrollSpeed(BUTTON_HEIGHT*2);
+
         this.setUpComponent();
     }
 
@@ -55,6 +60,15 @@ public final class Table extends Panel implements ComplexComponent {
             case 32 -> 6;
             case 64 -> 7;
             case 128 -> 8;
+            default -> 4;
+        };
+    }
+
+    private int determinePositionHandler() {
+        return switch (this.tableSize) {
+            case 32 -> 8;
+            case 64 -> 16;
+            case 128 -> 32;
             default -> 4;
         };
     }
@@ -74,13 +88,18 @@ public final class Table extends Panel implements ComplexComponent {
     }
 
     private void createFirstColumn() {
+        int counter = 0;
         for (int i = 0; i < this.tableSize/2; i++) {
             int x = 0;
             int y = (TABLE_ELEMENT_BOUNDS.height*i)+(BUTTON_HEIGHT*i);
             final TableElement tableElement = new TableElement(x, y);
 
+            counter++;
+            tableElement.getTopChildBox().setText(String.valueOf(counter));
+            counter++;
+            tableElement.getBottomChildBox().setText(String.valueOf(counter));
             this.elements.add(tableElement);
-            this.addComponent(tableElement);
+            this.scrollPanel.addComponent(tableElement);
         }
     }
 
@@ -92,33 +111,106 @@ public final class Table extends Panel implements ComplexComponent {
             iterationCounter++;
 
             this.elements.add(tableElement);
-            this.addComponent(tableElement);
+            this.scrollPanel.addComponent(tableElement);
         }
     }
 
-    private void finishStructure() {
-        int iterationCounter = 0;
-        int rowCounter = 2;
-        int divisionHandler = 4;
-
-        for (int i = 0; i < this.determineNumberOfColumns(); i++) {
-            for (int j = 0; j < this.tableSize/divisionHandler; j++) {
-                final TableElement tableElement = new TableElement(this.elements.get(j+iterationCounter), this.elements.get(j+1+iterationCounter), rowCounter);
-                iterationCounter++;
-
-                this.elements.add(tableElement);
-                this.addComponent(tableElement);
-            }
-
-            rowCounter++;
-            divisionHandler += 2;
+    private void createThirdColumn() {
+        if (this.tableSize == 8) {
+            final TableElement finishingTableElement = new TableElement(this.elements.get(this.elements.size()-2), this.elements.getLast(), 3);
+            this.elements.add(finishingTableElement);
+            this.scrollPanel.addComponent(finishingTableElement);
+            return;
         }
+
+        int positionHandler = this.determinePositionHandler();
+        final List<TableElement> temporaryElements = new ArrayList<>();
+
+        for (int i = 0; i < this.tableSize/8; i++) {
+            final TableElement tableElement = new TableElement(this.elements.get(this.elements.size()-positionHandler), this.elements.get(this.elements.size()-(positionHandler-1)), 3);
+            positionHandler -= 2;
+
+            temporaryElements.add(tableElement);
+            this.scrollPanel.addComponent(tableElement);
+        }
+
+        this.elements.addAll(temporaryElements);
+    }
+
+    public void createFourthColumn() {
+        if (this.tableSize < 32)
+            return;
+
+        int positionHandler = this.determinePositionHandler()/2;
+        final List<TableElement> temporaryElements = new ArrayList<>();
+
+        for (int i = 0; i < this.tableSize/16; i++) {
+            final TableElement tableElement = new TableElement(this.elements.get(this.elements.size()-positionHandler), this.elements.get(this.elements.size()-(positionHandler-1)), 5);
+            positionHandler -= 2;
+
+            temporaryElements.add(tableElement);
+            this.scrollPanel.addComponent(tableElement);
+        }
+
+        this.elements.addAll(temporaryElements);
+    }
+
+    public void createFifthColumn() {
+        if (this.tableSize < 64)
+            return;
+
+        int positionHandler = this.determinePositionHandler()/4;
+        final List<TableElement> temporaryElements = new ArrayList<>();
+
+        for (int i = 0; i < this.tableSize/32; i++) {
+            final TableElement tableElement = new TableElement(this.elements.get(this.elements.size()-positionHandler), this.elements.get(this.elements.size()-(positionHandler-1)), 9);
+            positionHandler -= 2;
+
+            temporaryElements.add(tableElement);
+            this.scrollPanel.addComponent(tableElement);
+        }
+
+        this.elements.addAll(temporaryElements);
+    }
+
+    public void createLastColumn() {
+        if (this.tableSize < 128)
+            return;
+
+        int positionHandler = this.determinePositionHandler()/8;
+        final List<TableElement> temporaryElements = new ArrayList<>();
+
+        for (int i = 0; i < this.tableSize/64; i++) {
+            final TableElement tableElement = new TableElement(this.elements.get(this.elements.size()-positionHandler), this.elements.get(this.elements.size()-(positionHandler-1)), 17);
+            positionHandler -= 2;
+
+            temporaryElements.add(tableElement);
+            this.scrollPanel.addComponent(tableElement);
+        }
+
+        this.elements.addAll(temporaryElements);
+    }
+
+    // TODO: Calculate column number for finishing element
+    // TODO: Further test the table
+    // TODO: Create control logic
+    private void finishStructure() {
+        final TableElement finishingTableElement = new TableElement(this.elements.get(this.elements.size()-2), this.elements.getLast(), 9); // TODO: Replace 5
+        this.elements.add(finishingTableElement);
+        this.scrollPanel.addComponent(finishingTableElement);
     }
 
     private void createStructure() {
         this.createFirstColumn();
-//        this.createSecondColumn();
-        this.finishStructure();
+        this.createSecondColumn();
+        this.createThirdColumn();
+        this.createFourthColumn();
+        this.createFifthColumn();
+        this.createLastColumn();
+//        this.finishStructure();
+
+        this.scrollPanel.resizeViewPanel(0);
+        this.addComponent(this.scrollPanel);
 
 //        final TableElement tableElement = new TableElement(this.elements.getFirst(), this.elements.get(1), 2);
 //        final TableElement tableElement2 = new TableElement(this.elements.get(2), this.elements.get(3), 2);
@@ -128,11 +220,6 @@ public final class Table extends Panel implements ComplexComponent {
 //
 //        this.addComponent(tableElement);
 //        this.addComponent(tableElement2);
-//
-//        final TableElement tableElement3 = new TableElement(this.elements.get(4), this.elements.get(5), 3);
-//
-//        this.addComponent(tableElement3);
-
     }
 
     @Override
