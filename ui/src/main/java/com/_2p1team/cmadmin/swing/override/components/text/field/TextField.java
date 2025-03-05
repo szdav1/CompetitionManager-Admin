@@ -1,34 +1,82 @@
 package com._2p1team.cmadmin.swing.override.components.text.field;
 
+import com._2p1team.cmadmin.swing.override.components.AppearanceComponent;
 import com._2p1team.cmadmin.swing.override.constants.UIState;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import com._2p1team.cmadmin.swing.override.graphics.G2DPainter;
 
+import javax.swing.JTextField;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
+/**
+ * The TextField class is the custom representation of Swing's
+ * JTextField and awt's TextField class. As every custom UI component,
+ * this class determines its visual representation based on the
+ * specified Appearance object.
+ *
+ * @see JTextField
+ * @see AbstractTextField
+ * @see AppearanceComponent
+ */
 public class TextField extends AbstractTextField {
 
+    /**
+     * Constructs a basic custom TextField using the specified Appearance class.
+     *
+     * @param appearance The Appearance class that describes the UI attributes of this component
+     */
     public TextField(Appearance appearance) {
         super(appearance);
     }
 
+    /**
+     * Constructs a basic custom TextField using an empty constructor Appearance.
+     */
     public TextField() {
     }
 
+    /**
+     * Constructs a basic custom TextField using the specified Appearance class, preferred size
+     * and text.
+     *
+     * @param preferredSize The Dimension object that describes the preferred size of this component
+     * @param text          The text that should be displayed on the component
+     * @param appearance    The Appearance class that describes the UI attributes of this component
+     */
     public TextField(Dimension preferredSize, String text, final Appearance appearance) {
         super(preferredSize, text, appearance);
     }
 
+    /**
+     * Constructs a basic custom TextField using the specified Appearance class and preferred size.
+     *
+     * @param preferredSize The Dimension object that describes the preferred size of this component
+     * @param appearance    The Appearance class that describes the UI attributes of this component
+     */
     public TextField(Dimension preferredSize, final Appearance appearance) {
         super(preferredSize, appearance);
     }
 
+    /**
+     * Constructs a basic custom TextField using the specified Appearance class, bounds
+     * and text.
+     *
+     * @param bounds     The Rectangle object that describes the bounds of this component
+     * @param text       The text that should be displayed on the component
+     * @param appearance The Appearance class that describes the UI attributes of this component
+     */
     public TextField(Rectangle bounds, String text, final Appearance appearance) {
         super(bounds, text, appearance);
     }
 
+    /**
+     * Constructs a basic custom TextField using the specified Appearance class and bounds.
+     *
+     * @param bounds     The Rectangle object that describes the bounds of this component
+     * @param appearance The Appearance class that describes the UI attributes of this component
+     */
     public TextField(Rectangle bounds, final Appearance appearance) {
         super(bounds, appearance);
     }

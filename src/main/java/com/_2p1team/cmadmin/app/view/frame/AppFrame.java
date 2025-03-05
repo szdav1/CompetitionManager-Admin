@@ -65,7 +65,7 @@ public final class AppFrame extends AbstractFrame {
         this.setSize(MODAL_WIDTH, MODAL_HEIGHT);
         this.setExtendedState(JFrame.NORMAL);
         this.setLocationRelativeTo(null);
-        this.setShape(new RoundRectangle2D.Double(0.0, 0.0, (double) MODAL_WIDTH, (double) MODAL_HEIGHT, (double) BORDER_RADIUS, (double) BORDER_RADIUS));
+        this.setShape(new RoundRectangle2D.Double(0.0, 0.0, MODAL_WIDTH, MODAL_HEIGHT, BORDER_RADIUS, BORDER_RADIUS));
 
         this.closingConfirmationModal = null;
         this.newPouleModal = null;

@@ -14,6 +14,14 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+/**
+ * The ScrollBarUI is an overriding class that extends the BasicScrollBarUI
+ * class from Swing. As every custom UI component, this class determines
+ * its visual representation based on the specified Appearance object.
+ *
+ * @see BasicScrollBarUI
+ * @see CustomScrollBar
+ */
 @Getter
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper=false)
