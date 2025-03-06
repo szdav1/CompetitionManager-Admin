@@ -5,12 +5,17 @@ import lombok.Data;
 import lombok.Setter;
 
 import java.awt.Color;
+import java.awt.LinearGradientPaint;
 
 /**
  * The AbstractPaintConfiguration class is an abstract representation of
  * the used paint configurations inside the module. This class handles
  * gradient painting problems, such as calculating equal size fractions
  * for colors, handling single color inputs and multicolor inputs.
+ *
+ * @see LinearGradientPaint
+ * @see LinearGradientPaintConfiguration
+ * @see SimplePaintConfiguration
  */
 @Data
 public abstract class AbstractPaintConfiguration {
@@ -31,12 +36,17 @@ public abstract class AbstractPaintConfiguration {
     /**
      * Set the colors of the configuration.
      *
-     * @param colors
+     * @param colors The colors of the configuration
      */
     public void setColors(Color... colors) {
         this.colors = colors;
     }
 
+    /**
+     * Set the fractions of the configuration.
+     *
+     * @param fractions The fractions of the configuration
+     */
     public void setFractions(float... fractions) {
         this.fractions = fractions;
     }

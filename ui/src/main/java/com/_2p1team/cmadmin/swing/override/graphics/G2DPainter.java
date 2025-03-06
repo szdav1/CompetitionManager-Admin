@@ -11,6 +11,7 @@ import javax.swing.JComponent;
 import java.awt.*;
 import java.awt.geom.Point2D;
 
+// TODO: Write javadoc
 @AllArgsConstructor(access=AccessLevel.PRIVATE)
 public final class G2DPainter {
 
