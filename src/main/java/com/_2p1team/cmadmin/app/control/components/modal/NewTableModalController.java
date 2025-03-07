@@ -18,6 +18,7 @@ public final class NewTableModalController extends AbstractController {
         this.newTableModal = component;
 
         this.addListeners();
+        new NewTableModalKeyController(this.newTableModal);
     }
 
     private void addListeners() {
