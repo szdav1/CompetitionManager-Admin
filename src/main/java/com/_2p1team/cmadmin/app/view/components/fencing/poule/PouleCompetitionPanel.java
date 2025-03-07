@@ -51,7 +51,7 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
     private static final List<CompetitorTransferModel> competitorTransferModels = new ArrayList<>();
 
     public PouleCompetitionPanel() {
-        super(new Rectangle(0, 0, FRAME_WIDTH, FRAME_HEIGHT-(BUTTON_HEIGHT*2)), new BorderLayout(), new Appearance(AppearanceRepository.POULE_COMPETITION_PANEL_APPEARANCE));
+        super(new Rectangle(0, 0, FRAME_WIDTH, FRAME_HEIGHT-(BUTTON_HEIGHT*2)), new BorderLayout(), new Appearance(AppearanceRepository.COMPETITION_PANEL_APPEARANCE));
 
         this.topPanel = new Panel(new Dimension(this.getWidth(), BUTTON_HEIGHT), new FlowLayout(FlowLayout.RIGHT, 0, 0), new Appearance(AppearanceRepository.MODAL_TITLE_BAR_APPEARANCE));
         this.centerPanel = new Panel(new Dimension(this.getWidth(), this.getHeight()-(BUTTON_HEIGHT*2)), new FlowLayout(FlowLayout.CENTER, PADDING, PADDING), new Appearance(AppearanceRepository.MODAL_CENTER_PANEL_APPEARANCE));

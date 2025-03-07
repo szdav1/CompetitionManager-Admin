@@ -1,9 +1,8 @@
 package com._2p1team.cmadmin.app.view.frame;
 
 import com._2p1team.cmadmin.app.control.frame.FrameController;
-import com._2p1team.cmadmin.app.dto.competitor.CompetitorTransferModel;
 import com._2p1team.cmadmin.app.view.components.fencing.poule.PouleCompetitionPanel;
-import com._2p1team.cmadmin.app.view.components.fencing.table.Table;
+import com._2p1team.cmadmin.app.view.components.fencing.table.TableCompetitionPanel;
 import com._2p1team.cmadmin.app.view.components.modals.*;
 import com._2p1team.cmadmin.app.view.frame.parts.CenterPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.FooterPanel;
@@ -27,7 +26,6 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
-import java.util.List;
 
 
 @Getter(AccessLevel.PACKAGE)
@@ -35,6 +33,7 @@ public final class AppFrame extends AbstractFrame {
 
     private final WindowClosingConfirmationModal closingConfirmationModal;
     private final NewPouleModal newPouleModal;
+    private final NewTableModal newTableModal;
     private final ViewCompetitorsModal viewCompetitorsModal;
     private final HttpExceptionModal httpConnectionHttpExceptionModal;
 
@@ -54,7 +53,7 @@ public final class AppFrame extends AbstractFrame {
     private AbstractModal openedModal;
 
     private final PouleCompetitionPanel pouleCompetitionPanel;
-    private final Table table;
+    private final TableCompetitionPanel tableCompetitionPanel;
 
     public AppFrame() {
         super(Util.loadImageIcon("/assets/appIcon.png").getImage(), "Http Communication Error");
@@ -69,6 +68,7 @@ public final class AppFrame extends AbstractFrame {
 
         this.closingConfirmationModal = null;
         this.newPouleModal = null;
+        this.newTableModal = null;
         this.viewCompetitorsModal = null;
         this.httpConnectionHttpExceptionModal = null;
 
@@ -79,7 +79,7 @@ public final class AppFrame extends AbstractFrame {
         this.footerPanel = new FooterPanel(new Dimension(MODAL_WIDTH, BUTTON_HEIGHT));
 
         this.pouleCompetitionPanel = null;
-        this.table = null;
+        this.tableCompetitionPanel = null;
 
         this.titleBar.getLeftPanel().removeAll();
         this.titleBar.getRightPanel().removeComponent(this.titleBar.getIconifyButton());
@@ -112,6 +112,7 @@ public final class AppFrame extends AbstractFrame {
 
         this.closingConfirmationModal = new WindowClosingConfirmationModal();
         this.newPouleModal = new NewPouleModal();
+        this.newTableModal = new NewTableModal();
         this.viewCompetitorsModal = new ViewCompetitorsModal();
         this.httpConnectionHttpExceptionModal = new HttpExceptionModal();
 
@@ -125,80 +126,7 @@ public final class AppFrame extends AbstractFrame {
         this.openedModal = null;
 
         this.pouleCompetitionPanel = new PouleCompetitionPanel();
-        this.table = new Table(List.of(
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 1
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 2
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 3
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 4
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 5
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 6
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 7
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 8
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 9
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 10
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 11
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 12
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 13
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 14
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 15
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 16
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 17
-            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 18
-            new CompetitorTransferModel(0L, "", "", "", 0, 0) // 19
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 20
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 21
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 22
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 23
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 24
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 25
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 26
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 27
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 28
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 29
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0) // 30
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 31
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 32
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0) // 33
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 34
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 35
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 36
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 37
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 38
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 39
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 40
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 41
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 42
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 43
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 44
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 45
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 46
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 47
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 48
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 49
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 50
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 51
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 52
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 53
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 54
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 55
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 56
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 57
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 58
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 59
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 60
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 61
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 62
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 63
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 64
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 65
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 66
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 67
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 68
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 69
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 70
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0), // 71
-//            new CompetitorTransferModel(0L, "", "", "", 0, 0) // 72
-        ));
+        this.tableCompetitionPanel = new TableCompetitionPanel();
 
         new FrameController(this);
 
@@ -229,9 +157,8 @@ public final class AppFrame extends AbstractFrame {
         this.centerPanel.addComponent(this.pouleCompetitionPanel);
         this.pouleCompetitionPanel.setVisible(false);
 
-        // Temporary
-        this.centerPanel.addComponent(this.table);
-        this.table.setVisible(false);
+        this.centerPanel.addComponent(this.tableCompetitionPanel);
+        this.tableCompetitionPanel.setVisible(false);
 
         this.mainPanel.addComponent(this.titleBar, Position.TOP);
         this.mainPanel.addComponent(this.centerPanel, Position.CENTER);
@@ -245,11 +172,13 @@ public final class AppFrame extends AbstractFrame {
 
         this.rootPanel.addComponent(this.closingConfirmationModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.newPouleModal.getBackgroundPanel(), Position.HIGH);
+        this.rootPanel.addComponent(this.newTableModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.viewCompetitorsModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.httpConnectionHttpExceptionModal.getBackgroundPanel(), Position.HIGH);
 
         this.closingConfirmationModal.disappear();
         this.newPouleModal.disappear();
+        this.newTableModal.disappear();
         this.viewCompetitorsModal.disappear();
         this.httpConnectionHttpExceptionModal.disappear();
 

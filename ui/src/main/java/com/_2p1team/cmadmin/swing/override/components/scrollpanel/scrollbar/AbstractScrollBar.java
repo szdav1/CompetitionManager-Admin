@@ -24,8 +24,8 @@ public abstract class AbstractScrollBar extends JScrollBar {
         this.setOpaque(false);
         this.setBorder(null);
         this.setPreferredSize(new Dimension(
-            SCREEN_SIZE.width/100,
-            orientation == JScrollBar.HORIZONTAL ? SCREEN_SIZE.height*2/100 : SCREEN_SIZE.width/100
+            SCREEN_SIZE.width/150,
+            orientation == JScrollBar.HORIZONTAL ? SCREEN_SIZE.width/150 : SCREEN_SIZE.height*2/100
         ));
         this.revalidate();
         this.repaint();

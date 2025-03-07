@@ -2,6 +2,7 @@ package com._2p1team.cmadmin.app.control.components.fencing.table;
 
 import com._2p1team.cmadmin.app.control.AbstractController;
 import com._2p1team.cmadmin.app.view.components.fencing.table.Table;
+import static com._2p1team.cmadmin.support.constants.SizeData.BUTTON_HEIGHT;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
@@ -36,9 +37,8 @@ public final class TableController extends AbstractController {
     @Override
     public void mouseReleased(MouseEvent e) {
         this.table.getElements().forEach(element -> {
-            if (e.getSource().equals(element.getWinnerCompetitorBox())) {
-                element.toggleDropdownPanel(this.table.getScrollPanel().getScrollPosition());
-            }
+            if (e.getSource().equals(element.getWinnerCompetitorBox()))
+                element.toggleDropdownPanel(this.table.getScrollPanel().getScrollCounter()-BUTTON_HEIGHT);
         });
     }
 

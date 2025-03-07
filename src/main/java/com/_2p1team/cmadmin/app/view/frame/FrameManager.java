@@ -1,5 +1,6 @@
 package com._2p1team.cmadmin.app.view.frame;
 
+import com._2p1team.cmadmin.support.constants.SummonOrigin;
 import com._2p1team.cmadmin.support.constants.states.FrameState;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import com._2p1team.cmadmin.swing.override.constants.Position;
@@ -113,6 +114,18 @@ public final class FrameManager {
         frame.setPreviousModal(frame.getNewPouleModal());
     }
 
+    public static void displayNewTableModal() {
+        if (frame.getFrameState() != FrameState.DEFAULT)
+            return;
+
+        frame.getNewTableModal()
+            .appear();
+
+        frame.setOpenedModal(frame.getNewTableModal());
+        frame.setFrameState(FrameState.MODAL_OPENED);
+        frame.setPreviousModal(frame.getNewTableModal());
+    }
+
     public static void displayViewDatabaseModal() {
         if (frame.getFrameState() != FrameState.DEFAULT)
             return;
@@ -163,10 +176,22 @@ public final class FrameManager {
         if (frame.getFrameState() != FrameState.DEFAULT)
             return;
 
-        frame.getTable()
-            .setVisible(true);
+        frame.getTableCompetitionPanel()
+            .appear(SummonOrigin.TABLE_ONLY);
 
         frame.disableMenuButtons();
+        frame.setFrameState(FrameState.TABLE_COMPETITION_PANEL_OPENED);
+    }
+
+    public static void hideTableCompetitionPanel() {
+        if (frame.getFrameState() != FrameState.TABLE_COMPETITION_PANEL_OPENED)
+            return;
+
+        frame.getTableCompetitionPanel()
+            .disappear();
+
+        frame.enableMenuButtons();
+        frame.setFrameState(FrameState.DEFAULT);
     }
 
     public static void hideOpenedModal() {

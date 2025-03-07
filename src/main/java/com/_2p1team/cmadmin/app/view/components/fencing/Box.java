@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Rectangle;
 
 @Data
@@ -23,6 +24,7 @@ public class Box extends JTextField {
 
     public Box(Rectangle bounds, String text, Color borderColor) {
         this.setBounds(bounds);
+        this.setPreferredSize(new Dimension(bounds.width, bounds.height));
         this.setText(text);
         this.setOpaque(true);
         this.setForeground(Color.white);

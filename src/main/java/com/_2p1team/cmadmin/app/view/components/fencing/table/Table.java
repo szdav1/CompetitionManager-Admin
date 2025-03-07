@@ -7,7 +7,6 @@ import com._2p1team.cmadmin.app.view.interfaces.ControlComponent;
 import static com._2p1team.cmadmin.support.constants.AppearanceConstants.PADDING;
 import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
-import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import com._2p1team.cmadmin.swing.override.components.scrollpanel.ScrollPanel;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
@@ -16,15 +15,11 @@ import lombok.EqualsAndHashCode;
 
 import javax.swing.JComponent;
 import java.awt.Dimension;
-import java.awt.Rectangle;
+import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-// TODO: Further test the table
-// TODO: Create control logic
-// TODO: Fill table with competitors
 
 @Data
 @EqualsAndHashCode(callSuper=false)
@@ -41,22 +36,38 @@ public final class Table extends Panel implements ComplexComponent, ControlCompo
     public static final int MAXIMUM_SIZE = 128;
 
     private final List<CompetitorTransferModel> competitorTransferModels;
+    private int desiredSize;
     private int tableSize;
     private String tableau;
-    private final List<Label> numberLabels;
     private final List<TableElement> elements;
     private final ScrollPanel scrollPanel;
 
     public Table(final List<CompetitorTransferModel> competitorTransferModels) {
-        super(new Dimension(FRAME_WIDTH, FRAME_HEIGHT-(BUTTON_HEIGHT*2)), null, new Appearance(AppearanceRepository.TABLE_PANEL_APPEARANCE));
+        super(new Dimension(FRAME_WIDTH, FRAME_HEIGHT-(BUTTON_HEIGHT*4)), new FlowLayout(FlowLayout.CENTER, 0, 0), new Appearance(AppearanceRepository.TABLE_PANEL_APPEARANCE));
 
         this.competitorTransferModels = competitorTransferModels;
         this.tableSize = this.determineTableSize();
         this.tableau = tableaus.get(this.tableSize);
         this.elements = new ArrayList<>(this.tableSize);
-        this.numberLabels = new ArrayList<>(this.tableSize);
 
-        this.scrollPanel = new ScrollPanel(FRAME_SIZE, null, AppearanceRepository.BASE_SCROLL_PANEL_APPEARANCE);
+        this.scrollPanel = new ScrollPanel(new Dimension(this.getWidth(), this.getHeight()), null, AppearanceRepository.BASE_SCROLL_PANEL_APPEARANCE);
+        this.scrollPanel.setScrollSpeed(BUTTON_HEIGHT*2);
+
+        this.setUpComponent();
+
+        new TableController(this);
+    }
+
+    public Table(final int tableSize) {
+        super(new Dimension(FRAME_WIDTH, FRAME_HEIGHT-(BUTTON_HEIGHT*4)), new FlowLayout(FlowLayout.CENTER, 0, 0), new Appearance(AppearanceRepository.TABLE_PANEL_APPEARANCE));
+
+        this.competitorTransferModels = new ArrayList<>(tableSize);
+        this.desiredSize = tableSize;
+        this.tableSize = this.determineTableSize();
+        this.tableau = tableaus.get(this.tableSize);
+        this.elements = new ArrayList<>(this.tableSize);
+
+        this.scrollPanel = new ScrollPanel(new Dimension(this.getWidth(), this.getHeight()), null, AppearanceRepository.BASE_SCROLL_PANEL_APPEARANCE);
         this.scrollPanel.setScrollSpeed(BUTTON_HEIGHT*2);
 
         this.setUpComponent();
@@ -84,7 +95,7 @@ public final class Table extends Panel implements ComplexComponent, ControlCompo
     }
 
     private int determineTableSize() {
-        final int numberOfCompetitors = this.competitorTransferModels.size();
+        final int numberOfCompetitors = this.competitorTransferModels.isEmpty() ? this.desiredSize : this.competitorTransferModels.size();
         int nPowerOf2 = 3;
 
         if (numberOfCompetitors > MINIMUM_SIZE) {
@@ -98,8 +109,12 @@ public final class Table extends Panel implements ComplexComponent, ControlCompo
     }
 
     private void createFirstColumn() {
+        int numberIndex = 0;
+        String[] numbers = tableau.split(";");
+
         for (int i = 0; i < this.tableSize/2; i++) {
-            final TableElement tableElement = new TableElement(N_BUTTON_WIDTH, (TABLE_ELEMENT_BOUNDS.height*i)+(BUTTON_HEIGHT*i));
+            final TableElement tableElement = new TableElement(numbers[numberIndex], numbers[numberIndex+1], N_BUTTON_WIDTH, N_BUTTON_WIDTH+(TABLE_ELEMENT_BOUNDS.height*i)+(BUTTON_HEIGHT*i));
+            numberIndex += 2;
 
             this.elements.add(tableElement);
             this.scrollPanel.addComponent(tableElement);
@@ -210,26 +225,29 @@ public final class Table extends Panel implements ComplexComponent, ControlCompo
         this.finishStructure();
     }
 
-    private void createRowNumbers() {
-        int gapHandler = 1;
-        String[] numbers = tableaus.get(this.tableSize).split(";");
-
-        for (int i = 0; i < this.tableSize; i++) {
-            final Label numberLabel = new Label(new Rectangle(0, (BUTTON_HEIGHT*gapHandler)*i, N_BUTTON_WIDTH, BUTTON_HEIGHT), numbers[i], AppearanceRepository.BASE_LABEL_APPEARANCE);
-            gapHandler = 2;
-
-            this.numberLabels.add(numberLabel);
-            this.scrollPanel.addComponent(numberLabel);
-        }
-    }
-
     private void createStructure() {
-        this.createRowNumbers();
         this.createColumnStructure();
+        this.addCompetitors();
 
         this.scrollPanel.getViewPanel()
-            .setPreferredSize(new Dimension(this.scrollPanel.getWidth(), ((BUTTON_HEIGHT*3))*this.tableSize+(PADDING*this.tableSize)));
+            .setPreferredSize(new Dimension(0, ((BUTTON_HEIGHT*3))*this.tableSize+(PADDING*this.tableSize)));
         this.addComponent(this.scrollPanel);
+    }
+
+    private String findCompetitorNameByPlacement(int placement) {
+        for (CompetitorTransferModel competitorTransferModel : this.competitorTransferModels) {
+            if (competitorTransferModel.placement() == placement)
+                return competitorTransferModel.name();
+        }
+
+        return "";
+    }
+
+    private void addCompetitors() {
+        this.elements.forEach(element -> {
+            element.getTopCompetitorBox().setText(this.findCompetitorNameByPlacement(element.getTopNumbering()));
+            element.getBottomCompetitorBox().setText(this.findCompetitorNameByPlacement(element.getBottomNumbering()));
+        });
     }
 
     @Override

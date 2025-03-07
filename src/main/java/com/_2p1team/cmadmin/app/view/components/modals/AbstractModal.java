@@ -48,12 +48,12 @@ public abstract class AbstractModal extends Panel implements ComplexComponent, C
 
         this.closeButton = new Button(N_BUTTON_SIZE, "x", new Appearance(AppearanceRepository.EXIT_BUTTON_APPEARANCE));
         this.closeButton.addActionListener(this);
-        
+
         this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-            .put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "CloseModal");
+            .put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "CloseModalAction");
 
         this.getActionMap()
-            .put("CloseModal", new CloseModalAction());
+            .put("CloseModalAction", new CloseModalAction());
 
         innerTopPanel.addComponent(this.titleLabel);
 
@@ -65,6 +65,16 @@ public abstract class AbstractModal extends Panel implements ComplexComponent, C
         this.addComponent(this.bottomPanel, Position.BOTTOM);
 
         this.backgroundPanel.addComponent(this, Position.HIGH);
+    }
+
+    private static class CloseModalAction extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (FrameManager.getState() == FrameState.MODAL_OPENED)
+                FrameManager.hideOpenedModal();
+        }
+
     }
 
     public void setTitle(String title) {
@@ -85,16 +95,6 @@ public abstract class AbstractModal extends Panel implements ComplexComponent, C
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.closeButton))
             FrameManager.hideOpenedModal();
-    }
-
-    private static class CloseModalAction extends AbstractAction {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (FrameManager.getState() == FrameState.MODAL_OPENED)
-                FrameManager.hideOpenedModal();
-        }
-
     }
 
 }

@@ -14,13 +14,13 @@ import javax.swing.JComponent;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import java.awt.*;
-import java.awt.event.MouseWheelListener;
+import java.awt.event.AdjustmentListener;
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @EqualsAndHashCode(callSuper=false)
-public abstract class AbstractScrollPanel extends JScrollPane implements Container, AppearanceComponent, MouseWheelListener {
+public abstract class AbstractScrollPanel extends JScrollPane implements Container, AppearanceComponent, AdjustmentListener {
 
     private final Appearance appearance;
     private final Panel viewPanel;
@@ -45,7 +45,8 @@ public abstract class AbstractScrollPanel extends JScrollPane implements Contain
         this.setVerticalScrollBar(new CustomScrollBar(JScrollBar.VERTICAL, appearance));
         this.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        this.addMouseWheelListener(this);
+        this.getVerticalScrollBar().addAdjustmentListener(this);
+        this.getVerticalScrollBar().addAdjustmentListener(this);
     }
 
     public AbstractScrollPanel(Dimension preferredSize, final LayoutManager layout, final Appearance appearance) {
@@ -67,7 +68,8 @@ public abstract class AbstractScrollPanel extends JScrollPane implements Contain
         this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         this.setPreferredSize(preferredSize);
         this.setBounds(new Rectangle(0, 0, preferredSize.width, preferredSize.height));
-        this.addMouseWheelListener(this);
+        this.getVerticalScrollBar().addAdjustmentListener(this);
+        this.getVerticalScrollBar().addAdjustmentListener(this);
     }
 
     public AbstractScrollPanel(Dimension preferredSize, final Appearance appearance) {
@@ -93,7 +95,8 @@ public abstract class AbstractScrollPanel extends JScrollPane implements Contain
         this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         this.setBounds(bounds);
         this.setPreferredSize(new Dimension(bounds.width, bounds.height));
-        this.addMouseWheelListener(this);
+        this.getVerticalScrollBar().addAdjustmentListener(this);
+        this.getVerticalScrollBar().addAdjustmentListener(this);
     }
 
     public AbstractScrollPanel(Rectangle bounds, final Appearance appearance) {

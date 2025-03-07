@@ -66,10 +66,12 @@ public final class AppearanceRepository {
 
     public static final Appearance LABELED_INPUT_APPEARANCE = new LabeledInputAppearance();
 
-    public static final Appearance POULE_COMPETITION_PANEL_APPEARANCE = new PouleCompetitionPanelAppearance();
+    public static final Appearance COMPETITION_PANEL_APPEARANCE = new CompetitionPanelAppearance();
 
-    public static final Appearance TABLE_PANEL_APPEARANCE = new TableAppearance();
+    public static final Appearance TABLE_PANEL_APPEARANCE = new TablePanelAppearance();
 
     public static final Appearance TABLE_ELEMENT_APPEARANCE = new TableElementAppearance();
+
+    public static final Appearance NEW_TABLE_MODAL_DECORATION_APPEARANCE = new NewTableModalDecorationAppearance();
 
 }

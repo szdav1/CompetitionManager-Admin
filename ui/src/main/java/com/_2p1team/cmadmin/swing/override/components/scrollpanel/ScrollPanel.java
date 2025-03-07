@@ -11,6 +11,7 @@ import javax.swing.JScrollPane;
 import java.awt.Dimension;
 import java.awt.LayoutManager;
 import java.awt.Rectangle;
+import java.awt.event.AdjustmentEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 
@@ -155,12 +156,11 @@ public class ScrollPanel extends AbstractScrollPanel {
     public void mouseExited(MouseEvent e) {
     }
 
+
     @Override
-    public void mouseWheelMoved(MouseWheelEvent e) {
-        if (e.getScrollType() == MouseWheelEvent.WHEEL_UNIT_SCROLL) {
-            if (this.getScrollCounter()+e.getWheelRotation() >= 0)
-                this.setScrollCounter(this.getScrollCounter()+e.getWheelRotation());
-        }
+    public void adjustmentValueChanged(AdjustmentEvent e) {
+        if (e.getSource().equals(this.getVerticalScrollBar()))
+            this.setScrollCounter(e.getValue());
     }
 
 }
