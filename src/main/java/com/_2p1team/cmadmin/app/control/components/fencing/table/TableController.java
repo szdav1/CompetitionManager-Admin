@@ -27,7 +27,7 @@ public final class TableController extends AbstractController {
     @Override
     public void actionPerformed(ActionEvent e) {
         this.table.getElements().forEach(element -> element.getDropdownButtons().forEach(button -> {
-            if (e.getSource().equals(button)) {
+            if (e.getSource().equals(button) && button.getAppearance().isInteractivityEnabled()) {
                 element.getWinnerCompetitorBox().setText(button.getText());
                 element.toggleDropdownPanel(0);
             }

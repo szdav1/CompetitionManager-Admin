@@ -2,9 +2,11 @@ package com._2p1team.cmadmin.app.view.components.fencing.table;
 
 import com._2p1team.cmadmin.app.control.components.fencing.table.TableController;
 import com._2p1team.cmadmin.app.dto.competitor.CompetitorTransferModel;
+import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
 import com._2p1team.cmadmin.app.view.interfaces.ControlComponent;
 import static com._2p1team.cmadmin.support.constants.AppearanceConstants.PADDING;
+import com._2p1team.cmadmin.support.constants.CompetitionType;
 import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
@@ -24,6 +26,8 @@ import java.util.Map;
 @Data
 @EqualsAndHashCode(callSuper=false)
 public final class Table extends Panel implements ComplexComponent, ControlComponent {
+
+    public static final String EMPTY_COMPETITOR = "---";
 
     private static final String tableau8 = "1;8;5;4;3;6;7;2";
     private static final String tableau16 = "1;16;9;8;5;12;13;4;3;14;11;6;7;10;15;2";
@@ -236,11 +240,11 @@ public final class Table extends Panel implements ComplexComponent, ControlCompo
 
     private String findCompetitorNameByPlacement(int placement) {
         for (CompetitorTransferModel competitorTransferModel : this.competitorTransferModels) {
-            if (this.competitorTransferModels.indexOf(competitorTransferModel) == placement)
+            if (this.competitorTransferModels.indexOf(competitorTransferModel)+1 == placement)
                 return competitorTransferModel.name();
         }
 
-        return "---";
+        return FrameManager.getCompetitionType() == CompetitionType.COMPETITION ? Table.EMPTY_COMPETITOR : "";
     }
 
     private void addCompetitors() {
@@ -254,7 +258,10 @@ public final class Table extends Panel implements ComplexComponent, ControlCompo
     public void setUpComponent() {
         this.createStructure();
 
-        this.elements.forEach(element -> element.setUpDropdownPanel(this.scrollPanel));
+        this.elements.forEach(element -> {
+            element.setUpDropdownPanel(this.scrollPanel);
+            element.stepFencers();
+        });
     }
 
     @Override

@@ -124,6 +124,15 @@ public final class TableElement extends Panel implements ComplexComponent, Contr
             this.dropdownButtons.getFirst().setText(this.topParentElement.getWinnerCompetitorBox().getText());
             this.dropdownButtons.getLast().setText(this.bottomParentElement.getWinnerCompetitorBox().getText());
         }
+
+        if (this.dropdownButtons.getFirst().getText().equals(Table.EMPTY_COMPETITOR))
+            this.dropdownButtons.getFirst()
+                .getAppearance()
+                .disableInteractivity();
+        else if (this.dropdownButtons.getLast().getText().equals(Table.EMPTY_COMPETITOR))
+            this.dropdownButtons.getLast()
+                .getAppearance()
+                .disableInteractivity();
     }
 
     private Rectangle calculateBounds(final TableElement topParentElement, final TableElement bottomParentElement, final int columnNumberConstant) {
@@ -149,12 +158,23 @@ public final class TableElement extends Panel implements ComplexComponent, Contr
         return Integer.parseInt(this.bottomNumberLabel.getText());
     }
 
+    public void stepFencers() {
+        if (!this.topParentElement.equals(this) && !this.bottomParentElement.equals(this))
+            return;
+
+        if (this.topCompetitorBox.getText().equals(Table.EMPTY_COMPETITOR))
+            this.winnerCompetitorBox.setText(this.bottomCompetitorBox.getText());
+        else if (this.bottomCompetitorBox.getText().equals(Table.EMPTY_COMPETITOR))
+            this.winnerCompetitorBox.setText(this.topCompetitorBox.getText());
+    }
+
     @Override
     public void setUpComponent() {
         if (this.topNumberLabel != null && this.bottomNumberLabel != null) {
             this.addComponent(this.topNumberLabel);
             this.addComponent(this.bottomNumberLabel);
         }
+
 
         this.addComponent(this.topCompetitorBox);
         this.addComponent(this.bottomCompetitorBox);
