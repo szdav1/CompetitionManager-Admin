@@ -46,7 +46,6 @@ public final class TableCompetitionPanel extends Panel implements ControlCompone
     }
 
     public void appear() {
-        System.out.println(FrameManager.getCompetitionType());
         if (FrameManager.getCompetitionType() == CompetitionType.TABLE_ONLY) {
             this.table = new Table(NewTableModal.getDesiredSize());
 
