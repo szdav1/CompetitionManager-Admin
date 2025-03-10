@@ -20,7 +20,6 @@ import javax.swing.JComponent;
 import java.awt.*;
 import java.util.List;
 
-
 @Getter
 public final class TableCompetitionPanel extends Panel implements ControlComponent, KeyControlledComponent, ComplexComponent {
 
@@ -60,7 +59,7 @@ public final class TableCompetitionPanel extends Panel implements ControlCompone
         else if (FrameManager.getCompetitionType() == CompetitionType.COMPETITION)
             this.table = new Table(PouleCompetitionPanel.getCompetitorTransferModels());
 
-        this.centerPanel.addComponent(this.table); // TODO: Why null
+        this.centerPanel.addComponent(this.table);
         this.setVisible(true);
     }
 
