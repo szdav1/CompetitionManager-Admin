@@ -3,11 +3,12 @@ package com._2p1team.cmadmin.app.view.components.fencing.table;
 import com._2p1team.cmadmin.app.control.components.fencing.table.TableCompetitionPanelController;
 import com._2p1team.cmadmin.app.view.components.fencing.poule.PouleCompetitionPanel;
 import com._2p1team.cmadmin.app.view.components.modals.NewTableModal;
+import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
 import com._2p1team.cmadmin.app.view.interfaces.ControlComponent;
 import com._2p1team.cmadmin.app.view.interfaces.KeyControlledComponent;
+import com._2p1team.cmadmin.support.constants.CompetitionType;
 import static com._2p1team.cmadmin.support.constants.SizeData.*;
-import com._2p1team.cmadmin.support.constants.SummonOrigin;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
@@ -27,6 +28,7 @@ public final class TableCompetitionPanel extends Panel implements ControlCompone
     private final Panel centerPanel;
     private final Panel bottomPanel;
     private final Button closeButton;
+    private final Button finishButton;
 
     private Table table;
 
@@ -37,13 +39,15 @@ public final class TableCompetitionPanel extends Panel implements ControlCompone
         this.centerPanel = new Panel(new Dimension(this.getWidth(), this.getHeight()-(BUTTON_HEIGHT*2)), new FlowLayout(FlowLayout.CENTER, 0, 0), new Appearance(AppearanceRepository.MODAL_CENTER_PANEL_APPEARANCE));
         this.bottomPanel = new Panel(new Dimension(this.getWidth(), BUTTON_HEIGHT), new FlowLayout(FlowLayout.CENTER, 0, 0), new Appearance(AppearanceRepository.MODAL_TITLE_BAR_APPEARANCE));
         this.closeButton = new Button(N_BUTTON_SIZE, "x", new Appearance(AppearanceRepository.EXIT_BUTTON_APPEARANCE));
+        this.finishButton = new Button(BUTTON_SIZE, "Finish", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
         this.setUpComponent();
         new TableCompetitionPanelController(this);
     }
 
-    public void appear(final SummonOrigin summonOrigin) {
-        if (summonOrigin == SummonOrigin.TABLE_ONLY) {
+    public void appear() {
+        System.out.println(FrameManager.getCompetitionType());
+        if (FrameManager.getCompetitionType() == CompetitionType.TABLE_ONLY) {
             this.table = new Table(NewTableModal.getDesiredSize());
 
             for (int i = 0; i < this.table.getTableSize()/2; i++) {
@@ -54,10 +58,10 @@ public final class TableCompetitionPanel extends Panel implements ControlCompone
                 this.table.getElements().get(i).getBottomCompetitorBox().setCursor(new Cursor(Cursor.TEXT_CURSOR));
             }
         }
-        else if (summonOrigin == SummonOrigin.COMPETITION)
+        else if (FrameManager.getCompetitionType() == CompetitionType.COMPETITION)
             this.table = new Table(PouleCompetitionPanel.getCompetitorTransferModels());
 
-        this.centerPanel.addComponent(this.table);
+        this.centerPanel.addComponent(this.table); // TODO: Why null
         this.setVisible(true);
     }
 
@@ -69,6 +73,7 @@ public final class TableCompetitionPanel extends Panel implements ControlCompone
     @Override
     public void setUpComponent() {
         this.topPanel.addComponent(this.closeButton);
+        this.bottomPanel.addComponent(this.finishButton);
 
         this.addComponent(this.topPanel, Position.TOP);
         this.addComponent(this.centerPanel);

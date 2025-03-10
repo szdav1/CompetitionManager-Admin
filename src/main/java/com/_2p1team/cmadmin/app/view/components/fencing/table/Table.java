@@ -236,18 +236,18 @@ public final class Table extends Panel implements ComplexComponent, ControlCompo
 
     private String findCompetitorNameByPlacement(int placement) {
         for (CompetitorTransferModel competitorTransferModel : this.competitorTransferModels) {
-            if (competitorTransferModel.placement() == placement)
+            if (this.competitorTransferModels.indexOf(competitorTransferModel) == placement)
                 return competitorTransferModel.name();
         }
 
-        return "";
+        return "---";
     }
 
     private void addCompetitors() {
-        this.elements.forEach(element -> {
+        for (TableElement element : this.elements) {
             element.getTopCompetitorBox().setText(this.findCompetitorNameByPlacement(element.getTopNumbering()));
             element.getBottomCompetitorBox().setText(this.findCompetitorNameByPlacement(element.getBottomNumbering()));
-        });
+        }
     }
 
     @Override

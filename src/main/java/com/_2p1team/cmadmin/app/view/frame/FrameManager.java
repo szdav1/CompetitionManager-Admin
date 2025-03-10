@@ -1,6 +1,6 @@
 package com._2p1team.cmadmin.app.view.frame;
 
-import com._2p1team.cmadmin.support.constants.SummonOrigin;
+import com._2p1team.cmadmin.support.constants.CompetitionType;
 import com._2p1team.cmadmin.support.constants.states.FrameState;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import com._2p1team.cmadmin.swing.override.constants.Position;
@@ -23,6 +23,10 @@ public final class FrameManager {
 
     public static FrameState getState() {
         return frame.getFrameState();
+    }
+
+    public static CompetitionType getCompetitionType() {
+        return frame.getCompetitionType();
     }
 
     public static Panel getCenterPanel() {
@@ -102,9 +106,11 @@ public final class FrameManager {
         frame.setPreviousModal(frame.getClosingConfirmationModal());
     }
 
-    public static void displayNewPouleModal() {
+    public static void displayNewPouleModal(final CompetitionType competitionType) {
         if (frame.getFrameState() != FrameState.DEFAULT)
             return;
+
+        frame.setCompetitionType(competitionType);
 
         frame.getNewPouleModal()
             .appear();
@@ -117,6 +123,8 @@ public final class FrameManager {
     public static void displayNewTableModal() {
         if (frame.getFrameState() != FrameState.DEFAULT)
             return;
+
+        frame.setCompetitionType(CompetitionType.TABLE_ONLY);
 
         frame.getNewTableModal()
             .appear();
@@ -170,6 +178,9 @@ public final class FrameManager {
 
         frame.enableMenuButtons();
         frame.setFrameState(FrameState.DEFAULT);
+
+        if (getCompetitionType() == CompetitionType.POULE_ONLY)
+            frame.setCompetitionType(CompetitionType.NONE);
     }
 
     public static void displayTableCompetitionPanel() {
@@ -177,7 +188,7 @@ public final class FrameManager {
             return;
 
         frame.getTableCompetitionPanel()
-            .appear(SummonOrigin.TABLE_ONLY);
+            .appear();
 
         frame.disableMenuButtons();
         frame.setFrameState(FrameState.TABLE_COMPETITION_PANEL_OPENED);
@@ -192,6 +203,7 @@ public final class FrameManager {
 
         frame.enableMenuButtons();
         frame.setFrameState(FrameState.DEFAULT);
+        frame.setCompetitionType(CompetitionType.NONE);
     }
 
     public static void hideOpenedModal() {

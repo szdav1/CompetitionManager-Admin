@@ -10,6 +10,7 @@ import com._2p1team.cmadmin.app.view.frame.parts.RootPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.TitleBar;
 import static com._2p1team.cmadmin.support.constants.AppearanceConstants.BORDER_RADIUS;
 import static com._2p1team.cmadmin.support.constants.SizeData.*;
+import com._2p1team.cmadmin.support.constants.CompetitionType;
 import com._2p1team.cmadmin.support.constants.states.FrameState;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.support.util.BeforeLaunchExceptionQueue;
@@ -30,6 +31,9 @@ import java.awt.geom.RoundRectangle2D;
 
 @Getter(AccessLevel.PACKAGE)
 public final class AppFrame extends AbstractFrame {
+
+    @Setter(AccessLevel.PACKAGE)
+    private CompetitionType competitionType = CompetitionType.NONE;
 
     private final WindowClosingConfirmationModal closingConfirmationModal;
     private final NewPouleModal newPouleModal;

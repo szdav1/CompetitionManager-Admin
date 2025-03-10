@@ -4,6 +4,7 @@ import com._2p1team.cmadmin.app.control.AbstractController;
 import com._2p1team.cmadmin.app.view.components.menu.MenuButton;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import com._2p1team.cmadmin.app.view.frame.parts.TitleBar;
+import com._2p1team.cmadmin.support.constants.CompetitionType;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 
 import java.awt.event.ActionEvent;
@@ -75,9 +76,8 @@ public final class TitleBarController extends AbstractController {
 
                 switch (index) {
                     // File menu
-                    case 0 -> {
-                    }
-                    case 1 -> FrameManager.displayNewPouleModal();
+                    case 0 -> FrameManager.displayNewPouleModal(CompetitionType.COMPETITION);
+                    case 1 -> FrameManager.displayNewPouleModal(CompetitionType.POULE_ONLY);
                     case 2 -> FrameManager.displayNewTableModal();
 
                     // Database menu

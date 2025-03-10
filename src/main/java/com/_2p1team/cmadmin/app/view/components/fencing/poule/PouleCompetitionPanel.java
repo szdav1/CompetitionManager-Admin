@@ -6,11 +6,13 @@ import com._2p1team.cmadmin.app.dto.competitor.CompetitorTransferModel;
 import com._2p1team.cmadmin.app.view.components.competitor.CompetitorDisplay;
 import com._2p1team.cmadmin.app.view.components.competitor.CompetitorTransferDisplay;
 import com._2p1team.cmadmin.app.view.components.modals.NewPouleModal;
+import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
 import com._2p1team.cmadmin.app.view.interfaces.ControlComponent;
 import com._2p1team.cmadmin.app.view.interfaces.KeyControlledComponent;
 import static com._2p1team.cmadmin.support.constants.AppearanceConstants.PADDING;
 import static com._2p1team.cmadmin.support.constants.SizeData.*;
+import com._2p1team.cmadmin.support.constants.CompetitionType;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
@@ -43,6 +45,7 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
     private final Button finishButton;
     private final Button resultsButton;
     private final Button bottomCloseButton;
+    private final Button continueButton;
 
     private List<CompetitorDisplay> competitors;
     private final List<Poule> poules;
@@ -64,6 +67,7 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
         this.finishButton = new Button(BUTTON_SIZE, "Finish All", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
         this.resultsButton = new Button(BUTTON_SIZE, "Results", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
         this.bottomCloseButton = new Button(BUTTON_SIZE, "Close", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.continueButton = new Button(BUTTON_SIZE, "Continue", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
         this.competitors = new ArrayList<>();
         this.poules = new ArrayList<>();
@@ -166,14 +170,15 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
         this.setVisible(false);
         this.resetPanel();
         this.poules.clear();
-        competitorTransferModels.clear();
         this.bottomPanel.removeComponent(this.finishButton);
         this.bottomPanel.removeComponent(this.resultsButton);
         this.bottomPanel.removeComponent(this.bottomCloseButton);
+        this.bottomPanel.removeComponent(this.continueButton);
         this.bottomPanel.addComponent(this.finishButton);
     }
 
     public void appear() {
+        competitorTransferModels.clear();
         this.createPoules();
         this.setVisible(true);
     }
@@ -212,7 +217,11 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
         this.scrollPanel.resizeViewPanel(X_BUTTON_WIDTH*4);
         this.scrollPanel.getViewPanel().setPreferredSize(new Dimension(this.scrollPanel.getViewPanel().getWidth(), this.scrollPanel.getHeight()+PADDING));
         this.bottomPanel.removeComponent(this.resultsButton);
-        this.bottomPanel.addComponent(this.bottomCloseButton);
+
+        if (FrameManager.getCompetitionType() == CompetitionType.POULE_ONLY)
+            this.bottomPanel.addComponent(this.bottomCloseButton);
+        else if (FrameManager.getCompetitionType() == CompetitionType.COMPETITION)
+            this.bottomPanel.addComponent(this.continueButton);
     }
 
     @Override

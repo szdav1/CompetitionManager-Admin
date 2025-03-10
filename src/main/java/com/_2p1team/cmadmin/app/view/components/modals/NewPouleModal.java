@@ -4,8 +4,10 @@ import com._2p1team.cmadmin.app.control.components.modal.NewPouleModalController
 import com._2p1team.cmadmin.app.http.HttpCommunicator;
 import com._2p1team.cmadmin.app.view.components.competitor.CompetitorDisplay;
 import com._2p1team.cmadmin.app.view.components.input.LabeledInput;
+import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import static com._2p1team.cmadmin.support.constants.AppearanceConstants.PADDING;
 import static com._2p1team.cmadmin.support.constants.SizeData.*;
+import com._2p1team.cmadmin.support.constants.CompetitionType;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
@@ -97,6 +99,7 @@ public final class NewPouleModal extends AbstractModal {
     @Override
     public void appear() {
         super.appear();
+        this.setTitle(FrameManager.getCompetitionType() == CompetitionType.POULE_ONLY ? "New Poule" : "New Competition");
 
         this.competitorDisplays.clear();
 

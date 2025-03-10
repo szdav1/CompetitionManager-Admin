@@ -14,6 +14,7 @@ public final class PouleCompetitionPanelController extends AbstractController {
     private final Button finishButton;
     private final Button resultsButton;
     private final Button bottomCloseButton;
+    private final Button continueButton;
 
     public PouleCompetitionPanelController(final PouleCompetitionPanel component) {
         super(component);
@@ -23,6 +24,7 @@ public final class PouleCompetitionPanelController extends AbstractController {
         this.finishButton = this.panel.getFinishButton();
         this.resultsButton = this.panel.getResultsButton();
         this.bottomCloseButton = this.panel.getBottomCloseButton();
+        this.continueButton = this.panel.getContinueButton();
 
         this.addListeners();
         new PouleCompetitionPanelKeyController(this.panel);
@@ -33,6 +35,7 @@ public final class PouleCompetitionPanelController extends AbstractController {
         this.finishButton.addActionListener(this);
         this.resultsButton.addActionListener(this);
         this.bottomCloseButton.addActionListener(this);
+        this.continueButton.addActionListener(this);
     }
 
     @Override
@@ -43,6 +46,10 @@ public final class PouleCompetitionPanelController extends AbstractController {
             this.panel.finishPoules();
         else if (e.getSource().equals(this.resultsButton))
             this.panel.showResults();
+        else if (e.getSource().equals(this.continueButton)) {
+            FrameManager.hidePouleCompetitionPanel();
+            FrameManager.displayTableCompetitionPanel();
+        }
     }
 
 }

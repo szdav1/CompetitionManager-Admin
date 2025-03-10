@@ -3,6 +3,7 @@ package com._2p1team.cmadmin.app.control.frame.parts;
 import com._2p1team.cmadmin.app.control.AbstractKeyController;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import com._2p1team.cmadmin.app.view.frame.parts.TitleBar;
+import com._2p1team.cmadmin.support.constants.CompetitionType;
 
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
@@ -35,7 +36,7 @@ public final class TitleBarKeyController extends AbstractKeyController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("New Competition");
+            FrameManager.displayNewPouleModal(CompetitionType.COMPETITION);
         }
 
     }
@@ -44,7 +45,7 @@ public final class TitleBarKeyController extends AbstractKeyController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            FrameManager.displayNewPouleModal();
+            FrameManager.displayNewPouleModal(CompetitionType.POULE_ONLY);
         }
 
     }
