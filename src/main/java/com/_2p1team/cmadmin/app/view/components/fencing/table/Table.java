@@ -303,7 +303,7 @@ public final class Table extends Panel implements ComplexComponent, ControlCompo
         }
 
         this.findCompetitorByName(lastWinner).ifPresent(this.finishingCompetitors::add);
-        this.finishingCompetitors.forEach(c -> System.out.println(c.name()));
+        this.finishingCompetitors.forEach(c -> System.out.println(c.name())); // TODO: Finish sorting the competitors after the table and create the display for them
     }
 
     @Override
