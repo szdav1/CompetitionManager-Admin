@@ -25,6 +25,7 @@ public final class TableCompetitionPanelController extends AbstractController {
         this.panel.getBottomCloseButton().addActionListener(this);
     }
 
+    // TODO: Put data into the database
     private void finishTable() {
         if (this.panel.getTable().checkIfFinished())
             this.panel.finish();
