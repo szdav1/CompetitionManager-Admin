@@ -39,7 +39,7 @@ public final class Table extends Panel implements ComplexComponent, ControlCompo
     public static final int MAXIMUM_SIZE = 128;
 
     private final List<CompetitorTransferModel> competitorTransferModels;
-    private final List<CompetitorTransferModel> finishingCompetitors;
+    private List<CompetitorTransferModel> finishingCompetitors;
     private int desiredSize;
     private int tableSize;
     private String tableau;
@@ -261,11 +261,6 @@ public final class Table extends Panel implements ComplexComponent, ControlCompo
     }
 
     private void addCompetitors() {
-//        for (TableElement element : this.elements) {
-//            element.getTopCompetitorBox().setText(this.findCompetitorNameByPlacement(element.getTopNumbering()));
-//            element.getBottomCompetitorBox().setText(this.findCompetitorNameByPlacement(element.getBottomNumbering()));
-//        }
-
         for (int i = 0; i < this.tableSize/2; i++) {
             final TableElement element = this.elements.get(i);
 
@@ -285,10 +280,26 @@ public final class Table extends Panel implements ComplexComponent, ControlCompo
         return finished;
     }
 
-    public void buildFinalResultsList() {
-        if (!this.checkIfFinished())
-            return;
+    private List<CompetitorTransferModel> removeLastNCompetitors(int amount) {
+        List<CompetitorTransferModel> returnList = new ArrayList<>();
+        this.finishingCompetitors = this.finishingCompetitors.reversed();
 
+        for (int i = 0; i < amount; i++)
+            returnList.add(this.finishingCompetitors.removeFirst());
+
+        return returnList;
+    }
+
+    private void sortCompetitors() {
+        List<CompetitorTransferModel> temp = this.removeLastNCompetitors(this.finishingCompetitors.size() <= MINIMUM_SIZE ? 4 : 8);
+
+        this.finishingCompetitors.sort(Comparator.comparing(CompetitorTransferModel::placement));
+        temp.addAll(this.finishingCompetitors);
+
+        this.finishingCompetitors = temp;
+    }
+
+    private void buildFinalResultsList() {
         String lastWinner = "";
 
         for (TableElement element : this.elements) {
@@ -303,7 +314,14 @@ public final class Table extends Panel implements ComplexComponent, ControlCompo
         }
 
         this.findCompetitorByName(lastWinner).ifPresent(this.finishingCompetitors::add);
-        this.finishingCompetitors.forEach(c -> System.out.println(c.name())); // TODO: Finish sorting the competitors after the table and create the display for them
+    }
+
+    public void finish() {
+        if (!this.checkIfFinished())
+            return;
+
+        this.buildFinalResultsList();
+        this.sortCompetitors();
     }
 
     @Override

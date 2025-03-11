@@ -22,15 +22,17 @@ public final class TableCompetitionPanelController extends AbstractController {
     private void addListeners() {
         this.panel.getCloseButton().addActionListener(this);
         this.panel.getFinishButton().addActionListener(this);
+        this.panel.getBottomCloseButton().addActionListener(this);
     }
 
     private void finishTable() {
-        this.panel.getTable().buildFinalResultsList();
+        if (this.panel.getTable().checkIfFinished())
+            this.panel.finish();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(this.panel.getCloseButton()))
+        if (e.getSource().equals(this.panel.getCloseButton()) || e.getSource().equals(this.panel.getBottomCloseButton()))
             FrameManager.hideTableCompetitionPanel();
         else if (e.getSource().equals(this.panel.getFinishButton()))
             this.finishTable();

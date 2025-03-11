@@ -1,9 +1,10 @@
 package com._2p1team.cmadmin.app.view.components.competitor;
 
+import com._2p1team.cmadmin.app.dto.competitor.CompetitorTransferClass;
 import com._2p1team.cmadmin.app.dto.competitor.CompetitorTransferModel;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
 import com._2p1team.cmadmin.support.constants.CustomColors;
-import static com._2p1team.cmadmin.support.constants.SizeData.*;
+import static com._2p1team.cmadmin.support.constants.SizeData.X_BUTTON_SIZE;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
@@ -37,6 +38,22 @@ public class CompetitorTransferDisplay extends Panel implements ComplexComponent
 
     public CompetitorTransferDisplay(final CompetitorTransferModel competitorTransferModel) {
         this(X_BUTTON_SIZE, competitorTransferModel);
+    }
+
+    public CompetitorTransferDisplay(Dimension preferredSize, final CompetitorTransferClass competitorTransferClass) {
+        super(new Appearance(AppearanceRepository.COMPETITOR_COMPONENT_APPEARANCE));
+        this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+
+        this.nameLabel = new Label(preferredSize, competitorTransferClass.getName(), new Appearance(AppearanceRepository.BASE_LABEL_APPEARANCE));
+        this.clubLabel = new Label(preferredSize, competitorTransferClass.getClub(), new Appearance(AppearanceRepository.BASE_LABEL_APPEARANCE));
+        this.birthDateLabel = new Label(preferredSize, competitorTransferClass.getBirthDate(), new Appearance(AppearanceRepository.BASE_LABEL_APPEARANCE));
+        this.placementLabel = new Label(preferredSize, String.valueOf(competitorTransferClass.getPlacement()), new Appearance(AppearanceRepository.BASE_LABEL_APPEARANCE));
+
+        this.setUpComponent();
+    }
+
+    public CompetitorTransferDisplay(final CompetitorTransferClass competitorTransferClass) {
+        this(X_BUTTON_SIZE, competitorTransferClass);
     }
 
     public static final class Header extends CompetitorTransferDisplay {
