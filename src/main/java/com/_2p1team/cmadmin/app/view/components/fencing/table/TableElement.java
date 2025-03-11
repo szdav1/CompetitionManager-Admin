@@ -73,8 +73,8 @@ public final class TableElement extends Panel implements ComplexComponent, Contr
 
         this.topNumberLabel = null;
         this.bottomNumberLabel = null;
-        this.topCompetitorBox = new Box(new Rectangle(0, 0, W_BUTTON_WIDTH, BUTTON_HEIGHT), "");
-        this.bottomCompetitorBox = new Box(new Rectangle(0, this.getHeight()-BUTTON_HEIGHT, W_BUTTON_WIDTH, BUTTON_HEIGHT), "");
+        this.topCompetitorBox = new Box(new Rectangle(0, 0, W_BUTTON_WIDTH, BUTTON_HEIGHT), topParentElement.getWinnerCompetitorBox().getText());
+        this.bottomCompetitorBox = new Box(new Rectangle(0, this.getHeight()-BUTTON_HEIGHT, W_BUTTON_WIDTH, BUTTON_HEIGHT), bottomParentElement.getWinnerCompetitorBox().getText());
         this.winnerCompetitorBox = new Box(new Rectangle(W_BUTTON_WIDTH, (this.getHeight()/2)-(BUTTON_HEIGHT/2), W_BUTTON_WIDTH, BUTTON_HEIGHT), "", CustomColors.REDDISH);
         this.connector = new Panel(new Rectangle(W_BUTTON_WIDTH, 0, 2, this.getHeight()), null, new Appearance(AppearanceRepository.VERTICAL_DIVIDER_APPEARANCE));
 
@@ -133,6 +133,11 @@ public final class TableElement extends Panel implements ComplexComponent, Contr
             this.dropdownButtons.getLast()
                 .getAppearance()
                 .disableInteractivity();
+    }
+
+    public void hideDropdownPanel() {
+        this.dropdownToggled = false;
+        this.dropdownPanel.setVisible(this.dropdownToggled);
     }
 
     private Rectangle calculateBounds(final TableElement topParentElement, final TableElement bottomParentElement, final int columnNumberConstant) {

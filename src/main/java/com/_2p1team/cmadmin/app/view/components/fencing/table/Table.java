@@ -2,6 +2,7 @@ package com._2p1team.cmadmin.app.view.components.fencing.table;
 
 import com._2p1team.cmadmin.app.control.components.fencing.table.TableController;
 import com._2p1team.cmadmin.app.dto.competitor.CompetitorTransferModel;
+import com._2p1team.cmadmin.app.view.components.fencing.Box;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
 import com._2p1team.cmadmin.app.view.interfaces.ControlComponent;
@@ -9,6 +10,7 @@ import static com._2p1team.cmadmin.support.constants.AppearanceConstants.PADDING
 import com._2p1team.cmadmin.support.constants.CompetitionType;
 import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
+import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import com._2p1team.cmadmin.swing.override.components.scrollpanel.ScrollPanel;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
@@ -18,10 +20,7 @@ import lombok.EqualsAndHashCode;
 import javax.swing.JComponent;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
@@ -40,16 +39,19 @@ public final class Table extends Panel implements ComplexComponent, ControlCompo
     public static final int MAXIMUM_SIZE = 128;
 
     private final List<CompetitorTransferModel> competitorTransferModels;
+    private final List<CompetitorTransferModel> finishingCompetitors;
     private int desiredSize;
     private int tableSize;
     private String tableau;
     private final List<TableElement> elements;
+    private TableElement finishingTableElement;
     private final ScrollPanel scrollPanel;
 
     public Table(final List<CompetitorTransferModel> competitorTransferModels) {
         super(new Dimension(FRAME_WIDTH, FRAME_HEIGHT-(BUTTON_HEIGHT*4)), new FlowLayout(FlowLayout.CENTER, 0, 0), new Appearance(AppearanceRepository.TABLE_PANEL_APPEARANCE));
 
         this.competitorTransferModels = competitorTransferModels;
+        this.finishingCompetitors = new ArrayList<>();
         this.tableSize = this.determineTableSize();
         this.tableau = tableaus.get(this.tableSize);
         this.elements = new ArrayList<>(this.tableSize);
@@ -66,6 +68,7 @@ public final class Table extends Panel implements ComplexComponent, ControlCompo
         super(new Dimension(FRAME_WIDTH, FRAME_HEIGHT-(BUTTON_HEIGHT*4)), new FlowLayout(FlowLayout.CENTER, 0, 0), new Appearance(AppearanceRepository.TABLE_PANEL_APPEARANCE));
 
         this.competitorTransferModels = new ArrayList<>(tableSize);
+        this.finishingCompetitors = new ArrayList<>();
         this.desiredSize = tableSize;
         this.tableSize = this.determineTableSize();
         this.tableau = tableaus.get(this.tableSize);
@@ -214,9 +217,9 @@ public final class Table extends Panel implements ComplexComponent, ControlCompo
     }
 
     private void finishStructure() {
-        final TableElement finishingTableElement = new TableElement(this.elements.get(this.elements.size()-2), this.elements.getLast(), this.determineColumnNumberConstant());
-        this.elements.add(finishingTableElement);
-        this.scrollPanel.addComponent(finishingTableElement);
+        this.finishingTableElement = new TableElement(this.elements.get(this.elements.size()-2), this.elements.getLast(), this.determineColumnNumberConstant());
+        this.elements.add(this.finishingTableElement);
+        this.scrollPanel.addComponent(this.finishingTableElement);
     }
 
     private void createColumnStructure() {
@@ -247,11 +250,60 @@ public final class Table extends Panel implements ComplexComponent, ControlCompo
         return FrameManager.getCompetitionType() == CompetitionType.COMPETITION ? Table.EMPTY_COMPETITOR : "";
     }
 
+    public Optional<CompetitorTransferModel> findCompetitorByName(final String name) {
+        if (name.isBlank() || name.equals(Table.EMPTY_COMPETITOR))
+            return Optional.empty();
+
+        return Optional.ofNullable(this.competitorTransferModels.stream()
+            .filter(competitor -> competitor.name().equalsIgnoreCase(name))
+            .toList()
+            .getFirst());
+    }
+
     private void addCompetitors() {
-        for (TableElement element : this.elements) {
+//        for (TableElement element : this.elements) {
+//            element.getTopCompetitorBox().setText(this.findCompetitorNameByPlacement(element.getTopNumbering()));
+//            element.getBottomCompetitorBox().setText(this.findCompetitorNameByPlacement(element.getBottomNumbering()));
+//        }
+
+        for (int i = 0; i < this.tableSize/2; i++) {
+            final TableElement element = this.elements.get(i);
+
             element.getTopCompetitorBox().setText(this.findCompetitorNameByPlacement(element.getTopNumbering()));
             element.getBottomCompetitorBox().setText(this.findCompetitorNameByPlacement(element.getBottomNumbering()));
         }
+    }
+
+    public boolean checkIfFinished() {
+        boolean finished = false;
+
+        for (int i = 0; i < this.elements.size()-1; i++) {
+            final TableElement element = this.elements.get(i);
+            finished = !element.getWinnerCompetitorBox().getText().isBlank();
+        }
+
+        return finished;
+    }
+
+    public void buildFinalResultsList() {
+        if (!this.checkIfFinished())
+            return;
+
+        String lastWinner = "";
+
+        for (TableElement element : this.elements) {
+            final Box winner = element.getWinnerCompetitorBox();
+            final Button topCompetitor = element.getDropdownButtons().getFirst();
+            final Button bottomCompetitor = element.getDropdownButtons().getLast();
+            final String loserName = winner.getText().equalsIgnoreCase(topCompetitor.getText()) ? bottomCompetitor.getText() : topCompetitor.getText();
+            this.findCompetitorByName(loserName).ifPresent(this.finishingCompetitors::add);
+
+            if (!winner.getText().isBlank())
+                lastWinner = winner.getText();
+        }
+
+        this.findCompetitorByName(lastWinner).ifPresent(this.finishingCompetitors::add);
+        this.finishingCompetitors.forEach(c -> System.out.println(c.name()));
     }
 
     @Override
