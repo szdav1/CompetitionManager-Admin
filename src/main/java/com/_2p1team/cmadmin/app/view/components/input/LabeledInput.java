@@ -42,6 +42,12 @@ public final class LabeledInput extends Panel implements ComplexComponent {
         this.setUpComponent();
     }
 
+    public LabeledInput(int width, String title) {
+        this(title);
+        this.setPreferredSize(new Dimension(this.getWidth()+width, this.getHeight()));
+        this.input.setPreferredSize(new Dimension(width, BUTTON_HEIGHT));
+    }
+
     public void setText(final String text) {
         this.input.setText(text);
     }

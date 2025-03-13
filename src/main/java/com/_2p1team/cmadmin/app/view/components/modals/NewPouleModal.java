@@ -6,8 +6,8 @@ import com._2p1team.cmadmin.app.view.components.competitor.CompetitorDisplay;
 import com._2p1team.cmadmin.app.view.components.input.LabeledInput;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import static com._2p1team.cmadmin.support.constants.AppearanceConstants.PADDING;
-import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.constants.CompetitionType;
+import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
@@ -23,13 +23,18 @@ import javax.swing.SwingConstants;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-// TODO: Competition name, location, date
+// TODO: Competition name, location, date control logic
 public final class NewPouleModal extends AbstractModal {
+
+    private String competitionName;
+    private String competitionLocation;
+    private LocalDate competitionDate = LocalDate.now();
 
     private final Panel leftPanel;
     private final Panel rightPanel;
@@ -47,6 +52,9 @@ public final class NewPouleModal extends AbstractModal {
 
     @Getter
     private static final List<CompetitorDisplay> participatingCompetitors = new ArrayList<>();
+
+    private final LabeledInput competitionNameInput;
+    private final LabeledInput competitionLocationInput;
 
     private final Label participatingLabel;
     private final CompetitorDisplay.Header participatingHeader;
@@ -71,13 +79,14 @@ public final class NewPouleModal extends AbstractModal {
         this.rightPanelContainer = new Panel(new Dimension(this.rightPanel.getWidth(), (BUTTON_HEIGHT*2)+(PADDING*3)), new FlowLayout(FlowLayout.CENTER, PADDING, PADDING), new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
         this.idInput = new LabeledInput("Id");
 
-        this.nameInput = new LabeledInput("Name");
-        this.nameInput.getInput().setPreferredSize(W_BUTTON_SIZE);
-        this.nameInput.setPreferredSize(new Dimension(this.nameInput.getWidth()+W_BUTTON_WIDTH, this.nameInput.getHeight()));
+        this.nameInput = new LabeledInput(W_BUTTON_WIDTH, "Name");
 
         this.searchButton = new Button(BUTTON_SIZE, "Search", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
         this.addButton = new Button(BUTTON_SIZE, "Add", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
         this.removeButton = new Button(BUTTON_SIZE, "Remove", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+
+        this.competitionNameInput = new LabeledInput(BUTTON_WIDTH/2, "Name");
+        this.competitionLocationInput = new LabeledInput(BUTTON_WIDTH/2, "Location");
 
         this.participatingLabel = new Label(this.searchCompetitorLabel.getPreferredSize(), "Participating Competitors", new Appearance(AppearanceRepository.LABELED_INPUT_APPEARANCE));
         this.participatingLabel.setHorizontalAlignment(SwingConstants.LEFT);
@@ -102,6 +111,13 @@ public final class NewPouleModal extends AbstractModal {
         super.appear();
         this.setTitle(FrameManager.getCompetitionType() == CompetitionType.POULE_ONLY ? "New Poule" : "New Competition");
 
+        this.participatingCompetitorsScrollPanel.setPreferredSize(FrameManager.getCompetitionType() == CompetitionType.POULE_ONLY ?
+            new Dimension(this.rightPanel.getWidth(), this.rightPanel.getHeight()-this.rightPanelContainer.getHeight()-(BUTTON_HEIGHT*3)-PADDING+2) :
+            new Dimension(this.rightPanel.getWidth(), (this.rightPanel.getHeight()-this.rightPanelContainer.getHeight()-(BUTTON_HEIGHT*5)-PADDING+2)+BUTTON_HEIGHT/2+(PADDING/2))
+        );
+
+        this.rightPanel.revalidate();
+
         this.competitorDisplays.clear();
 
         HttpCommunicator.CompetitorApi.getAllCompetitors()
@@ -111,6 +127,16 @@ public final class NewPouleModal extends AbstractModal {
         this.scrollPanel.getViewPanel().removeAll();
         this.scrollPanel.addComponent(mainHeader);
         this.competitorDisplays.forEach(this.scrollPanel::addComponent);
+    }
+
+    @Override
+    public void disappear() {
+        super.disappear();
+
+        this.participatingCompetitorsScrollPanel.getViewPanel().removeAll();
+        this.participatingCompetitorsScrollPanel.getContents().clear();
+        this.participatingCompetitorsScrollPanel.addComponent(this.participatingHeader);
+        this.participatingCompetitorsScrollPanel.resizeViewPanel(0);
     }
 
     @Override
@@ -128,6 +154,9 @@ public final class NewPouleModal extends AbstractModal {
         this.rightPanelContainer.addComponent(this.removeButton);
 
         this.participatingCompetitorsScrollPanel.addComponent(this.participatingHeader);
+
+        this.rightPanel.addComponent(this.competitionNameInput);
+        this.rightPanel.addComponent(this.competitionLocationInput);
 
         this.rightPanel.addComponent(this.searchCompetitorLabel);
         this.rightPanel.addComponent(this.rightPanelContainer);
