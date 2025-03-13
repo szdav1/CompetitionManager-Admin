@@ -3,6 +3,7 @@ package com._2p1team.cmadmin.app.view.components.fencing.poule;
 import com._2p1team.cmadmin.app.control.components.fencing.poule.PouleCompetitionPanelController;
 import com._2p1team.cmadmin.app.dto.competitor.Competitor;
 import com._2p1team.cmadmin.app.dto.competitor.CompetitorTransferModel;
+import com._2p1team.cmadmin.app.view.components.competition.CompetitionDisplay;
 import com._2p1team.cmadmin.app.view.components.competitor.CompetitorDisplay;
 import com._2p1team.cmadmin.app.view.components.competitor.CompetitorTransferDisplay;
 import com._2p1team.cmadmin.app.view.components.modals.NewPouleModal;
@@ -11,8 +12,8 @@ import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
 import com._2p1team.cmadmin.app.view.interfaces.ControlComponent;
 import com._2p1team.cmadmin.app.view.interfaces.KeyControlledComponent;
 import static com._2p1team.cmadmin.support.constants.AppearanceConstants.PADDING;
-import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.constants.CompetitionType;
+import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
@@ -37,10 +38,12 @@ import java.util.List;
 public final class PouleCompetitionPanel extends Panel implements ComplexComponent, ControlComponent, KeyControlledComponent {
 
     private final Panel topPanel;
+    private final Panel topInnerPanel;
     private final Panel centerPanel;
     private final Panel bottomPanel;
     private ScrollPanel scrollPanel;
 
+    private CompetitionDisplay competitionDisplay;
     private final Button closeButton;
     private final Button finishButton;
     private final Button resultsButton;
@@ -57,6 +60,7 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
         super(new Rectangle(0, 0, FRAME_WIDTH, FRAME_HEIGHT-(BUTTON_HEIGHT*2)), new BorderLayout(), new Appearance(AppearanceRepository.COMPETITION_PANEL_APPEARANCE));
 
         this.topPanel = new Panel(new Dimension(this.getWidth(), BUTTON_HEIGHT), new FlowLayout(FlowLayout.RIGHT, 0, 0), new Appearance(AppearanceRepository.MODAL_TITLE_BAR_APPEARANCE));
+        this.topInnerPanel = new Panel(new Dimension(this.topPanel.getWidth()-N_BUTTON_WIDTH, BUTTON_HEIGHT), new FlowLayout(FlowLayout.LEFT, 0, 0), AppearanceRepository.LABELED_INPUT_APPEARANCE);
         this.centerPanel = new Panel(new Dimension(this.getWidth(), this.getHeight()-(BUTTON_HEIGHT*2)), new FlowLayout(FlowLayout.CENTER, PADDING, PADDING), new Appearance(AppearanceRepository.MODAL_CENTER_PANEL_APPEARANCE));
         this.bottomPanel = new Panel(new Dimension(this.getWidth(), BUTTON_HEIGHT), new FlowLayout(FlowLayout.CENTER, 0, 0), new Appearance(AppearanceRepository.MODAL_TITLE_BAR_APPEARANCE));
 
@@ -170,6 +174,7 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
         this.setVisible(false);
         this.resetPanel();
         this.poules.clear();
+        this.topInnerPanel.removeComponent(this.competitionDisplay);
         this.bottomPanel.removeComponent(this.finishButton);
         this.bottomPanel.removeComponent(this.resultsButton);
         this.bottomPanel.removeComponent(this.bottomCloseButton);
@@ -178,6 +183,10 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
     }
 
     public void appear() {
+        this.competitionDisplay = new CompetitionDisplay(FrameManager.getCurrentCompetition());
+
+        this.topInnerPanel.addComponent(this.competitionDisplay);
+
         competitorTransferModels.clear();
         this.createPoules();
         this.setVisible(true);
@@ -226,6 +235,7 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
 
     @Override
     public void setUpComponent() {
+        this.topPanel.addComponent(this.topInnerPanel);
         this.topPanel.addComponent(this.closeButton);
         this.centerPanel.addComponent(this.scrollPanel);
         this.bottomPanel.addComponent(this.finishButton);

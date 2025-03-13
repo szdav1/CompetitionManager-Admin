@@ -1,5 +1,6 @@
 package com._2p1team.cmadmin.app.view.frame;
 
+import com._2p1team.cmadmin.app.dto.competition.Competition;
 import com._2p1team.cmadmin.support.constants.CompetitionType;
 import com._2p1team.cmadmin.support.constants.states.FrameState;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
@@ -19,6 +20,14 @@ public final class FrameManager {
 
         hasInstance = true;
         FrameManager.frame = frame;
+    }
+
+    public static Competition getCurrentCompetition() {
+        return frame.getCurrentCompetition();
+    }
+
+    public static void setCurrentCompetition(final Competition competition) {
+        frame.setCurrentCompetition(competition);
     }
 
     public static FrameState getState() {

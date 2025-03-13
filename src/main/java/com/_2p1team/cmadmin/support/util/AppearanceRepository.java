@@ -74,4 +74,6 @@ public final class AppearanceRepository {
 
     public static final Appearance NEW_TABLE_MODAL_DECORATION_APPEARANCE = new NewTableModalDecorationAppearance();
 
+    public static final Appearance COMPETITION_DISPLAY_APPEARANCE = new CompetitionDisplayAppearance();
+
 }

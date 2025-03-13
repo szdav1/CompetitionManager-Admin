@@ -8,4 +8,12 @@ public record Competition(
     LocalDate date
 ) {
 
+    public Competition(String name, String location) {
+        this(name, location, LocalDate.now());
+    }
+
+    public Competition() {
+        this("", "", LocalDate.now());
+    }
+
 }

@@ -2,6 +2,7 @@ package com._2p1team.cmadmin.app.view.components.modals;
 
 import com._2p1team.cmadmin.app.control.components.modal.NewTableModalController;
 import com._2p1team.cmadmin.app.view.components.fencing.Box;
+import com._2p1team.cmadmin.app.view.components.input.LabeledInput;
 import static com._2p1team.cmadmin.support.constants.AppearanceConstants.PADDING;
 import com._2p1team.cmadmin.support.constants.CustomColors;
 import static com._2p1team.cmadmin.support.constants.SizeData.*;
@@ -18,7 +19,6 @@ import java.awt.FlowLayout;
 import java.awt.Rectangle;
 import java.util.List;
 
-// TODO: Design
 @Getter
 public final class NewTableModal extends AbstractModal {
 
@@ -27,6 +27,8 @@ public final class NewTableModal extends AbstractModal {
 
     private final Label textLabel;
     private final Box numberInput;
+    private final LabeledInput competitionNameInput;
+    private final LabeledInput competitionLocationInput;
     private final Panel innerPanel;
     private final Label decorationLabel;
     private final Button createButton;
@@ -38,6 +40,8 @@ public final class NewTableModal extends AbstractModal {
 
         this.textLabel = new Label(X_BUTTON_SIZE, "Number of Competitors:", AppearanceRepository.LABELED_INPUT_APPEARANCE);
         this.numberInput = new Box(new Rectangle(0, 0, N_BUTTON_WIDTH, BUTTON_HEIGHT), "", CustomColors.REDDISH);
+        this.competitionNameInput = new LabeledInput(BUTTON_WIDTH/2, "Name*");
+        this.competitionLocationInput = new LabeledInput(BUTTON_WIDTH/2, "Location*");
         this.innerPanel = new Panel(new Dimension(this.getWidth()-(PADDING*2), this.getHeight()-(BUTTON_HEIGHT*4)), null, AppearanceRepository.LABELED_INPUT_APPEARANCE);
 
         this.decorationLabel = new Label(AppearanceRepository.NEW_TABLE_MODAL_DECORATION_APPEARANCE);
@@ -75,6 +79,8 @@ public final class NewTableModal extends AbstractModal {
 
         this.getCenterPanel().addComponent(this.textLabel);
         this.getCenterPanel().addComponent(this.numberInput);
+        this.getCenterPanel().addComponent(this.competitionNameInput);
+        this.getCenterPanel().addComponent(this.competitionLocationInput);
         this.getCenterPanel().addComponent(this.innerPanel);
         this.getBottomPanel().addComponent(this.createButton);
     }

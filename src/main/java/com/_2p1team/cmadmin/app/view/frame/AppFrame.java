@@ -1,6 +1,7 @@
 package com._2p1team.cmadmin.app.view.frame;
 
 import com._2p1team.cmadmin.app.control.frame.FrameController;
+import com._2p1team.cmadmin.app.dto.competition.Competition;
 import com._2p1team.cmadmin.app.view.components.fencing.poule.PouleCompetitionPanel;
 import com._2p1team.cmadmin.app.view.components.fencing.table.TableCompetitionPanel;
 import com._2p1team.cmadmin.app.view.components.modals.*;
@@ -9,8 +10,8 @@ import com._2p1team.cmadmin.app.view.frame.parts.FooterPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.RootPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.TitleBar;
 import static com._2p1team.cmadmin.support.constants.AppearanceConstants.BORDER_RADIUS;
-import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.constants.CompetitionType;
+import static com._2p1team.cmadmin.support.constants.SizeData.*;
 import com._2p1team.cmadmin.support.constants.states.FrameState;
 import com._2p1team.cmadmin.support.util.AppearanceRepository;
 import com._2p1team.cmadmin.support.util.BeforeLaunchExceptionQueue;
@@ -34,6 +35,10 @@ public final class AppFrame extends AbstractFrame {
 
     @Setter(AccessLevel.PACKAGE)
     private CompetitionType competitionType = CompetitionType.NONE;
+
+    @Getter
+    @Setter(AccessLevel.PACKAGE)
+    private Competition currentCompetition;
 
     private final WindowClosingConfirmationModal closingConfirmationModal;
     private final NewPouleModal newPouleModal;

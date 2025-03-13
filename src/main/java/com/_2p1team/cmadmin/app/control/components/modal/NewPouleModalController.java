@@ -1,6 +1,7 @@
 package com._2p1team.cmadmin.app.control.components.modal;
 
 import com._2p1team.cmadmin.app.control.AbstractController;
+import com._2p1team.cmadmin.app.dto.competition.Competition;
 import com._2p1team.cmadmin.app.http.HttpCommunicator;
 import com._2p1team.cmadmin.app.view.components.checkbox.Checkbox;
 import com._2p1team.cmadmin.app.view.components.competitor.CompetitorDisplay;
@@ -154,6 +155,9 @@ public final class NewPouleModalController extends AbstractController {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        String competitionName = this.newPouleModal.getCompetitionNameInput().getText();
+        String competitionLocation = this.newPouleModal.getCompetitionLocationInput().getText();
+
         if (e.getSource().equals(this.headerCheckbox))
             this.highlightAllCompetitors();
 
@@ -169,7 +173,9 @@ public final class NewPouleModalController extends AbstractController {
         else if (e.getSource().equals(this.removeButton))
             this.removeCompetitorFromParticipatingList();
 
-        else if (e.getSource().equals(this.createButton) && NewPouleModal.getParticipatingCompetitors().size() >= Poule.MIN_SIZE) {
+        else if (e.getSource().equals(this.createButton) && NewPouleModal.getParticipatingCompetitors().size() >= Poule.MIN_SIZE && !competitionName.isBlank() && !competitionLocation.isBlank()) {
+            FrameManager.setCurrentCompetition(new Competition(competitionName, competitionLocation));
+
             this.newPouleModal.getCompetitorDisplays().clear();
             this.scrollPanel.getViewPanel().removeAll();
             this.scrollPanel.getContents().clear();
@@ -186,6 +192,9 @@ public final class NewPouleModalController extends AbstractController {
             this.participatingScrollPanel.getContents().clear();
             this.participatingScrollPanel.addComponent(this.newPouleModal.getParticipatingHeader());
             this.participatingScrollPanel.resizeViewPanel(N_BUTTON_WIDTH+(BUTTON_WIDTH*4));
+
+            this.newPouleModal.getCompetitionNameInput().setText("");
+            this.newPouleModal.getCompetitionLocationInput().setText("");
 
             FrameManager.hideOpenedModal();
             FrameManager.displayPouleCompetitionPanel();
