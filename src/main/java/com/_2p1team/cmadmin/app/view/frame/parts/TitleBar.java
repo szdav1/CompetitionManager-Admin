@@ -84,9 +84,11 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
     }
 
     private void initDatabaseMenu() {
+        this.databaseButton.getDropdownPanel().setSize(X_BUTTON_WIDTH, BUTTON_HEIGHT*4);
         this.databaseButton.addButtonToDropdownPanel("View [F2]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
-        this.databaseButton.addButtonToDropdownPanel("Add Fencer [F4]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
-        this.databaseButton.addButtonToDropdownPanel("Remove Fencer [F6]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.databaseButton.addButtonToDropdownPanel("Add Competitor [F4]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.databaseButton.addButtonToDropdownPanel("Update Competitor [F6]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.databaseButton.addButtonToDropdownPanel("Remove Competitor [F8]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
         this.databaseButton.getButtons()
             .forEach(button -> {

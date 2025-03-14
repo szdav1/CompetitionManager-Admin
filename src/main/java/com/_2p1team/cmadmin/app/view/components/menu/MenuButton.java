@@ -37,7 +37,7 @@ public final class MenuButton extends Button {
     }
 
     public void addButtonToDropdownPanel(final String buttonText, final Appearance appearance) {
-        Button button = new Button(new Dimension(W_BUTTON_WIDTH, BUTTON_HEIGHT), buttonText, appearance);
+        Button button = new Button(new Dimension(this.dropdownPanel.getWidth(), BUTTON_HEIGHT), buttonText, appearance);
 
         this.dropdownPanel.addComponent(button);
         this.buttons.add(button);

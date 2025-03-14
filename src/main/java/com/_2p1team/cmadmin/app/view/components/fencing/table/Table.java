@@ -291,7 +291,7 @@ public final class Table extends Panel implements ComplexComponent, ControlCompo
     }
 
     private void sortCompetitors() {
-        List<CompetitorTransferModel> temp = this.removeLastNCompetitors(this.finishingCompetitors.size() <= MINIMUM_SIZE ? 4 : 8);
+        List<CompetitorTransferModel> temp = this.removeLastNCompetitors(this.finishingCompetitors.size() <= MINIMUM_SIZE ? 3 : 8);
         List<CompetitorTransferModel> tempOfLast8 = new ArrayList<>();
 
         if (this.finishingCompetitors.size() > MINIMUM_SIZE) {
