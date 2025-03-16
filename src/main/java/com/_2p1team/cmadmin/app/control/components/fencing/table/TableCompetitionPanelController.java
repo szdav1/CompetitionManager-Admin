@@ -1,10 +1,16 @@
 package com._2p1team.cmadmin.app.control.components.fencing.table;
 
 import com._2p1team.cmadmin.app.control.AbstractController;
+import com._2p1team.cmadmin.app.dto.competition.CompetitionTransfer;
+import com._2p1team.cmadmin.app.dto.leaderboard.Leaderboard;
+import com._2p1team.cmadmin.app.http.HttpCommunicator;
 import com._2p1team.cmadmin.app.view.components.fencing.table.TableCompetitionPanel;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
+import com._2p1team.cmadmin.support.constants.CompetitionType;
+import com._2p1team.cmadmin.support.util.JsonConverter;
 
 import java.awt.event.ActionEvent;
+import java.net.http.HttpResponse;
 
 public final class TableCompetitionPanelController extends AbstractController {
 
@@ -25,10 +31,27 @@ public final class TableCompetitionPanelController extends AbstractController {
         this.panel.getBottomCloseButton().addActionListener(this);
     }
 
-    // TODO: Put data into the database
     private void finishTable() {
-        if (this.panel.getTable().checkIfFinished())
-            this.panel.finish();
+        if (!this.panel.getTable().checkIfFinished())
+            return;
+
+        this.panel.finish();
+
+        if (FrameManager.getCompetitionType() != CompetitionType.COMPETITION)
+            return;
+
+        HttpResponse<String> response = HttpCommunicator.CompetitionApi.uploadCompetition(FrameManager.getCurrentCompetition());
+
+        if (response.body().isBlank())
+            return;
+
+        CompetitionTransfer competitionTransfer = JsonConverter.jsonToCompetition(response.body());
+
+        this.panel.getTable().getFinishingCompetitors().forEach(competitor ->
+            HttpCommunicator.LeaderboardApi.uploadResult(
+                new Leaderboard(competitionTransfer.getId(), competitor.id(), this.panel.getTable().getFinishingCompetitors().indexOf(competitor)+1))
+        );
+
     }
 
     @Override

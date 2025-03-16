@@ -5,15 +5,15 @@ import java.time.LocalDate;
 public record Competition(
     String name,
     String location,
-    LocalDate date
+    String date
 ) {
 
     public Competition(String name, String location) {
-        this(name, location, LocalDate.now());
+        this(name, location, String.valueOf(LocalDate.now()));
     }
 
     public Competition() {
-        this("", "", LocalDate.now());
+        this("", "", String.valueOf(LocalDate.now()));
     }
 
 }

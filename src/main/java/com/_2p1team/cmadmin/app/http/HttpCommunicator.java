@@ -1,15 +1,15 @@
 package com._2p1team.cmadmin.app.http;
 
+import com._2p1team.cmadmin.app.dto.competition.Competition;
 import com._2p1team.cmadmin.app.dto.competitor.Competitor;
+import com._2p1team.cmadmin.app.dto.leaderboard.Leaderboard;
 import com._2p1team.cmadmin.support.constants.BeforeLaunchExceptionType;
-import com._2p1team.cmadmin.support.constants.HttpConnectionSettings;
 import com._2p1team.cmadmin.support.constants.HttpEndPoints;
 import com._2p1team.cmadmin.support.util.BeforeLaunchExceptionQueue;
 import com._2p1team.cmadmin.support.util.JsonConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
-import java.net.InetSocketAddress;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -25,20 +25,6 @@ public final class HttpCommunicator {
     private static HttpResponse<String> response;
 
     @AllArgsConstructor(access=AccessLevel.NONE)
-    public static final class ConnectionTester {
-
-        public static void testApiConnection() {
-            InetSocketAddress socketAddress = new InetSocketAddress(HttpEndPoints.TEST_CONNECTION.getUrl(), Integer.parseInt(HttpConnectionSettings.PORT.getValue().replaceAll(":", "")));
-
-            System.out.println(socketAddress);
-
-            if (socketAddress.isUnresolved())
-                BeforeLaunchExceptionQueue.setExceptionType(BeforeLaunchExceptionType.FATAL_ERROR);
-        }
-
-    }
-
-    @AllArgsConstructor(access=AccessLevel.NONE)
     public static final class CompetitorApi {
 
         public static List<Competitor> getAllCompetitors() {
@@ -50,13 +36,57 @@ public final class HttpCommunicator {
 
                 HttpCommunicator.response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-                return JsonConverter.jsonToFencers(response.body());
+                return JsonConverter.jsonToCompetitors(response.body());
             }
             catch (Exception exception) {
                 BeforeLaunchExceptionQueue.setExceptionType(BeforeLaunchExceptionType.HTTP_COMMUNICATION_EXCEPTION);
             }
 
             return new ArrayList<>();
+        }
+
+    }
+
+    @AllArgsConstructor(access=AccessLevel.NONE)
+    public static final class CompetitionApi {
+
+        public static HttpResponse<String> uploadCompetition(final Competition competition) {
+            try {
+                HttpCommunicator.request = HttpRequest.newBuilder()
+                    .uri(new URI(HttpEndPoints.NEW_COMPETITION.getUrl()))
+                    .POST(HttpRequest.BodyPublishers.ofString(JsonConverter.competitionToJson(competition)))
+                    .setHeader("Content-Type", "application/json")
+                    .build();
+
+                HttpCommunicator.response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            }
+            catch (Exception exception) {
+                exception.printStackTrace();
+            }
+
+            return HttpCommunicator.response;
+        }
+
+    }
+
+    @AllArgsConstructor(access=AccessLevel.NONE)
+    public static final class LeaderboardApi {
+
+        public static HttpResponse<String> uploadResult(final Leaderboard leaderboard) {
+            try {
+                HttpCommunicator.request = HttpRequest.newBuilder()
+                    .uri(new URI(HttpEndPoints.NEW_LEADERBOARD.getUrl()))
+                    .POST(HttpRequest.BodyPublishers.ofString(JsonConverter.leaderboardToJson(leaderboard)))
+                    .setHeader("Content-Type", "application/json")
+                    .build();
+
+                HttpCommunicator.response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            }
+            catch (Exception exception) {
+                exception.printStackTrace();
+            }
+
+            return HttpCommunicator.response;
         }
 
     }
