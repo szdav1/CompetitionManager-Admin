@@ -1,8 +1,8 @@
 package com._2p1team.cmadmin.app.view.frame;
 
 import com._2p1team.cmadmin.app.dto.competition.Competition;
-import com._2p1team.cmadmin.support.constants.CompetitionType;
-import com._2p1team.cmadmin.support.constants.states.FrameState;
+import com._2p1team.cmadmin.general.constants.CompetitionType;
+import com._2p1team.cmadmin.general.constants.states.FrameState;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import com._2p1team.cmadmin.swing.override.constants.Position;
 

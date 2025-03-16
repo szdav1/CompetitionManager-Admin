@@ -2,7 +2,7 @@ package com._2p1team.cmadmin.app.control.components.fencing.table;
 
 import com._2p1team.cmadmin.app.control.AbstractController;
 import com._2p1team.cmadmin.app.view.components.fencing.table.Table;
-import static com._2p1team.cmadmin.support.constants.SizeData.BUTTON_HEIGHT;
+import static com._2p1team.cmadmin.general.constants.SizeData.BUTTON_HEIGHT;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;

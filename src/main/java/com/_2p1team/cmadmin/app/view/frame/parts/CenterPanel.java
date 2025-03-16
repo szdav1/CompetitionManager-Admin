@@ -1,7 +1,7 @@
 package com._2p1team.cmadmin.app.view.frame.parts;
 
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
-import com._2p1team.cmadmin.support.util.AppearanceRepository;
+import com._2p1team.cmadmin.general.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 
 import java.awt.Dimension;

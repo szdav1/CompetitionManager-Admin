@@ -1,8 +1,8 @@
 package com._2p1team.cmadmin.app.view.components.modals;
 
 import com._2p1team.cmadmin.app.control.components.modal.WindowClosingConfirmationModalController;
-import static com._2p1team.cmadmin.support.constants.SizeData.*;
-import com._2p1team.cmadmin.support.util.AppearanceRepository;
+import static com._2p1team.cmadmin.general.constants.SizeData.*;
+import com._2p1team.cmadmin.general.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;

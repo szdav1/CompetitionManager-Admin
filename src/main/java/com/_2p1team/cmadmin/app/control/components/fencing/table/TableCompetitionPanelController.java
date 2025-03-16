@@ -6,8 +6,8 @@ import com._2p1team.cmadmin.app.dto.leaderboard.Leaderboard;
 import com._2p1team.cmadmin.app.http.HttpCommunicator;
 import com._2p1team.cmadmin.app.view.components.fencing.table.TableCompetitionPanel;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
-import com._2p1team.cmadmin.support.constants.CompetitionType;
-import com._2p1team.cmadmin.support.util.JsonConverter;
+import com._2p1team.cmadmin.general.constants.CompetitionType;
+import com._2p1team.cmadmin.general.util.JsonConverter;
 
 import java.awt.event.ActionEvent;
 import java.net.http.HttpResponse;

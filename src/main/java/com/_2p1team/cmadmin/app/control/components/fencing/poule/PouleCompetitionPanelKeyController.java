@@ -3,7 +3,7 @@ package com._2p1team.cmadmin.app.control.components.fencing.poule;
 import com._2p1team.cmadmin.app.control.AbstractKeyController;
 import com._2p1team.cmadmin.app.view.components.fencing.poule.PouleCompetitionPanel;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
-import com._2p1team.cmadmin.support.constants.states.FrameState;
+import com._2p1team.cmadmin.general.constants.states.FrameState;
 
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;

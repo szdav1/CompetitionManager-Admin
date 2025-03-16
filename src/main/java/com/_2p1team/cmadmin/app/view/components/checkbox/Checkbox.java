@@ -1,9 +1,9 @@
 package com._2p1team.cmadmin.app.view.components.checkbox;
 
-import com._2p1team.cmadmin.support.constants.CustomColors;
-import static com._2p1team.cmadmin.support.constants.SizeData.N_BUTTON_SIZE;
-import com._2p1team.cmadmin.support.util.DirectIconSize;
-import com._2p1team.cmadmin.support.util.Util;
+import com._2p1team.cmadmin.general.constants.CustomColors;
+import static com._2p1team.cmadmin.general.constants.SizeData.N_BUTTON_SIZE;
+import com._2p1team.cmadmin.general.util.DirectIconSize;
+import com._2p1team.cmadmin.general.util.Util;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

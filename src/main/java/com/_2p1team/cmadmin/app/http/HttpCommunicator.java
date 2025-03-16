@@ -3,10 +3,10 @@ package com._2p1team.cmadmin.app.http;
 import com._2p1team.cmadmin.app.dto.competition.Competition;
 import com._2p1team.cmadmin.app.dto.competitor.Competitor;
 import com._2p1team.cmadmin.app.dto.leaderboard.Leaderboard;
-import com._2p1team.cmadmin.support.constants.BeforeLaunchExceptionType;
-import com._2p1team.cmadmin.support.constants.HttpEndPoints;
-import com._2p1team.cmadmin.support.util.BeforeLaunchExceptionQueue;
-import com._2p1team.cmadmin.support.util.JsonConverter;
+import com._2p1team.cmadmin.general.constants.BeforeLaunchExceptionType;
+import com._2p1team.cmadmin.general.constants.HttpEndPoints;
+import com._2p1team.cmadmin.general.util.BeforeLaunchExceptionQueue;
+import com._2p1team.cmadmin.general.util.JsonConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 

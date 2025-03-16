@@ -1,6 +1,6 @@
 package com._2p1team.cmadmin.app.view.components.fencing;
 
-import com._2p1team.cmadmin.support.constants.CustomColors;
+import com._2p1team.cmadmin.general.constants.CustomColors;
 import com._2p1team.cmadmin.swing.override.graphics.configs.FontSet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

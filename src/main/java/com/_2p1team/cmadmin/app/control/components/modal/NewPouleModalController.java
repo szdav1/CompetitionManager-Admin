@@ -9,7 +9,7 @@ import com._2p1team.cmadmin.app.view.components.fencing.poule.Poule;
 import com._2p1team.cmadmin.app.view.components.input.LabeledInput;
 import com._2p1team.cmadmin.app.view.components.modals.NewPouleModal;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
-import static com._2p1team.cmadmin.support.constants.SizeData.*;
+import static com._2p1team.cmadmin.general.constants.SizeData.*;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.scrollpanel.ScrollPanel;
 import lombok.Getter;

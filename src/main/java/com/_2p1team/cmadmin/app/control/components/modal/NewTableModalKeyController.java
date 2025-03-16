@@ -4,7 +4,7 @@ import com._2p1team.cmadmin.app.control.AbstractKeyController;
 import com._2p1team.cmadmin.app.dto.competition.Competition;
 import com._2p1team.cmadmin.app.view.components.modals.NewTableModal;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
-import com._2p1team.cmadmin.support.constants.states.FrameState;
+import com._2p1team.cmadmin.general.constants.states.FrameState;
 
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;

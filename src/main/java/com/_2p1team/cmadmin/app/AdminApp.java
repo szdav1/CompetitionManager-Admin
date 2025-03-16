@@ -1,9 +1,9 @@
 package com._2p1team.cmadmin.app;
 
 import com._2p1team.cmadmin.app.view.frame.AppFrame;
-import com._2p1team.cmadmin.support.constants.BeforeLaunchExceptionType;
-import com._2p1team.cmadmin.support.util.BeforeLaunchExceptionQueue;
-import com._2p1team.cmadmin.support.util.Util;
+import com._2p1team.cmadmin.general.constants.BeforeLaunchExceptionType;
+import com._2p1team.cmadmin.general.util.BeforeLaunchExceptionQueue;
+import com._2p1team.cmadmin.general.util.Util;
 
 public final class AdminApp {
 

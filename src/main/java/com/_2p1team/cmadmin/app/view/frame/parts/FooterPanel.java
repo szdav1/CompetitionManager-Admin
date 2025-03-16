@@ -1,9 +1,9 @@
 package com._2p1team.cmadmin.app.view.frame.parts;
 
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
-import static com._2p1team.cmadmin.support.constants.SizeData.TITLE_SIZE;
-import static com._2p1team.cmadmin.support.constants.SizeData.TITLE_TEXT_SIZE;
-import com._2p1team.cmadmin.support.util.AppearanceRepository;
+import static com._2p1team.cmadmin.general.constants.SizeData.TITLE_SIZE;
+import static com._2p1team.cmadmin.general.constants.SizeData.TITLE_TEXT_SIZE;
+import com._2p1team.cmadmin.general.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 
