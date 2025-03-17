@@ -26,13 +26,16 @@ public final class ViewCompetitorsModal extends AbstractModal {
         this.setTitle("Competitors");
 
         this.header = new CompetitorDisplay.Header();
+        this.header.removeComponent(this.header.getCheckbox());
 
         this.scrollPanel = new ScrollPanel(new Dimension(this.getWidth()-2, this.getHeight()-(BUTTON_HEIGHT*2)), new FlowLayout(FlowLayout.CENTER, 0, 0), AppearanceRepository.BASE_SCROLL_PANEL_APPEARANCE);
         this.scrollPanel.setScrollSpeed(BUTTON_HEIGHT);
 
         this.competitorDisplays = new ArrayList<>();
         HttpCommunicator.CompetitorApi.getAllCompetitors()
-            .forEach(competitor -> competitorDisplays.add(new CompetitorDisplay(competitor)));
+            .forEach(competitor -> this.competitorDisplays.add(new CompetitorDisplay(competitor)));
+
+        this.competitorDisplays.forEach(competitorDisplay -> competitorDisplay.removeComponent(competitorDisplay.getCheckbox()));
 
         this.setUpComponent();
     }

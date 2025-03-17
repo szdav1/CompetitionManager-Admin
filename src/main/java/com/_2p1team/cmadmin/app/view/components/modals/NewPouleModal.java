@@ -113,8 +113,9 @@ public final class NewPouleModal extends AbstractModal {
 
         this.scrollPanel.getContents().clear();
         this.scrollPanel.getViewPanel().removeAll();
-        this.scrollPanel.addComponent(mainHeader);
+        this.scrollPanel.addComponent(this.mainHeader);
         this.competitorDisplays.forEach(this.scrollPanel::addComponent);
+        this.scrollPanel.resizeViewPanel(this.mainHeader.getWidth());
     }
 
     @Override
