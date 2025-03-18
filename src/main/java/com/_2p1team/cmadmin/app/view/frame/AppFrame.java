@@ -49,6 +49,8 @@ public final class AppFrame extends AbstractFrame {
     private final NewTableModal newTableModal;
     private final ViewCompetitorsModal viewCompetitorsModal;
     private final AddCompetitorModal addCompetitorModal;
+    private final UpdateCompetitorModal updateCompetitorModal;
+    private final RemoveCompetitorModal removeCompetitorModal;
     private final HttpExceptionModal httpConnectionHttpExceptionModal;
     private final ApiResponseModal apiResponseModal;
 
@@ -86,6 +88,8 @@ public final class AppFrame extends AbstractFrame {
         this.newTableModal = null;
         this.viewCompetitorsModal = null;
         this.addCompetitorModal = null;
+        this.updateCompetitorModal = null;
+        this.removeCompetitorModal = null;
         this.httpConnectionHttpExceptionModal = null;
         this.apiResponseModal = null;
 
@@ -132,6 +136,8 @@ public final class AppFrame extends AbstractFrame {
         this.newTableModal = new NewTableModal();
         this.viewCompetitorsModal = new ViewCompetitorsModal();
         this.addCompetitorModal = new AddCompetitorModal();
+        this.updateCompetitorModal = new UpdateCompetitorModal();
+        this.removeCompetitorModal = new RemoveCompetitorModal();
         this.httpConnectionHttpExceptionModal = new HttpExceptionModal();
         this.apiResponseModal = new ApiResponseModal();
 
@@ -194,6 +200,8 @@ public final class AppFrame extends AbstractFrame {
         this.rootPanel.addComponent(this.newTableModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.viewCompetitorsModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.addCompetitorModal.getBackgroundPanel(), Position.HIGH);
+        this.rootPanel.addComponent(this.updateCompetitorModal.getBackgroundPanel(), Position.HIGH);
+        this.rootPanel.addComponent(this.removeCompetitorModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.httpConnectionHttpExceptionModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.apiResponseModal.getBackgroundPanel(), Position.HIGH);
 
@@ -202,6 +210,8 @@ public final class AppFrame extends AbstractFrame {
         this.newTableModal.disappear();
         this.viewCompetitorsModal.disappear();
         this.addCompetitorModal.disappear();
+        this.updateCompetitorModal.disappear();
+        this.removeCompetitorModal.disappear();
         this.httpConnectionHttpExceptionModal.disappear();
         this.apiResponseModal.disappear();
 

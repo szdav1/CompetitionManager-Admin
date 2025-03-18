@@ -47,6 +47,8 @@ public final class Checkbox extends JButton implements ActionListener {
             this.setIcon(this.checkIcon);
         else
             this.setIcon(null);
+
+        this.repaint();
     }
 
     @Override

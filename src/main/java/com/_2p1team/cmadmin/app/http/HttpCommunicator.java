@@ -63,6 +63,39 @@ public final class HttpCommunicator {
             return HttpCommunicator.response;
         }
 
+        public static HttpResponse<String> updateCompetitor(long id, final CompetitorUploadModel competitorUploadModel) {
+            try {
+                HttpCommunicator.request = HttpRequest.newBuilder()
+                    .uri(new URI(String.format(HttpEndPoints.UPDATE_COMPETITOR.getUrl(), id)))
+                    .PUT(HttpRequest.BodyPublishers.ofString(JsonConverter.competitorUploadModelToJson(competitorUploadModel)))
+                    .setHeader("Content-Type", "application/json")
+                    .build();
+
+                HttpCommunicator.response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            }
+            catch (Exception exception) {
+                exception.printStackTrace();
+            }
+
+            return HttpCommunicator.response;
+        }
+
+        public static HttpResponse<String> deleteCompetitor(long id) {
+            try {
+                HttpCommunicator.request = HttpRequest.newBuilder()
+                    .uri(new URI(String.format(HttpEndPoints.DELETE_COMPETITOR.getUrl(), id)))
+                    .DELETE()
+                    .build();
+
+                HttpCommunicator.response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            }
+            catch (Exception exception) {
+                exception.printStackTrace();
+            }
+
+            return HttpCommunicator.response;
+        }
+
     }
 
     @AllArgsConstructor(access=AccessLevel.NONE)

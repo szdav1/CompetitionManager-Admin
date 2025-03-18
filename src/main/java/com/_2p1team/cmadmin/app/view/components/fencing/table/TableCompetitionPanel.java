@@ -52,7 +52,7 @@ public final class TableCompetitionPanel extends Panel implements ControlCompone
         this.finishButton = new Button(BUTTON_SIZE, "Finish", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
         this.bottomCloseButton = new Button(BUTTON_SIZE, "Close", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
-        this.scrollPanel = new ScrollPanel(new Dimension(this.centerPanel.getWidth()-2, this.centerPanel.getHeight()), new FlowLayout(FlowLayout.CENTER, PADDING, PADDING), new Appearance(AppearanceRepository.BASE_SCROLL_PANEL_APPEARANCE));
+        this.scrollPanel = new ScrollPanel(new Dimension(this.centerPanel.getWidth()-2, this.centerPanel.getHeight()), new FlowLayout(FlowLayout.CENTER, 0, 0), new Appearance(AppearanceRepository.BASE_SCROLL_PANEL_APPEARANCE));
 
         this.setUpComponent();
         new TableCompetitionPanelController(this);

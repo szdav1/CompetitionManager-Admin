@@ -39,6 +39,7 @@ public final class AddCompetitorModalController extends AbstractController {
     private void resetCompetitorDisplays() {
         this.addCompetitorModal.getCompetitorDisplays().clear();
         this.addCompetitorModal.getScrollPanel().getViewPanel().removeAll();
+        this.addCompetitorModal.getScrollPanel().getContents().clear();
         this.addCompetitorModal.getScrollPanel().resizeViewPanel(0);
         this.addCompetitorModal.fillCompetitors();
     }
@@ -61,7 +62,12 @@ public final class AddCompetitorModalController extends AbstractController {
         }
 
         this.resetCompetitorDisplays();
-        this.addCompetitorModal.getCompetitorDisplays().getLast().setForegrounds(CustomColors.ORANGEISH);
+        this.addCompetitorModal.getNameInput().setText("");
+        this.addCompetitorModal.getClubInput().setText("");
+        this.addCompetitorModal.getBirthDateInput().setText("");
+        this.addCompetitorModal.getCompetitorDisplays()
+            .getLast()
+            .setForegrounds(CustomColors.ORANGEISH);
     }
 
     @Override

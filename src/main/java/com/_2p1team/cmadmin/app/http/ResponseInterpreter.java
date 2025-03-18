@@ -13,7 +13,7 @@ public final class ResponseInterpreter {
         return switch (response.statusCode()) {
             case RESPONSE_CODE_ERROR -> response.statusCode()+" Communication failed with the server.\n"+response.body();
             case RESPONSE_CODE_SERVER_ERROR -> response.statusCode()+" Communication failed, internal server error.\nPossible reasons are:Invalid input data.";
-            default -> "";
+            default -> "An unexpected error occurred.";
         };
     }
 

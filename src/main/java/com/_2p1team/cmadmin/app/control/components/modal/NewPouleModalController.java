@@ -26,7 +26,7 @@ public final class NewPouleModalController extends AbstractController {
     private final Checkbox headerCheckbox;
     private final Checkbox participatingCheckbox;
 
-    private final LabeledInput idInput;
+    private final LabeledInput clubInput;
     private final LabeledInput nameInput;
     private final ScrollPanel scrollPanel;
     private final ScrollPanel participatingScrollPanel;
@@ -45,8 +45,8 @@ public final class NewPouleModalController extends AbstractController {
         this.headerCheckbox = this.newPouleModal.getMainHeader().getCheckbox();
         this.participatingCheckbox = this.newPouleModal.getParticipatingHeader().getCheckbox();
 
-        this.idInput = this.newPouleModal.getIdInput();
         this.nameInput = this.newPouleModal.getNameInput();
+        this.clubInput = this.newPouleModal.getClubInput();
         this.scrollPanel = this.newPouleModal.getScrollPanel();
         this.participatingScrollPanel = this.newPouleModal.getParticipatingCompetitorsScrollPanel();
 
@@ -70,30 +70,33 @@ public final class NewPouleModalController extends AbstractController {
         this.removeButton.addActionListener(this);
         this.createButton.addActionListener(this);
 
-        this.idInput.getInput().addKeyListener(this);
+        this.clubInput.getInput().addKeyListener(this);
         this.nameInput.getInput().addKeyListener(this);
     }
 
     private void displaySearchResults() {
+        this.scrollPanel.getContents().clear();
         this.scrollPanel.getViewPanel().removeAll();
         this.scrollPanel.addComponent(this.newPouleModal.getMainHeader());
         this.searchResults.forEach(this.scrollPanel::addComponent);
+        this.scrollPanel.resizeViewPanel(this.newPouleModal.getMainHeader().getWidth());
         this.scrollPanel.repaint();
     }
 
     public void searchForCompetitors() {
-        String competitorId = this.idInput.getText();
         String competitorName = this.nameInput.getText();
+        String competitorClub = this.clubInput.getText();
 
         this.searchResults = this.newPouleModal.getCompetitorDisplays().stream()
             .filter(competitorDisplay -> competitorDisplay.getNameLabel().getText().contains(competitorName))
-            .filter(competitorDisplay -> !competitorId.isBlank() ? competitorDisplay.getIdLabel().getText().equalsIgnoreCase(competitorId) : !competitorDisplay.getIdLabel().getText().isBlank())
+            .filter(competitorDisplay -> !competitorClub.isBlank() ? competitorDisplay.getClubLabel().getText().contains(competitorClub) : !competitorDisplay.getClubLabel().getText().isBlank())
             .toList();
 
         this.displaySearchResults();
     }
 
     private void resetCompetitorDisplay() {
+        this.scrollPanel.getContents().clear();
         this.scrollPanel.getViewPanel().removeAll();
         this.scrollPanel.addComponent(this.newPouleModal.getMainHeader());
 
@@ -110,6 +113,7 @@ public final class NewPouleModalController extends AbstractController {
             .setChecked(false);
 
         this.searchResults = this.newPouleModal.getCompetitorDisplays();
+        this.scrollPanel.resizeViewPanel(this.newPouleModal.getMainHeader().getWidth());
         this.scrollPanel.repaint();
     }
 
@@ -127,7 +131,7 @@ public final class NewPouleModalController extends AbstractController {
         this.newPouleModal.getCompetitorDisplays().removeAll(selectedCompetitors);
         this.participatingScrollPanel.resizeViewPanel(N_BUTTON_WIDTH+(BUTTON_WIDTH*4));
 
-        this.idInput.setText("");
+        this.clubInput.setText("");
         this.nameInput.setText("");
         this.resetCompetitorDisplay();
     }
@@ -205,8 +209,8 @@ public final class NewPouleModalController extends AbstractController {
     public void keyReleased(KeyEvent e) {
         if (
             e.getKeyCode() != KeyEvent.VK_ENTER &&
-                (e.getSource().equals(this.idInput.getInput()) || e.getSource().equals(this.nameInput.getInput())) &&
-                (this.idInput.getText().isBlank() || this.nameInput.getText().isBlank())
+                (e.getSource().equals(this.clubInput.getInput()) || e.getSource().equals(this.nameInput.getInput())) &&
+                (this.clubInput.getText().isBlank() || this.nameInput.getText().isBlank())
         )
             this.resetCompetitorDisplay();
     }

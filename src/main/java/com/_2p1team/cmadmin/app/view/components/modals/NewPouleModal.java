@@ -38,8 +38,8 @@ public final class NewPouleModal extends AbstractModal {
 
     private final Label searchCompetitorLabel;
     private final Panel rightPanelContainer;
-    private final LabeledInput idInput;
     private final LabeledInput nameInput;
+    private final LabeledInput clubInput;
     private final Button searchButton;
     private final Button addButton;
     private final Button removeButton;
@@ -71,9 +71,9 @@ public final class NewPouleModal extends AbstractModal {
         this.searchCompetitorLabel.setHorizontalAlignment(SwingConstants.LEFT);
 
         this.rightPanelContainer = new Panel(new Dimension(this.rightPanel.getWidth(), (BUTTON_HEIGHT*3)+(PADDING*4)+1), new FlowLayout(FlowLayout.CENTER, PADDING, PADDING), new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
-        this.idInput = new LabeledInput("Id");
 
-        this.nameInput = new LabeledInput(W_BUTTON_WIDTH, "Name");
+        this.nameInput = new LabeledInput(BUTTON_WIDTH, "Name");
+        this.clubInput = new LabeledInput(BUTTON_WIDTH, "Club");
 
         this.searchButton = new Button(BUTTON_SIZE, "Search", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
         this.addButton = new Button(BUTTON_SIZE, "Add", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
@@ -140,8 +140,8 @@ public final class NewPouleModal extends AbstractModal {
         this.rightPanelContainer.addComponent(this.competitionNameInput);
         this.rightPanelContainer.addComponent(this.competitionLocationInput);
         this.rightPanelContainer.addComponent(horizontalDivider);
-        this.rightPanelContainer.addComponent(this.idInput);
         this.rightPanelContainer.addComponent(this.nameInput);
+        this.rightPanelContainer.addComponent(this.clubInput);
         this.rightPanelContainer.addComponent(this.searchButton);
         this.rightPanelContainer.addComponent(this.addButton);
         this.rightPanelContainer.addComponent(this.removeButton);

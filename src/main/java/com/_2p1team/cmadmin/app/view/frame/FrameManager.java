@@ -176,6 +176,30 @@ public final class FrameManager {
         frame.setPreviousModal(frame.getAddCompetitorModal());
     }
 
+    public static void displayUpdateCompetitorModal() {
+        if (frame.getFrameState() != FrameState.DEFAULT)
+            return;
+
+        frame.getUpdateCompetitorModal()
+            .appear();
+
+        frame.setOpenedModal(frame.getUpdateCompetitorModal());
+        frame.setFrameState(FrameState.MODAL_OPENED);
+        frame.setPreviousModal(frame.getUpdateCompetitorModal());
+    }
+
+    public static void displayRemoveCompetitorModal() {
+        if (frame.getFrameState() != FrameState.DEFAULT)
+            return;
+
+        frame.getRemoveCompetitorModal()
+            .appear();
+
+        frame.setOpenedModal(frame.getRemoveCompetitorModal());
+        frame.setFrameState(FrameState.MODAL_OPENED);
+        frame.setPreviousModal(frame.getRemoveCompetitorModal());
+    }
+
     public static void displayHttpConnectionExceptionModal() {
         if (frame.getFrameState() != FrameState.DEFAULT)
             return;

@@ -17,9 +17,25 @@ public final class TitleBarKeyController extends AbstractKeyController {
     public TitleBarKeyController(final TitleBar keyControlledComponent) {
         super(keyControlledComponent);
 
-        List<Integer> shortcutKeys = List.of(KeyEvent.VK_F1, KeyEvent.VK_F3, KeyEvent.VK_F5, KeyEvent.VK_F2, KeyEvent.VK_F4, KeyEvent.VK_F6);
-        List<String> actionKeys = List.of("NewCompetitionAction", "NewPouleAction", "NewTableAction", "ViewDatabaseAction", "AddFencerAction", "RemoveFencerAction");
-        List<AbstractAction> actions = List.of(new NewCompetitionAction(), new NewPouleAction(), new NewTableAction(), new ViewDatabaseAction(), new AddFencerAction(), new RemoveFencerAction());
+        List<Integer> shortcutKeys = List.of(KeyEvent.VK_F1, KeyEvent.VK_F3, KeyEvent.VK_F5, KeyEvent.VK_F2, KeyEvent.VK_F4, KeyEvent.VK_F6, KeyEvent.VK_F8);
+        List<String> actionKeys = List.of(
+            "NewCompetitionAction",
+            "NewPouleAction",
+            "NewTableAction",
+            "ViewDatabaseAction",
+            "AddCompetitorAction",
+            "UpdateCompetitorAction",
+            "RemoveCompetitorAction"
+        );
+        List<AbstractAction> actions = List.of(
+            new NewCompetitionAction(),
+            new NewPouleAction(),
+            new NewTableAction(),
+            new ViewDatabaseAction(),
+            new AddCompetitorAction(),
+            new UpdateCompetitorAction(),
+            new RemoveCompetitorAction()
+        );
 
         for (int i = 0; i < shortcutKeys.size(); i++) {
             keyControlledComponent
@@ -68,7 +84,7 @@ public final class TitleBarKeyController extends AbstractKeyController {
 
     }
 
-    private static class AddFencerAction extends AbstractAction {
+    private static class AddCompetitorAction extends AbstractAction {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -77,11 +93,20 @@ public final class TitleBarKeyController extends AbstractKeyController {
 
     }
 
-    private static class RemoveFencerAction extends AbstractAction {
+    private static class UpdateCompetitorAction extends AbstractAction {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Remove fencer");
+            FrameManager.displayUpdateCompetitorModal();
+        }
+
+    }
+
+    private static class RemoveCompetitorAction extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            FrameManager.displayRemoveCompetitorModal();
         }
 
     }
