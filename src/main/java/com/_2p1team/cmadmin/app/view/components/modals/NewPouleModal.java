@@ -28,7 +28,6 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-// TODO: Competition name, location, date control logic
 public final class NewPouleModal extends AbstractModal {
 
     private final Panel leftPanel;
