@@ -52,8 +52,7 @@ public final class AddCompetitorModal extends AbstractModal {
         this.scrollPanel.setScrollSpeed(BUTTON_HEIGHT);
 
         this.mainHeader = new CompetitorDisplay.Header(BUTTON_SIZE, BUTTON_SIZE);
-        this.mainHeader.getCheckbox().setBorder(null);
-        this.mainHeader.getCheckbox().setEnabled(false);
+        this.mainHeader.removeComponent(mainHeader.getCheckbox());
 
         this.competitorDisplays = new ArrayList<>();
 
@@ -73,6 +72,8 @@ public final class AddCompetitorModal extends AbstractModal {
     public void fillCompetitors() {
         HttpCommunicator.CompetitorApi.getAllCompetitors().forEach(competitor ->
             this.competitorDisplays.add(new CompetitorDisplay(BUTTON_SIZE, BUTTON_SIZE, competitor)));
+
+        this.competitorDisplays.forEach(competitorDisplay -> competitorDisplay.removeComponent(competitorDisplay.getCheckbox()));
 
         this.scrollPanel.addComponent(this.mainHeader);
         this.competitorDisplays.forEach(this.scrollPanel::addComponent);
