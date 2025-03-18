@@ -2,6 +2,7 @@ package com._2p1team.cmadmin.app.http;
 
 import com._2p1team.cmadmin.app.dto.competition.Competition;
 import com._2p1team.cmadmin.app.dto.competitor.Competitor;
+import com._2p1team.cmadmin.app.dto.competitor.CompetitorUploadModel;
 import com._2p1team.cmadmin.app.dto.leaderboard.Leaderboard;
 import com._2p1team.cmadmin.general.constants.BeforeLaunchExceptionType;
 import com._2p1team.cmadmin.general.constants.HttpEndPoints;
@@ -43,6 +44,23 @@ public final class HttpCommunicator {
             }
 
             return new ArrayList<>();
+        }
+
+        public static HttpResponse<String> uploadCompetitor(final CompetitorUploadModel competitorUploadModel) {
+            try {
+                HttpCommunicator.request = HttpRequest.newBuilder()
+                    .uri(new URI(HttpEndPoints.NEW_COMPETITOR.getUrl()))
+                    .POST(HttpRequest.BodyPublishers.ofString(JsonConverter.competitorUploadModelToJson(competitorUploadModel)))
+                    .setHeader("Content-Type", "application/json")
+                    .build();
+
+                HttpCommunicator.response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            }
+            catch (Exception exception) {
+                exception.printStackTrace();
+            }
+
+            return HttpCommunicator.response;
         }
 
     }

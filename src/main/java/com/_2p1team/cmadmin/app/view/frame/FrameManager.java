@@ -8,6 +8,7 @@ import com._2p1team.cmadmin.swing.override.constants.Position;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import java.net.http.HttpResponse;
 
 public final class FrameManager {
 
@@ -26,8 +27,16 @@ public final class FrameManager {
         return frame.getCurrentCompetition();
     }
 
+    public static HttpResponse<String> getLastApiResponse() {
+        return frame.getLastApiResponse();
+    }
+
     public static void setCurrentCompetition(final Competition competition) {
         frame.setCurrentCompetition(competition);
+    }
+
+    public static void setLastApiResponse(final HttpResponse<String> lastApiResponse) {
+        frame.setLastApiResponse(lastApiResponse);
     }
 
     public static FrameState getState() {
@@ -143,7 +152,7 @@ public final class FrameManager {
         frame.setPreviousModal(frame.getNewTableModal());
     }
 
-    public static void displayViewDatabaseModal() {
+    public static void displayViewCompetitorsModal() {
         if (frame.getFrameState() != FrameState.DEFAULT)
             return;
 
@@ -153,6 +162,18 @@ public final class FrameManager {
         frame.setOpenedModal(frame.getViewCompetitorsModal());
         frame.setFrameState(FrameState.MODAL_OPENED);
         frame.setPreviousModal(frame.getViewCompetitorsModal());
+    }
+
+    public static void displayAddCompetitorModal() {
+        if (frame.getFrameState() != FrameState.DEFAULT)
+            return;
+
+        frame.getAddCompetitorModal()
+            .appear();
+
+        frame.setOpenedModal(frame.getAddCompetitorModal());
+        frame.setFrameState(FrameState.MODAL_OPENED);
+        frame.setPreviousModal(frame.getAddCompetitorModal());
     }
 
     public static void displayHttpConnectionExceptionModal() {
@@ -165,6 +186,17 @@ public final class FrameManager {
         frame.setOpenedModal(frame.getHttpConnectionHttpExceptionModal());
         frame.setFrameState(FrameState.MODAL_OPENED);
         frame.setPreviousModal(frame.getHttpConnectionHttpExceptionModal());
+    }
+
+    public static void displayApiResponseModal() {
+        hideOpenedModal();
+
+        frame.getApiResponseModal()
+            .appear();
+
+        frame.setOpenedModal(frame.getApiResponseModal());
+        frame.setFrameState(FrameState.MODAL_OPENED);
+        frame.setPreviousModal(frame.getApiResponseModal());
     }
 
     public static void displayPouleCompetitionPanel() {

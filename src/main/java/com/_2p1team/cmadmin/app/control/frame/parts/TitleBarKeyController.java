@@ -63,7 +63,7 @@ public final class TitleBarKeyController extends AbstractKeyController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            FrameManager.displayViewDatabaseModal();
+            FrameManager.displayViewCompetitorsModal();
         }
 
     }
@@ -72,7 +72,7 @@ public final class TitleBarKeyController extends AbstractKeyController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Add fencer");
+            FrameManager.displayAddCompetitorModal();
         }
 
     }

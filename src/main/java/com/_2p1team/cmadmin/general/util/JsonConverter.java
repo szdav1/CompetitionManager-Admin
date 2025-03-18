@@ -3,6 +3,7 @@ package com._2p1team.cmadmin.general.util;
 import com._2p1team.cmadmin.app.dto.competition.Competition;
 import com._2p1team.cmadmin.app.dto.competition.CompetitionTransfer;
 import com._2p1team.cmadmin.app.dto.competitor.Competitor;
+import com._2p1team.cmadmin.app.dto.competitor.CompetitorUploadModel;
 import com._2p1team.cmadmin.app.dto.leaderboard.Leaderboard;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -24,6 +25,10 @@ public final class JsonConverter {
     public static List<Competitor> jsonToCompetitors(final String jsonObject) {
         Type type = new TypeToken<List<Competitor>>() {}.getType();
         return gson.fromJson(jsonObject, type);
+    }
+
+    public static String competitorUploadModelToJson(final CompetitorUploadModel competitorUploadModel) {
+        return gson.toJson(competitorUploadModel);
     }
 
     public static String competitionToJson(final Competition competition) {

@@ -13,6 +13,7 @@ import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
@@ -41,6 +42,13 @@ public class CompetitorDisplay extends Panel implements ComplexComponent {
 
     public CompetitorDisplay(final Competitor competitor) {
         this(BUTTON_SIZE, W_BUTTON_SIZE, competitor);
+    }
+
+    public void setForegrounds(final Color color) {
+        this.idLabel.setForeground(color);
+        this.nameLabel.setForeground(color);
+        this.clubLabel.setForeground(color);
+        this.birthDateLabel.setForeground(color);
     }
 
     public static final class Header extends CompetitorDisplay {

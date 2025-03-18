@@ -28,6 +28,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
+import java.net.http.HttpResponse;
 
 
 @Getter(AccessLevel.PACKAGE)
@@ -35,6 +36,9 @@ public final class AppFrame extends AbstractFrame {
 
     @Setter(AccessLevel.PACKAGE)
     private CompetitionType competitionType = CompetitionType.NONE;
+
+    @Setter(AccessLevel.PACKAGE)
+    private HttpResponse<String> lastApiResponse;
 
     @Getter
     @Setter(AccessLevel.PACKAGE)
@@ -44,7 +48,9 @@ public final class AppFrame extends AbstractFrame {
     private final NewPouleModal newPouleModal;
     private final NewTableModal newTableModal;
     private final ViewCompetitorsModal viewCompetitorsModal;
+    private final AddCompetitorModal addCompetitorModal;
     private final HttpExceptionModal httpConnectionHttpExceptionModal;
+    private final ApiResponseModal apiResponseModal;
 
     private final RootPanel rootPanel;
     private final Panel mainPanel;
@@ -79,7 +85,9 @@ public final class AppFrame extends AbstractFrame {
         this.newPouleModal = null;
         this.newTableModal = null;
         this.viewCompetitorsModal = null;
+        this.addCompetitorModal = null;
         this.httpConnectionHttpExceptionModal = null;
+        this.apiResponseModal = null;
 
         this.rootPanel = new RootPanel(MODAL_WIDTH, MODAL_HEIGHT);
         this.mainPanel = new Panel(new Rectangle(0, 0, MODAL_WIDTH, MODAL_HEIGHT), new BorderLayout(), AppearanceRepository.MAIN_PANEL_APPEARANCE);
@@ -123,7 +131,9 @@ public final class AppFrame extends AbstractFrame {
         this.newPouleModal = new NewPouleModal();
         this.newTableModal = new NewTableModal();
         this.viewCompetitorsModal = new ViewCompetitorsModal();
+        this.addCompetitorModal = new AddCompetitorModal();
         this.httpConnectionHttpExceptionModal = new HttpExceptionModal();
+        this.apiResponseModal = new ApiResponseModal();
 
         this.rootPanel = new RootPanel();
         this.mainPanel = new Panel(new Rectangle(0, 0, FRAME_WIDTH, FRAME_HEIGHT), new BorderLayout(), AppearanceRepository.MAIN_PANEL_APPEARANCE);
@@ -183,13 +193,17 @@ public final class AppFrame extends AbstractFrame {
         this.rootPanel.addComponent(this.newPouleModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.newTableModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.viewCompetitorsModal.getBackgroundPanel(), Position.HIGH);
+        this.rootPanel.addComponent(this.addCompetitorModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.httpConnectionHttpExceptionModal.getBackgroundPanel(), Position.HIGH);
+        this.rootPanel.addComponent(this.apiResponseModal.getBackgroundPanel(), Position.HIGH);
 
         this.closingConfirmationModal.disappear();
         this.newPouleModal.disappear();
         this.newTableModal.disappear();
         this.viewCompetitorsModal.disappear();
+        this.addCompetitorModal.disappear();
         this.httpConnectionHttpExceptionModal.disappear();
+        this.apiResponseModal.disappear();
 
         this.addComponent(this.rootPanel);
     }

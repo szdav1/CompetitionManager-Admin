@@ -70,7 +70,7 @@ public final class NewPouleModal extends AbstractModal {
         this.searchCompetitorLabel = new Label(new Dimension(this.rightPanel.getWidth(), BUTTON_HEIGHT), "Dashboard", new Appearance(AppearanceRepository.LABELED_INPUT_APPEARANCE));
         this.searchCompetitorLabel.setHorizontalAlignment(SwingConstants.LEFT);
 
-        this.rightPanelContainer = new Panel(new Dimension(this.rightPanel.getWidth(), (BUTTON_HEIGHT*2)+(PADDING*3)), new FlowLayout(FlowLayout.CENTER, PADDING, PADDING), new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
+        this.rightPanelContainer = new Panel(new Dimension(this.rightPanel.getWidth(), (BUTTON_HEIGHT*3)+(PADDING*4)+1), new FlowLayout(FlowLayout.CENTER, PADDING, PADDING), new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
         this.idInput = new LabeledInput("Id");
 
         this.nameInput = new LabeledInput(W_BUTTON_WIDTH, "Name");
@@ -79,8 +79,8 @@ public final class NewPouleModal extends AbstractModal {
         this.addButton = new Button(BUTTON_SIZE, "Add", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
         this.removeButton = new Button(BUTTON_SIZE, "Remove", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
-        this.competitionNameInput = new LabeledInput(BUTTON_WIDTH/2, "Name*");
-        this.competitionLocationInput = new LabeledInput(BUTTON_WIDTH/2, "Location*");
+        this.competitionNameInput = new LabeledInput(BUTTON_WIDTH, "*Comp. Name");
+        this.competitionLocationInput = new LabeledInput(BUTTON_WIDTH, "*Comp. Location");
 
         this.participatingLabel = new Label(this.searchCompetitorLabel.getPreferredSize(), "Participating Competitors", new Appearance(AppearanceRepository.LABELED_INPUT_APPEARANCE));
         this.participatingLabel.setHorizontalAlignment(SwingConstants.LEFT);
@@ -129,12 +129,17 @@ public final class NewPouleModal extends AbstractModal {
 
     @Override
     public void setUpComponent() {
+        Panel horizontalDivider = new Panel(new Dimension(this.rightPanel.getWidth(), 1), AppearanceRepository.HORIZONTAL_DIVIDER_APPEARANCE);
+
         this.scrollPanel.addComponent(mainHeader);
         this.competitorDisplays.forEach(this.scrollPanel::addComponent);
 
         this.leftPanel.addComponent(this.scrollPanel);
         this.scrollPanel.resizeViewPanel(N_BUTTON_WIDTH+(BUTTON_WIDTH*4));
 
+        this.rightPanelContainer.addComponent(this.competitionNameInput);
+        this.rightPanelContainer.addComponent(this.competitionLocationInput);
+        this.rightPanelContainer.addComponent(horizontalDivider);
         this.rightPanelContainer.addComponent(this.idInput);
         this.rightPanelContainer.addComponent(this.nameInput);
         this.rightPanelContainer.addComponent(this.searchButton);
@@ -142,9 +147,6 @@ public final class NewPouleModal extends AbstractModal {
         this.rightPanelContainer.addComponent(this.removeButton);
 
         this.participatingCompetitorsScrollPanel.addComponent(this.participatingHeader);
-
-        this.rightPanel.addComponent(this.competitionNameInput);
-        this.rightPanel.addComponent(this.competitionLocationInput);
 
         this.rightPanel.addComponent(this.searchCompetitorLabel);
         this.rightPanel.addComponent(this.rightPanelContainer);

@@ -81,9 +81,8 @@ public final class TitleBarController extends AbstractController {
                     case 2 -> FrameManager.displayNewTableModal();
 
                     // Database menu
-                    case 3 -> FrameManager.displayViewDatabaseModal();
-                    case 4 -> {
-                    }
+                    case 3 -> FrameManager.displayViewCompetitorsModal();
+                    case 4 -> FrameManager.displayAddCompetitorModal();
                     case 5 -> {
                     }
 
