@@ -92,6 +92,11 @@ public final class UpdateCompetitorModalController extends AbstractController {
         this.updateCompetitorModal.getScrollPanel().getContents().clear();
         this.updateCompetitorModal.getScrollPanel().getViewPanel().removeAll();
         this.updateCompetitorModal.fillCompetitors();
+
+        this.updateCompetitorModal.getIdInput().setText("");
+        this.updateCompetitorModal.getNameInput().setText("");
+        this.updateCompetitorModal.getClubInput().setText("");
+        this.updateCompetitorModal.getBirthDateInput().setText("");
     }
 
     void searchCompetitor() {
@@ -155,7 +160,6 @@ public final class UpdateCompetitorModalController extends AbstractController {
             Optional<CompetitorDisplay> optionalCompetitorDisplay = this.findSelectedDisplay(e);
             optionalCompetitorDisplay.ifPresent(this::setInputDataToSelectedCompetitor);
         }
-
     }
 
 }

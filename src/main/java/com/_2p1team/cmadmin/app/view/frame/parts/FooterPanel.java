@@ -21,7 +21,7 @@ public final class FooterPanel extends Panel implements ComplexComponent {
     public FooterPanel(final Dimension preferredSize) {
         super(preferredSize, new FlowLayout(FlowLayout.CENTER), AppearanceRepository.TITLE_BAR_APPEARANCE);
 
-        this.versionLabel = new Label(TITLE_TEXT_SIZE, "Version 1.0 - Open Beta", AppearanceRepository.TITLE_TEXT_APPEARANCE);
+        this.versionLabel = new Label(TITLE_TEXT_SIZE, "Version 1.0", AppearanceRepository.TITLE_TEXT_APPEARANCE);
 
         this.setUpComponent();
     }

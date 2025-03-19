@@ -6,6 +6,7 @@ public final class ResponseInterpreter {
 
     public static final int RESPONSE_CODE_OK = 200;
     public static final int RESPONSE_CODE_CREATED = 201;
+    public static final int RESPONSE_CODE_NO_CONTENT = 204;
     public static final int RESPONSE_CODE_ERROR = 400;
     public static final int RESPONSE_CODE_SERVER_ERROR = 500;
 

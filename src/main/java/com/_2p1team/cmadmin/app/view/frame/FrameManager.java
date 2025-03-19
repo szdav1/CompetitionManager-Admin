@@ -192,12 +192,12 @@ public final class FrameManager {
         if (frame.getFrameState() != FrameState.DEFAULT)
             return;
 
-        frame.getRemoveCompetitorModal()
+        frame.getDeleteCompetitorModal()
             .appear();
 
-        frame.setOpenedModal(frame.getRemoveCompetitorModal());
+        frame.setOpenedModal(frame.getDeleteCompetitorModal());
         frame.setFrameState(FrameState.MODAL_OPENED);
-        frame.setPreviousModal(frame.getRemoveCompetitorModal());
+        frame.setPreviousModal(frame.getDeleteCompetitorModal());
     }
 
     public static void displayHttpConnectionExceptionModal() {
