@@ -64,6 +64,8 @@ public final class AppearanceRepository {
 
     public static final Appearance HORIZONTAL_DIVIDER_APPEARANCE = new HorizontalDividerAppearance();
 
+    public static final Appearance HOLLOW_HORIZONTAL_DIVIDER_APPEARANCE = new HollowHorizontalDividerAppearance();
+
     public static final Appearance LABELED_INPUT_APPEARANCE = new LabeledInputAppearance();
 
     public static final Appearance COMPETITION_PANEL_APPEARANCE = new CompetitionPanelAppearance();

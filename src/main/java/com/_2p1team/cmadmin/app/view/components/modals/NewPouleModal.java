@@ -129,7 +129,7 @@ public final class NewPouleModal extends AbstractModal {
 
     @Override
     public void setUpComponent() {
-        Panel horizontalDivider = new Panel(new Dimension(this.rightPanel.getWidth(), 1), AppearanceRepository.HORIZONTAL_DIVIDER_APPEARANCE);
+        Panel horizontalDivider = new Panel(new Dimension(this.rightPanel.getWidth(), 1), AppearanceRepository.HOLLOW_HORIZONTAL_DIVIDER_APPEARANCE);
 
         this.scrollPanel.addComponent(mainHeader);
         this.competitorDisplays.forEach(this.scrollPanel::addComponent);

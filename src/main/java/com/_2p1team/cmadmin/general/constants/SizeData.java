@@ -39,7 +39,7 @@ public final class SizeData {
     public static final int W_LABEL_WIDTH = FRAME_WIDTH*25/100;
     public static final Dimension W_LABEL_SIZE = new Dimension(W_LABEL_WIDTH, BUTTON_HEIGHT);
 
-    public static final int MODAL_WIDTH = FRAME_WIDTH*70/100;
+    public static final int MODAL_WIDTH = FRAME_WIDTH*80/100;
     public static final int MODAL_HEIGHT = FRAME_HEIGHT*70/100;
     public static final Dimension MODAL_SIZE = new Dimension(MODAL_WIDTH, MODAL_HEIGHT);
     public static final Rectangle MODAL_BOUNDS = new Rectangle((FRAME_WIDTH/2)-(MODAL_WIDTH/2), (FRAME_HEIGHT/2)-(MODAL_HEIGHT/2), MODAL_WIDTH, MODAL_HEIGHT);
