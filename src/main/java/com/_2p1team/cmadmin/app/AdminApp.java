@@ -9,6 +9,7 @@ import com._2p1team.cmadmin.general.util.Util;
 public final class AdminApp {
 
     // TODO: Implement API connection test before launch
+    // TODO: Implement login
     public static void main(String[] args) {
         ResourceManager.setProductionResourcePath("main");
 
