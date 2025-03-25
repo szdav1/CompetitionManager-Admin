@@ -38,7 +38,7 @@ public final class NewTableModal extends AbstractModal {
         this.setTitle("New Table");
         this.getCenterPanel().setLayout(new FlowLayout(FlowLayout.CENTER, PADDING, PADDING));
 
-        this.textLabel = new Label(X_BUTTON_SIZE, "Number of Competitors:", AppearanceRepository.LABELED_INPUT_APPEARANCE);
+        this.textLabel = new Label(X_BUTTON_SIZE, "Number of Competitors", AppearanceRepository.LABELED_INPUT_APPEARANCE);
         this.numberInput = new Box(new Rectangle(0, 0, N_BUTTON_WIDTH, BUTTON_HEIGHT), "", CustomColors.REDDISH);
         this.competitionNameInput = new LabeledInput(BUTTON_WIDTH/2, "Name*");
         this.competitionLocationInput = new LabeledInput(BUTTON_WIDTH/2, "Location*");
