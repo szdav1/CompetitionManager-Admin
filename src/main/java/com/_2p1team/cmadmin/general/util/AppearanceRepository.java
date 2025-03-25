@@ -78,4 +78,6 @@ public final class AppearanceRepository {
 
     public static final Appearance COMPETITION_DISPLAY_APPEARANCE = new CompetitionDisplayAppearance();
 
+    public static final Appearance LOGO_LABEL_APPEARANCE = new LogoLabelAppearance();
+
 }

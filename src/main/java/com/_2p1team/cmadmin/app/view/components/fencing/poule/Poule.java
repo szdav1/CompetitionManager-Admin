@@ -23,11 +23,15 @@ import com._2p1team.cmadmin.swing.override.constants.Position;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.SneakyThrows;
 
+import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -143,6 +147,13 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
 
     public void setPouleNumberLabel(final int number) {
         this.pouleNumberLabel.setText(this.pouleNumberLabel.getText().concat(String.valueOf(number)));
+    }
+
+    @SneakyThrows
+    public void saveAsImage(final String fileName) {
+        final BufferedImage image = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        this.paint(image.getGraphics());
+        ImageIO.write(image, "PNG", new File(fileName+".png"));
     }
 
     private boolean checkCompetitorData() {
@@ -307,6 +318,9 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
 
     private void disableStatsSection(int x, int y, final Box box) {
         int rowLength = this.numberOfCompetitors+8;
+
+        if (y > 0 && x < 2)
+            box.setEnabled(false);
 
         if (y >= 0 && x >= rowLength-5 && x < rowLength)
             box.setEnabled(false);

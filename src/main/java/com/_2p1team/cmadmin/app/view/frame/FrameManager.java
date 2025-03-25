@@ -15,12 +15,20 @@ public final class FrameManager {
     private static boolean hasInstance = false;
     private static AppFrame frame;
 
-    public static void initManager(final AppFrame frame) {
+    public static void init(final AppFrame frame) {
         if (hasInstance)
             return;
 
         hasInstance = true;
         FrameManager.frame = frame;
+    }
+
+    public static String getBuild() {
+        return String.format("#A%dM1N", frame.getBuild());
+    }
+
+    public static String getBuildDate() {
+        return frame.getBuildDate();
     }
 
     public static Competition getCurrentCompetition() {
@@ -221,6 +229,18 @@ public final class FrameManager {
         frame.setOpenedModal(frame.getApiResponseModal());
         frame.setFrameState(FrameState.MODAL_OPENED);
         frame.setPreviousModal(frame.getApiResponseModal());
+    }
+
+    public static void displayAboutModal() {
+        if (frame.getFrameState() != FrameState.DEFAULT)
+            return;
+
+        frame.getAboutModal()
+            .appear();
+
+        frame.setOpenedModal(frame.getAboutModal());
+        frame.setFrameState(FrameState.MODAL_OPENED);
+        frame.setPreviousModal(frame.getAboutModal());
     }
 
     public static void displayPouleCompetitionPanel() {

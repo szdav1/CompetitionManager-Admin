@@ -34,6 +34,10 @@ import java.net.http.HttpResponse;
 @Getter(AccessLevel.PACKAGE)
 public final class AppFrame extends AbstractFrame {
 
+    public static final String VERSION = "Version 1.0";
+    private final int build;
+    private final String buildDate;
+
     @Setter(AccessLevel.PACKAGE)
     private CompetitionType competitionType = CompetitionType.NONE;
 
@@ -53,6 +57,7 @@ public final class AppFrame extends AbstractFrame {
     private final DeleteCompetitorModal deleteCompetitorModal;
     private final HttpExceptionModal httpConnectionHttpExceptionModal;
     private final ApiResponseModal apiResponseModal;
+    private final AboutModal aboutModal;
 
     private final RootPanel rootPanel;
     private final Panel mainPanel;
@@ -75,6 +80,9 @@ public final class AppFrame extends AbstractFrame {
     public AppFrame() {
         super(Util.loadImageIcon("/assets/appIcon.png").getImage(), "Http Communication Error");
 
+        this.build = this.hashCode();
+        this.buildDate = "2025-03-24";
+
         Label fatalErrorLabel = new Label(X_BUTTON_SIZE, "Fatal Error: Server is unreachable", AppearanceRepository.HTTP_EXCEPTION_MESSAGE_APPEARANCE);
         Panel shade = new Panel(new Dimension(MODAL_WIDTH, MODAL_HEIGHT), new GridLayout(1, 1), AppearanceRepository.MODAL_BACKGROUND_APPEARANCE);
 
@@ -92,6 +100,7 @@ public final class AppFrame extends AbstractFrame {
         this.deleteCompetitorModal = null;
         this.httpConnectionHttpExceptionModal = null;
         this.apiResponseModal = null;
+        this.aboutModal = null;
 
         this.rootPanel = new RootPanel(MODAL_WIDTH, MODAL_HEIGHT);
         this.mainPanel = new Panel(new Rectangle(0, 0, MODAL_WIDTH, MODAL_HEIGHT), new BorderLayout(), AppearanceRepository.MAIN_PANEL_APPEARANCE);
@@ -123,13 +132,16 @@ public final class AppFrame extends AbstractFrame {
 
         this.addComponent(this.rootPanel, Position.LOW);
 
-        FrameManager.initManager(this);
+        FrameManager.init(this);
     }
 
     public AppFrame(Image iconImage, String title) {
         super(iconImage, title);
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.setLayout(null);
+
+        this.build = this.hashCode();
+        this.buildDate = "2025-03-24";
 
         this.closingConfirmationModal = new WindowClosingConfirmationModal();
         this.newPouleModal = new NewPouleModal();
@@ -140,6 +152,7 @@ public final class AppFrame extends AbstractFrame {
         this.deleteCompetitorModal = new DeleteCompetitorModal();
         this.httpConnectionHttpExceptionModal = new HttpExceptionModal();
         this.apiResponseModal = new ApiResponseModal();
+        this.aboutModal = new AboutModal();
 
         this.rootPanel = new RootPanel();
         this.mainPanel = new Panel(new Rectangle(0, 0, FRAME_WIDTH, FRAME_HEIGHT), new BorderLayout(), AppearanceRepository.MAIN_PANEL_APPEARANCE);
@@ -155,7 +168,7 @@ public final class AppFrame extends AbstractFrame {
 
         new FrameController(this);
 
-        FrameManager.initManager(this);
+        FrameManager.init(this);
         this.createFrameUI();
         this.handleBeforeLaunchQueuedException();
     }
@@ -204,6 +217,9 @@ public final class AppFrame extends AbstractFrame {
         this.rootPanel.addComponent(this.deleteCompetitorModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.httpConnectionHttpExceptionModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.apiResponseModal.getBackgroundPanel(), Position.HIGH);
+        this.rootPanel.addComponent(this.aboutModal.getBackgroundPanel(), Position.HIGH);
+
+        this.aboutModal.setUpBuildDisplay();
 
         this.closingConfirmationModal.disappear();
         this.newPouleModal.disappear();
@@ -214,6 +230,7 @@ public final class AppFrame extends AbstractFrame {
         this.deleteCompetitorModal.disappear();
         this.httpConnectionHttpExceptionModal.disappear();
         this.apiResponseModal.disappear();
+        this.aboutModal.disappear();
 
         this.addComponent(this.rootPanel);
     }

@@ -23,6 +23,7 @@ import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.SneakyThrows;
 
 import javax.swing.JComponent;
 import java.awt.BorderLayout;
@@ -192,6 +193,7 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
         this.setVisible(true);
     }
 
+    @SneakyThrows
     public void finishPoules() {
         for (Poule poule : this.poules) {
             if (poule.calculateCompetitorData())

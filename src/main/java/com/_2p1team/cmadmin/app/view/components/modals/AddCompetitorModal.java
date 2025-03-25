@@ -59,9 +59,9 @@ public final class AddCompetitorModal extends AbstractModal {
         this.dashboardLabel = new Label(new Dimension(this.rightPanel.getWidth(), BUTTON_HEIGHT), "Dashboard", AppearanceRepository.LABELED_INPUT_APPEARANCE);
         this.dashboardLabel.setHorizontalAlignment(SwingConstants.LEFT);
 
-        this.nameInput = new LabeledInput(W_BUTTON_WIDTH, "Name");
-        this.clubInput = new LabeledInput(W_BUTTON_WIDTH, "Club");
-        this.birthDateInput = new LabeledInput(W_BUTTON_WIDTH, "Birth Date");
+        this.nameInput = new LabeledInput(X_BUTTON_WIDTH, "Name");
+        this.clubInput = new LabeledInput(X_BUTTON_WIDTH, "Club");
+        this.birthDateInput = new LabeledInput(X_BUTTON_WIDTH, "Birth Date");
 
         this.addButton = new Button(BUTTON_SIZE, "Add", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 

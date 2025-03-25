@@ -1,0 +1,70 @@
+package com._2p1team.cmadmin.app.view.components.modals;
+
+import com._2p1team.cmadmin.app.control.components.modal.AboutModalKeyController;
+import com._2p1team.cmadmin.app.view.frame.AppFrame;
+import com._2p1team.cmadmin.app.view.frame.FrameManager;
+import static com._2p1team.cmadmin.general.constants.SizeData.BUTTON_HEIGHT;
+import com._2p1team.cmadmin.general.util.AppearanceRepository;
+import com._2p1team.cmadmin.swing.override.components.label.Label;
+import com._2p1team.cmadmin.swing.override.components.panel.Panel;
+import com._2p1team.cmadmin.swing.override.graphics.Appearance;
+
+import javax.swing.JComponent;
+import java.awt.Dimension;
+import java.util.List;
+
+public final class AboutModal extends AbstractModal {
+
+    private final Label logoLabel;
+    private final Label titleLabel;
+    private final Panel divider;
+    private final Label buildNumberLabel;
+    private final Label versionNumberLabel;
+    private final Label licenseLabel;
+    private final Label poweredByLabel;
+    private final Label developedByLabel;
+
+    public AboutModal() {
+        super();
+        this.setTitle("About");
+
+        this.logoLabel = new Label(new Appearance(AppearanceRepository.LOGO_LABEL_APPEARANCE));
+        this.titleLabel = new Label(new Dimension(this.getWidth(), BUTTON_HEIGHT), "CompetitionManager", AppearanceRepository.LABELED_INPUT_APPEARANCE);
+        this.divider = new Panel(new Dimension(this.getWidth()/2, 1), AppearanceRepository.HOLLOW_HORIZONTAL_DIVIDER_APPEARANCE);
+        this.buildNumberLabel = new Label(new Dimension(this.getWidth(), BUTTON_HEIGHT), "", AppearanceRepository.LABELED_INPUT_APPEARANCE);
+        this.versionNumberLabel = new Label(new Dimension(this.getWidth(), BUTTON_HEIGHT), AppFrame.VERSION, AppearanceRepository.LABELED_INPUT_APPEARANCE);
+        this.licenseLabel = new Label(new Dimension(this.getWidth(), BUTTON_HEIGHT), "License: Published under open-source licenses", AppearanceRepository.LABELED_INPUT_APPEARANCE);
+        this.poweredByLabel = new Label(new Dimension(this.getWidth(), BUTTON_HEIGHT), "Powered by: Java, Swing", AppearanceRepository.LABELED_INPUT_APPEARANCE);
+        this.developedByLabel = new Label(new Dimension(this.getWidth(), BUTTON_HEIGHT), "Developed by: 2+1 team", AppearanceRepository.LABELED_INPUT_APPEARANCE);
+
+        this.setUpComponent();
+        new AboutModalKeyController(this);
+    }
+
+    public void setUpBuildDisplay() {
+        this.buildNumberLabel.setText(String.format("Build: %s, Built on: %s", FrameManager.getBuild(), FrameManager.getBuildDate()));
+    }
+
+    @Override
+    public void setUpComponent() {
+        this.getCenterPanel().addComponent(this.logoLabel);
+        this.getCenterPanel().addComponent(this.titleLabel);
+        this.getCenterPanel().addComponent(this.divider);
+        this.getCenterPanel().addComponent(this.buildNumberLabel);
+        this.getCenterPanel().addComponent(this.licenseLabel);
+        this.getCenterPanel().addComponent(this.poweredByLabel);
+        this.getCenterPanel().addComponent(this.developedByLabel);
+        this.getCenterPanel().addComponent(this.versionNumberLabel);
+    }
+
+    @Override
+    public List<JComponent> getControls() {
+        return List.of();
+    }
+
+    @Override
+    public List<JComponent> getKeyControls() {
+        return List.of();
+    }
+
+}

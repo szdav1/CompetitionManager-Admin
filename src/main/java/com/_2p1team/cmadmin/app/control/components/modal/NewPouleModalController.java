@@ -9,11 +9,13 @@ import com._2p1team.cmadmin.app.view.components.fencing.poule.Poule;
 import com._2p1team.cmadmin.app.view.components.input.LabeledInput;
 import com._2p1team.cmadmin.app.view.components.modals.NewPouleModal;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
+import com._2p1team.cmadmin.general.constants.CustomColors;
 import static com._2p1team.cmadmin.general.constants.SizeData.*;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 import com._2p1team.cmadmin.swing.override.components.scrollpanel.ScrollPanel;
 import lombok.Getter;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.Comparator;
@@ -72,6 +74,14 @@ public final class NewPouleModalController extends AbstractController {
 
         this.clubInput.getInput().addKeyListener(this);
         this.nameInput.getInput().addKeyListener(this);
+
+        this.newPouleModal.getCompetitionNameInput()
+            .getInput()
+            .addKeyListener(this);
+
+        this.newPouleModal.getCompetitionLocationInput()
+            .getInput()
+            .addKeyListener(this);
     }
 
     private void displaySearchResults() {
@@ -177,7 +187,28 @@ public final class NewPouleModalController extends AbstractController {
         else if (e.getSource().equals(this.removeButton))
             this.removeCompetitorFromParticipatingList();
 
-        else if (e.getSource().equals(this.createButton) && NewPouleModal.getParticipatingCompetitors().size() >= Poule.MIN_SIZE && !competitionName.isBlank() && !competitionLocation.isBlank()) {
+        else if (e.getSource().equals(this.createButton) && NewPouleModal.getParticipatingCompetitors().size() >= Poule.MIN_SIZE) {
+            boolean error = false;
+
+            if (competitionName.isBlank()) {
+                this.newPouleModal.getCompetitionNameInput()
+                    .getInput()
+                    .setBackground(CustomColors.REDDISH);
+                
+                error = true;
+            }
+
+            if (competitionLocation.isBlank()) {
+                this.newPouleModal.getCompetitionLocationInput()
+                    .getInput()
+                    .setBackground(CustomColors.REDDISH);
+
+                error = true;
+            }
+
+            if (error)
+                return;
+
             FrameManager.setCurrentCompetition(new Competition(competitionName, competitionLocation));
 
             this.newPouleModal.getCompetitorDisplays().clear();
@@ -213,6 +244,16 @@ public final class NewPouleModalController extends AbstractController {
                 (this.clubInput.getText().isBlank() || this.nameInput.getText().isBlank())
         )
             this.resetCompetitorDisplay();
+
+        if (e.getSource().equals(this.newPouleModal.getCompetitionNameInput().getInput()))
+            this.newPouleModal.getCompetitionNameInput()
+                .getInput()
+                .setBackground(Color.black);
+
+        else if (e.getSource().equals(this.newPouleModal.getCompetitionLocationInput().getInput()))
+            this.newPouleModal.getCompetitionLocationInput()
+                .getInput()
+                .setBackground(Color.black);
     }
 
 }

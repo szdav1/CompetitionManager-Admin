@@ -1,5 +1,6 @@
 package com._2p1team.cmadmin.app.view.frame.parts;
 
+import com._2p1team.cmadmin.app.view.frame.AppFrame;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
 import static com._2p1team.cmadmin.general.constants.SizeData.TITLE_SIZE;
 import static com._2p1team.cmadmin.general.constants.SizeData.TITLE_TEXT_SIZE;
@@ -21,7 +22,7 @@ public final class FooterPanel extends Panel implements ComplexComponent {
     public FooterPanel(final Dimension preferredSize) {
         super(preferredSize, new FlowLayout(FlowLayout.CENTER), AppearanceRepository.TITLE_BAR_APPEARANCE);
 
-        this.versionLabel = new Label(TITLE_TEXT_SIZE, "Version 1.0", AppearanceRepository.TITLE_TEXT_APPEARANCE);
+        this.versionLabel = new Label(TITLE_TEXT_SIZE, AppFrame.VERSION, AppearanceRepository.TITLE_TEXT_APPEARANCE);
 
         this.setUpComponent();
     }

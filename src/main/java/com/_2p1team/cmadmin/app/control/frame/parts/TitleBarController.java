@@ -91,8 +91,7 @@ public final class TitleBarController extends AbstractController {
                     }
                     case 8 -> {
                     }
-                    case 9 -> {
-                    }
+                    case 9 -> FrameManager.displayAboutModal();
                 }
             }
         });

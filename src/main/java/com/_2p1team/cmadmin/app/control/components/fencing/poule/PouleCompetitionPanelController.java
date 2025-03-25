@@ -42,10 +42,13 @@ public final class PouleCompetitionPanelController extends AbstractController {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.closeButton) || e.getSource().equals(this.bottomCloseButton))
             FrameManager.hidePouleCompetitionPanel();
+
         else if (e.getSource().equals(this.finishButton))
             this.panel.finishPoules();
+
         else if (e.getSource().equals(this.resultsButton))
             this.panel.showResults();
+
         else if (e.getSource().equals(this.continueButton)) {
             FrameManager.hidePouleCompetitionPanel();
             FrameManager.displayTableCompetitionPanel();

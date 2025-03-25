@@ -266,6 +266,7 @@ public final class PouleController extends AbstractController {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.insertButton))
             this.insertManualInputData();
+
         else if (e.getSource().equals(this.finishButton))
             this.poule.calculateCompetitorData();
     }

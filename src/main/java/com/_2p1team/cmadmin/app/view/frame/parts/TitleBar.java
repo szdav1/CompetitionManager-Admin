@@ -65,7 +65,7 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
         this.settingsButton = new MenuButton("Settings", AppearanceRepository.SETTINGS_MENU_BUTTON_APPEARANCE);
         this.initSettingsMenu();
 
-        this.titleLabel = new Label(TITLE_TEXT_SIZE, "CompetitionManager - Admin", AppearanceRepository.TITLE_TEXT_APPEARANCE);
+        this.titleLabel = new Label(TITLE_TEXT_SIZE, "CompetitionManager", AppearanceRepository.TITLE_TEXT_APPEARANCE);
         this.controller = new TitleBarController(this);
 
         this.setUpComponent();

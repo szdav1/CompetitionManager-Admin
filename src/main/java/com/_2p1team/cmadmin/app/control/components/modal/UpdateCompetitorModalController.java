@@ -1,6 +1,7 @@
 package com._2p1team.cmadmin.app.control.components.modal;
 
 import com._2p1team.cmadmin.app.control.AbstractController;
+import com._2p1team.cmadmin.app.dto.competitor.Competitor;
 import com._2p1team.cmadmin.app.dto.competitor.CompetitorUploadModel;
 import com._2p1team.cmadmin.app.http.HttpCommunicator;
 import com._2p1team.cmadmin.app.http.ResponseInterpreter;
@@ -47,7 +48,7 @@ public final class UpdateCompetitorModalController extends AbstractController {
     }
 
     private void setInputDataToSelectedCompetitor(final CompetitorDisplay competitorDisplay) {
-        String id = competitorDisplay.getIdLabel().getText();
+        String id = competitorDisplay.getIdLabel().getText().equals("0") ? "" : competitorDisplay.getIdLabel().getText();
         String name = competitorDisplay.getNameLabel().getText();
         String club = competitorDisplay.getClubLabel().getText();
         String birthDate = competitorDisplay.getBirthDateLabel().getText();
@@ -158,7 +159,12 @@ public final class UpdateCompetitorModalController extends AbstractController {
             });
 
             Optional<CompetitorDisplay> optionalCompetitorDisplay = this.findSelectedDisplay(e);
-            optionalCompetitorDisplay.ifPresent(this::setInputDataToSelectedCompetitor);
+            
+            optionalCompetitorDisplay.ifPresent((competitorDisplay) ->
+                this.setInputDataToSelectedCompetitor(!competitorDisplay.getCheckbox().isChecked() ?
+                    competitorDisplay :
+                    new CompetitorDisplay(new Competitor(0L, "", "", "")))
+            );
         }
     }
 
