@@ -22,11 +22,11 @@ public final class AppearanceConstants {
         1,
         BORDER_RADIUS,
         new LinearGradientPaintConfiguration(
-            CustomColors.REDDISH,
+            CustomColors.MAIN_COLOR_1,
             CustomColors.OPAQUE,
             CustomColors.OPAQUE,
-            CustomColors.ORANGEISH,
-            CustomColors.REDDISH
+            CustomColors.MAIN_COLOR_2,
+            CustomColors.MAIN_COLOR_1
         )
     );
 
@@ -34,11 +34,11 @@ public final class AppearanceConstants {
         1,
         0,
         new LinearGradientPaintConfiguration(
-            CustomColors.REDDISH,
+            CustomColors.MAIN_COLOR_1,
             CustomColors.OPAQUE,
             CustomColors.OPAQUE,
-            CustomColors.ORANGEISH,
-            CustomColors.REDDISH
+            CustomColors.MAIN_COLOR_2,
+            CustomColors.MAIN_COLOR_1
         )
     );
 
@@ -46,9 +46,9 @@ public final class AppearanceConstants {
         1,
         BORDER_RADIUS,
         new LinearGradientPaintConfiguration(
-            CustomColors.REDDISH,
-            CustomColors.ORANGEISH,
-            CustomColors.REDDISH
+            CustomColors.MAIN_COLOR_1,
+            CustomColors.MAIN_COLOR_2,
+            CustomColors.MAIN_COLOR_1
         )
     );
 

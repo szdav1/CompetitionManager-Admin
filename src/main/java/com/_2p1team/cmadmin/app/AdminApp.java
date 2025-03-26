@@ -12,9 +12,10 @@ public final class AdminApp {
     // TODO: Implement login
     // TODO: Implement error display in new table and new poule modals
     public static void main(String[] args) {
-        ResourceManager.setProductionResourcePath("main");
+        ResourceManager.setProductionResourceRoot("main");
+        PostRunDataProcessor.start();
 
-        AppFrame frame = BeforeLaunchExceptionQueue.getExceptionType() == BeforeLaunchExceptionType.FATAL_ERROR ?
+        AppFrame frame = BeforeLaunchExceptionQueue.getExceptionType() == BeforeLaunchExceptionType.FATAL_EXCEPTION ?
             new AppFrame() :
             new AppFrame(Util.loadImageIcon("/assets/appIcon.png").getImage(), "CompetitionManager - Admin");
 

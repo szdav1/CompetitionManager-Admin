@@ -16,7 +16,7 @@ public final class BaseScrollPanelAppearance extends Appearance {
         this.setBackgroundConfiguration(
             new BackgroundConfigurationBuilder()
                 .setDefaultConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE))
-                .setHoveredConfiguration(new LinearGradientPaintConfiguration(CustomColors.ORANGEISH))
+                .setHoveredConfiguration(new LinearGradientPaintConfiguration(CustomColors.MAIN_COLOR_2))
                 .build()
         );
         this.setForegroundConfiguration(new ForegroundConfiguration(CustomColors.OPAQUE));

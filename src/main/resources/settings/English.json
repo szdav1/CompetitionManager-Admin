@@ -1,0 +1,53 @@
+{
+  "ApplicationTitle": "CompetitionManager",
+  "Version": "Version",
+
+  "FileMenu": "File",
+  "SettingsMenu": "Settings",
+  "DatabaseMenu": "Database",
+
+  "Competition": "Competition",
+  "Poule": "Poule",
+  "Table": "Table",
+
+  "ViewDatabase": "View",
+  "AddCompetitor": "Add Competitor",
+  "UpdateCompetitor": "Update Competitor",
+  "RemoveCompetitor": "Delete Competitor",
+
+  "Window": "Window",
+  "Settings": "Settings",
+  "About": "About",
+
+  "NewCompetitionTitle": "New Competition",
+  "NewPouleTitle": "New Poule",
+  "NewTableTitle": "New Table",
+  "ViewCompetitorsTitle": "View Competitors",
+  "AddCompetitorTitle": "Add Competitor",
+  "UpdateCompetitorTitle": "Update Competitor",
+  "DeleteCompetitorTitle": "Delete Competitor",
+
+  "Dashboard": "Dashboard",
+
+  "Name": "Name",
+  "Club": "Club",
+  "BirthDate": "Birth Date",
+
+  "Search": "Search",
+  "Add": "Add",
+  "Remove": "Remove",
+  "Create": "Create",
+  "Update": "Update",
+  "Delete": "Delete",
+
+  "CompetitionName": "*Comp. Name",
+  "CompetitionLocation": "*Comp. Location",
+
+  "ParticipatingCompetitors": "Participating Competitors",
+  "NumberOfCompetitors": "Number of Competitors",
+
+  "License": "License: Published under open-source licenses",
+  "PoweredBy": "Powered by:",
+  "DevelopedBy": "Developed by:",
+  "Built": "Built on:"
+}

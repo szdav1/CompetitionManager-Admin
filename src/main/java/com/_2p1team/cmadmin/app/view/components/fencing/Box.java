@@ -19,7 +19,7 @@ public class Box extends JTextField {
     public static final Color HIGHLIGHTED_BACKGROUND = Color.gray;
 
     public Box(Rectangle bounds, String text) {
-        this(bounds, text, CustomColors.ORANGEISH);
+        this(bounds, text, CustomColors.MAIN_COLOR_2);
     }
 
     public Box(Rectangle bounds, String text, Color borderColor) {

@@ -8,7 +8,7 @@ import com._2p1team.cmadmin.swing.override.graphics.configs.LinearGradientPaintC
 public final class VerticalDividerAppearance extends Appearance {
 
     public VerticalDividerAppearance() {
-        this.setBackgroundConfiguration(new BackgroundConfiguration(new LinearGradientPaintConfiguration(CustomColors.ORANGEISH, CustomColors.REDDISH)));
+        this.setBackgroundConfiguration(new BackgroundConfiguration(new LinearGradientPaintConfiguration(CustomColors.MAIN_COLOR_2, CustomColors.MAIN_COLOR_1)));
     }
 
 }

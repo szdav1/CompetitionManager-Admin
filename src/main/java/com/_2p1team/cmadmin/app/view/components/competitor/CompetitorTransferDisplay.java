@@ -69,10 +69,10 @@ public class CompetitorTransferDisplay extends Panel implements ComplexComponent
         }
 
         private void setUIAttributes() {
-            this.getNameLabel().setForeground(CustomColors.ORANGEISH);
-            this.getClubLabel().setForeground(CustomColors.ORANGEISH);
-            this.getBirthDateLabel().setForeground(CustomColors.ORANGEISH);
-            this.getPlacementLabel().setForeground(CustomColors.ORANGEISH);
+            this.getNameLabel().setForeground(CustomColors.MAIN_COLOR_2);
+            this.getClubLabel().setForeground(CustomColors.MAIN_COLOR_2);
+            this.getBirthDateLabel().setForeground(CustomColors.MAIN_COLOR_2);
+            this.getPlacementLabel().setForeground(CustomColors.MAIN_COLOR_2);
             this.getPlacementLabel().setText("Place");
         }
 

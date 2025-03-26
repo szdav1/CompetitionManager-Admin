@@ -43,7 +43,7 @@ public final class NewTableModalController extends AbstractController {
             if (competitionName.isBlank()) {
                 this.newTableModal.getCompetitionNameInput()
                     .getInput()
-                    .setBackground(CustomColors.REDDISH);
+                    .setBackground(CustomColors.MAIN_COLOR_1);
 
                 error = true;
             }
@@ -51,7 +51,7 @@ public final class NewTableModalController extends AbstractController {
             if (competitionLocation.isBlank()) {
                 this.newTableModal.getCompetitionLocationInput()
                     .getInput()
-                    .setBackground(CustomColors.REDDISH);
+                    .setBackground(CustomColors.MAIN_COLOR_1);
 
                 error = true;
             }

@@ -67,7 +67,7 @@ public final class AddCompetitorModalController extends AbstractController {
         this.addCompetitorModal.getBirthDateInput().setText("");
         this.addCompetitorModal.getCompetitorDisplays()
             .getLast()
-            .setForegrounds(CustomColors.ORANGEISH);
+            .setForegrounds(CustomColors.MAIN_COLOR_2);
     }
 
     @Override

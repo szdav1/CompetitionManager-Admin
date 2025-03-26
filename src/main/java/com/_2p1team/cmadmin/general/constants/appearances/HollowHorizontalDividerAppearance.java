@@ -9,7 +9,7 @@ public final class HollowHorizontalDividerAppearance extends Appearance {
 
     public HollowHorizontalDividerAppearance() {
         this.setBackgroundConfiguration(new BackgroundConfiguration(
-            new LinearGradientPaintConfiguration(OPAQUE, REDDISH, ORANGEISH, OPAQUE))
+            new LinearGradientPaintConfiguration(OPAQUE, MAIN_COLOR_1, MAIN_COLOR_2, OPAQUE))
         );
 
     }

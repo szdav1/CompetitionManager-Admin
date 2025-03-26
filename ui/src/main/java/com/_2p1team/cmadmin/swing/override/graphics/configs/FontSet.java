@@ -23,8 +23,7 @@ public final class FontSet {
      * Specifies a default font based on the running environment, with proportional
      * size and default (PLAIN) style.
      */
-    public static final Font SYSTEM_FONT = new Font(Font.DIALOG, Font.PLAIN, calculateFontSize());
-
+    public static final Font SYSTEM_FONT = new Font(Font.SANS_SERIF, Font.PLAIN, calculateFontSize());
 
     private final Font defaultFont;
     private final Font hoveredFont;
@@ -64,9 +63,9 @@ public final class FontSet {
     }
 
     private static int calculateFontSize() {
-        return (int) (Toolkit.getDefaultToolkit()
+        return Toolkit.getDefaultToolkit()
             .getScreenSize()
-            .width/100);
+            .width/100;
     }
 
 }

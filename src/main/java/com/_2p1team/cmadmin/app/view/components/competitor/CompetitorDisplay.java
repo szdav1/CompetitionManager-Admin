@@ -4,6 +4,7 @@ import com._2p1team.cmadmin.app.dto.competitor.Competitor;
 import com._2p1team.cmadmin.app.view.components.checkbox.Checkbox;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
 import com._2p1team.cmadmin.general.constants.CustomColors;
+import com._2p1team.cmadmin.general.constants.Language;
 import static com._2p1team.cmadmin.general.constants.SizeData.BUTTON_SIZE;
 import static com._2p1team.cmadmin.general.constants.SizeData.W_BUTTON_SIZE;
 import com._2p1team.cmadmin.general.util.AppearanceRepository;
@@ -54,20 +55,20 @@ public class CompetitorDisplay extends Panel implements ComplexComponent {
     public static final class Header extends CompetitorDisplay {
 
         public Header(Dimension idPreferredSize, Dimension otherPreferredSize) {
-            super(idPreferredSize, otherPreferredSize, new Competitor(0L, "Name", "Club", "Birth Date"));
+            super(idPreferredSize, otherPreferredSize, new Competitor(0L, Language.get("Name"), Language.get("Club"), Language.get("BirthDate")));
             this.setUIAttributes();
         }
 
         public Header() {
-            super(new Competitor(0L, "Name", "Club", "Birth Date"));
+            super(new Competitor(0L, Language.get("Name"), Language.get("Club"), Language.get("BirthDate")));
             this.setUIAttributes();
         }
 
         private void setUIAttributes() {
-            this.getIdLabel().setForeground(CustomColors.ORANGEISH);
-            this.getNameLabel().setForeground(CustomColors.ORANGEISH);
-            this.getClubLabel().setForeground(CustomColors.ORANGEISH);
-            this.getBirthDateLabel().setForeground(CustomColors.ORANGEISH);
+            this.getIdLabel().setForeground(CustomColors.MAIN_COLOR_2);
+            this.getNameLabel().setForeground(CustomColors.MAIN_COLOR_2);
+            this.getClubLabel().setForeground(CustomColors.MAIN_COLOR_2);
+            this.getBirthDateLabel().setForeground(CustomColors.MAIN_COLOR_2);
             this.getIdLabel().setText("Id");
         }
 

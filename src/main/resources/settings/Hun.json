@@ -1,0 +1,53 @@
+{
+  "ApplicationTitle": "CompetitionManager",
+  "Version": "Verzió",
+
+  "FileMenu": "Fájé",
+  "SettingsMenu": "Beállítások",
+  "DatabaseMenu": "Adatbázis",
+
+  "Competition": "Verseny",
+  "Poule": "kör",
+  "Table": "Tabltábla",
+
+  "ViewDatabase": "Megtekint",
+  "AddCompetitor": "Felvétel",
+  "UpdateCompetitor": "Frissít",
+  "RemoveCompetitor": "Töröl",
+
+  "Window": "Ablak",
+  "Settings": "Beállítások",
+  "About": "Alkalmazásról",
+
+  "NewCompetitionTitle": "Új Verseny",
+  "NewPouleTitle": "Új Kör",
+  "NewTableTitle": "Új Tábla",
+  "ViewCompetitorsTitle": "Megtekintés",
+  "AddCompetitorTitle": "Versenyző Felvétele",
+  "UpdateCompetitorTitle": "Versenyző Frissítése",
+  "DeleteCompetitorTitle": "Versenyző Törlése",
+
+  "Dashboard": "Dashboard",
+
+  "Name": "Name",
+  "Club": "Club",
+  "BirthDate": "Birth Date",
+
+  "Search": "Search",
+  "Add": "Add",
+  "Remove": "Remove",
+  "Create": "Create",
+  "Update": "Update",
+  "Delete": "Delete",
+
+  "CompetitionName": "*Comp. Name",
+  "CompetitionLocation": "*Comp. Location",
+
+  "ParticipatingCompetitors": "Participating Competitors",
+  "NumberOfCompetitors": "Number of Competitors",
+
+  "License": "License: Published under open-source licenses",
+  "PoweredBy": "Powered by:",
+  "DevelopedBy": "Developed by:",
+  "Built": "Built on:"
+}

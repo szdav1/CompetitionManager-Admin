@@ -18,7 +18,7 @@ public final class DatabaseMenuButtonAppearance extends Appearance {
         this.setBackgroundConfiguration(
             new BackgroundConfiguration(
                 new SimplePaintConfiguration(CustomColors.OPAQUE),
-                new LinearGradientPaintConfiguration(CustomColors.OPAQUE, CustomColors.OPAQUE, CustomColors.OPAQUE, CustomColors.ORANGEISH, CustomColors.REDDISH)
+                new LinearGradientPaintConfiguration(CustomColors.OPAQUE, CustomColors.OPAQUE, CustomColors.OPAQUE, CustomColors.MAIN_COLOR_2, CustomColors.MAIN_COLOR_1)
             )
         );
 

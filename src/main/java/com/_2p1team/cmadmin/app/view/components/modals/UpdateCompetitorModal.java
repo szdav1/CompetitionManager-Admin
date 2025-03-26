@@ -6,6 +6,7 @@ import com._2p1team.cmadmin.app.view.components.competitor.CompetitorDisplay;
 import com._2p1team.cmadmin.app.view.components.input.LabeledInput;
 import static com._2p1team.cmadmin.general.constants.AppearanceConstants.PADDING;
 import com._2p1team.cmadmin.general.constants.CustomColors;
+import com._2p1team.cmadmin.general.constants.Language;
 import static com._2p1team.cmadmin.general.constants.SizeData.*;
 import com._2p1team.cmadmin.general.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
@@ -52,7 +53,7 @@ public final class UpdateCompetitorModal extends AbstractModal {
 
     public UpdateCompetitorModal() {
         super();
-        this.setTitle("Update Competitor");
+        this.setTitle(Language.get("UpdateCompetitorTitle"));
         this.getCenterPanel().setLayout(new GridLayout(1, 2, PADDING, PADDING));
 
         this.leftPanel = new Panel(new Dimension(this.getCenterPanel().getWidth()/2-PADDING, this.getCenterPanel().getHeight()), new FlowLayout(FlowLayout.CENTER, 0, 0), new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
@@ -66,26 +67,26 @@ public final class UpdateCompetitorModal extends AbstractModal {
 
         this.competitorDisplays = new ArrayList<>();
 
-        this.dashboardLabel = new Label(new Dimension(this.rightPanel.getWidth(), BUTTON_HEIGHT), "Dashboard", AppearanceRepository.LABELED_INPUT_APPEARANCE);
+        this.dashboardLabel = new Label(new Dimension(this.rightPanel.getWidth(), BUTTON_HEIGHT), Language.get("Dashboard"), AppearanceRepository.LABELED_INPUT_APPEARANCE);
         this.dashboardLabel.setHorizontalAlignment(SwingConstants.LEFT);
 
         this.idInput = new LabeledInput(W_BUTTON_WIDTH, "Id");
         this.idInput.getInput().setEnabled(false);
 
-        this.nameInput = new LabeledInput(W_BUTTON_WIDTH, "Name");
-        this.clubInput = new LabeledInput(W_BUTTON_WIDTH, "Club");
-        this.birthDateInput = new LabeledInput(W_BUTTON_WIDTH, "Birth Date");
+        this.nameInput = new LabeledInput(W_BUTTON_WIDTH, Language.get("Name"));
+        this.clubInput = new LabeledInput(W_BUTTON_WIDTH, Language.get("Club"));
+        this.birthDateInput = new LabeledInput(W_BUTTON_WIDTH, Language.get("BirthDate"));
 
-        this.searchCompetitorLabel = new Label(new Dimension(this.rightPanel.getWidth(), BUTTON_HEIGHT), "Dashboard", new Appearance(AppearanceRepository.LABELED_INPUT_APPEARANCE));
+        this.searchCompetitorLabel = new Label(new Dimension(this.rightPanel.getWidth(), BUTTON_HEIGHT), Language.get("Dashboard"), new Appearance(AppearanceRepository.LABELED_INPUT_APPEARANCE));
         this.searchCompetitorLabel.setHorizontalAlignment(SwingConstants.LEFT);
 
         this.rightPanelContainer = new Panel(new Dimension(this.rightPanel.getWidth(), (BUTTON_HEIGHT*4)+(PADDING*5)+1), new FlowLayout(FlowLayout.CENTER, PADDING, PADDING), new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
 
-        this.nameSearchInput = new LabeledInput(W_BUTTON_WIDTH, "Name");
-        this.clubSearchInput = new LabeledInput(W_BUTTON_WIDTH, "Club");
+        this.nameSearchInput = new LabeledInput(W_BUTTON_WIDTH, Language.get("Name"));
+        this.clubSearchInput = new LabeledInput(W_BUTTON_WIDTH, Language.get("Club"));
 
-        this.searchButton = new Button(BUTTON_SIZE, "Search", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
-        this.updateButton = new Button(BUTTON_SIZE, "Update", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.searchButton = new Button(BUTTON_SIZE, Language.get("Search"), new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.updateButton = new Button(BUTTON_SIZE, Language.get("Update"), new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
         this.setUpComponent();
 
@@ -94,22 +95,22 @@ public final class UpdateCompetitorModal extends AbstractModal {
 
     public boolean checkInputData() {
         if (this.idInput.getText().isBlank())
-            this.idInput.getInput().setBackground(CustomColors.REDDISH);
+            this.idInput.getInput().setBackground(CustomColors.MAIN_COLOR_1);
 
         if (this.nameInput.getText().isBlank())
-            this.nameInput.getInput().setBackground(CustomColors.REDDISH);
+            this.nameInput.getInput().setBackground(CustomColors.MAIN_COLOR_1);
 
         if (this.clubInput.getText().isBlank())
-            this.clubInput.getInput().setBackground(CustomColors.REDDISH);
+            this.clubInput.getInput().setBackground(CustomColors.MAIN_COLOR_1);
 
         if (this.birthDateInput.getText().isBlank())
-            this.birthDateInput.getInput().setBackground(CustomColors.REDDISH);
+            this.birthDateInput.getInput().setBackground(CustomColors.MAIN_COLOR_1);
 
         try {
             LocalDate.parse(this.birthDateInput.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         }
         catch (Exception exception) {
-            this.birthDateInput.getInput().setBackground(CustomColors.REDDISH);
+            this.birthDateInput.getInput().setBackground(CustomColors.MAIN_COLOR_1);
             return true;
         }
 

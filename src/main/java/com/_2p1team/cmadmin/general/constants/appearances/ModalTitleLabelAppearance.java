@@ -12,7 +12,7 @@ public final class ModalTitleLabelAppearance extends Appearance {
 
     public ModalTitleLabelAppearance() {
         this.setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)));
-        this.setForegroundConfiguration(new ForegroundConfiguration(CustomColors.ORANGEISH));
+        this.setForegroundConfiguration(new ForegroundConfiguration(CustomColors.MAIN_COLOR_2));
         this.setBorderConfiguration(
             new BorderConfigurationBuilder()
                 .setRadius(AppearanceConstants.BORDER_RADIUS)

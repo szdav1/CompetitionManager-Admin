@@ -10,7 +10,7 @@ public final class HttpExceptionMessageLabelAppearance extends Appearance {
 
     public HttpExceptionMessageLabelAppearance() {
         this.setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE)));
-        this.setForegroundConfiguration(new ForegroundConfiguration(CustomColors.REDDISH));
+        this.setForegroundConfiguration(new ForegroundConfiguration(CustomColors.MAIN_COLOR_1));
     }
 
 }

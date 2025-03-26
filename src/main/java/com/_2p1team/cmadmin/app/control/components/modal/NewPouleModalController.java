@@ -154,7 +154,9 @@ public final class NewPouleModalController extends AbstractController {
         NewPouleModal.getParticipatingCompetitors().removeAll(searchResults);
         this.newPouleModal.getCompetitorDisplays().addAll(searchResults);
 
-        this.newPouleModal.getParticipatingCompetitorsScrollPanel().repaint();
+        this.participatingScrollPanel.getContents().clear();
+        this.participatingScrollPanel.resizeViewPanel(this.participatingScrollPanel.getViewPanel().getWidth());
+        this.participatingScrollPanel.repaint();
         this.participatingCheckbox.setChecked(false);
         this.resetCompetitorDisplay();
     }
@@ -187,13 +189,13 @@ public final class NewPouleModalController extends AbstractController {
         else if (e.getSource().equals(this.removeButton))
             this.removeCompetitorFromParticipatingList();
 
-        else if (e.getSource().equals(this.createButton) && NewPouleModal.getParticipatingCompetitors().size() >= Poule.MIN_SIZE) {
+        else if (e.getSource().equals(this.createButton)) {
             boolean error = false;
 
             if (competitionName.isBlank()) {
                 this.newPouleModal.getCompetitionNameInput()
                     .getInput()
-                    .setBackground(CustomColors.REDDISH);
+                    .setBackground(CustomColors.MAIN_COLOR_2);
                 
                 error = true;
             }
@@ -201,10 +203,13 @@ public final class NewPouleModalController extends AbstractController {
             if (competitionLocation.isBlank()) {
                 this.newPouleModal.getCompetitionLocationInput()
                     .getInput()
-                    .setBackground(CustomColors.REDDISH);
+                    .setBackground(CustomColors.MAIN_COLOR_2);
 
                 error = true;
             }
+
+            if (NewPouleModal.getParticipatingCompetitors().size() < Poule.MIN_SIZE)
+                error = true;
 
             if (error)
                 return;

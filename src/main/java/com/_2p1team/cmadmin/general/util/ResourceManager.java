@@ -11,7 +11,7 @@ import java.net.URL;
 public final class ResourceManager {
 
     @Setter
-    private static String productionResourcePath = "";
+    private static String productionResourceRoot = "";
 
     public static String get(final String filePath) {
         URL fileURL = ResourceManager.class.getResource(filePath);
@@ -25,7 +25,7 @@ public final class ResourceManager {
         }
         // Returns the production resources
         catch (Exception exc) {
-            return "resources/"+productionResourcePath+filePath;
+            return "resources/"+productionResourceRoot+filePath;
         }
     }
 

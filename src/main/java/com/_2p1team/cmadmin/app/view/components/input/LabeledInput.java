@@ -37,7 +37,7 @@ public final class LabeledInput extends Panel implements ComplexComponent {
         this.input.setFont(FontSet.SYSTEM_FONT);
         this.input.setCaretColor(this.getForeground());
         this.input.setHorizontalAlignment(JTextField.CENTER);
-        this.input.setBorder(new LineBorder(CustomColors.REDDISH, 1));
+        this.input.setBorder(new LineBorder(CustomColors.MAIN_COLOR_2, 1));
 
         this.setUpComponent();
     }

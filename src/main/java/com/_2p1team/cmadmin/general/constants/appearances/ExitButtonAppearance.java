@@ -14,10 +14,10 @@ public final class ExitButtonAppearance extends Appearance {
         this.enableInteractivity();
         this.setBackgroundConfiguration(new BackgroundConfiguration(
             new SimplePaintConfiguration(CustomColors.OPAQUE),
-            new LinearGradientPaintConfiguration(CustomColors.OPAQUE, CustomColors.OPAQUE, CustomColors.OPAQUE, CustomColors.REDDISH)
+            new LinearGradientPaintConfiguration(CustomColors.OPAQUE, CustomColors.OPAQUE, CustomColors.OPAQUE, CustomColors.MAIN_COLOR_2)
         ));
 
-        this.setForegroundConfiguration(new ForegroundConfiguration(Color.white, CustomColors.REDDISH));
+        this.setForegroundConfiguration(new ForegroundConfiguration(Color.white, CustomColors.MAIN_COLOR_2));
         this.setBorderConfiguration(new BorderConfiguration(0, AppearanceConstants.BORDER_RADIUS, new SimplePaintConfiguration()));
         this.setFontSet(new FontSet(new Font(FontSet.SYSTEM_FONT.getFamily(), Font.BOLD, FontSet.SYSTEM_FONT.getSize())));
     }

@@ -303,7 +303,7 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
         if (x-2 == y && y > 0) {
             box.setOpaque(true);
             box.setEnabled(false);
-            box.setBackground(CustomColors.ORANGEISH);
+            box.setBackground(CustomColors.MAIN_COLOR_2);
         }
     }
 

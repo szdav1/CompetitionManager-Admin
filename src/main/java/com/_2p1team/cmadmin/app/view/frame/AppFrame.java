@@ -11,6 +11,7 @@ import com._2p1team.cmadmin.app.view.frame.parts.RootPanel;
 import com._2p1team.cmadmin.app.view.frame.parts.TitleBar;
 import static com._2p1team.cmadmin.general.constants.AppearanceConstants.BORDER_RADIUS;
 import com._2p1team.cmadmin.general.constants.CompetitionType;
+import com._2p1team.cmadmin.general.constants.Language;
 import static com._2p1team.cmadmin.general.constants.SizeData.*;
 import com._2p1team.cmadmin.general.constants.states.FrameState;
 import com._2p1team.cmadmin.general.util.AppearanceRepository;
@@ -34,7 +35,7 @@ import java.net.http.HttpResponse;
 @Getter(AccessLevel.PACKAGE)
 public final class AppFrame extends AbstractFrame {
 
-    public static final String VERSION = "Version 1.0";
+    public static final String VERSION = Language.get("Version")+" 1.0";
     private final int build;
     private final String buildDate;
 
@@ -188,6 +189,7 @@ public final class AppFrame extends AbstractFrame {
     private void handleBeforeLaunchQueuedException() {
         switch (BeforeLaunchExceptionQueue.getExceptionType()) {
             case HTTP_COMMUNICATION_EXCEPTION -> FrameManager.displayHttpConnectionExceptionModal();
+            case RESOURCE_NOT_FOUND_EXCEPTION -> {} // TODO: Implement resource not found exception modal
         }
     }
 

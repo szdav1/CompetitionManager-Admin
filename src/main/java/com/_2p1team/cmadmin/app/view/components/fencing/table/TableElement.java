@@ -75,7 +75,7 @@ public final class TableElement extends Panel implements ComplexComponent, Contr
         this.bottomNumberLabel = null;
         this.topCompetitorBox = new Box(new Rectangle(0, 0, W_BUTTON_WIDTH, BUTTON_HEIGHT), topParentElement.getWinnerCompetitorBox().getText());
         this.bottomCompetitorBox = new Box(new Rectangle(0, this.getHeight()-BUTTON_HEIGHT, W_BUTTON_WIDTH, BUTTON_HEIGHT), bottomParentElement.getWinnerCompetitorBox().getText());
-        this.winnerCompetitorBox = new Box(new Rectangle(W_BUTTON_WIDTH, (this.getHeight()/2)-(BUTTON_HEIGHT/2), W_BUTTON_WIDTH, BUTTON_HEIGHT), "", CustomColors.REDDISH);
+        this.winnerCompetitorBox = new Box(new Rectangle(W_BUTTON_WIDTH, (this.getHeight()/2)-(BUTTON_HEIGHT/2), W_BUTTON_WIDTH, BUTTON_HEIGHT), "", CustomColors.MAIN_COLOR_1);
         this.connector = new Panel(new Rectangle(W_BUTTON_WIDTH, 0, 2, this.getHeight()), null, new Appearance(AppearanceRepository.VERTICAL_DIVIDER_APPEARANCE));
 
         this.topParentElement = topParentElement;

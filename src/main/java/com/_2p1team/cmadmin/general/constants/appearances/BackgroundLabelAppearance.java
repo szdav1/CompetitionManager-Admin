@@ -9,7 +9,7 @@ import com._2p1team.cmadmin.swing.override.graphics.configs.IconSet;
 public final class BackgroundLabelAppearance extends Appearance {
 
     public BackgroundLabelAppearance() {
-        this.setIconSet(new IconSet(Util.loadImageIcon("/assets/background3.png", FRAME_WIDTH, FRAME_HEIGHT)));
+        this.setIconSet(new IconSet(Util.loadImageIcon("/assets/background6.png", FRAME_WIDTH, FRAME_HEIGHT)));
     }
 
 }

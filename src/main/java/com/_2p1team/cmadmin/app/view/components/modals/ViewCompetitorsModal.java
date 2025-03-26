@@ -2,6 +2,7 @@ package com._2p1team.cmadmin.app.view.components.modals;
 
 import com._2p1team.cmadmin.app.http.HttpCommunicator;
 import com._2p1team.cmadmin.app.view.components.competitor.CompetitorDisplay;
+import com._2p1team.cmadmin.general.constants.Language;
 import static com._2p1team.cmadmin.general.constants.SizeData.BUTTON_HEIGHT;
 import static com._2p1team.cmadmin.general.constants.SizeData.X_BUTTON_SIZE;
 import com._2p1team.cmadmin.general.util.AppearanceRepository;
@@ -25,7 +26,7 @@ public final class ViewCompetitorsModal extends AbstractModal {
 
     public ViewCompetitorsModal() {
         super();
-        this.setTitle("Competitors");
+        this.setTitle(Language.get("ViewCompetitorsTitle"));
 
         this.header = new CompetitorDisplay.Header(X_BUTTON_SIZE, X_BUTTON_SIZE);
         this.header.removeComponent(this.header.getCheckbox());

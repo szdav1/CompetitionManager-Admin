@@ -7,6 +7,7 @@ import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
 import com._2p1team.cmadmin.app.view.interfaces.ControlComponent;
 import com._2p1team.cmadmin.app.view.interfaces.KeyControlledComponent;
 import com._2p1team.cmadmin.general.constants.AppearanceConstants;
+import com._2p1team.cmadmin.general.constants.Language;
 import com._2p1team.cmadmin.general.constants.SizeData;
 import static com._2p1team.cmadmin.general.constants.SizeData.*;
 import com._2p1team.cmadmin.general.util.AppearanceRepository;
@@ -56,25 +57,25 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
         this.centerPanel = new Panel(new Dimension(), new FlowLayout(FlowLayout.CENTER, 0, 0), this.getAppearance());
         this.rightPanel = new Panel(new Dimension(), new FlowLayout(FlowLayout.RIGHT, 0, 0), this.getAppearance());
 
-        this.fileButton = new MenuButton("File", AppearanceRepository.FILE_MENU_BUTTON_APPEARANCE);
+        this.fileButton = new MenuButton(Language.get("FileMenu"), AppearanceRepository.FILE_MENU_BUTTON_APPEARANCE);
         this.initFileMenu();
 
-        this.databaseButton = new MenuButton("Database", AppearanceRepository.DATABASE_MENU_BUTTON_APPEARANCE);
+        this.databaseButton = new MenuButton(Language.get("DatabaseMenu"), AppearanceRepository.DATABASE_MENU_BUTTON_APPEARANCE);
         this.initDatabaseMenu();
 
-        this.settingsButton = new MenuButton("Settings", AppearanceRepository.SETTINGS_MENU_BUTTON_APPEARANCE);
+        this.settingsButton = new MenuButton(Language.get("SettingsMenu"), AppearanceRepository.SETTINGS_MENU_BUTTON_APPEARANCE);
         this.initSettingsMenu();
 
-        this.titleLabel = new Label(TITLE_TEXT_SIZE, "CompetitionManager", AppearanceRepository.TITLE_TEXT_APPEARANCE);
+        this.titleLabel = new Label(TITLE_TEXT_SIZE, Language.get("ApplicationTitle"), AppearanceRepository.TITLE_TEXT_APPEARANCE);
         this.controller = new TitleBarController(this);
 
         this.setUpComponent();
     }
 
     private void initFileMenu() {
-        this.fileButton.addButtonToDropdownPanel("Competition [F1]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
-        this.fileButton.addButtonToDropdownPanel("Poule [F3]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
-        this.fileButton.addButtonToDropdownPanel("Table [F5]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.fileButton.addButtonToDropdownPanel(Language.get("Competition")+" [F1]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.fileButton.addButtonToDropdownPanel(Language.get("Poule")+" [F3]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.fileButton.addButtonToDropdownPanel(Language.get("Table")+" [F5]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
         this.fileButton.getButtons()
             .forEach(button -> {
@@ -85,10 +86,10 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
 
     private void initDatabaseMenu() {
         this.databaseButton.getDropdownPanel().setSize(X_BUTTON_WIDTH, BUTTON_HEIGHT*4);
-        this.databaseButton.addButtonToDropdownPanel("View [F2]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
-        this.databaseButton.addButtonToDropdownPanel("Add Competitor [F4]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
-        this.databaseButton.addButtonToDropdownPanel("Update Competitor [F6]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
-        this.databaseButton.addButtonToDropdownPanel("Remove Competitor [F8]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.databaseButton.addButtonToDropdownPanel(Language.get("ViewDatabase")+" [F2]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.databaseButton.addButtonToDropdownPanel(Language.get("AddCompetitor")+" [F4]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.databaseButton.addButtonToDropdownPanel(Language.get("UpdateCompetitor")+" [F6]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.databaseButton.addButtonToDropdownPanel(Language.get("RemoveCompetitor")+" [F8]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
         this.databaseButton.getButtons()
             .forEach(button -> {
@@ -98,9 +99,9 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
     }
 
     private void initSettingsMenu() {
-        this.settingsButton.addButtonToDropdownPanel("Window", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
-        this.settingsButton.addButtonToDropdownPanel("Language", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
-        this.settingsButton.addButtonToDropdownPanel("About", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.settingsButton.addButtonToDropdownPanel(Language.get("Window"), new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.settingsButton.addButtonToDropdownPanel(Language.get("Settings"), new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.settingsButton.addButtonToDropdownPanel(Language.get("About"), new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
         this.settingsButton.getButtons()
             .forEach(button -> {

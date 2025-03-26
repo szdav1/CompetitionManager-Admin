@@ -5,6 +5,7 @@ import com._2p1team.cmadmin.app.view.components.fencing.Box;
 import com._2p1team.cmadmin.app.view.components.input.LabeledInput;
 import static com._2p1team.cmadmin.general.constants.AppearanceConstants.PADDING;
 import com._2p1team.cmadmin.general.constants.CustomColors;
+import com._2p1team.cmadmin.general.constants.Language;
 import static com._2p1team.cmadmin.general.constants.SizeData.*;
 import com._2p1team.cmadmin.general.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
@@ -35,19 +36,19 @@ public final class NewTableModal extends AbstractModal {
 
     public NewTableModal() {
         super();
-        this.setTitle("New Table");
+        this.setTitle(Language.get("NewTableTitle"));
         this.getCenterPanel().setLayout(new FlowLayout(FlowLayout.CENTER, PADDING, PADDING));
 
-        this.textLabel = new Label(X_BUTTON_SIZE, "Number of Competitors", AppearanceRepository.LABELED_INPUT_APPEARANCE);
-        this.numberInput = new Box(new Rectangle(0, 0, N_BUTTON_WIDTH, BUTTON_HEIGHT), "", CustomColors.REDDISH);
-        this.competitionNameInput = new LabeledInput(BUTTON_WIDTH/2, "Name*");
-        this.competitionLocationInput = new LabeledInput(BUTTON_WIDTH/2, "Location*");
+        this.textLabel = new Label(X_BUTTON_SIZE, Language.get("NumberOfCompetitors"), AppearanceRepository.LABELED_INPUT_APPEARANCE);
+        this.numberInput = new Box(new Rectangle(0, 0, N_BUTTON_WIDTH, BUTTON_HEIGHT), "", CustomColors.MAIN_COLOR_1);
+        this.competitionNameInput = new LabeledInput(BUTTON_WIDTH/2, Language.get("CompetitionName"));
+        this.competitionLocationInput = new LabeledInput(BUTTON_WIDTH/2, Language.get("CompetitionLocation"));
         this.innerPanel = new Panel(new Dimension(this.getWidth()-(PADDING*2), this.getHeight()-(BUTTON_HEIGHT*4)), null, AppearanceRepository.LABELED_INPUT_APPEARANCE);
 
         this.decorationLabel = new Label(AppearanceRepository.NEW_TABLE_MODAL_DECORATION_APPEARANCE);
         this.decorationLabel.setLocation(0, this.innerPanel.getHeight()-this.decorationLabel.getHeight());
 
-        this.createButton = new Button(BUTTON_SIZE, "Create Empty", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.createButton = new Button(BUTTON_SIZE, Language.get("Create"), new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
         this.setUpComponent();
 
@@ -59,7 +60,7 @@ public final class NewTableModal extends AbstractModal {
             int numberOfCompetitors = Integer.parseInt(this.numberInput.getText());
 
             if (numberOfCompetitors < 4 || numberOfCompetitors > 128) {
-                this.numberInput.setBackground(CustomColors.REDDISH);
+                this.numberInput.setBackground(CustomColors.MAIN_COLOR_1);
                 return false;
             }
 
@@ -67,7 +68,7 @@ public final class NewTableModal extends AbstractModal {
             return true;
         }
         catch (Exception exception) {
-            this.numberInput.setBackground(CustomColors.REDDISH);
+            this.numberInput.setBackground(CustomColors.MAIN_COLOR_1);
 
             return false;
         }

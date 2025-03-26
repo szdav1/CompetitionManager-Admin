@@ -27,7 +27,7 @@ public final class Checkbox extends JButton implements ActionListener {
         this.setPreferredSize(N_BUTTON_SIZE);
         this.setFocusable(false);
         this.setContentAreaFilled(false);
-        this.setBorder(new LineBorder(CustomColors.ORANGEISH, 1));
+        this.setBorder(new LineBorder(CustomColors.MAIN_COLOR_2, 1));
         this.addActionListener(this);
     }
 

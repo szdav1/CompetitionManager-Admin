@@ -8,7 +8,7 @@ import com._2p1team.cmadmin.swing.override.graphics.configs.LinearGradientPaintC
 public final class HorizontalDividerAppearance extends Appearance {
 
     public HorizontalDividerAppearance() {
-        this.setBackgroundConfiguration(new BackgroundConfiguration(new LinearGradientPaintConfiguration(CustomColors.REDDISH, CustomColors.ORANGEISH)));
+        this.setBackgroundConfiguration(new BackgroundConfiguration(new LinearGradientPaintConfiguration(CustomColors.MAIN_COLOR_1, CustomColors.MAIN_COLOR_2)));
     }
 
 }
