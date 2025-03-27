@@ -7,6 +7,7 @@ import static com._2p1team.cmadmin.general.constants.SizeData.BUTTON_HEIGHT;
 import com._2p1team.cmadmin.general.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.scrollpanel.ScrollPanel;
 import com._2p1team.cmadmin.swing.override.components.text.area.TextArea;
+import com._2p1team.cmadmin.swing.override.components.text.field.TextField;
 
 import javax.swing.JComponent;
 import java.awt.Dimension;
@@ -16,7 +17,7 @@ import java.util.List;
 public final class ApiResponseModal extends AbstractModal {
 
     private final ScrollPanel scrollPanel;
-    private final TextArea messageField;
+    private final TextField messageArea;
 
     public ApiResponseModal() {
         super();
@@ -25,25 +26,29 @@ public final class ApiResponseModal extends AbstractModal {
         this.scrollPanel = new ScrollPanel(this.getCenterPanel().getPreferredSize(), new FlowLayout(FlowLayout.CENTER, 0, 0), AppearanceRepository.BASE_SCROLL_PANEL_APPEARANCE);
         this.scrollPanel.setScrollSpeed(BUTTON_HEIGHT);
 
-        this.messageField = new TextArea(new Dimension(this.scrollPanel.getWidth()-PADDING, this.scrollPanel.getHeight()-PADDING), "", AppearanceRepository.MODAL_BACKGROUND_APPEARANCE);
-        this.messageField.setLineWrap(true);
-        this.messageField.setWrapStyleWord(true);
-        this.messageField.setEditable(false);
+        this.messageArea = new TextField(new Dimension(this.scrollPanel.getWidth()/2, this.scrollPanel.getHeight()-PADDING), "", AppearanceRepository.MODAL_BACKGROUND_APPEARANCE);
+        this.messageArea.setEditable(false);
 
         this.setUpComponent();
+    }
+
+    public void appear(final String message) {
+        super.appear();
+        this.messageArea.setText(message);
+        this.scrollPanel.resizeViewPanel(this.messageArea.getWidth());
     }
 
     @Override
     public void appear() {
         super.appear();
-        this.messageField.setText(ResponseInterpreter.interpretResponse(FrameManager.getLastApiResponse()));
-        this.scrollPanel.resizeViewPanel(this.messageField.getWidth());
+        this.messageArea.setText(ResponseInterpreter.interpretResponse(FrameManager.getLastApiResponse()));
+        this.scrollPanel.resizeViewPanel(this.messageArea.getWidth());
     }
 
     @Override
     public void setUpComponent() {
-        this.scrollPanel.addComponent(this.messageField);
-        this.scrollPanel.resizeViewPanel(this.messageField.getWidth());
+        this.scrollPanel.addComponent(this.messageArea);
+        this.scrollPanel.resizeViewPanel(this.messageArea.getWidth());
 
         this.getCenterPanel().addComponent(this.scrollPanel);
     }

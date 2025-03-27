@@ -7,6 +7,8 @@ import com._2p1team.cmadmin.app.http.ResponseInterpreter;
 import com._2p1team.cmadmin.app.view.components.modals.AddCompetitorModal;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import com._2p1team.cmadmin.general.constants.CustomColors;
+import com._2p1team.cmadmin.general.constants.DatabaseLimitations;
+import com._2p1team.cmadmin.general.constants.Language;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 
 import java.awt.Color;
@@ -52,6 +54,11 @@ public final class AddCompetitorModalController extends AbstractController {
         String club = this.addCompetitorModal.getClubInput().getText();
         String birthDate = this.addCompetitorModal.getBirthDateInput().getText();
         CompetitorUploadModel competitor = new CompetitorUploadModel(name, club, birthDate);
+
+        if (HttpCommunicator.CompetitorApi.getAllCompetitors().size() >= DatabaseLimitations.MAX_SIZE) {
+            FrameManager.displayApiResponseModal(Language.get("DatabaseSizeExceeded"));
+            return;
+        }
 
         HttpResponse<String> response = HttpCommunicator.CompetitorApi.uploadCompetitor(competitor);
 

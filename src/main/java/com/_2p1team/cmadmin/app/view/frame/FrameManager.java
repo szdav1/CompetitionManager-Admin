@@ -231,6 +231,17 @@ public final class FrameManager {
         frame.setPreviousModal(frame.getApiResponseModal());
     }
 
+    public static void displayApiResponseModal(final String message) {
+        hideOpenedModal();
+
+        frame.getApiResponseModal()
+            .appear(message);
+
+        frame.setOpenedModal(frame.getApiResponseModal());
+        frame.setFrameState(FrameState.MODAL_OPENED);
+        frame.setPreviousModal(frame.getApiResponseModal());
+    }
+
     public static void displayAboutModal() {
         if (frame.getFrameState() != FrameState.DEFAULT)
             return;
