@@ -30,7 +30,7 @@ public final class DatabaseMenuButtonAppearance extends Appearance {
                 .build()
         );
 
-        this.setIconSet(new IconSet(Util.loadImageIcon("/assets/databaseIcon.png", DirectIconSize.sizeByFrame(1, 2))));
+        this.setIconSet(new IconSet(Util.loadImageIcon("/assets/databaseIcon.png", DirectIconSize.sizeByFrame(1, 2)), Util.loadImageIcon("/assets/databaseIcon2.png", DirectIconSize.sizeByFrame(1, 2))));
     }
 
 }

@@ -16,10 +16,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.swing.JComponent;
-import java.awt.Cursor;
-import java.awt.FlowLayout;
-import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,9 +43,9 @@ public final class TableElement extends Panel implements ComplexComponent, Contr
 
         this.topNumberLabel = new Label(new Rectangle(0, 0, N_BUTTON_WIDTH, BUTTON_HEIGHT), topIndexString, AppearanceRepository.BASE_LABEL_APPEARANCE);
         this.bottomNumberLabel = new Label(new Rectangle(0, BUTTON_HEIGHT*2, N_BUTTON_WIDTH, BUTTON_HEIGHT), bottomIndexString, AppearanceRepository.BASE_LABEL_APPEARANCE);
-        this.topCompetitorBox = new Box(new Rectangle(0, 0, W_BUTTON_WIDTH, BUTTON_HEIGHT), "");
-        this.bottomCompetitorBox = new Box(new Rectangle(0, BUTTON_HEIGHT*2, W_BUTTON_WIDTH, BUTTON_HEIGHT), "");
-        this.winnerCompetitorBox = new Box(new Rectangle(W_BUTTON_WIDTH, BUTTON_HEIGHT, W_BUTTON_WIDTH, BUTTON_HEIGHT), "");
+        this.topCompetitorBox = new Box(new Rectangle(0, 0, W_BUTTON_WIDTH, BUTTON_HEIGHT), "", Color.white);
+        this.bottomCompetitorBox = new Box(new Rectangle(0, BUTTON_HEIGHT*2, W_BUTTON_WIDTH, BUTTON_HEIGHT), "", Color.white);
+        this.winnerCompetitorBox = new Box(new Rectangle(W_BUTTON_WIDTH, BUTTON_HEIGHT, W_BUTTON_WIDTH, BUTTON_HEIGHT), "", Color.white);
         this.connector = new Panel();
 
         this.topParentElement = this;
@@ -75,7 +72,7 @@ public final class TableElement extends Panel implements ComplexComponent, Contr
         this.bottomNumberLabel = null;
         this.topCompetitorBox = new Box(new Rectangle(0, 0, W_BUTTON_WIDTH, BUTTON_HEIGHT), topParentElement.getWinnerCompetitorBox().getText());
         this.bottomCompetitorBox = new Box(new Rectangle(0, this.getHeight()-BUTTON_HEIGHT, W_BUTTON_WIDTH, BUTTON_HEIGHT), bottomParentElement.getWinnerCompetitorBox().getText());
-        this.winnerCompetitorBox = new Box(new Rectangle(W_BUTTON_WIDTH, (this.getHeight()/2)-(BUTTON_HEIGHT/2), W_BUTTON_WIDTH, BUTTON_HEIGHT), "", CustomColors.MAIN_COLOR_1);
+        this.winnerCompetitorBox = new Box(new Rectangle(W_BUTTON_WIDTH, (this.getHeight()/2)-(BUTTON_HEIGHT/2), W_BUTTON_WIDTH, BUTTON_HEIGHT), "", Color.white);
         this.connector = new Panel(new Rectangle(W_BUTTON_WIDTH, 0, 2, this.getHeight()), null, new Appearance(AppearanceRepository.VERTICAL_DIVIDER_APPEARANCE));
 
         this.topParentElement = topParentElement;

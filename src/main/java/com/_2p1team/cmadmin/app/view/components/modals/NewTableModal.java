@@ -60,7 +60,7 @@ public final class NewTableModal extends AbstractModal {
             int numberOfCompetitors = Integer.parseInt(this.numberInput.getText());
 
             if (numberOfCompetitors < 4 || numberOfCompetitors > 128) {
-                this.numberInput.setBackground(CustomColors.MAIN_COLOR_1);
+                this.numberInput.setBackground(CustomColors.MAIN_COLOR_2);
                 return false;
             }
 
@@ -68,7 +68,7 @@ public final class NewTableModal extends AbstractModal {
             return true;
         }
         catch (Exception exception) {
-            this.numberInput.setBackground(CustomColors.MAIN_COLOR_1);
+            this.numberInput.setBackground(CustomColors.MAIN_COLOR_2);
 
             return false;
         }

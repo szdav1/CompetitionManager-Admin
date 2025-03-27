@@ -11,7 +11,6 @@ import com._2p1team.cmadmin.app.view.interfaces.ControlComponent;
 import com._2p1team.cmadmin.app.view.interfaces.KeyControlledComponent;
 import com._2p1team.cmadmin.general.constants.AppearanceConstants;
 import static com._2p1team.cmadmin.general.constants.AppearanceConstants.PADDING;
-import com._2p1team.cmadmin.general.constants.CustomColors;
 import static com._2p1team.cmadmin.general.constants.SizeData.*;
 import com._2p1team.cmadmin.general.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.Container;
@@ -27,6 +26,8 @@ import lombok.SneakyThrows;
 
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Rectangle;
@@ -303,7 +304,7 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
         if (x-2 == y && y > 0) {
             box.setOpaque(true);
             box.setEnabled(false);
-            box.setBackground(CustomColors.MAIN_COLOR_2);
+            box.setBackground(Color.white);
         }
     }
 
@@ -354,7 +355,7 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
     private void createLayout() {
         for (int y = 0; y < this.numberOfCompetitors+1; y++) {
             for (int x = 0; x < this.rowLength; x++) {
-                Box box = new Box(this.calculateBoxBounds(x, y), "");
+                Box box = new Box(this.calculateBoxBounds(x, y), "", Color.white);
 
                 this.performBoxModifications(x, y, box);
                 this.boxes[y][x] = box;

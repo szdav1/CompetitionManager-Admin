@@ -1,6 +1,7 @@
 package com._2p1team.cmadmin.app.view.components.modals;
 
 import com._2p1team.cmadmin.app.control.components.modal.WindowClosingConfirmationModalController;
+import com._2p1team.cmadmin.general.constants.Language;
 import static com._2p1team.cmadmin.general.constants.SizeData.*;
 import com._2p1team.cmadmin.general.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
@@ -22,12 +23,12 @@ public final class WindowClosingConfirmationModal extends AbstractModal {
     private final Button cancelButton;
 
     public WindowClosingConfirmationModal() {
-        this.confirmLabel = new Label(new Rectangle((this.getWidth()/2)-(W_LABEL_WIDTH/2), 0, W_LABEL_WIDTH, BUTTON_HEIGHT), "Are you sure you want to exit?", AppearanceRepository.EXIT_CONFIRM_LABEL_APPEARANCE);
+        this.confirmLabel = new Label(new Rectangle((this.getWidth()/2)-(W_LABEL_WIDTH/2), 0, W_LABEL_WIDTH, BUTTON_HEIGHT), Language.get("ExitText"), AppearanceRepository.EXIT_CONFIRM_LABEL_APPEARANCE);
         this.innerPanel = new Panel(new Dimension(this.getWidth(), this.getHeight()-BUTTON_HEIGHT), null, AppearanceRepository.MODAL_TITLE_BAR_APPEARANCE);
         this.exitLabel = new Label(AppearanceRepository.EXIT_LABEL_APPEARANCE);
         this.exitLabel.setLocation((this.getWidth()/2)-(this.exitLabel.getWidth()/2), (this.getHeight()/2)-(this.exitLabel.getHeight()/2)-(BUTTON_HEIGHT*2));
-        this.confirmButton = new Button(BUTTON_SIZE, "Confirm [Enter]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
-        this.cancelButton = new Button(BUTTON_SIZE, "Cancel [Esc]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.confirmButton = new Button(BUTTON_SIZE, Language.get("Yes")+" [Enter]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.cancelButton = new Button(BUTTON_SIZE, Language.get("No")+" [Esc]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
         new WindowClosingConfirmationModalController(this);
         this.setUpComponent();

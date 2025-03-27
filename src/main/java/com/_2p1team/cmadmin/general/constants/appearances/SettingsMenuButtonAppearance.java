@@ -30,7 +30,7 @@ public final class SettingsMenuButtonAppearance extends Appearance {
                 .build()
         );
 
-        this.setIconSet(new IconSet(Util.loadImageIcon("/assets/settingsIcon.png", DirectIconSize.sizeByFrame(1, 2))));
+        this.setIconSet(new IconSet(Util.loadImageIcon("/assets/settingsIcon.png", DirectIconSize.sizeByFrame(1, 2)), Util.loadImageIcon("/assets/settingsIcon2.png", DirectIconSize.sizeByFrame(1, 2))));
     }
 
 }

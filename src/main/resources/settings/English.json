@@ -49,5 +49,13 @@
   "License": "License: Published under open-source licenses",
   "PoweredBy": "Powered by:",
   "DevelopedBy": "Developed by:",
-  "Built": "Built on:"
+  "Built": "Built on:",
+
+  "ExitText": "Are you sure you want to exit?",
+  "Exit": "Exit",
+
+  "Yes": "Yes",
+  "No": "No",
+
+  "ConnectionError": "Connection with server couldn't be established"
 }

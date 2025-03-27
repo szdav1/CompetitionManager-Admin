@@ -1,18 +1,13 @@
 package com._2p1team.cmadmin.general.constants;
 
-import com._2p1team.cmadmin.general.util.Util;
 import com._2p1team.cmadmin.swing.override.graphics.configs.BorderConfiguration;
 import com._2p1team.cmadmin.swing.override.graphics.configs.LinearGradientPaintConfiguration;
 
 import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Point;
-import java.awt.Toolkit;
 
 public final class AppearanceConstants {
 
     public static final int BORDER_RADIUS = SizeData.FRAME_WIDTH*2/100;
-    public static final int S_BORDER_RADIUS = SizeData.FRAME_WIDTH/200;
     public static final int SCROLL_BAR_RADIUS = SizeData.FRAME_WIDTH/100;
     public static final int PADDING = SizeData.FRAME_WIDTH/125;
 
@@ -35,8 +30,6 @@ public final class AppearanceConstants {
         0,
         new LinearGradientPaintConfiguration(
             CustomColors.MAIN_COLOR_1,
-            CustomColors.OPAQUE,
-            CustomColors.OPAQUE,
             CustomColors.MAIN_COLOR_2,
             CustomColors.MAIN_COLOR_1
         )
@@ -51,8 +44,5 @@ public final class AppearanceConstants {
             CustomColors.MAIN_COLOR_1
         )
     );
-
-    public static final Cursor DISABLED_CURSOR = Toolkit.getDefaultToolkit()
-        .createCustomCursor(Util.loadImageIcon("/assets/disabledIcon.png").getImage(), new Point(0, 0), "DisabledCursor");
 
 }
