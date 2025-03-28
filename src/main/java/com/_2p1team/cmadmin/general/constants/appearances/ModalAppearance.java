@@ -9,7 +9,7 @@ import com._2p1team.cmadmin.swing.override.graphics.configs.SimplePaintConfigura
 public final class ModalAppearance extends Appearance {
 
     public ModalAppearance() {
-        this.setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.DARK_OPAQUE_BLACK)));
+        this.setBackgroundConfiguration(new BackgroundConfiguration(new SimplePaintConfiguration(CustomColors.OPAQUE_BLACK)));
         this.setBorderConfiguration(AppearanceConstants.BASE_BORDER_CONFIGURATION);
     }
 

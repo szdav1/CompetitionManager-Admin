@@ -15,6 +15,7 @@ import com._2p1team.cmadmin.swing.override.graphics.Appearance;
 import lombok.Getter;
 
 import javax.swing.JComponent;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Rectangle;
@@ -72,6 +73,14 @@ public final class NewTableModal extends AbstractModal {
 
             return false;
         }
+    }
+
+    @Override
+    public void disappear() {
+        super.disappear();
+        this.numberInput.setBackground(Color.black);
+        this.competitionNameInput.getInput().setBackground(Color.black);
+        this.competitionLocationInput.getInput().setBackground(Color.black);
     }
 
     @Override

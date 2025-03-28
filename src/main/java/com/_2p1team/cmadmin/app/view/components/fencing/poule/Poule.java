@@ -26,7 +26,6 @@ import lombok.SneakyThrows;
 
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
-import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -69,7 +68,6 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
     private final Label dateLabel;
     private final Label pouleNumberLabel;
     private final TextField refereeLabel;
-    private final Button finishButton;
 
     private final PouleController controller;
 
@@ -140,7 +138,6 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
         this.dateLabel = new Label(BUTTON_SIZE, String.valueOf(LocalDate.now()), new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
         this.pouleNumberLabel = new Label(BUTTON_SIZE, "Poule No.: ", new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
         this.refereeLabel = new TextField(new Dimension(BUTTON_WIDTH*2, BUTTON_HEIGHT), "Referee: ", new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
-        this.finishButton = new Button(BUTTON_SIZE, "Finish", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
         this.setUpComponent();
         this.controller = new PouleController(this);
@@ -380,7 +377,6 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
         this.dataPanelRightContainer.addComponent(this.pouleNumberLabel);
         this.dataPanelRightContainer.addComponent(this.dateLabel);
         this.dataPanelRightContainer.addComponent(this.refereeLabel);
-        this.dataPanelRightContainer.addComponent(this.finishButton);
 
         this.dataPanel.addComponent(this.dataPanelLeftContainer);
         this.dataPanel.addComponent(this.dataPanelRightContainer);

@@ -21,6 +21,7 @@ import lombok.Getter;
 
 import javax.swing.JComponent;
 import javax.swing.SwingConstants;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -126,6 +127,8 @@ public final class NewPouleModal extends AbstractModal {
         this.participatingCompetitorsScrollPanel.getContents().clear();
         this.participatingCompetitorsScrollPanel.addComponent(this.participatingHeader);
         this.participatingCompetitorsScrollPanel.resizeViewPanel(0);
+        this.competitionNameInput.getInput().setBackground(Color.black);
+        this.competitionLocationInput.getInput().setBackground(Color.black);
     }
 
     @Override

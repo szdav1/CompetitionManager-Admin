@@ -18,6 +18,7 @@ import lombok.Getter;
 
 import javax.swing.JComponent;
 import javax.swing.SwingConstants;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -95,22 +96,22 @@ public final class UpdateCompetitorModal extends AbstractModal {
 
     public boolean checkInputData() {
         if (this.idInput.getText().isBlank())
-            this.idInput.getInput().setBackground(CustomColors.MAIN_COLOR_1);
+            this.idInput.getInput().setBackground(CustomColors.MAIN_COLOR_2);
 
         if (this.nameInput.getText().isBlank())
-            this.nameInput.getInput().setBackground(CustomColors.MAIN_COLOR_1);
+            this.nameInput.getInput().setBackground(CustomColors.MAIN_COLOR_2);
 
         if (this.clubInput.getText().isBlank())
-            this.clubInput.getInput().setBackground(CustomColors.MAIN_COLOR_1);
+            this.clubInput.getInput().setBackground(CustomColors.MAIN_COLOR_2);
 
         if (this.birthDateInput.getText().isBlank())
-            this.birthDateInput.getInput().setBackground(CustomColors.MAIN_COLOR_1);
+            this.birthDateInput.getInput().setBackground(CustomColors.MAIN_COLOR_2);
 
         try {
             LocalDate.parse(this.birthDateInput.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         }
         catch (Exception exception) {
-            this.birthDateInput.getInput().setBackground(CustomColors.MAIN_COLOR_1);
+            this.birthDateInput.getInput().setBackground(CustomColors.MAIN_COLOR_2);
             return true;
         }
 
@@ -144,6 +145,10 @@ public final class UpdateCompetitorModal extends AbstractModal {
 
         this.competitorDisplays.clear();
         this.scrollPanel.getViewPanel().removeAll();
+        this.idInput.getInput().setBackground(Color.black);
+        this.nameInput.getInput().setBackground(Color.black);
+        this.clubInput.getInput().setBackground(Color.black);
+        this.birthDateInput.getInput().setBackground(Color.black);
     }
 
     @Override

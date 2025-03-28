@@ -33,7 +33,6 @@ public final class PouleController extends AbstractController {
 
     private final Box[][] pouleBoxes;
     private final Button insertButton;
-    private final Button finishButton;
 
     private final LabeledInput competitor1;
     private final LabeledInput competitor2;
@@ -48,7 +47,6 @@ public final class PouleController extends AbstractController {
 
         this.pouleBoxes = this.poule.getBoxes();
         this.insertButton = this.poule.getInsertDataButton();
-        this.finishButton = this.poule.getFinishButton();
 
         this.competitor1 = this.poule.getCompetitor1IndexInput();
         this.competitor2 = this.poule.getCompetitor2IndexInput();
@@ -68,7 +66,6 @@ public final class PouleController extends AbstractController {
         }
 
         this.insertButton.addActionListener(this);
-        this.finishButton.addActionListener(this);
 
         this.competitor1.getInput().addKeyListener(this);
         this.competitor2.getInput().addKeyListener(this);
@@ -266,9 +263,6 @@ public final class PouleController extends AbstractController {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.insertButton))
             this.insertManualInputData();
-
-        else if (e.getSource().equals(this.finishButton))
-            this.poule.calculateCompetitorData();
     }
 
     @Override
