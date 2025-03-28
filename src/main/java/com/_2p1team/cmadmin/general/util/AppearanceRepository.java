@@ -24,6 +24,10 @@ public final class AppearanceRepository {
 
     public static final Appearance TITLE_TEXT_APPEARANCE = new TitleTextAppearance();
 
+    public static final Appearance BUILD_LABEL_APPEARANCE = new BuildLabelAppearance();
+
+    public static final Appearance POWERED_BY_LABEL_APPEARANCE = new PoweredByLabelAppearance();
+
     public static final Appearance FILE_MENU_BUTTON_APPEARANCE = new FileMenuButtonAppearance();
 
     public static final Appearance DATABASE_MENU_BUTTON_APPEARANCE = new DatabaseMenuButtonAppearance();
@@ -79,5 +83,25 @@ public final class AppearanceRepository {
     public static final Appearance COMPETITION_DISPLAY_APPEARANCE = new CompetitionDisplayAppearance();
 
     public static final Appearance LOGO_LABEL_APPEARANCE = new LogoLabelAppearance();
+
+    public static final Appearance COMPETITION_BUTTON_APPEARANCE = new CompetitionButtonAppearance();
+
+    public static final Appearance POULE_BUTTON_APPEARANCE = new PouleButtonAppearance();
+
+    public static final Appearance TABLE_BUTTON_APPEARANCE = new TableButtonAppearance();
+
+    public static final Appearance VIEW_BUTTON_APPEARANCE = new ViewButtonAppearance();
+
+    public static final Appearance ADD_BUTTON_APPEARANCE = new AddButtonAppearance();
+
+    public static final Appearance UPDATE_BUTTON_APPEARANCE = new UpdateButtonAppearance();
+
+    public static final Appearance DELETE_BUTTON_APPEARANCE = new DeleteButtonAppearance();
+
+    public static final Appearance WINDOW_BUTTON_APPEARANCE = new WindowButtonAppearance();
+
+    public static final Appearance LANGUAGE_BUTTON_APPEARANCE = new LanguageButtonAppearance();
+
+    public static final Appearance ABOUT_BUTTON_APPEARANCE = new AboutButtonAppearance();
 
 }

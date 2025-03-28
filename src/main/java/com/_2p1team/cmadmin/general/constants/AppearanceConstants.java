@@ -29,9 +29,9 @@ public final class AppearanceConstants {
         1,
         0,
         new LinearGradientPaintConfiguration(
-            CustomColors.MAIN_COLOR_1,
-            CustomColors.MAIN_COLOR_2,
-            CustomColors.MAIN_COLOR_1
+            CustomColors.MAIN_COLOR_2
+//            CustomColors.MAIN_COLOR_2,
+//            CustomColors.MAIN_COLOR_1
         )
     );
 

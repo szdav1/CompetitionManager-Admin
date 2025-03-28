@@ -194,6 +194,8 @@ public final class AppFrame extends AbstractFrame {
     }
 
     private void createFrameUI() {
+        this.footerPanel.setData();
+
         this.centerPanel.addComponent(this.pouleCompetitionPanel);
         this.pouleCompetitionPanel.setVisible(false);
 

@@ -30,7 +30,7 @@ public final class FileMenuButtonAppearance extends Appearance {
                 .build()
         );
 
-        this.setIconSet(new IconSet(Util.loadImageIcon("/assets/fileIcon.png", DirectIconSize.sizeByFrame(1, 2)), Util.loadImageIcon("/assets/fileIcon2.png", DirectIconSize.sizeByFrame(1, 2))));
+        this.setIconSet(new IconSet(Util.loadImageIcon("/assets/fileIcon2.png", DirectIconSize.sizeByFrame(1, 2)), Util.loadImageIcon("/assets/fileIcon.png", DirectIconSize.sizeByFrame(1, 2))));
     }
 
 }

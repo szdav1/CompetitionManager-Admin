@@ -32,10 +32,10 @@ public final class AboutModal extends AbstractModal {
         this.logoLabel = new Label(new Appearance(AppearanceRepository.LOGO_LABEL_APPEARANCE));
         this.titleLabel = new Label(new Dimension(this.getWidth(), BUTTON_HEIGHT), Language.get("ApplicationTitle"), AppearanceRepository.LABELED_INPUT_APPEARANCE);
         this.divider = new Panel(new Dimension(this.getWidth()/2, 1), AppearanceRepository.HOLLOW_HORIZONTAL_DIVIDER_APPEARANCE);
-        this.buildNumberLabel = new Label(new Dimension(this.getWidth(), BUTTON_HEIGHT), "", AppearanceRepository.LABELED_INPUT_APPEARANCE);
+        this.buildNumberLabel = new Label(new Dimension(this.getWidth(), BUTTON_HEIGHT), "", AppearanceRepository.BUILD_LABEL_APPEARANCE);
         this.versionNumberLabel = new Label(new Dimension(this.getWidth(), BUTTON_HEIGHT), AppFrame.VERSION, AppearanceRepository.LABELED_INPUT_APPEARANCE);
         this.licenseLabel = new Label(new Dimension(this.getWidth(), BUTTON_HEIGHT), Language.get("License"), AppearanceRepository.LABELED_INPUT_APPEARANCE);
-        this.poweredByLabel = new Label(new Dimension(this.getWidth(), BUTTON_HEIGHT), Language.get("PoweredBy")+" Java, Swing", AppearanceRepository.LABELED_INPUT_APPEARANCE);
+        this.poweredByLabel = new Label(new Dimension(this.getWidth(), BUTTON_HEIGHT), Language.get("PoweredBy")+" Java, Swing", AppearanceRepository.POWERED_BY_LABEL_APPEARANCE);
         this.developedByLabel = new Label(new Dimension(this.getWidth(), BUTTON_HEIGHT), Language.get("DevelopedBy")+" 2+1 team", AppearanceRepository.LABELED_INPUT_APPEARANCE);
 
         this.setUpComponent();
@@ -43,7 +43,7 @@ public final class AboutModal extends AbstractModal {
     }
 
     public void setUpBuildDisplay() {
-        this.buildNumberLabel.setText(String.format("Build: %s, %s %s", FrameManager.getBuild(), Language.get("Built"), FrameManager.getBuildDate()));
+        this.buildNumberLabel.setText(String.format("LTS Build: %s, %s %s", FrameManager.getBuild(), Language.get("Built"), FrameManager.getBuildDate()));
     }
 
     @Override
