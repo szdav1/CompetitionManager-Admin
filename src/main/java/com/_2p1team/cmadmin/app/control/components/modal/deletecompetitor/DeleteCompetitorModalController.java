@@ -1,4 +1,4 @@
-package com._2p1team.cmadmin.app.control.components.modal;
+package com._2p1team.cmadmin.app.control.components.modal.deletecompetitor;
 
 import com._2p1team.cmadmin.app.control.AbstractController;
 import com._2p1team.cmadmin.app.http.HttpCommunicator;

@@ -37,4 +37,26 @@ public abstract class AbstractReader {
         return languageValues;
     }
 
+    public Map<String, String> rawRead(final String fileName) {
+        final Map<String, String> languageValues = new HashMap<>();
+        StringBuilder data = new StringBuilder();
+
+        try (RandomAccessFile reader = new RandomAccessFile(new File(fileName), "r")) {
+            String line = reader.readLine();
+
+            while (line != null) {
+                data.append(line);
+                line = reader.readLine();
+            }
+        }
+        catch (Exception exception) {
+            BeforeLaunchExceptionQueue.setExceptionType(BeforeLaunchExceptionType.RESOURCE_NOT_FOUND_EXCEPTION);
+        }
+
+        JsonObject jsonObject = this.converter.fromJson(data.toString(), JsonObject.class);
+        jsonObject.entrySet().forEach(entry -> languageValues.put(entry.getKey(), entry.getValue().getAsString()));
+
+        return languageValues;
+    }
+
 }

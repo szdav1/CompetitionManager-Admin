@@ -1,4 +1,4 @@
-package com._2p1team.cmadmin.app.control.components.modal;
+package com._2p1team.cmadmin.app.control.components.modal.about;
 
 import com._2p1team.cmadmin.app.control.AbstractKeyController;
 import com._2p1team.cmadmin.app.view.components.modals.AboutModal;

@@ -1,6 +1,6 @@
 package com._2p1team.cmadmin.app.view.components.modals;
 
-import com._2p1team.cmadmin.app.control.components.modal.AboutModalKeyController;
+import com._2p1team.cmadmin.app.control.components.modal.about.AboutModalKeyController;
 import com._2p1team.cmadmin.app.view.frame.AppFrame;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import com._2p1team.cmadmin.general.constants.Language;

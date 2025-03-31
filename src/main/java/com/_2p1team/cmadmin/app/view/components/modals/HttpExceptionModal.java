@@ -1,6 +1,6 @@
 package com._2p1team.cmadmin.app.view.components.modals;
 
-import com._2p1team.cmadmin.app.control.components.modal.ExceptionModalController;
+import com._2p1team.cmadmin.app.control.components.modal.exception.ExceptionModalController;
 import com._2p1team.cmadmin.general.constants.Language;
 import static com._2p1team.cmadmin.general.constants.SizeData.*;
 import com._2p1team.cmadmin.general.util.AppearanceRepository;

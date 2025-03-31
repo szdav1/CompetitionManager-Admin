@@ -1,6 +1,6 @@
 package com._2p1team.cmadmin.app.view.components.modals;
 
-import com._2p1team.cmadmin.app.control.components.modal.DeleteCompetitorModalController;
+import com._2p1team.cmadmin.app.control.components.modal.deletecompetitor.DeleteCompetitorModalController;
 import com._2p1team.cmadmin.app.http.HttpCommunicator;
 import com._2p1team.cmadmin.app.view.components.competitor.CompetitorDisplay;
 import com._2p1team.cmadmin.app.view.components.input.LabeledInput;

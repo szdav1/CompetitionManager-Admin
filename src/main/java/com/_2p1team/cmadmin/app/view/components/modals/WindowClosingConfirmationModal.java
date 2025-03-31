@@ -1,6 +1,6 @@
 package com._2p1team.cmadmin.app.view.components.modals;
 
-import com._2p1team.cmadmin.app.control.components.modal.WindowClosingConfirmationModalController;
+import com._2p1team.cmadmin.app.control.components.modal.windowclosing.WindowClosingConfirmationModalController;
 import com._2p1team.cmadmin.general.constants.Language;
 import static com._2p1team.cmadmin.general.constants.SizeData.*;
 import com._2p1team.cmadmin.general.util.AppearanceRepository;

@@ -1,6 +1,6 @@
 package com._2p1team.cmadmin.app.view.components.modals;
 
-import com._2p1team.cmadmin.app.control.components.modal.NewTableModalController;
+import com._2p1team.cmadmin.app.control.components.modal.newtable.NewTableModalController;
 import com._2p1team.cmadmin.app.view.components.fencing.Box;
 import com._2p1team.cmadmin.app.view.components.input.LabeledInput;
 import static com._2p1team.cmadmin.general.constants.AppearanceConstants.PADDING;

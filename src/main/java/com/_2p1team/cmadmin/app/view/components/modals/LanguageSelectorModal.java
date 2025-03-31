@@ -1,6 +1,6 @@
 package com._2p1team.cmadmin.app.view.components.modals;
 
-import com._2p1team.cmadmin.app.control.components.modal.LanguageSelectorModalController;
+import com._2p1team.cmadmin.app.control.components.modal.languageselector.LanguageSelectorModalController;
 
 import javax.swing.JComponent;
 import java.util.List;

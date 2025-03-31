@@ -1,4 +1,4 @@
-package com._2p1team.cmadmin.app.control.components.modal;
+package com._2p1team.cmadmin.app.control.components.modal.newtable;
 
 import com._2p1team.cmadmin.app.control.AbstractKeyController;
 import com._2p1team.cmadmin.app.dto.competition.Competition;
