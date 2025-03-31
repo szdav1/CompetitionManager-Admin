@@ -89,8 +89,7 @@ public final class TitleBarController extends AbstractController {
                     // Settings menu
                     case 7 -> {
                     }
-                    case 8 -> {
-                    }
+                    case 8 -> FrameManager.displayLanguageSelectorModal();
                     case 9 -> FrameManager.displayAboutModal();
                 }
             }

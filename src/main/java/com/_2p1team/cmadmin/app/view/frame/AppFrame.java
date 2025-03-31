@@ -58,6 +58,7 @@ public final class AppFrame extends AbstractFrame {
     private final DeleteCompetitorModal deleteCompetitorModal;
     private final HttpExceptionModal httpConnectionHttpExceptionModal;
     private final ApiResponseModal apiResponseModal;
+    private final LanguageSelectorModal languageSelectorModal;
     private final AboutModal aboutModal;
 
     private final RootPanel rootPanel;
@@ -101,6 +102,7 @@ public final class AppFrame extends AbstractFrame {
         this.deleteCompetitorModal = null;
         this.httpConnectionHttpExceptionModal = null;
         this.apiResponseModal = null;
+        this.languageSelectorModal = null;
         this.aboutModal = null;
 
         this.rootPanel = new RootPanel(MODAL_WIDTH, MODAL_HEIGHT);
@@ -153,6 +155,7 @@ public final class AppFrame extends AbstractFrame {
         this.deleteCompetitorModal = new DeleteCompetitorModal();
         this.httpConnectionHttpExceptionModal = new HttpExceptionModal();
         this.apiResponseModal = new ApiResponseModal();
+        this.languageSelectorModal = new LanguageSelectorModal();
         this.aboutModal = new AboutModal();
 
         this.rootPanel = new RootPanel();
@@ -221,6 +224,7 @@ public final class AppFrame extends AbstractFrame {
         this.rootPanel.addComponent(this.deleteCompetitorModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.httpConnectionHttpExceptionModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.apiResponseModal.getBackgroundPanel(), Position.HIGH);
+        this.rootPanel.addComponent(this.languageSelectorModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.aboutModal.getBackgroundPanel(), Position.HIGH);
 
         this.aboutModal.setUpBuildDisplay();
@@ -234,6 +238,7 @@ public final class AppFrame extends AbstractFrame {
         this.deleteCompetitorModal.disappear();
         this.httpConnectionHttpExceptionModal.disappear();
         this.apiResponseModal.disappear();
+        this.languageSelectorModal.disappear();
         this.aboutModal.disappear();
 
         this.addComponent(this.rootPanel);

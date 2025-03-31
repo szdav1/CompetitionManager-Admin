@@ -3,6 +3,7 @@ package com._2p1team.cmadmin.app.view.frame.parts;
 import com._2p1team.cmadmin.app.view.frame.AppFrame;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import com._2p1team.cmadmin.app.view.interfaces.ComplexComponent;
+import com._2p1team.cmadmin.general.constants.Language;
 import static com._2p1team.cmadmin.general.constants.SizeData.*;
 import com._2p1team.cmadmin.general.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
@@ -28,14 +29,14 @@ public final class FooterPanel extends Panel implements ComplexComponent {
         this.versionLabel = new Label(X_BUTTON_SIZE, AppFrame.VERSION, AppearanceRepository.TITLE_TEXT_APPEARANCE);
         this.buildLabel = new Label(X_BUTTON_SIZE, "", AppearanceRepository.BUILD_LABEL_APPEARANCE);
         this.buildDateLabel = new Label(X_BUTTON_SIZE, "", AppearanceRepository.LABELED_INPUT_APPEARANCE);
-        this.poweredByLabel = new Label(X_BUTTON_SIZE, "Powered by: Swing", AppearanceRepository.POWERED_BY_LABEL_APPEARANCE);
+        this.poweredByLabel = new Label(X_BUTTON_SIZE, Language.get("PoweredBy")+" Swing", AppearanceRepository.POWERED_BY_LABEL_APPEARANCE);
 
         this.setUpComponent();
     }
 
     public void setData() {
         this.buildLabel.setText("Build: "+FrameManager.getBuild());
-        this.buildDateLabel.setText("LTS Build Date: "+FrameManager.getBuildDate());
+        this.buildDateLabel.setText("LTS "+Language.get("Built")+" "+FrameManager.getBuildDate());
     }
 
     @Override

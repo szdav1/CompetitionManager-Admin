@@ -242,6 +242,18 @@ public final class FrameManager {
         frame.setPreviousModal(frame.getApiResponseModal());
     }
 
+    public static void displayLanguageSelectorModal() {
+        if (frame.getFrameState() != FrameState.DEFAULT)
+            return;
+
+        frame.getLanguageSelectorModal()
+            .appear();
+
+        frame.setOpenedModal(frame.getLanguageSelectorModal());
+        frame.setFrameState(FrameState.MODAL_OPENED);
+        frame.setPreviousModal(frame.getLanguageSelectorModal());
+    }
+
     public static void displayAboutModal() {
         if (frame.getFrameState() != FrameState.DEFAULT)
             return;

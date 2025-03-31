@@ -10,7 +10,6 @@ public final class AdminApp {
 
     // TODO: Implement API connection test before launch
     // TODO: Implement login
-    // TODO: Implement error display in new table and new poule modals
     public static void main(String[] args) {
         ResourceManager.setProductionResourceRoot("main");
         PostRunDataProcessor.start();
