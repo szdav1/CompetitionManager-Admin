@@ -1,0 +1,65 @@
+{
+  "ApplicationTitle": "CompetitionManager",
+  "Version": "Version",
+
+  "FileMenu": "Datei",
+  "SettingsMenu": "Einstellungen",
+  "DatabaseMenu": "Datenbank",
+
+  "Competition": "Wettbewerb",
+  "Poule": "Poule",
+  "Table": "Tableau",
+
+  "ViewDatabase": "Sicht",
+  "AddCompetitor": "Mitbewerber hinzufugen",
+  "UpdateCompetitor": "Mitbewerber aktualisieren",
+  "RemoveCompetitor": "Mitbewerber loschen",
+
+  "Window": "Fenster",
+  "Settings": "Einstellungen",
+  "About": "Um",
+  "Language": "Sprache",
+
+  "NewCompetitionTitle": "Neuer Wettbewerb",
+  "NewPouleTitle": "Neu Poule",
+  "NewTableTitle": "Neu Tableau",
+  "ViewCompetitorsTitle": "Konkurrenten ansehen",
+  "AddCompetitorTitle": "Mitbewerber hinzufugen",
+  "UpdateCompetitorTitle": "Update-Konkurrent",
+  "DeleteCompetitorTitle": "Mitbewerber loschen",
+  "SelectLanguage": "Sprache auswahlen",
+
+  "Dashboard": "Suchen",
+  "RestartInfo": "Diese Anderungen werden erst nach einem Neustart der Anwendung wirksam",
+
+  "Name": "Name",
+  "Club": "Verein",
+  "BirthDate": "Geburtsdatum",
+
+  "Search": "Suchen",
+  "Add": "Hinzufugen",
+  "Remove": "Entfernen",
+  "Create": "Erstellen",
+  "Update": "Aktualisieren",
+  "Delete": "Loschen",
+
+  "CompetitionName": "*Wettbewerbsname",
+  "CompetitionLocation": "*Wettbewerbsort",
+
+  "ParticipatingCompetitors": "Teilnehmende Wettbewerber",
+  "NumberOfCompetitors": "Anzahl der Teilnehmer",
+
+  "License": "Lizenz: Veroffentlicht unter Open-Source-Lizenzen",
+  "PoweredBy": "Angetrieben von:",
+  "DevelopedBy": "Entwickelt von:",
+  "Built": "Aufbauend auf:",
+
+  "ExitText": "Mochten Sie wirklich beenden?",
+  "Exit": "Ausfahrt",
+
+  "Yes": "Ja",
+  "No": "Nein",
+
+  "ConnectionError": "Verbindung zum Server konnte nicht hergestellt werden",
+  "DatabaseSizeExceeded": "Die Datenbankkapazitat ist maximal"
+}

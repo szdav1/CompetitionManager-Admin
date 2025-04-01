@@ -36,7 +36,7 @@ public final class LanguageSelectorModal extends AbstractModal {
             AppearanceRepository.BUILD_LABEL_APPEARANCE
         );
 
-        this.options = List.of(new LanguageOption("English", "English"), new LanguageOption("Magyar", "Hun"));
+        this.options = List.of(new LanguageOption("English", "English"), new LanguageOption("German", "German"), new LanguageOption("Magyar", "Hun"));
 
         this.setUpSelector(this.options);
         this.setUpComponent();
