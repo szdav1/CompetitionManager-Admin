@@ -1,6 +1,6 @@
 package com._2p1team.cmadmin.app.view.components.modals;
 
-import com._2p1team.cmadmin.app.control.components.modal.exception.ExceptionModalController;
+import com._2p1team.cmadmin.app.control.components.modal.exception.http.HttpExceptionModalController;
 import com._2p1team.cmadmin.general.constants.Language;
 import static com._2p1team.cmadmin.general.constants.SizeData.*;
 import com._2p1team.cmadmin.general.util.AppearanceRepository;
@@ -32,9 +32,9 @@ public final class HttpExceptionModal extends AbstractModal {
         this.exceptionMessageLabel = new Label(XL_BUTTON_SIZE, Language.get("ConnectionError"), AppearanceRepository.HTTP_EXCEPTION_MESSAGE_APPEARANCE);
         this.exitButton = new Button(W_BUTTON_SIZE, Language.get("Exit")+" [Enter]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
-//        this.getActionMap().clear();
+        this.getActionMap().clear();
 
-        new ExceptionModalController(this);
+        new HttpExceptionModalController(this);
         this.setUpComponent();
     }
 

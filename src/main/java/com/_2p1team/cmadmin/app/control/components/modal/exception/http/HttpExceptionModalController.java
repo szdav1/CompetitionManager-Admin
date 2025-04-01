@@ -1,4 +1,4 @@
-package com._2p1team.cmadmin.app.control.components.modal.exception;
+package com._2p1team.cmadmin.app.control.components.modal.exception.http;
 
 import com._2p1team.cmadmin.app.control.AbstractController;
 import com._2p1team.cmadmin.app.view.components.modals.HttpExceptionModal;
@@ -7,12 +7,12 @@ import com._2p1team.cmadmin.swing.override.components.button.Button;
 
 import java.awt.event.ActionEvent;
 
-public final class ExceptionModalController extends AbstractController {
+public final class HttpExceptionModalController extends AbstractController {
 
-    public ExceptionModalController(final HttpExceptionModal component) {
+    public HttpExceptionModalController(final HttpExceptionModal component) {
         super(component);
 
-        new ExceptionModalKeyController(component);
+        new HttpExceptionModalKeyController(component);
     }
 
     @Override

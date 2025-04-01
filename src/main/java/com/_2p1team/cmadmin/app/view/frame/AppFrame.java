@@ -57,6 +57,7 @@ public final class AppFrame extends AbstractFrame {
     private final UpdateCompetitorModal updateCompetitorModal;
     private final DeleteCompetitorModal deleteCompetitorModal;
     private final HttpExceptionModal httpConnectionHttpExceptionModal;
+    private final ResourcesNotFoundExceptionModal resourcesNotFoundExceptionModal;
     private final ApiResponseModal apiResponseModal;
     private final LanguageSelectorModal languageSelectorModal;
     private final AboutModal aboutModal;
@@ -101,6 +102,7 @@ public final class AppFrame extends AbstractFrame {
         this.updateCompetitorModal = null;
         this.deleteCompetitorModal = null;
         this.httpConnectionHttpExceptionModal = null;
+        this.resourcesNotFoundExceptionModal = null;
         this.apiResponseModal = null;
         this.languageSelectorModal = null;
         this.aboutModal = null;
@@ -154,6 +156,7 @@ public final class AppFrame extends AbstractFrame {
         this.updateCompetitorModal = new UpdateCompetitorModal();
         this.deleteCompetitorModal = new DeleteCompetitorModal();
         this.httpConnectionHttpExceptionModal = new HttpExceptionModal();
+        this.resourcesNotFoundExceptionModal = new ResourcesNotFoundExceptionModal();
         this.apiResponseModal = new ApiResponseModal();
         this.languageSelectorModal = new LanguageSelectorModal();
         this.aboutModal = new AboutModal();
@@ -192,7 +195,7 @@ public final class AppFrame extends AbstractFrame {
     private void handleBeforeLaunchQueuedException() {
         switch (BeforeLaunchExceptionQueue.getExceptionType()) {
             case HTTP_COMMUNICATION_EXCEPTION -> FrameManager.displayHttpConnectionExceptionModal();
-            case RESOURCE_NOT_FOUND_EXCEPTION -> {} // TODO: Implement resource not found exception modal
+            case RESOURCE_NOT_FOUND_EXCEPTION -> FrameManager.displayResourceNotFoundExceptionModal();
         }
     }
 
@@ -223,6 +226,7 @@ public final class AppFrame extends AbstractFrame {
         this.rootPanel.addComponent(this.updateCompetitorModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.deleteCompetitorModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.httpConnectionHttpExceptionModal.getBackgroundPanel(), Position.HIGH);
+        this.rootPanel.addComponent(this.resourcesNotFoundExceptionModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.apiResponseModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.languageSelectorModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.aboutModal.getBackgroundPanel(), Position.HIGH);
@@ -237,6 +241,7 @@ public final class AppFrame extends AbstractFrame {
         this.updateCompetitorModal.disappear();
         this.deleteCompetitorModal.disappear();
         this.httpConnectionHttpExceptionModal.disappear();
+        this.resourcesNotFoundExceptionModal.disappear();
         this.apiResponseModal.disappear();
         this.languageSelectorModal.disappear();
         this.aboutModal.disappear();

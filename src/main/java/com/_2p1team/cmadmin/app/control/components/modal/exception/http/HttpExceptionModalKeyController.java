@@ -1,4 +1,4 @@
-package com._2p1team.cmadmin.app.control.components.modal.exception;
+package com._2p1team.cmadmin.app.control.components.modal.exception.http;
 
 import com._2p1team.cmadmin.app.control.AbstractKeyController;
 import com._2p1team.cmadmin.app.view.components.modals.HttpExceptionModal;
@@ -11,9 +11,9 @@ import javax.swing.KeyStroke;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
-public final class ExceptionModalKeyController extends AbstractKeyController {
+public final class HttpExceptionModalKeyController extends AbstractKeyController {
 
-    public ExceptionModalKeyController(final HttpExceptionModal keyControlledComponent) {
+    public HttpExceptionModalKeyController(final HttpExceptionModal keyControlledComponent) {
         super(keyControlledComponent);
 
         keyControlledComponent.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)

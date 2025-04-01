@@ -220,6 +220,18 @@ public final class FrameManager {
         frame.setPreviousModal(frame.getHttpConnectionHttpExceptionModal());
     }
 
+    public static void displayResourceNotFoundExceptionModal() {
+        if (frame.getFrameState() != FrameState.DEFAULT)
+            return;
+
+        frame.getResourcesNotFoundExceptionModal()
+            .appear();
+
+        frame.setOpenedModal(frame.getResourcesNotFoundExceptionModal());
+        frame.setFrameState(FrameState.MODAL_OPENED);
+        frame.setPreviousModal(frame.getResourcesNotFoundExceptionModal());
+    }
+
     public static void displayApiResponseModal() {
         hideOpenedModal();
 
