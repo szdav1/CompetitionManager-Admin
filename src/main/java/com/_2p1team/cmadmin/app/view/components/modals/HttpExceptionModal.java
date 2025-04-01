@@ -32,7 +32,7 @@ public final class HttpExceptionModal extends AbstractModal {
         this.exceptionMessageLabel = new Label(XL_BUTTON_SIZE, Language.get("ConnectionError"), AppearanceRepository.HTTP_EXCEPTION_MESSAGE_APPEARANCE);
         this.exitButton = new Button(W_BUTTON_SIZE, Language.get("Exit")+" [Enter]", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
-        this.getActionMap().clear();
+//        this.getActionMap().clear();
 
         new ExceptionModalController(this);
         this.setUpComponent();

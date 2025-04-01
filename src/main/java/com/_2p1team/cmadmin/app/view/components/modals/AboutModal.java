@@ -9,6 +9,7 @@ import com._2p1team.cmadmin.general.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
+import lombok.Getter;
 
 import javax.swing.JComponent;
 import java.awt.Dimension;
@@ -16,6 +17,7 @@ import java.util.List;
 
 public final class AboutModal extends AbstractModal {
 
+    @Getter
     private final Label logoLabel;
     private final Label titleLabel;
     private final Panel divider;

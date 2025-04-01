@@ -15,11 +15,11 @@ public final class AboutModalKeyController extends AbstractKeyController {
     public AboutModalKeyController(final AboutModal keyControlledComponent) {
         super(keyControlledComponent);
 
-        keyControlledComponent.getBackgroundPanel()
+        keyControlledComponent.getLogoLabel()
             .getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
             .put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "CloseAboutModalAction");
 
-        keyControlledComponent.getBackgroundPanel()
+        keyControlledComponent.getLogoLabel()
             .getActionMap()
             .put("CloseAboutModalAction", new CloseAboutModalAction());
     }

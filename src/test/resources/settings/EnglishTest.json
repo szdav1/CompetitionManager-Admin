@@ -1,4 +1,5 @@
 {
   "BasicTestText": "This is a basic text for testing the language reader class!",
-  "ComplexTest1": "255"
+  "StringToIntegerTest": "255",
+  "StringToFloatTest": "23.43"
 }

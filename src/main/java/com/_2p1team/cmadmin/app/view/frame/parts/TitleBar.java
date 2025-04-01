@@ -73,6 +73,7 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
     }
 
     private void initFileMenu() {
+        this.fileButton.getDropdownPanel().setSize(X_BUTTON_WIDTH, BUTTON_HEIGHT*4);
         this.fileButton.addButtonToDropdownPanel(Language.get("Competition")+" [F1]", new Appearance(AppearanceRepository.COMPETITION_BUTTON_APPEARANCE));
         this.fileButton.addButtonToDropdownPanel(Language.get("Poule")+" [F3]", new Appearance(AppearanceRepository.POULE_BUTTON_APPEARANCE));
         this.fileButton.addButtonToDropdownPanel(Language.get("Table")+" [F5]", new Appearance(AppearanceRepository.TABLE_BUTTON_APPEARANCE));
@@ -99,6 +100,7 @@ public final class TitleBar extends Panel implements ComplexComponent, ControlCo
     }
 
     private void initSettingsMenu() {
+        this.settingsButton.getDropdownPanel().setSize(W_BUTTON_WIDTH, BUTTON_HEIGHT*4);
         this.settingsButton.addButtonToDropdownPanel(Language.get("Window"), new Appearance(AppearanceRepository.WINDOW_BUTTON_APPEARANCE));
         this.settingsButton.addButtonToDropdownPanel(Language.get("Language"), new Appearance(AppearanceRepository.LANGUAGE_BUTTON_APPEARANCE));
         this.settingsButton.addButtonToDropdownPanel(Language.get("About"), new Appearance(AppearanceRepository.ABOUT_BUTTON_APPEARANCE));

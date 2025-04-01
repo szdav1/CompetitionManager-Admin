@@ -10,6 +10,7 @@ public final class AdminApp {
 
     // TODO: Implement API connection test before launch
     // TODO: Implement login
+    // TODO: Hely, birok, klubb
     public static void main(String[] args) {
         ResourceManager.setProductionResourceRoot("main");
         PostRunDataProcessor.start();

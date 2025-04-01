@@ -6,8 +6,8 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum IOData {
-    SETTINGS_PATH("/settings/Settings.json"),
-    LANGUAGE_PATH("/settings/");
+    SETTINGS_PATH("/settings/LanguageSettings.json"),
+    LANGUAGE_PATH("/languages/");
 
     private final String data;
 }

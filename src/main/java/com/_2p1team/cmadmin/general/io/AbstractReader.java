@@ -32,6 +32,10 @@ public abstract class AbstractReader {
         }
 
         JsonObject jsonObject = this.converter.fromJson(data.toString(), JsonObject.class);
+
+        if (jsonObject == null)
+            return new HashMap<>();
+
         jsonObject.entrySet().forEach(entry -> languageValues.put(entry.getKey(), entry.getValue().getAsString()));
 
         return languageValues;

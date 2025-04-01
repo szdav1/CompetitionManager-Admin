@@ -11,7 +11,7 @@ public final class PostRunDataProcessor {
 
     public static void start() {
         Settings.initialize();
-        Language.initialize(IOData.LANGUAGE_PATH.getData()+Settings.get("Language")+".json");
+        Language.initialize(IOData.LANGUAGE_PATH.getData()+Settings.get("language")+".json");
     }
 
 }

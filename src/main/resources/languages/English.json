@@ -27,8 +27,10 @@
   "AddCompetitorTitle": "Add Competitor",
   "UpdateCompetitorTitle": "Update Competitor",
   "DeleteCompetitorTitle": "Delete Competitor",
+  "SelectLanguage": "Select Language",
 
-  "Dashboard": "Dashboard",
+  "Dashboard": "Search",
+  "RestartInfo": "These changes will only take effect after the application has been restarted",
 
   "Name": "Name",
   "Club": "Club",
