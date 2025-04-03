@@ -19,6 +19,10 @@
   "Settings": "Einstellungen",
   "About": "Um",
   "Language": "Sprache",
+  "Success": "Erfolg",
+  "Error": "Fehler",
+  "LanguageError": "Die Anwendungssprache konnte nicht festgelegt werden",
+  "LanguageSuccess": "Sprache erfolgreich eingestellt, bitte starten Sie die Anwendung neu, um die Anderungen zu ubernehmen",
 
   "NewCompetitionTitle": "Neuer Wettbewerb",
   "NewPouleTitle": "Neu Poule",

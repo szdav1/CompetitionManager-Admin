@@ -104,4 +104,10 @@ public final class AppearanceRepository {
 
     public static final Appearance ABOUT_BUTTON_APPEARANCE = new AboutButtonAppearance();
 
+    public static final Appearance ERROR_LABEL_APPEARANCE = new ErrorLabelAppearance();
+
+    public static final Appearance SUCCESS_LABEL_APPEARANCE = new SuccessLabelAppearance();
+
+    public static final Appearance DEVELOPED_BY_LABEL_APPEARANCE = new DevelopedByLabelAppearance();
+
 }

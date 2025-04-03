@@ -19,7 +19,6 @@ public final class AppearanceConstants {
         new LinearGradientPaintConfiguration(
             CustomColors.MAIN_COLOR_1,
             CustomColors.OPAQUE,
-            CustomColors.OPAQUE,
             CustomColors.MAIN_COLOR_2,
             CustomColors.MAIN_COLOR_1
         )

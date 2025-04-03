@@ -3,7 +3,9 @@ package com._2p1team.cmadmin.app.control.components.modal.language;
 import com._2p1team.cmadmin.app.control.AbstractController;
 import com._2p1team.cmadmin.app.view.components.menu.MenuButton;
 import com._2p1team.cmadmin.app.view.components.modals.LanguageSelectorModal;
+import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import com._2p1team.cmadmin.general.constants.IOData;
+import com._2p1team.cmadmin.general.constants.Language;
 import com._2p1team.cmadmin.general.io.LanguageOption;
 import com._2p1team.cmadmin.general.io.LanguageWrite;
 import com._2p1team.cmadmin.general.util.ResourceManager;
@@ -56,8 +58,10 @@ public final class LanguageSelectorModalController extends AbstractController {
             this.converter.toJson(new LanguageWrite(languageOption.filePath()), writer);
         }
         catch (Exception exception) {
-            exception.printStackTrace();
+            FrameManager.displayAppResponseModal(Language.get("Error"), Language.get("LanguageError"));
         }
+
+        FrameManager.displayAppResponseModal(Language.get("Success"), Language.get("LanguageSuccess"));
     }
 
     @Override

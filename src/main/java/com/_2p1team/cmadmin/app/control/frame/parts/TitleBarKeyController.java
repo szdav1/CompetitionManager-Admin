@@ -17,7 +17,7 @@ public final class TitleBarKeyController extends AbstractKeyController {
     public TitleBarKeyController(final TitleBar keyControlledComponent) {
         super(keyControlledComponent);
 
-        List<Integer> shortcutKeys = List.of(KeyEvent.VK_F1, KeyEvent.VK_F3, KeyEvent.VK_F5, KeyEvent.VK_F2, KeyEvent.VK_F4, KeyEvent.VK_F6, KeyEvent.VK_F8);
+        List<Integer> shortcutKeys = List.of(KeyEvent.VK_F1, KeyEvent.VK_F3, KeyEvent.VK_F5, KeyEvent.VK_F2, KeyEvent.VK_F4, KeyEvent.VK_F6, KeyEvent.VK_F8, KeyEvent.VK_F9);
         List<String> actionKeys = List.of(
             "NewCompetitionAction",
             "NewPouleAction",
@@ -25,7 +25,8 @@ public final class TitleBarKeyController extends AbstractKeyController {
             "ViewDatabaseAction",
             "AddCompetitorAction",
             "UpdateCompetitorAction",
-            "RemoveCompetitorAction"
+            "RemoveCompetitorAction",
+            "ChangeLanguageAction"
         );
         List<AbstractAction> actions = List.of(
             new NewCompetitionAction(),
@@ -34,7 +35,8 @@ public final class TitleBarKeyController extends AbstractKeyController {
             new ViewDatabaseAction(),
             new AddCompetitorAction(),
             new UpdateCompetitorAction(),
-            new RemoveCompetitorAction()
+            new RemoveCompetitorAction(),
+            new ChangeLanguageAction()
         );
 
         for (int i = 0; i < shortcutKeys.size(); i++) {
@@ -107,6 +109,15 @@ public final class TitleBarKeyController extends AbstractKeyController {
         @Override
         public void actionPerformed(ActionEvent e) {
             FrameManager.displayRemoveCompetitorModal();
+        }
+
+    }
+
+    private static class ChangeLanguageAction extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            FrameManager.displayLanguageSelectorModal();
         }
 
     }

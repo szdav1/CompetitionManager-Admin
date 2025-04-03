@@ -60,6 +60,7 @@ public final class AppFrame extends AbstractFrame {
     private final ResourcesNotFoundExceptionModal resourcesNotFoundExceptionModal;
     private final ApiResponseModal apiResponseModal;
     private final LanguageSelectorModal languageSelectorModal;
+    private final AppResponseModal appResponseModal;
     private final AboutModal aboutModal;
 
     private final RootPanel rootPanel;
@@ -105,6 +106,7 @@ public final class AppFrame extends AbstractFrame {
         this.resourcesNotFoundExceptionModal = null;
         this.apiResponseModal = null;
         this.languageSelectorModal = null;
+        this.appResponseModal = null;
         this.aboutModal = null;
 
         this.rootPanel = new RootPanel(MODAL_WIDTH, MODAL_HEIGHT);
@@ -159,6 +161,7 @@ public final class AppFrame extends AbstractFrame {
         this.resourcesNotFoundExceptionModal = new ResourcesNotFoundExceptionModal();
         this.apiResponseModal = new ApiResponseModal();
         this.languageSelectorModal = new LanguageSelectorModal();
+        this.appResponseModal = new AppResponseModal();
         this.aboutModal = new AboutModal();
 
         this.rootPanel = new RootPanel();
@@ -229,6 +232,7 @@ public final class AppFrame extends AbstractFrame {
         this.rootPanel.addComponent(this.resourcesNotFoundExceptionModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.apiResponseModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.languageSelectorModal.getBackgroundPanel(), Position.HIGH);
+        this.rootPanel.addComponent(this.appResponseModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.aboutModal.getBackgroundPanel(), Position.HIGH);
 
         this.aboutModal.setUpBuildDisplay();
@@ -244,6 +248,7 @@ public final class AppFrame extends AbstractFrame {
         this.resourcesNotFoundExceptionModal.disappear();
         this.apiResponseModal.disappear();
         this.languageSelectorModal.disappear();
+        this.appResponseModal.disappear();
         this.aboutModal.disappear();
 
         this.addComponent(this.rootPanel);

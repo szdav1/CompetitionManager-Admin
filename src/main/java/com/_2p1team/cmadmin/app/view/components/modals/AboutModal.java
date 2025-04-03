@@ -38,7 +38,7 @@ public final class AboutModal extends AbstractModal {
         this.versionNumberLabel = new Label(new Dimension(this.getWidth(), BUTTON_HEIGHT), AppFrame.VERSION, AppearanceRepository.LABELED_INPUT_APPEARANCE);
         this.licenseLabel = new Label(new Dimension(this.getWidth(), BUTTON_HEIGHT), Language.get("License"), AppearanceRepository.LABELED_INPUT_APPEARANCE);
         this.poweredByLabel = new Label(new Dimension(this.getWidth(), BUTTON_HEIGHT), Language.get("PoweredBy")+" Java, Swing", AppearanceRepository.POWERED_BY_LABEL_APPEARANCE);
-        this.developedByLabel = new Label(new Dimension(this.getWidth(), BUTTON_HEIGHT), Language.get("DevelopedBy")+" 2+1 team", AppearanceRepository.LABELED_INPUT_APPEARANCE);
+        this.developedByLabel = new Label(new Dimension(this.getWidth(), BUTTON_HEIGHT), Language.get("DevelopedBy")+" 2+1 team", AppearanceRepository.DEVELOPED_BY_LABEL_APPEARANCE);
 
         this.setUpComponent();
         new AboutModalKeyController(this);

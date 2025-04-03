@@ -19,6 +19,10 @@
   "Settings": "Settings",
   "About": "About",
   "Language": "Language",
+  "Success": "Success",
+  "Error": "Error",
+  "LanguageError": "Could not set application language",
+  "LanguageSuccess": "Language set successfully, please restart the application in order to apply changes",
 
   "NewCompetitionTitle": "New Competition",
   "NewPouleTitle": "New Poule",

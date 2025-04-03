@@ -266,6 +266,17 @@ public final class FrameManager {
         frame.setPreviousModal(frame.getLanguageSelectorModal());
     }
 
+    public static void displayAppResponseModal(final String title, final String message) {
+        hideOpenedModal();
+
+        frame.getAppResponseModal()
+            .showMessage(title, message);
+
+        frame.setOpenedModal(frame.getAppResponseModal());
+        frame.setFrameState(FrameState.MODAL_OPENED);
+        frame.setPreviousModal(frame.getAppResponseModal());
+    }
+
     public static void displayAboutModal() {
         if (frame.getFrameState() != FrameState.DEFAULT)
             return;

@@ -18,6 +18,7 @@ public final class FooterPanel extends Panel implements ComplexComponent {
     private final Label buildLabel;
     private final Label buildDateLabel;
     private final Label poweredByLabel;
+    private final Label developedByLabel;
 
     public FooterPanel() {
         this(TITLE_SIZE);
@@ -30,6 +31,7 @@ public final class FooterPanel extends Panel implements ComplexComponent {
         this.buildLabel = new Label(X_BUTTON_SIZE, "", AppearanceRepository.BUILD_LABEL_APPEARANCE);
         this.buildDateLabel = new Label(X_BUTTON_SIZE, "", AppearanceRepository.LABELED_INPUT_APPEARANCE);
         this.poweredByLabel = new Label(X_BUTTON_SIZE, Language.get("PoweredBy")+" Swing", AppearanceRepository.POWERED_BY_LABEL_APPEARANCE);
+        this.developedByLabel = new Label(X_BUTTON_SIZE, Language.get("DevelopedBy")+" 2+1 team", AppearanceRepository.DEVELOPED_BY_LABEL_APPEARANCE);
 
         this.setUpComponent();
     }
@@ -45,6 +47,7 @@ public final class FooterPanel extends Panel implements ComplexComponent {
         this.addComponent(this.buildLabel);
         this.addComponent(this.buildDateLabel);
         this.addComponent(this.poweredByLabel);
+        this.addComponent(this.developedByLabel);
     }
 
 }

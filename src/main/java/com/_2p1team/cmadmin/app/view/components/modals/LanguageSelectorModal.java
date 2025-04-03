@@ -48,6 +48,14 @@ public final class LanguageSelectorModal extends AbstractModal {
     }
 
     @Override
+    public void disappear() {
+        super.disappear();
+
+        this.selectorButton.setToggled(false);
+        this.selectorButton.getDropdownPanel().setVisible(false);
+    }
+
+    @Override
     public void setUpComponent() {
         this.getCenterPanel().addComponent(this.selectorButton);
         this.getCenterPanel().addComponent(this.selectorButton.getDropdownPanel());
