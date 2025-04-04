@@ -8,6 +8,7 @@ import com.google.gson.JsonObject;
 
 import java.io.File;
 import java.io.RandomAccessFile;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,7 +24,7 @@ public abstract class AbstractReader {
             String line = reader.readLine();
 
             while (line != null) {
-                data.append(line);
+                data.append(new String(line.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
                 line = reader.readLine();
             }
         }

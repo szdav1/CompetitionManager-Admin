@@ -35,7 +35,7 @@ import java.net.http.HttpResponse;
 @Getter(AccessLevel.PACKAGE)
 public final class AppFrame extends AbstractFrame {
 
-    public static final String VERSION = Language.get("Version")+" 1.0";
+    public static final String VERSION = Language.get("Version")+" 1.2.1";
     private final int build;
     private final String buildDate;
 
@@ -85,7 +85,7 @@ public final class AppFrame extends AbstractFrame {
         super(Util.loadImageIcon("/assets/appIcon.png").getImage(), "Http Communication Error");
 
         this.build = this.hashCode();
-        this.buildDate = "2025-04-02";
+        this.buildDate = "2025-04-04";
 
         Label fatalErrorLabel = new Label(X_BUTTON_SIZE, "Fatal Error: Server is unreachable", AppearanceRepository.HTTP_EXCEPTION_MESSAGE_APPEARANCE);
         Panel shade = new Panel(new Dimension(MODAL_WIDTH, MODAL_HEIGHT), new GridLayout(1, 1), AppearanceRepository.MODAL_BACKGROUND_APPEARANCE);
@@ -148,7 +148,7 @@ public final class AppFrame extends AbstractFrame {
         this.setLayout(null);
 
         this.build = this.hashCode();
-        this.buildDate = "2025-04-02";
+        this.buildDate = "2025-04-04";
 
         this.closingConfirmationModal = new WindowClosingConfirmationModal();
         this.newPouleModal = new NewPouleModal();
