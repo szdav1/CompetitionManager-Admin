@@ -6,10 +6,10 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum HttpConnectionSettings {
-    METHOD("http://"),
-    DOMAIN("localhost"),
-    PORT(":8080"),
-    SETUP(METHOD.value+DOMAIN.value+PORT.value);
+    METHOD(HttpSettings.get("method")),
+    DOMAIN(HttpSettings.get("domain")),
+    PORT(HttpSettings.get("port")),
+    SETUP(METHOD.value+"://"+DOMAIN.value+":"+PORT.value);
 
     private final String value;
 }

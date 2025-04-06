@@ -6,6 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum IOData {
+    HTTP_SETTINGS_PATH("/settings/http.properties.json"),
     SETTINGS_PATH("/settings/LanguageSettings.json"),
     LANGUAGE_PATH("/languages/");
 

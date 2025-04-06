@@ -22,7 +22,9 @@
   "Success": "Success",
   "Error": "Error",
   "LanguageError": "Could not set application language",
+  "HttpSettingsError": "Could not set Http settings, resource not found",
   "LanguageSuccess": "Language set successfully, please restart the application in order to apply changes",
+  "HttpSettingHint": "Type in the desired server address and try restarting the application",
 
   "NewCompetitionTitle": "New Competition",
   "NewPouleTitle": "New Poule",
@@ -35,6 +37,7 @@
 
   "Dashboard": "Search",
   "RestartInfo": "These changes will only take effect after the application has been restarted",
+  "Method": "Method",
 
   "Name": "Name",
   "Club": "Club",
@@ -59,7 +62,7 @@
   "Built": "Built on:",
 
   "ExitText": "Are you sure you want to exit?",
-  "Exit": "Exit",
+  "Exit": "Save and Exit",
 
   "Yes": "Yes",
   "No": "No",

@@ -22,7 +22,9 @@
   "Success": "Sikeres Eljárás",
   "Error": "Sikertelen Eljárás",
   "LanguageError": "Alkalmazás nyelvezet megváltoztatása sikertelen",
+  "HttpSettingsError": "Http adatok beállítésa sikertelen, forrás nem található",
   "LanguageSuccess": "Az alkalmazás nyelvezete sikeresen frissítve lett, kérlek indítsd újra az alkalmazást",
+  "HttpSettingHint": "Írja be a szerver címét és próbálja meg újra indítani az alkalmazást",
 
   "NewCompetitionTitle": "Új Verseny",
   "NewPouleTitle": "Új Kör",
@@ -35,6 +37,7 @@
 
   "Dashboard": "Keresés",
   "RestartInfo": "Ezek a változtatások csak az alkalmazás újraindítása után fognak megjelenni",
+  "Method": "Metódus",
 
   "Name": "Név",
   "Club": "Klubb",

@@ -22,7 +22,9 @@
   "Success": "Erfolg",
   "Error": "Fehler",
   "LanguageError": "Die Anwendungssprache konnte nicht festgelegt werden",
+  "HttpSettingsError": "HTTP-Einstellungen konnten nicht festgelegt werden, Ressource nicht gefunden",
   "LanguageSuccess": "Sprache erfolgreich eingestellt, bitte starten Sie die Anwendung neu, um die Anderungen zu ubernehmen",
+  "HttpSettingHint": "Geben Sie die gewünschte Serveradresse ein und versuchen Sie, die Anwendung neu zu starten",
 
   "NewCompetitionTitle": "Neuer Wettbewerb",
   "NewPouleTitle": "Neu Poule",
@@ -35,6 +37,7 @@
 
   "Dashboard": "Suchen",
   "RestartInfo": "Diese Anderungen werden erst nach einem Neustart der Anwendung wirksam",
+  "Method": "Verfahren",
 
   "Name": "Name",
   "Club": "Verein",
