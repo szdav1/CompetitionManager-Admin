@@ -8,6 +8,7 @@ import com._2p1team.cmadmin.app.http.HttpCommunicator;
 import com._2p1team.cmadmin.app.http.ResponseInterpreter;
 import com._2p1team.cmadmin.app.view.components.fencing.table.TableCompetitionPanel;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
+import com._2p1team.cmadmin.general.constants.CompetitionType;
 import com._2p1team.cmadmin.general.util.JsonConverter;
 
 import java.awt.event.ActionEvent;
@@ -37,6 +38,9 @@ public final class TableCompetitionPanelController extends AbstractController {
             return;
 
         this.panel.finish();
+
+        if (FrameManager.getCurrentCompetition() != CompetitionType.COMPETITION)
+            return;
 
         HttpResponse<String> response = HttpCommunicator.CompetitionApi.uploadCompetition(FrameManager.getCurrentCompetition());
 
