@@ -1,11 +1,20 @@
 package com._2p1team.cmadmin.app.control.components.fencing.poule;
 
 import com._2p1team.cmadmin.app.control.AbstractController;
+import com._2p1team.cmadmin.app.dto.competition.CompetitionTransfer;
+import com._2p1team.cmadmin.app.dto.competitor.CompetitorTransferModel;
+import com._2p1team.cmadmin.app.dto.leaderboard.Leaderboard;
+import com._2p1team.cmadmin.app.http.HttpCommunicator;
+import com._2p1team.cmadmin.app.http.ResponseInterpreter;
 import com._2p1team.cmadmin.app.view.components.fencing.poule.PouleCompetitionPanel;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
+import com._2p1team.cmadmin.general.util.JsonConverter;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 
 import java.awt.event.ActionEvent;
+import java.net.http.HttpResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class PouleCompetitionPanelController extends AbstractController {
 
@@ -40,8 +49,47 @@ public final class PouleCompetitionPanelController extends AbstractController {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(this.closeButton) || e.getSource().equals(this.bottomCloseButton))
+        if (e.getSource().equals(this.closeButton) || e.getSource().equals(this.bottomCloseButton)) {
             FrameManager.hidePouleCompetitionPanel();
+
+            if (!this.panel.checkIfFinished())
+                return;
+
+            HttpResponse<String> response = HttpCommunicator.CompetitionApi.uploadCompetition(FrameManager.getCurrentCompetition());
+
+            if (response.statusCode() != ResponseInterpreter.RESPONSE_CODE_CREATED) {
+                FrameManager.setLastApiResponse(response);
+                FrameManager.displayApiResponseModal();
+                return;
+            }
+
+            CompetitionTransfer competitionTransfer = JsonConverter.jsonToCompetition(response.body());
+
+            List<CompetitorTransferModel> finishingCompetitors = new ArrayList<>();
+
+            PouleCompetitionPanel.getCompetitorTransferModels().forEach(competitor -> {
+                Long id = competitor.id();
+                String name = competitor.name();
+                String club = competitor.club();
+                String birthDate = competitor.birthDate();
+                int index = competitor.index();
+                int placement = competitor.placement();
+
+                finishingCompetitors.add(new CompetitorTransferModel(id, name, club, birthDate, index, placement));
+            });
+
+            for (CompetitorTransferModel finishingCompetitor : finishingCompetitors) {
+                HttpResponse<String> response2 = HttpCommunicator.LeaderboardApi.uploadResult(
+                    new Leaderboard(competitionTransfer.getId(), finishingCompetitor.id(), finishingCompetitor.placement())
+                );
+
+                if (response2.statusCode() != ResponseInterpreter.RESPONSE_CODE_CREATED) {
+                    FrameManager.setLastApiResponse(response2);
+                    FrameManager.displayApiResponseModal();
+                    return;
+                }
+            }
+        }
 
         else if (e.getSource().equals(this.finishButton))
             this.panel.finishPoules();

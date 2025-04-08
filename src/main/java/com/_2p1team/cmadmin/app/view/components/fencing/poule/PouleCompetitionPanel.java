@@ -193,12 +193,19 @@ public final class PouleCompetitionPanel extends Panel implements ComplexCompone
         this.setVisible(true);
     }
 
-    @SneakyThrows
-    public void finishPoules() {
+    public boolean checkIfFinished() {
         for (Poule poule : this.poules) {
             if (poule.calculateCompetitorData())
-                return;
+                return false;
         }
+
+        return true;
+    }
+
+    @SneakyThrows
+    public void finishPoules() {
+        if (!this.checkIfFinished())
+            return;
 
         this.poules.forEach(poule -> poule.getFinishingCompetitors().forEach(competitor -> competitorTransferModels.add(new CompetitorTransferModel(
             competitor.id(),

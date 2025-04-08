@@ -8,7 +8,6 @@ import com._2p1team.cmadmin.app.http.HttpCommunicator;
 import com._2p1team.cmadmin.app.http.ResponseInterpreter;
 import com._2p1team.cmadmin.app.view.components.fencing.table.TableCompetitionPanel;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
-import com._2p1team.cmadmin.general.constants.CompetitionType;
 import com._2p1team.cmadmin.general.util.JsonConverter;
 
 import java.awt.event.ActionEvent;
@@ -39,9 +38,6 @@ public final class TableCompetitionPanelController extends AbstractController {
 
         this.panel.finish();
 
-        if (FrameManager.getCompetitionType() != CompetitionType.COMPETITION)
-            return;
-
         HttpResponse<String> response = HttpCommunicator.CompetitionApi.uploadCompetition(FrameManager.getCurrentCompetition());
 
         if (response.statusCode() != ResponseInterpreter.RESPONSE_CODE_CREATED) {
@@ -54,7 +50,8 @@ public final class TableCompetitionPanelController extends AbstractController {
 
         for (CompetitorTransferModel finishingCompetitor : this.panel.getTable().getFinishingCompetitors()) {
             HttpResponse<String> response2 = HttpCommunicator.LeaderboardApi.uploadResult(
-                new Leaderboard(competitionTransfer.getId(), finishingCompetitor.id(), this.panel.getTable().getFinishingCompetitors().indexOf(finishingCompetitor)+1));
+                new Leaderboard(competitionTransfer.getId(), finishingCompetitor.id(), this.panel.getTable().getFinishingCompetitors().indexOf(finishingCompetitor)+1)
+            );
 
             if (response2.statusCode() != ResponseInterpreter.RESPONSE_CODE_CREATED) {
                 FrameManager.setLastApiResponse(response2);
