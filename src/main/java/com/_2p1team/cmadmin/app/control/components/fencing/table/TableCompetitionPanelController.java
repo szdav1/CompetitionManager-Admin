@@ -39,7 +39,7 @@ public final class TableCompetitionPanelController extends AbstractController {
 
         this.panel.finish();
 
-        if (FrameManager.getCurrentCompetition() != CompetitionType.COMPETITION)
+        if (FrameManager.getCompetitionType() != CompetitionType.COMPETITION)
             return;
 
         HttpResponse<String> response = HttpCommunicator.CompetitionApi.uploadCompetition(FrameManager.getCurrentCompetition());
