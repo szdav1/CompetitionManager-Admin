@@ -1,4 +1,4 @@
-# Copy to production description
+Copy to production description
 ---
 > In order to make this run configuration work properly on other
 > development devices, in the configuration's external tools window, select the 
