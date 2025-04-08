@@ -108,6 +108,7 @@ public final class NewPouleModal extends AbstractModal {
         this.setTitle(FrameManager.getCompetitionType() == CompetitionType.POULE_ONLY ? Language.get("NewPouleTitle") : Language.get("NewCompetitionTitle"));
 
         this.competitorDisplays.clear();
+        participatingCompetitors.clear();
 
         HttpCommunicator.CompetitorApi.getAllCompetitors()
             .forEach(competitor -> this.competitorDisplays.add(new CompetitorDisplay(BUTTON_SIZE, BUTTON_SIZE, competitor)));
