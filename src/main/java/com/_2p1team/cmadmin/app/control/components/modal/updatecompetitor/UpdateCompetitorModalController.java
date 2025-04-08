@@ -8,6 +8,7 @@ import com._2p1team.cmadmin.app.http.ResponseInterpreter;
 import com._2p1team.cmadmin.app.view.components.competitor.CompetitorDisplay;
 import com._2p1team.cmadmin.app.view.components.modals.UpdateCompetitorModal;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
+import com._2p1team.cmadmin.general.constants.CustomColors;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -76,10 +77,30 @@ public final class UpdateCompetitorModalController extends AbstractController {
         if (this.updateCompetitorModal.checkInputData())
             return;
 
+        boolean error = false;
+
         long id = Long.parseLong(this.updateCompetitorModal.getIdInput().getText());
         String name = this.updateCompetitorModal.getNameInput().getText();
         String club = this.updateCompetitorModal.getClubInput().getText();
         String birthDate = this.updateCompetitorModal.getBirthDateInput().getText();
+
+        if (name.isBlank()) {
+            this.updateCompetitorModal.getNameInput().getInput().setBackground(CustomColors.MAIN_COLOR_2);
+            error = true;
+        }
+
+        if (club.isBlank()) {
+            this.updateCompetitorModal.getClubInput().getInput().setBackground(CustomColors.MAIN_COLOR_2);
+            error = true;
+        }
+
+        if (birthDate.isBlank()) {
+            this.updateCompetitorModal.getBirthDateInput().getInput().setBackground(CustomColors.MAIN_COLOR_2);
+            error = true;
+        }
+
+        if (error)
+            return;
 
         HttpResponse<String> response = HttpCommunicator.CompetitorApi.updateCompetitor(id, new CompetitorUploadModel(name, club, birthDate));
 
