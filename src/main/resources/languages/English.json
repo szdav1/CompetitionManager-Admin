@@ -34,6 +34,9 @@
   "UpdateCompetitorTitle": "Update Competitor",
   "DeleteCompetitorTitle": "Delete Competitor",
   "SelectLanguage": "Select Language",
+  "Login": "Login",
+  "Email": "Email",
+  "Password": "Password",
 
   "Dashboard": "Search",
   "RestartInfo": "These changes will only take effect after the application has been restarted",

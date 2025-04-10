@@ -34,6 +34,9 @@
   "UpdateCompetitorTitle": "Update-Konkurrent",
   "DeleteCompetitorTitle": "Mitbewerber loschen",
   "SelectLanguage": "Sprache auswahlen",
+  "Login": "Login",
+  "Email": "E-mail",
+  "Password": "Passwort",
 
   "Dashboard": "Suchen",
   "RestartInfo": "Diese Anderungen werden erst nach einem Neustart der Anwendung wirksam",
@@ -62,7 +65,7 @@
   "Built": "Aufbauend auf:",
 
   "ExitText": "Mochten Sie wirklich beenden?",
-  "Exit": "Ausfahrt",
+  "Exit": "Speichern und beenden",
 
   "Yes": "Ja",
   "No": "Nein",

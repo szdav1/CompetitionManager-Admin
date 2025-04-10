@@ -110,4 +110,6 @@ public final class AppearanceRepository {
 
     public static final Appearance DEVELOPED_BY_LABEL_APPEARANCE = new DevelopedByLabelAppearance();
 
+    public static final Appearance LOCK_LABEL_APPEARANCE = new LockLabelAppearance();
+
 }

@@ -34,6 +34,9 @@
   "UpdateCompetitorTitle": "Versenyző Módosítása",
   "DeleteCompetitorTitle": "Versenyző Törlése",
   "SelectLanguage": "Nyelv Kiválasztása",
+  "Login": "Bejelentkezés",
+  "Email": "Email",
+  "Password": "Jelszó",
 
   "Dashboard": "Keresés",
   "RestartInfo": "Ezek a változtatások csak az alkalmazás újraindítása után fognak megjelenni",
@@ -62,7 +65,7 @@
   "Built": "Build Dátum:",
 
   "ExitText": "Biztosan ki szeretnél lépni?",
-  "Exit": "Kilépés",
+  "Exit": "Mentés és Kilépés",
 
   "Yes": "Igen",
   "No": "Nem",

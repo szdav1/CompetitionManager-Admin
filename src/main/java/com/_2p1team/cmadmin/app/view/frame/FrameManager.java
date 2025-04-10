@@ -289,6 +289,18 @@ public final class FrameManager {
         frame.setPreviousModal(frame.getAboutModal());
     }
 
+    public static void displayLoginModal() {
+        if (frame.getFrameState() != FrameState.DEFAULT)
+            return;
+
+        frame.getLoginModal()
+            .appear();
+
+        frame.setOpenedModal(frame.getLoginModal());
+        frame.setFrameState(FrameState.MODAL_OPENED);
+        frame.setPreviousModal(frame.getLoginModal());
+    }
+
     public static void displayPouleCompetitionPanel() {
         if (frame.getFrameState() != FrameState.DEFAULT)
             return;

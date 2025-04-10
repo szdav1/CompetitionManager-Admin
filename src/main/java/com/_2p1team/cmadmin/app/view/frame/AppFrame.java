@@ -62,6 +62,7 @@ public final class AppFrame extends AbstractFrame {
     private final LanguageSelectorModal languageSelectorModal;
     private final AppResponseModal appResponseModal;
     private final AboutModal aboutModal;
+    private final LoginModal loginModal;
 
     private final RootPanel rootPanel;
     private final Panel mainPanel;
@@ -108,6 +109,7 @@ public final class AppFrame extends AbstractFrame {
         this.languageSelectorModal = null;
         this.appResponseModal = null;
         this.aboutModal = null;
+        this.loginModal = null;
 
         this.rootPanel = new RootPanel(MODAL_WIDTH, MODAL_HEIGHT);
         this.mainPanel = new Panel(new Rectangle(0, 0, MODAL_WIDTH, MODAL_HEIGHT), new BorderLayout(), AppearanceRepository.MAIN_PANEL_APPEARANCE);
@@ -163,6 +165,7 @@ public final class AppFrame extends AbstractFrame {
         this.languageSelectorModal = new LanguageSelectorModal();
         this.appResponseModal = new AppResponseModal();
         this.aboutModal = new AboutModal();
+        this.loginModal = new LoginModal();
 
         this.rootPanel = new RootPanel();
         this.mainPanel = new Panel(new Rectangle(0, 0, FRAME_WIDTH, FRAME_HEIGHT), new BorderLayout(), AppearanceRepository.MAIN_PANEL_APPEARANCE);
@@ -181,6 +184,7 @@ public final class AppFrame extends AbstractFrame {
         FrameManager.init(this);
         this.createFrameUI();
         this.handleBeforeLaunchQueuedException();
+        FrameManager.displayLoginModal();
     }
 
     void disableMenuButtons() {
@@ -234,6 +238,7 @@ public final class AppFrame extends AbstractFrame {
         this.rootPanel.addComponent(this.languageSelectorModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.appResponseModal.getBackgroundPanel(), Position.HIGH);
         this.rootPanel.addComponent(this.aboutModal.getBackgroundPanel(), Position.HIGH);
+        this.rootPanel.addComponent(this.loginModal.getBackgroundPanel(), Position.HIGH);
 
         this.aboutModal.setUpBuildDisplay();
 
@@ -250,6 +255,7 @@ public final class AppFrame extends AbstractFrame {
         this.languageSelectorModal.disappear();
         this.appResponseModal.disappear();
         this.aboutModal.disappear();
+        this.loginModal.disappear();
 
         this.addComponent(this.rootPanel);
     }
