@@ -22,6 +22,8 @@ public enum HttpEndPoints {
     NEW_LEADERBOARD(HttpConnectionSettings.SETUP.getValue()+ApiSettings.NEW_LEADERBOARD.getValue()),
     UPDATE_LEADERBOARD(HttpConnectionSettings.SETUP.getValue()+ApiSettings.UPDATE_LEADERBOARD.getValue()),
 
+    GET_ALL_ADMINS(HttpConnectionSettings.SETUP.getValue()+ApiSettings.GET_ALL_ADMINS.getValue()),
+
     TEST_CONNECTION(HttpConnectionSettings.SETUP.getValue()+ApiSettings.TEST_CONNECTION.getValue());
 
     private final String url;

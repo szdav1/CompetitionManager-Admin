@@ -66,6 +66,8 @@
 
   "ExitText": "Are you sure you want to exit?",
   "Exit": "Save and Exit",
+  "Close": "Exit",
+  "InvalidUsernameOrPassword": "Invalid Username Or Password",
 
   "Yes": "Yes",
   "No": "No",

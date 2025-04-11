@@ -1,5 +1,6 @@
 package com._2p1team.cmadmin.app.http;
 
+import com._2p1team.cmadmin.app.dto.admins.Admins;
 import com._2p1team.cmadmin.app.dto.competition.Competition;
 import com._2p1team.cmadmin.app.dto.competitor.Competitor;
 import com._2p1team.cmadmin.app.dto.competitor.CompetitorUploadModel;
@@ -138,6 +139,29 @@ public final class HttpCommunicator {
             }
 
             return HttpCommunicator.response;
+        }
+
+    }
+
+    @AllArgsConstructor(access=AccessLevel.NONE)
+    public static final class AdminsApi {
+
+        public static List<Admins> getAllAdmins() {
+            try {
+                HttpCommunicator.request = HttpRequest.newBuilder()
+                    .uri(new URI(HttpEndPoints.GET_ALL_ADMINS.getUrl()))
+                    .GET()
+                    .build();
+
+                HttpCommunicator.response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+                return JsonConverter.jsonToAdminsList(response.body());
+            }
+            catch (Exception exception) {
+                BeforeLaunchExceptionQueue.setExceptionType(BeforeLaunchExceptionType.HTTP_COMMUNICATION_EXCEPTION);
+            }
+
+            return new ArrayList<>();
         }
 
     }

@@ -1,5 +1,6 @@
 package com._2p1team.cmadmin.general.util;
 
+import com._2p1team.cmadmin.app.dto.admins.Admins;
 import com._2p1team.cmadmin.app.dto.competition.Competition;
 import com._2p1team.cmadmin.app.dto.competition.CompetitionTransfer;
 import com._2p1team.cmadmin.app.dto.competitor.Competitor;
@@ -16,31 +17,36 @@ import java.util.List;
 @AllArgsConstructor(access=AccessLevel.NONE)
 public final class JsonConverter {
 
-    private static final Gson gson = new Gson();
+    private static final Gson converter = new Gson();
 
     public static Competitor jsonToCompetitor(final String jsonObject) {
-        return gson.fromJson(jsonObject, Competitor.class);
+        return converter.fromJson(jsonObject, Competitor.class);
     }
 
     public static List<Competitor> jsonToCompetitors(final String jsonObject) {
         Type type = new TypeToken<List<Competitor>>() {}.getType();
-        return gson.fromJson(jsonObject, type);
+        return converter.fromJson(jsonObject, type);
     }
 
     public static String competitorUploadModelToJson(final CompetitorUploadModel competitorUploadModel) {
-        return gson.toJson(competitorUploadModel);
+        return converter.toJson(competitorUploadModel);
     }
 
     public static String competitionToJson(final Competition competition) {
-        return gson.toJson(competition);
+        return converter.toJson(competition);
     }
 
     public static CompetitionTransfer jsonToCompetition(final String jsonObject) {
-        return gson.fromJson(jsonObject, CompetitionTransfer.class);
+        return converter.fromJson(jsonObject, CompetitionTransfer.class);
     }
 
     public static String leaderboardToJson(final Leaderboard leaderboard) {
-        return gson.toJson(leaderboard);
+        return converter.toJson(leaderboard);
+    }
+
+    public static List<Admins> jsonToAdminsList(final String jsonObject) {
+        Type type = new TypeToken<List<Admins>>() {}.getType();
+        return converter.fromJson(jsonObject, type);
     }
 
 }

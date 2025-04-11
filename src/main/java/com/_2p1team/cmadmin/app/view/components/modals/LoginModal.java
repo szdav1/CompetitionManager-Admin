@@ -1,6 +1,8 @@
 package com._2p1team.cmadmin.app.view.components.modals;
 
+import com._2p1team.cmadmin.app.control.components.modal.login.LoginModalController;
 import com._2p1team.cmadmin.app.view.components.input.LabeledInput;
+import com._2p1team.cmadmin.app.view.components.input.LabeledPasswordInput;
 import static com._2p1team.cmadmin.general.constants.AppearanceConstants.PADDING;
 import com._2p1team.cmadmin.general.constants.Language;
 import static com._2p1team.cmadmin.general.constants.SizeData.*;
@@ -10,29 +12,41 @@ import com._2p1team.cmadmin.swing.override.components.label.Label;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
 import com._2p1team.cmadmin.swing.override.constants.Position;
 import com._2p1team.cmadmin.swing.override.graphics.Appearance;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.swing.JComponent;
 import java.awt.*;
 import java.util.List;
 
+@Data
+@EqualsAndHashCode(callSuper=false)
 public final class LoginModal extends AbstractModal {
 
-    private final LabeledInput usernameInput;
-    private final LabeledInput passwordInput;
+    private final LabeledInput emailInput;
+    private final LabeledPasswordInput passwordInput;
     private final Button loginButton;
     private final Label lockLabel;
+    private final Label errorLabel;
+    private final Button exitButton;
 
     public LoginModal() {
         super();
         this.setTitle(Language.get("Login"));
         this.getCenterPanel().setLayout(new GridLayout(1, 2));
+        this.getTopPanel().removeComponent(this.getCloseButton());
 
-        this.usernameInput = new LabeledInput(W_BUTTON_WIDTH, Language.get("Email"));
-        this.passwordInput = new LabeledInput(W_BUTTON_WIDTH, Language.get("Password"));
+        this.emailInput = new LabeledInput(W_BUTTON_WIDTH, Language.get("Email"));
+        this.passwordInput = new LabeledPasswordInput(W_BUTTON_WIDTH, Language.get("Password"));
         this.loginButton = new Button(BUTTON_SIZE, Language.get("Login"), new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
         this.lockLabel = new Label(AppearanceRepository.LOCK_LABEL_APPEARANCE);
+        this.errorLabel = new Label(X_BUTTON_SIZE, Language.get("InvalidUsernameOrPassword"), AppearanceRepository.HTTP_EXCEPTION_MESSAGE_APPEARANCE);
+        this.exitButton = new Button(BUTTON_SIZE, Language.get("Close"), new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+
+        this.getActionMap().clear();
 
         this.setUpComponent();
+        new LoginModalController(this);
     }
 
     @Override
@@ -47,15 +61,19 @@ public final class LoginModal extends AbstractModal {
             AppearanceRepository.LABELED_INPUT_APPEARANCE
         );
 
-        innerPanel.addComponent(this.usernameInput);
+        innerPanel.addComponent(this.emailInput);
         innerPanel.addComponent(this.passwordInput);
+        innerPanel.addComponent(this.errorLabel);
         innerPanel.addComponent(this.loginButton);
+
+        this.errorLabel.setVisible(false);
 
         leftPanel.addComponent(innerPanel);
         rightPanel.addComponent(this.lockLabel, Position.CENTER);
 
         this.getCenterPanel().addComponent(leftPanel);
         this.getCenterPanel().addComponent(rightPanel);
+        this.getBottomPanel().addComponent(this.exitButton);
     }
 
     @Override

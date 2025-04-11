@@ -66,6 +66,8 @@
 
   "ExitText": "Biztosan ki szeretnél lépni?",
   "Exit": "Mentés és Kilépés",
+  "Close": "Kilépés",
+  "InvalidUsernameOrPassword": "Helytelen jelszó vagy felhasználónév",
 
   "Yes": "Igen",
   "No": "Nem",

@@ -66,6 +66,8 @@
 
   "ExitText": "Mochten Sie wirklich beenden?",
   "Exit": "Speichern und beenden",
+  "Close": "Ausfahrt",
+  "InvalidUsernameOrPassword": "Ungultiger Benutzername oder ungultiges Passwort",
 
   "Yes": "Ja",
   "No": "Nein",
