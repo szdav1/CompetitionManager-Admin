@@ -29,6 +29,7 @@ public final class LoginModal extends AbstractModal {
     private final Label lockLabel;
     private final Label errorLabel;
     private final Button exitButton;
+    private final Label messageLabel;
 
     public LoginModal() {
         super();
@@ -40,8 +41,9 @@ public final class LoginModal extends AbstractModal {
         this.passwordInput = new LabeledPasswordInput(W_BUTTON_WIDTH, Language.get("Password"));
         this.loginButton = new Button(BUTTON_SIZE, Language.get("Login"), new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
         this.lockLabel = new Label(AppearanceRepository.LOCK_LABEL_APPEARANCE);
-        this.errorLabel = new Label(X_BUTTON_SIZE, Language.get("InvalidUsernameOrPassword"), AppearanceRepository.HTTP_EXCEPTION_MESSAGE_APPEARANCE);
+        this.errorLabel = new Label(new Dimension(X_BUTTON_WIDTH*2, BUTTON_HEIGHT), Language.get("InvalidUsernameOrPassword"), AppearanceRepository.HTTP_EXCEPTION_MESSAGE_APPEARANCE);
         this.exitButton = new Button(BUTTON_SIZE, Language.get("Close"), new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.messageLabel = new Label(new Dimension(X_BUTTON_WIDTH*3, BUTTON_HEIGHT), Language.get("HowToLogin"), AppearanceRepository.LABELED_INPUT_APPEARANCE);
 
         this.getActionMap().clear();
 
@@ -56,7 +58,7 @@ public final class LoginModal extends AbstractModal {
         Panel rightPanel = new Panel(leftPanel.getPreferredSize(), new BorderLayout(), leftPanel.getAppearance());
 
         Panel innerPanel = new Panel(
-            new Rectangle((leftPanel.getWidth()/2)-W_BUTTON_WIDTH, (leftPanel.getHeight()/2)-(((BUTTON_HEIGHT*3)+(BUTTON_HEIGHT*6))/2), W_BUTTON_WIDTH*2, (BUTTON_HEIGHT*3)+(BUTTON_HEIGHT*6)),
+            new Rectangle((leftPanel.getWidth()/2)-W_BUTTON_WIDTH, (leftPanel.getHeight()/2)-(((BUTTON_HEIGHT*3)+(BUTTON_HEIGHT*6))/2), W_BUTTON_WIDTH*2+BUTTON_WIDTH, (BUTTON_HEIGHT*4)+(BUTTON_HEIGHT*8)),
             new FlowLayout(FlowLayout.CENTER, PADDING, BUTTON_HEIGHT),
             AppearanceRepository.LABELED_INPUT_APPEARANCE
         );
@@ -65,6 +67,7 @@ public final class LoginModal extends AbstractModal {
         innerPanel.addComponent(this.passwordInput);
         innerPanel.addComponent(this.errorLabel);
         innerPanel.addComponent(this.loginButton);
+        innerPanel.addComponent(this.messageLabel);
 
         this.errorLabel.setVisible(false);
 
