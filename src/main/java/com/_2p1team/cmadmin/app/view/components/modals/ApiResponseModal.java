@@ -3,10 +3,10 @@ package com._2p1team.cmadmin.app.view.components.modals;
 import com._2p1team.cmadmin.app.http.ResponseInterpreter;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
 import static com._2p1team.cmadmin.general.constants.AppearanceConstants.PADDING;
+import com._2p1team.cmadmin.general.constants.Language;
 import static com._2p1team.cmadmin.general.constants.SizeData.BUTTON_HEIGHT;
 import com._2p1team.cmadmin.general.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.scrollpanel.ScrollPanel;
-import com._2p1team.cmadmin.swing.override.components.text.area.TextArea;
 import com._2p1team.cmadmin.swing.override.components.text.field.TextField;
 
 import javax.swing.JComponent;
@@ -21,12 +21,12 @@ public final class ApiResponseModal extends AbstractModal {
 
     public ApiResponseModal() {
         super();
-        this.setTitle("Api Response");
+        this.setTitle(Language.get("ServerResponse"));
 
         this.scrollPanel = new ScrollPanel(this.getCenterPanel().getPreferredSize(), new FlowLayout(FlowLayout.CENTER, 0, 0), AppearanceRepository.BASE_SCROLL_PANEL_APPEARANCE);
         this.scrollPanel.setScrollSpeed(BUTTON_HEIGHT);
 
-        this.messageArea = new TextField(new Dimension(this.scrollPanel.getWidth()/2, this.scrollPanel.getHeight()-PADDING), "", AppearanceRepository.MODAL_BACKGROUND_APPEARANCE);
+        this.messageArea = new TextField(new Dimension(this.scrollPanel.getWidth()/2, this.scrollPanel.getHeight()-PADDING), "", AppearanceRepository.LABELED_INPUT_APPEARANCE);
         this.messageArea.setEditable(false);
 
         this.setUpComponent();

@@ -1,21 +1,21 @@
 package com._2p1team.cmadmin.app.control.components.modal.login;
 
 import com._2p1team.cmadmin.app.control.AbstractController;
-import com._2p1team.cmadmin.app.dto.admins.Admins;
 import com._2p1team.cmadmin.app.http.HttpCommunicator;
 import com._2p1team.cmadmin.app.view.components.input.LabeledInput;
 import com._2p1team.cmadmin.app.view.components.input.LabeledPasswordInput;
 import com._2p1team.cmadmin.app.view.components.modals.LoginModal;
 import com._2p1team.cmadmin.app.view.frame.FrameManager;
+import com._2p1team.cmadmin.general.constants.states.CurrentStateUser;
 import com._2p1team.cmadmin.swing.override.components.button.Button;
 
 import java.awt.event.ActionEvent;
-import java.util.List;
+import java.net.http.HttpResponse;
 
 public final class LoginModalController extends AbstractController {
 
     private final LoginModal modal;
-    private final LabeledInput emailInput;
+    private final LabeledInput usernameInput;
     private final LabeledPasswordInput passwordInput;
     private final Button loginButton;
     private final Button exitButton;
@@ -24,7 +24,7 @@ public final class LoginModalController extends AbstractController {
         super(component);
 
         this.modal = component;
-        this.emailInput = component.getEmailInput();
+        this.usernameInput = component.getUsernameInput();
         this.passwordInput = component.getPasswordInput();
         this.loginButton = component.getLoginButton();
         this.exitButton = component.getExitButton();
@@ -39,19 +39,18 @@ public final class LoginModalController extends AbstractController {
     }
 
     void tryLogin() {
-        String email = this.emailInput.getText();
-        String password = this.passwordInput.getText();
+        String username = usernameInput.getText();
+        String password = passwordInput.getText();
 
-        List<Admins> admins = HttpCommunicator.AdminsApi.getAllAdmins();
+        HttpResponse<String> response = HttpCommunicator.LoginApi.login(username, password);
 
-        List<Admins> result = admins.stream()
-            .filter(admin -> admin.getEmail().equals(email) && admin.getPassword().equals(password))
-            .toList();
-
-        if (result.isEmpty())
-            this.modal.getErrorLabel().setVisible(true);
-        else
+        if (response.statusCode() == 200) {
+            CurrentStateUser.setUsername(username);
+            CurrentStateUser.setPassword(password);
             FrameManager.hideOpenedModal();
+        }
+        else
+            this.modal.getErrorLabel().setVisible(true);
     }
 
     @Override

@@ -34,8 +34,9 @@
   "UpdateCompetitorTitle": "Update Competitor",
   "DeleteCompetitorTitle": "Delete Competitor",
   "SelectLanguage": "Select Language",
+  "ServerResponse": "Server Response",
   "Login": "Login",
-  "Email": "Email",
+  "Username": "Username",
   "Password": "Password",
 
   "Dashboard": "Search",
@@ -74,5 +75,9 @@
   "No": "No",
 
   "ConnectionError": "Connection with server couldn't be established",
-  "DatabaseSizeExceeded": "Database capacity is at maximum"
+  "DatabaseSizeExceeded": "Database capacity is at maximum",
+
+  "CommunicationFailure": "Communication failed with the server",
+  "InternalServerError": "Communication failed, internal server error\nPossible reasons are: Invalid input data",
+  "UnexpectedError": "Communication with the server failed, desired request couldn't be performed"
 }

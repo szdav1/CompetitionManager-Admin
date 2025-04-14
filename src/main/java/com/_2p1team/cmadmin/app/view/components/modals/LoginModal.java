@@ -23,7 +23,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper=false)
 public final class LoginModal extends AbstractModal {
 
-    private final LabeledInput emailInput;
+    private final LabeledInput usernameInput;
     private final LabeledPasswordInput passwordInput;
     private final Button loginButton;
     private final Label lockLabel;
@@ -37,7 +37,7 @@ public final class LoginModal extends AbstractModal {
         this.getCenterPanel().setLayout(new GridLayout(1, 2));
         this.getTopPanel().removeComponent(this.getCloseButton());
 
-        this.emailInput = new LabeledInput(W_BUTTON_WIDTH, Language.get("Email"));
+        this.usernameInput = new LabeledInput(W_BUTTON_WIDTH, Language.get("Username"));
         this.passwordInput = new LabeledPasswordInput(W_BUTTON_WIDTH, Language.get("Password"));
         this.loginButton = new Button(BUTTON_SIZE, Language.get("Login"), new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
         this.lockLabel = new Label(AppearanceRepository.LOCK_LABEL_APPEARANCE);
@@ -63,16 +63,16 @@ public final class LoginModal extends AbstractModal {
             AppearanceRepository.LABELED_INPUT_APPEARANCE
         );
 
-        innerPanel.addComponent(this.emailInput);
+        innerPanel.addComponent(this.usernameInput);
         innerPanel.addComponent(this.passwordInput);
         innerPanel.addComponent(this.errorLabel);
         innerPanel.addComponent(this.loginButton);
-        innerPanel.addComponent(this.messageLabel);
 
         this.errorLabel.setVisible(false);
 
         leftPanel.addComponent(innerPanel);
         rightPanel.addComponent(this.lockLabel, Position.CENTER);
+        rightPanel.addComponent(this.messageLabel, Position.BOTTOM);
 
         this.getCenterPanel().addComponent(leftPanel);
         this.getCenterPanel().addComponent(rightPanel);

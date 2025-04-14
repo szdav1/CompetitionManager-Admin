@@ -24,7 +24,7 @@ public enum ApiSettings {
     NEW_LEADERBOARD(API_DOMAIN.value+"leaderboard/new"),
     UPDATE_LEADERBOARD(API_DOMAIN.value+"leaderboard/%d"),
 
-    GET_ALL_ADMINS(API_DOMAIN.value+"admins/"),
+    LOGIN(API_DOMAIN.value+"login/"),
 
     TEST_CONNECTION(API_DOMAIN.value+"test");
 

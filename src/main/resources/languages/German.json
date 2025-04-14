@@ -34,8 +34,9 @@
   "UpdateCompetitorTitle": "Update-Konkurrent",
   "DeleteCompetitorTitle": "Mitbewerber loschen",
   "SelectLanguage": "Sprache auswahlen",
+  "ServerResponse": "Serverantwort",
   "Login": "Login",
-  "Email": "E-mail",
+  "Username": "Benutzername",
   "Password": "Passwort",
 
   "Dashboard": "Suchen",
@@ -74,5 +75,9 @@
   "No": "Nein",
 
   "ConnectionError": "Verbindung zum Server konnte nicht hergestellt werden",
-  "DatabaseSizeExceeded": "Die Datenbankkapazitat ist maximal"
+  "DatabaseSizeExceeded": "Die Datenbankkapazitat ist maximal",
+
+  "CommunicationFailure": "Die Kommunikation mit dem Server ist fehlgeschlagen",
+  "InternalServerError": "Kommunikation fehlgeschlagen, interner Serverfehler\nMogliche Grunde: Ungultige Eingabedaten",
+  "UnexpectedError": "Die Kommunikation mit dem Server ist fehlgeschlagen, die gewunschte Anfrage konnte nicht ausgefuhrt werden"
 }

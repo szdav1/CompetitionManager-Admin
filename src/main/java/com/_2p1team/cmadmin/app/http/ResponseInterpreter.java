@@ -1,5 +1,7 @@
 package com._2p1team.cmadmin.app.http;
 
+import com._2p1team.cmadmin.general.constants.Language;
+
 import java.net.http.HttpResponse;
 
 public final class ResponseInterpreter {
@@ -12,9 +14,9 @@ public final class ResponseInterpreter {
 
     public static String interpretResponse(final HttpResponse<String> response) {
         return switch (response.statusCode()) {
-            case RESPONSE_CODE_ERROR -> response.statusCode()+" Communication failed with the server.\n"+response.body();
-            case RESPONSE_CODE_SERVER_ERROR -> response.statusCode()+" Communication failed, internal server error.\nPossible reasons are:Invalid input data.";
-            default -> "An unexpected error occurred.";
+            case RESPONSE_CODE_ERROR -> response.statusCode()+" "+Language.get("CommunicationFailure")+"\n"+response.body();
+            case RESPONSE_CODE_SERVER_ERROR -> response.statusCode()+" "+Language.get("InternalServerError");
+            default -> Language.get("UnexpectedError");
         };
     }
 

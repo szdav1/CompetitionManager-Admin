@@ -1,12 +1,12 @@
 package com._2p1team.cmadmin.app.http;
 
-import com._2p1team.cmadmin.app.dto.admins.Admins;
 import com._2p1team.cmadmin.app.dto.competition.Competition;
 import com._2p1team.cmadmin.app.dto.competitor.Competitor;
 import com._2p1team.cmadmin.app.dto.competitor.CompetitorUploadModel;
 import com._2p1team.cmadmin.app.dto.leaderboard.Leaderboard;
 import com._2p1team.cmadmin.general.constants.BeforeLaunchExceptionType;
 import com._2p1team.cmadmin.general.constants.HttpEndPoints;
+import com._2p1team.cmadmin.general.constants.states.CurrentStateUser;
 import com._2p1team.cmadmin.general.util.BeforeLaunchExceptionQueue;
 import com._2p1team.cmadmin.general.util.JsonConverter;
 import lombok.AccessLevel;
@@ -17,6 +17,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 @AllArgsConstructor(access=AccessLevel.NONE)
@@ -25,6 +26,12 @@ public final class HttpCommunicator {
     private static HttpRequest request;
     private static final HttpClient client = HttpClient.newHttpClient();
     private static HttpResponse<String> response;
+
+    private static String constructBase64Header(final String username, final String password) {
+        String valueToEncode = username + ":" + password;
+
+        return "Basic " + Base64.getEncoder().encodeToString(valueToEncode.getBytes());
+    }
 
     @AllArgsConstructor(access=AccessLevel.NONE)
     public static final class CompetitorApi {
@@ -53,6 +60,7 @@ public final class HttpCommunicator {
                     .uri(new URI(HttpEndPoints.NEW_COMPETITOR.getUrl()))
                     .POST(HttpRequest.BodyPublishers.ofString(JsonConverter.competitorUploadModelToJson(competitorUploadModel)))
                     .setHeader("Content-Type", "application/json")
+                    .header("Authorization", constructBase64Header(CurrentStateUser.getUsername(), CurrentStateUser.getPassword()))
                     .build();
 
                 HttpCommunicator.response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -70,6 +78,7 @@ public final class HttpCommunicator {
                     .uri(new URI(String.format(HttpEndPoints.UPDATE_COMPETITOR.getUrl(), id)))
                     .PUT(HttpRequest.BodyPublishers.ofString(JsonConverter.competitorUploadModelToJson(competitorUploadModel)))
                     .setHeader("Content-Type", "application/json")
+                    .header("Authorization", constructBase64Header(CurrentStateUser.getUsername(), CurrentStateUser.getPassword()))
                     .build();
 
                 HttpCommunicator.response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -86,6 +95,7 @@ public final class HttpCommunicator {
                 HttpCommunicator.request = HttpRequest.newBuilder()
                     .uri(new URI(String.format(HttpEndPoints.DELETE_COMPETITOR.getUrl(), id)))
                     .DELETE()
+                    .header("Authorization", constructBase64Header(CurrentStateUser.getUsername(), CurrentStateUser.getPassword()))
                     .build();
 
                 HttpCommunicator.response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -108,6 +118,7 @@ public final class HttpCommunicator {
                     .uri(new URI(HttpEndPoints.NEW_COMPETITION.getUrl()))
                     .POST(HttpRequest.BodyPublishers.ofString(JsonConverter.competitionToJson(competition)))
                     .setHeader("Content-Type", "application/json")
+                    .header("Authorization", constructBase64Header(CurrentStateUser.getUsername(), CurrentStateUser.getPassword()))
                     .build();
 
                 HttpCommunicator.response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -130,6 +141,7 @@ public final class HttpCommunicator {
                     .uri(new URI(HttpEndPoints.NEW_LEADERBOARD.getUrl()))
                     .POST(HttpRequest.BodyPublishers.ofString(JsonConverter.leaderboardToJson(leaderboard)))
                     .setHeader("Content-Type", "application/json")
+                    .header("Authorization", constructBase64Header(CurrentStateUser.getUsername(), CurrentStateUser.getPassword()))
                     .build();
 
                 HttpCommunicator.response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -144,24 +156,46 @@ public final class HttpCommunicator {
     }
 
     @AllArgsConstructor(access=AccessLevel.NONE)
-    public static final class AdminsApi {
+    public static final class LoginApi {
 
-        public static List<Admins> getAllAdmins() {
+        public static HttpResponse<String> login(final String username, final String password) {
             try {
                 HttpCommunicator.request = HttpRequest.newBuilder()
-                    .uri(new URI(HttpEndPoints.GET_ALL_ADMINS.getUrl()))
-                    .GET()
+                    .POST(HttpRequest.BodyPublishers.noBody())
+                    .uri(new URI(HttpEndPoints.LOGIN.getUrl()))
+                    .setHeader("Content-Type", "application/json")
+                    .header("Authorization", constructBase64Header(username, password))
                     .build();
 
                 HttpCommunicator.response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-                return JsonConverter.jsonToAdminsList(response.body());
             }
             catch (Exception exception) {
-                BeforeLaunchExceptionQueue.setExceptionType(BeforeLaunchExceptionType.HTTP_COMMUNICATION_EXCEPTION);
+                exception.printStackTrace();
             }
 
-            return new ArrayList<>();
+            return HttpCommunicator.response;
+        }
+
+    }
+
+    @AllArgsConstructor(access=AccessLevel.NONE)
+    public static final class LogoutApi {
+
+        public static HttpResponse<String> logout() {
+            try {
+                HttpCommunicator.request = HttpRequest.newBuilder()
+                    .GET()
+                    .uri(new URI(HttpEndPoints.LOGOUT.getUrl()))
+                    .setHeader("Content-Type", "application/json")
+                    .build();
+
+                HttpCommunicator.response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            }
+            catch (Exception exception) {
+                exception.printStackTrace();
+            }
+
+            return HttpCommunicator.response;
         }
 
     }

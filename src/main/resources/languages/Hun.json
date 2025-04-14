@@ -34,8 +34,9 @@
   "UpdateCompetitorTitle": "Versenyző Módosítása",
   "DeleteCompetitorTitle": "Versenyző Törlése",
   "SelectLanguage": "Nyelv Kiválasztása",
+  "ServerResponse": "Szerver Válasz",
   "Login": "Bejelentkezés",
-  "Email": "Email",
+  "Username": "Felhasználónév",
   "Password": "Jelszó",
 
   "Dashboard": "Keresés",
@@ -67,7 +68,7 @@
   "ExitText": "Biztosan ki szeretnél lépni?",
   "Exit": "Mentés és Kilépés",
   "Close": "Kilépés",
-  "InvalidUsernameOrPassword": "Helytelen jelszó vagy felhasználónév",
+  "InvalidUsernameOrPassword": "Helytelen felhasználónév vagy jelszó",
   "HowToLogin": "Írjon emailt a cmadmin@gmail.com-ra, hogy felhasználót kaphasson",
 
 
@@ -75,5 +76,9 @@
   "No": "Nem",
 
   "ConnectionError": "Hiba a szerverrel történő kommunikáció során",
-  "DatabaseSizeExceeded": "Adatbázis kapacitás maximumon"
+  "DatabaseSizeExceeded": "Adatbázis kapacitás maximumon",
+
+  "CommunicationFailure": "Szerverrel való kommunikációs hiba",
+  "InternalServerError": "Kommunikációs hiba: szerver oldali hiba, lehetséges okai: Hibás adatok",
+  "UnexpectedError": "Kommunikációs hiba, kérelem visszautasítva"
 }

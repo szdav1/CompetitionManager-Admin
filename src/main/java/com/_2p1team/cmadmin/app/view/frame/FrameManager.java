@@ -1,6 +1,7 @@
 package com._2p1team.cmadmin.app.view.frame;
 
 import com._2p1team.cmadmin.app.dto.competition.Competition;
+import com._2p1team.cmadmin.app.http.HttpCommunicator;
 import com._2p1team.cmadmin.general.constants.CompetitionType;
 import com._2p1team.cmadmin.general.constants.states.FrameState;
 import com._2p1team.cmadmin.swing.override.components.panel.Panel;
@@ -69,6 +70,7 @@ public final class FrameManager {
     }
 
     public static void directExitFrame() {
+        System.out.println(HttpCommunicator.LogoutApi.logout());
         frame.dispose();
         System.exit(0);
     }
