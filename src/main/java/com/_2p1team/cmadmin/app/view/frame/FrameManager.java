@@ -70,7 +70,7 @@ public final class FrameManager {
     }
 
     public static void directExitFrame() {
-        System.out.println(HttpCommunicator.LogoutApi.logout());
+        HttpCommunicator.LogoutApi.logout();
         frame.dispose();
         System.exit(0);
     }
