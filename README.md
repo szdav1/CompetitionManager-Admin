@@ -2,6 +2,17 @@
 
 ---
 
+## Készítették:
+
+- Szabó Dávid
+  
+- Szürke Levente
+  
+- Szántó Dávid
+  
+
+---
+
 > A CompetitionManager egy vívó versenyek egyszerűbb lebonyolítására szolgáló asztali alkalmazás, illetve webhely.
 
 ---
