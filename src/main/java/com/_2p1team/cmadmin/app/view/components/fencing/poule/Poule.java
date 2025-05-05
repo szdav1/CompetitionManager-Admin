@@ -11,6 +11,7 @@ import com._2p1team.cmadmin.app.view.interfaces.ControlComponent;
 import com._2p1team.cmadmin.app.view.interfaces.KeyControlledComponent;
 import com._2p1team.cmadmin.general.constants.AppearanceConstants;
 import static com._2p1team.cmadmin.general.constants.AppearanceConstants.PADDING;
+import com._2p1team.cmadmin.general.constants.Language;
 import static com._2p1team.cmadmin.general.constants.SizeData.*;
 import com._2p1team.cmadmin.general.util.AppearanceRepository;
 import com._2p1team.cmadmin.swing.override.components.Container;
@@ -102,7 +103,7 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
 
         this.dataPanelLabel = new Label(
             new Rectangle(PADDING, BUTTON_HEIGHT*(this.numberOfCompetitors+1), BUTTON_WIDTH, BUTTON_HEIGHT),
-            "Data Sheet",
+            Language.get("DataSheet"),
             new Appearance(AppearanceRepository.LABELED_INPUT_APPEARANCE)
         );
 
@@ -129,15 +130,15 @@ public class Poule extends Panel implements ComplexComponent, Container, Control
             new Appearance(AppearanceRepository.LABELED_INPUT_APPEARANCE)
         );
 
-        this.competitor1IndexInput = new LabeledInput("Competitor 1");
-        this.competitor2IndexInput = new LabeledInput("Competitor 2");
-        this.competitor1PointInput = new LabeledInput("Point 1");
-        this.competitor2PointInput = new LabeledInput("Point 2");
-        this.insertDataButton = new Button(BUTTON_SIZE, "Insert", new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
+        this.competitor1IndexInput = new LabeledInput(Language.get("Competitor1"));
+        this.competitor2IndexInput = new LabeledInput(Language.get("Competitor2"));
+        this.competitor1PointInput = new LabeledInput(Language.get("Point1"));
+        this.competitor2PointInput = new LabeledInput(Language.get("Point2"));
+        this.insertDataButton = new Button(BUTTON_SIZE, Language.get("Insert"), new Appearance(AppearanceRepository.BASE_BUTTON_APPEARANCE));
 
         this.dateLabel = new Label(BUTTON_SIZE, String.valueOf(LocalDate.now()), new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
         this.pouleNumberLabel = new Label(BUTTON_SIZE, "Poule No.: ", new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
-        this.refereeLabel = new TextField(new Dimension(BUTTON_WIDTH*2, BUTTON_HEIGHT), "Referee: ", new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
+        this.refereeLabel = new TextField(new Dimension(BUTTON_WIDTH*2, BUTTON_HEIGHT), Language.get("Referee"), new Appearance(AppearanceRepository.POULE_PANEL_APPEARANCE));
 
         this.setUpComponent();
         this.controller = new PouleController(this);

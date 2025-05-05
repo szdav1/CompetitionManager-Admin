@@ -79,5 +79,16 @@
 
   "CommunicationFailure": "Communication failed with the server",
   "InternalServerError": "Communication failed, internal server error\nPossible reasons are: Invalid input data",
-  "UnexpectedError": "Communication with the server failed, desired request couldn't be performed"
+  "UnexpectedError": "Communication with the server failed, desired request couldn't be performed",
+
+  "Competitor1": "Competitor 1",
+  "Competitor2": "Competitor 2",
+  "Point1": "Point 1",
+  "Point2": "Point 2",
+
+  "Insert": "Insert",
+
+  "Referee": "Referee:",
+
+  "DataSheet": "Data Sheet"
 }

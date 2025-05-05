@@ -79,5 +79,16 @@
 
   "CommunicationFailure": "Die Kommunikation mit dem Server ist fehlgeschlagen",
   "InternalServerError": "Kommunikation fehlgeschlagen, interner Serverfehler\nMogliche Grunde: Ungultige Eingabedaten",
-  "UnexpectedError": "Die Kommunikation mit dem Server ist fehlgeschlagen, die gewunschte Anfrage konnte nicht ausgefuhrt werden"
+  "UnexpectedError": "Die Kommunikation mit dem Server ist fehlgeschlagen, die gewunschte Anfrage konnte nicht ausgefuhrt werden",
+
+  "Competitor1": "Wettbewerber 1",
+  "Competitor2": "Wettbewerber 2",
+  "Point1": "Punkt 1",
+  "Point2": "Punkt 2",
+
+  "Insert": "Einfugen",
+
+  "Referee": "Schiedsrichter:",
+
+  "DataSheet": "Datenblatt"
 }

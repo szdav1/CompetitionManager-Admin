@@ -28,7 +28,7 @@
 
   "NewCompetitionTitle": "Új Verseny",
   "NewPouleTitle": "Új Kör",
-  "NewTableTitle": "Új Table",
+  "NewTableTitle": "Új Tábla",
   "ViewCompetitorsTitle": "Versenyzők Megtekintése",
   "AddCompetitorTitle": "Versenyző Felvétele",
   "UpdateCompetitorTitle": "Versenyző Módosítása",
@@ -80,5 +80,17 @@
 
   "CommunicationFailure": "Szerverrel való kommunikációs hiba",
   "InternalServerError": "Kommunikációs hiba: szerver oldali hiba, lehetséges okai: Hibás adatok",
-  "UnexpectedError": "Kommunikációs hiba, kérelem visszautasítva"
+  "UnexpectedError": "Kommunikációs hiba, kérelem visszautasítva",
+
+  "Competitor1": "Versenyző 1",
+  "Competitor2": "Versenyző 2",
+  "Point1": "Pont 1",
+  "Point2": "Pont 2",
+
+  "Insert": "Beszúr",
+
+  "Referee": "Bíró:",
+
+  "DataSheet": "Adat Tábla"
+
 }
